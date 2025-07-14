@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" translate="no" class="notranslate">
+    <head>
+        <title>MANO - Playground Transkription</title>
+        <meta name="keywords" content="MANO, Manuscripts Online, Herbstakademie, Playground">
+        <meta name="description" content="">
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0 shrink-to-fit=no"/>
+        <meta name="google" content="notranslate"/>
+        <link rel="canonical" href="https://burchards-dekret-digital.de"/>
+        <link rel="icon" type="image/png" href="images/MANO.png"> 
+        
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+               
+        <link rel="stylesheet" type="text/css" href="css/style.css" media="screen"/>
+        <link rel="stylesheet" type="text/css" href="css/transcription-style.css" media="screen"/>
+        <!--<script src="script.js"></script>-->
+
+        <!-- CodeMirror -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/lib/codemirror.css">
+        <script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/lib/codemirror.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/mode/xml/xml.js"></script>
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/addon/fold/foldgutter.css">
+        <script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/addon/fold/foldcode.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/addon/fold/foldgutter.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/addon/fold/xml-fold.js"></script>
+
+        <style>
+          .CodeMirror {
+            height: 500px;
+            background-color: #f8f9fa;
+            border: 1px solid #ccc;
+            border-radius: 0.5rem;
+            font-size: 11px;
+          }
+        </style>
+        
+    </head>
+    <body>
+        <nav class="navbar bg-body-tertiary ">
+            <div class="container-fluid d-flex justify-content-between align-items-center position-relative py-2">
+
+                <!-- Invisible spacer to balance layout -->
+                <div style="width: 80px;"></div>
+
+                <!-- Centered logo -->
+                <div class="position-absolute start-50 translate-middle-x text-center">
+                <a class="navbar-brand" href="index.html">
+                    <img src="images/MANO.png" alt="Logo" width="80" class="d-inline-block align-text-top">
+                </a>
+                </div>
+
+                <!-- Offcanvas toggle aligned right -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+                aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">&lt;MANO&gt;</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="background.html">Background</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="playground.html">Playground</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contacts.html">Contacts</a></li>
+                    </ul>
+                </div>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container mt-5 mb-3">
+          <div class="container mt-3">
+            <button onclick="history.back()" class="btn btn-outline-secondary">&larr; Back</button>
+          </div>
+          <h1 class="page-title">Transcription Tool</h1>
+          
+            
+                <div class="row mb-3">
+                    <div class="col">
+                        <label for="xmlFileInput" class="form-label">Upload TEI-XML</label>
+                        <input class="form-control" type="file" id="xmlFileInput" accept=".xml">
+                    </div>
+                </div>
+
+                <div id="pageNav" class="text-center mb-3">
+                  <button class="btn btn-outline-primary btn-sm" onclick="previousPage()">Previous Page</button>
+                                    
+                  <select id="pageSelector" class="form-select form-select-sm d-inline-block w-auto mx-2" onchange="goToSelectedPage()">
+                    <option></option>
+                  </select>
+                  <button class="btn btn-outline-primary btn-sm" onclick="nextPage()">Next Page</button>
+                </div>
+                <div class="row mb-4">
+                    <div id="xmlColumn" class="col-md-4">
+                      <label for="xmlEditor" class="form-label">XML</label>
+                      <textarea id="xmlEditor"></textarea>
+                      <button class="btn btn-primary btn-sm mt-2" onclick="renderXML()">Update Preview</button>
+                      <button class="btn btn-primary btn-sm mt-2" onclick="downloadXML()">Download Updated XML</button>
+                    </div>
+
+                    <div id="visualColumn" class="col-md-4">
+                      <label class="form-label">Transcription</label>
+                      <div id="styledOutput" class="border"></div>
+                    </div>
+                    <div id="imageColumn" class="col-md-4">
+                      <label class="form-label">Digitized Image</label>
+                      <div id="imageWrapper" class="border" style="height: 500px; overflow: auto; position: relative;">
+                        <img id="pageImage" src="" style="transform: scale(1); transform-origin: top left; display: block;">
+                      </div>
+                      <div class="mt-2 text-center">
+                        <button class="btn btn-sm btn-outline-secondary" onclick="zoomImage(-0.1)">−</button>
+                        <button class="btn btn-sm btn-outline-secondary" onclick="zoomImage(0.1)">+</button>
+                      </div>
+
+                    </div>
+                </div>
+                
+            
+
+            
+        </div>
+
+        <footer class="footer bg-body-tertiary text-center text-lg-start py-3 border-top">
+            <div class="container">
+                <div class="row align-items-center text-center text-lg-start">
+                    <!-- Left Section -->
+                    <div class="col-12 col-lg-4 mb-2 mb-lg-0 text-lg-start">
+                        <span>© 2025 <span class="mano">&lt;MANO&gt;</span></span>
+                    </div>
+
+                    <!-- Center Section (Logo) -->
+                    <div class="col-12 col-lg-4 mb-2 mb-lg-0 text-center">
+                        <a class="navbar-brand" href="index.html">
+                        <img src="images/MANO.png" alt="Logo" width="50">
+                        </a>
+                    </div>
+
+                    <!-- Right Section (Links) -->
+                    <div class="col-12 col-lg-4 text-lg-end">
+                        <a class="footer-link mx-2" href="index.html">Home</a>
+                        <a class="footer-link mx-2" href="background.html">Background</a>
+                        <a class="footer-link mx-2" href="playground.html">Playground</a>
+                        <a class="footer-link mx-2" href="contacts.html">Contacts</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        
+        <script>
+let pages = [];
+let currentPageIndex = 0;
+
+function renderXML() {
+  const xml = codeMirrorEditor.getValue();
+  const parser = new DOMParser();
+  const xmlDoc = parser.parseFromString(xml, "application/xml");
+  const ns = "http://www.tei-c.org/ns/1.0";
+  const textBody = xmlDoc.getElementsByTagNameNS(ns, "text")[0];
+  if (!textBody) return alert("No <text> element found");
+
+  const allPBs = xmlDoc.getElementsByTagNameNS(ns, "pb");
+  pages = [];
+  let containsFacs = false;
+
+  const styledOutput = document.getElementById("styledOutput");
+  const pageSelector = document.getElementById("pageSelector"); // ⬅️ added
+
+  if (allPBs.length === 0) {
+    // Fallback: no <pb>, render full text normally
+    const html = serializeTEI(textBody);
+    styledOutput.innerHTML = html;
+    pages.push({ facs: "" }); // One blank facs entry to support displayPage()
+
+    // Clear selector if exists
+    if (pageSelector) {
+      pageSelector.innerHTML = "<option></option>";
+    }
+
+  } else {
+    let pbIndex = 0;
+    const clonedText = textBody.cloneNode(true);
+    const pbNodes = clonedText.getElementsByTagNameNS(ns, "pb");
+
+    if (pageSelector) pageSelector.innerHTML = ""; // ⬅️ reset selector
+    let fallbackCount = 1;
+
+    for (let pb of Array.from(pbNodes)) {
+      const facs = pb.getAttribute("facs") || "";
+      if (facs.trim()) containsFacs = true;
+
+      const anchor = document.createElement("span");
+      anchor.id = `pb-${pbIndex}`;
+      pb.parentNode.insertBefore(anchor, pb);
+      pages.push({ facs });
+
+      // Add option to <select>
+      if (pageSelector) {
+        const n = pb.getAttribute("n");
+        const label = n ? `${n}` : `${fallbackCount++}`;
+        const option = document.createElement("option");
+        option.value = pbIndex;
+        option.textContent = label;
+        pageSelector.appendChild(option);
+      }
+
+      pbIndex++;
+    }
+
+    const html = serializeTEI(clonedText);
+    styledOutput.innerHTML = html;
+  }
+
+  // Responsive layout updates
+  const imageCol = document.getElementById("imageColumn");
+  const xmlCol = document.getElementById("xmlColumn");
+  const visualCol = document.getElementById("visualColumn");
+  const nav = document.getElementById("pageNav");
+
+  if (!containsFacs && allPBs.length === 0) {
+    imageCol.style.display = "none";
+    nav.style.display = "none";
+    xmlCol.classList.replace("col-md-4", "col-md-6");
+    visualCol.classList.replace("col-md-4", "col-md-6");
+  } else {
+    imageCol.style.display = containsFacs ? "block" : "none";
+    nav.style.display = "block";
+    xmlCol.classList.replace("col-md-6", "col-md-4");
+    visualCol.classList.replace("col-md-6", "col-md-4");
+  }
+
+  currentPageIndex = 0;
+  displayPage();
+}
+
+
+
+//Convert XML to HTML
+function serializeTEI(node) {
+  const clone = node.cloneNode(true);
+  const xs = new XMLSerializer();
+  return xs.serializeToString(clone)
+    .replace(/xmlns(:\w+)?="[^"]+"/g, "") // Remove xmlns declarations
+    .replace(/<([\/]?)tei:/g, "<$1");     // Remove tei: prefix
+}
+
+function extractTextWithLB(node) {
+  let result = "";
+
+  function walk(n) {
+    if (n.nodeType === 3) {
+      result += n.textContent;
+    } else if (n.nodeType === 1) {
+      if (n.localName === "lb") {
+        result += "\n";
+      }
+      Array.from(n.childNodes).forEach(walk);
+    }
+  }
+
+  walk(node);
+  return result;
+}
+
+function goToSelectedPage() {
+  const selector = document.getElementById("pageSelector");
+  if (selector) {
+    currentPageIndex = parseInt(selector.value);
+    displayPage(currentPageIndex);
+  }
+}
+
+
+function nextPage() {
+  if (currentPageIndex < pages.length - 1) {
+    currentPageIndex++;
+    displayPage();
+  }
+}
+
+function previousPage() {
+  if (currentPageIndex > 0) {
+    currentPageIndex--;
+    displayPage();
+  }
+}
+
+function displayPage() {
+  const current = pages[currentPageIndex];
+
+  // Update image
+  const imageElement = document.getElementById("pageImage");
+  imageElement.src = current?.facs || "";
+  imageElement.style.display = current?.facs ? "block" : "none";
+
+  // Scroll visual transcription
+  const targetId = `pb-${currentPageIndex}`;
+  const targetElement = document.getElementById(targetId);
+  if (targetElement) {
+    targetElement.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  //Scroll to <pb> in CodeMirror
+  const xmlContent = codeMirrorEditor.getValue();
+  const lines = xmlContent.split("\n");
+  const targetLine = lines.findIndex(line =>
+    line.includes("<pb") && line.includes(`facs`) &&
+    (lines.filter(l => l.includes("<pb")).indexOf(line) === currentPageIndex)
+  );
+
+  if (targetLine !== -1) {
+  codeMirrorEditor.setCursor({ line: targetLine, ch: 0 });
+
+  // Align line to top
+  const topOffset = codeMirrorEditor.charCoords({ line: targetLine, ch: 0 }, "local").top;
+  codeMirrorEditor.scrollTo(null, topOffset);
+  }
+
+  // Prev ad Next actions reflected in the page number visualiser
+  const selector = document.getElementById("pageSelector");
+  if (selector) selector.value = currentPageIndex;
+}
+
+
+
+const fileInput = document.getElementById("xmlFileInput");
+fileInput.addEventListener("change", function () {
+  const file = this.files[0];
+  const reader = new FileReader();
+  reader.onload = function (e) {
+    codeMirrorEditor.setValue(e.target.result);
+    renderXML();
+  };
+  reader.readAsText(file);
+});
+
+//Download Updated XML button
+function downloadXML() {
+  const xmlContent = codeMirrorEditor.getValue(); // get updated XML from CodeMirror
+  const blob = new Blob([xmlContent], { type: "application/xml" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "updated-transcription.xml";
+  document.body.appendChild(a);
+  a.click();
+
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+  // Initialize CodeMirror (XML visualiser)
+  const codeMirrorEditor = CodeMirror.fromTextArea(document.getElementById("xmlEditor"), {
+    mode: "application/xml",
+    lineNumbers: true,
+    lineWrapping: true,
+    tabSize: 2,
+    theme: "default",
+    foldGutter: true,
+    gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"]
+  });
+
+//Image Zoom in ad Zoom out
+  let currentZoom = 1;
+  function zoomImage(delta) {
+    const img = document.getElementById("pageImage");
+    currentZoom = Math.max(0.2, Math.min(4, currentZoom + delta)); // Limit zoom range
+    img.style.transform = `scale(${currentZoom})`;
+  }
+
+</script>
+    </body>
+</html>

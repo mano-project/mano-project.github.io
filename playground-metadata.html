@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" translate="no" class="notranslate">
+    <head>
+        <title>MANO - Playground Metadata</title>
+        <meta name="keywords" content="MANO, Manuscripts Online, Herbstakademie, Playground">
+        <meta name="description" content="">
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0 shrink-to-fit=no"/>
+        <meta name="google" content="notranslate"/>
+        <link rel="canonical" href="https://burchards-dekret-digital.de"/>
+        <link rel="icon" type="image/png" href="images/MANO.png"> 
+        
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+               
+        <link rel="stylesheet" type="text/css" href="css/style.css" media="screen"/>
+
+        
+
+        
+    </head>
+    <body>
+        <nav class="navbar bg-body-tertiary ">
+            <div class="container-fluid d-flex justify-content-between align-items-center position-relative py-2">
+
+                <!-- Invisible spacer to balance layout -->
+                <div style="width: 80px;"></div>
+
+                <!-- Centered logo -->
+                <div class="position-absolute start-50 translate-middle-x text-center">
+                <a class="navbar-brand" href="index.html">
+                    <img src="images/MANO.png" alt="Logo" width="80" class="d-inline-block align-text-top">
+                </a>
+                </div>
+
+                <!-- Offcanvas toggle aligned right -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+                aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">&lt;MANO&gt;</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="background.html">Background</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="playground.html">Playground</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contacts.html">Contacts</a></li>
+                    </ul>
+                </div>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container-fluid container-page mt-5 mb-5">
+          <div class="container mt-3">
+            <button onclick="history.back()" class="btn btn-outline-secondary">&larr; Back</button>
+          </div>
+          <h1 class="page-title">Metadata Editor</h1>
+          
+          <div class="container data-enter">
+            <div class="mb-4 row align-items-end">
+              <div class="col-md-6">
+                <label for="fileUpload" class="form-label">Upload XML or JSON</label>
+                <input type="file" id="fileUpload" class="form-control" accept=".xml,.json">
+              </div>
+              <div class="col-md-6">
+                <button id="addManuscriptBtn" class="btn btn-primary mt-3">Add manuscript</button>
+              </div>
+            </div>
+            <div id="manuscriptFormsContainer"></div>
+            <div class="text-center mt-5">
+              <div class="dropdown">
+                <button class="btn btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Download manuscript metadata
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" id="downloadAllJSON">JSON</a></li>
+                  <li><a class="dropdown-item" id="downloadAllCSV">CSV</a></li>
+                  <li><a class="dropdown-item" id="downloadAllRDF">RDF</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal for XML display -->
+        <div class="modal fade" id="xmlModal" tabindex="-1" aria-labelledby="xmlModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-xl modal-dialog-scrollable">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="xmlModalLabel">XML preview</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <pre id="modalXmlContent" class="bg-light p-3 border"></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <footer class="footer bg-body-tertiary text-center text-lg-start py-3 border-top">
+            <div class="container">
+                <div class="row align-items-center text-center text-lg-start">
+                    <!-- Left Section -->
+                    <div class="col-12 col-lg-4 mb-2 mb-lg-0 text-lg-start">
+                        <span>© 2025 <span class="mano">&lt;MANO&gt;</span></span>
+                    </div>
+
+                    <!-- Center Section (Logo) -->
+                    <div class="col-12 col-lg-4 mb-2 mb-lg-0 text-center">
+                        <a class="navbar-brand" href="index.html">
+                        <img src="images/MANO.png" alt="Logo" width="50">
+                        </a>
+                    </div>
+
+                    <!-- Right Section (Links) -->
+                    <div class="col-12 col-lg-4 text-lg-end">
+                        <a class="footer-link mx-2" href="index.html">Home</a>
+                        <a class="footer-link mx-2" href="background.html">Background</a>
+                        <a class="footer-link mx-2" href="playground.html">Playground</a>
+                        <a class="footer-link mx-2" href="contacts.html">Contacts</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+
+        <script src="JS/metadata.js"></script>
+
+    </body>
+
+</html>

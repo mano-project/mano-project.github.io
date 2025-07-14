@@ -1,0 +1,117 @@
+@font-face {
+  font-family: AndronScriptorWeb;
+  src: url(Andron-Scriptor-Web.ttf);
+}
+
+.tei-page {
+  font-family: 'AndronScriptorWeb', serif;
+  line-height: 1.5;
+}
+text {
+  font-family: 'AndronScriptorWeb', serif;
+  line-height: 1.5;
+}
+
+
+/*tei\\:div, div[type] {
+  margin-top: 1em;
+  padding-left: 1em;
+  border-left: 3px solid #ccc;
+}*/
+
+/*tei\\:head, head {
+  font-weight: bold;
+  font-size: 1.1em;
+  margin-bottom: 0.5em;
+}*/
+
+p {
+  margin-bottom: 1em;
+  font-family: 'AndronScriptorWeb', serif;
+}
+
+
+lb::before {
+  content: "\A";
+  white-space: pre;
+  display: inline;
+}
+
+hi {
+  font-weight: bold;
+}
+
+add {
+  color: green;
+}
+
+del[rend="erasure"] {
+  background-color: lightgrey;
+  text-decoration: none!important;
+}
+
+del[rend="strikethrough"] {
+  text-decoration: line-through;
+}
+
+note {
+  color: #6c757d;
+  font-size: 0.9em;
+  display: inline-block;
+  margin-left: 5px;
+}
+
+fw{
+  font-weight: bold;
+}
+fw::before {
+  content: "\A";
+  white-space: pre;
+  display: inline;
+}
+fw::after {
+  content: "\A";
+  white-space: pre;
+  display: inline;
+}
+expan{
+  color: #6c757d;
+}
+expan::before{
+  content: "[";
+  color: #6c757d;
+}
+expan::after{
+  content: "]";
+  color: #6c757d;
+}
+
+supplied::before{
+  content: "[";
+}
+supplied::after{
+  content: "]";
+}
+
+item::before{
+content: "\A";
+}
+
+
+
+#styledOutput, #xmlText {
+  height: 500px;
+  overflow-y: scroll;
+  background-color: #f8f9fa;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  scroll-behavior: smooth;
+}
+
+#pageImage {
+  max-height: 500px;
+  width: 100%;
+  object-fit: contain;
+  transform-origin: top left;
+  transition: transform 0.2s ease;
+}

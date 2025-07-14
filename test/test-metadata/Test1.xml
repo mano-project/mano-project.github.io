@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title type="main">Test1</title>
+        
+        <respStmt>
+          <persName>
+            <forename>Michela</forename>
+            <surname>Parma</surname>
+            <affiliation>Uni Mainz</affiliation>
+          </persName>
+        </respStmt>
+
+        <respStmt>
+          <persName>
+            <forename>Fabio</forename>
+            <surname>Mariani</surname>
+            <affiliation>Uni Augsburg</affiliation>
+          </persName>
+        </respStmt>
+      </titleStmt>
+      <publicationStmt>
+        <availability>
+          <p>CC0</p>
+        </availability>
+      </publicationStmt>
+      <sourceDesc>
+        <msDesc>
+          <msIdentifier>
+            <repository>
+              <name>Test1</name>
+              <geo>00.00, 00.00</geo>
+            </repository>
+            <settlement>Test1</settlement>
+            <country>Test1</country>
+            <collection><idno type="shelfmark">Test1</idno></collection>
+            <msName type="sigle">Test1</msName>
+            <altIdentifier><idno>Test1</idno></altIdentifier>
+            <msName type="full">Test1</msName>
+          </msIdentifier>
+          <msContents>
+            <summary>test test test </summary>
+            
+            <msItem>
+              <author>Test1</author>
+              <title>Test1</title>
+              <locusGrp>
+                <locus from="1" to="100"/>
+<locus from="201" to="205"/>
+<locus from="207" to="210"/>
+              </locusGrp>
+              <textLang>Test1</textLang>
+              <incipit>test test test</incipit>
+              <explicit>test test test</explicit>
+              <note type="textual-family">Test1</note>
+              <note type="textual-subfamily">Test1</note>
+              <note type="text-genre">Test1</note>
+            </msItem>
+
+            <msItem>
+              <author>Test2</author>
+              <title>Test2</title>
+              <locusGrp>
+                <locus from="101" to="200"/>
+<locus from="306" to="310"/>
+<locus from="311" to="315"/>
+              </locusGrp>
+              <textLang>Test2</textLang>
+              <incipit>test test test</incipit>
+              <explicit>test test test</explicit>
+              <note type="textual-family">Test2</note>
+              <note type="textual-subfamily">Test2</note>
+              <note type="text-genre">Test2</note>
+            </msItem>
+          </msContents>
+          <physDesc>
+            <objectDesc>
+              <supportDesc material="pergament">
+                <extent>
+                  <dimensions>
+                    <height quantity="30" unit="cm"/>
+                    <width quantity="20" unit="cm"/>
+                  </dimensions>
+                  <measure quantity="300"/>
+                </extent>
+                <condition>test test test</condition>
+              </supportDesc>
+              <layoutDesc>
+                <layout columns="2" writtenLines="30"/>
+              </layoutDesc>
+            </objectDesc>
+            <handDesc>
+              <summary>10</summary>
+            </handDesc>
+            <scriptDesc>
+              <scriptNote>Test1</scriptNote>
+            </scriptDesc>
+          </physDesc>
+          <history>
+            <summary>test test test</summary>
+            <origin>
+              <origPlace>
+                <name>Test1</name>
+                <geo>00.00, 00.00</geo>
+              </origPlace>
+              <region>Test1</region>
+              <country>Test1</country>
+              <origDate>1000</origDate>
+            </origin>
+            <provenance>
+              <name>Test1</name>
+              <geo>00.00, 00.00</geo>
+              <settlement>Test1</settlement>
+              <region>Test1</region>
+              <country>Test1</country>
+            </provenance>
+          </history>
+          <additional>
+            <surrogates> 
+              <bibl type="digi"> 
+                <title xml:lang="ger">Digitalisat</title>
+                <ref>https://https://burchards-dekret-digital.de/</ref>
+              </bibl> 
+              <bibl type="iiif-manifest"> 
+                <title xml:lang="ger">iiif-Manifest</title>
+                <ref>https://https://burchards-dekret-digital.de/</ref>
+              </bibl> 
+              <bibl type="cat"> 
+                <title xml:lang="ger">Katalogisat</title>
+                <ref>https://https://burchards-dekret-digital.de/</ref>
+              </bibl>
+            </surrogates>
+            
+            <bibl type="book">
+              
+              <author>
+                <surname>Author1</surname>
+                <forename>Author1</forename>
+              </author>
+              <author>
+                <surname>Author2</surname>
+                <forename>Author2</forename>
+              </author>
+              <editor>Editor1</editor><editor>Editor2</editor>
+              <title>Title1</title>
+              <pubPlace>Test1</pubPlace>
+              <publisher>Test1</publisher>
+              <series>Test1</series>
+              <date when="2000"></date>
+              <citedRange>1-10</citedRange>
+            </bibl>
+
+            <bibl type="journalArticle">
+              
+              <author>
+                <surname>Author1</surname>
+                <forename>Author1</forename>
+              </author>
+              <author>
+                <surname>Author2</surname>
+                <forename>Author2</forename>
+              </author>
+              <editor>Editor1</editor><editor>Editor2</editor><editor>Editor3</editor>
+              <title>Title2</title>
+              <pubPlace>Test2</pubPlace>
+              <publisher>Test2</publisher>
+              <series>Test2</series>
+              <date when="2005"></date>
+              <citedRange>1-20</citedRange>
+            </bibl>
+          </additional>
+        </msDesc>
+      </sourceDesc>
+    </fileDesc>
+  </teiHeader>
+  <text><body><p></p></body></text>
+</TEI>

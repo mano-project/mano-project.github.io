@@ -1,0 +1,214 @@
+<?xml-model href="https://burchard.adwmainz.net/exist/webdav/db/collections/bdd/data/schemata/bdd-trans-work.rng" schematypens="http://relaxng.org/ns/structure/1.0"?><TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="bdd-bamberg-sb-c-6">
+
+        <teiHeader>
+            <fileDesc>
+                <titleStmt>
+                    <title xml:lang="ger">Bamberg, Staatsbibliothek, Can. 6</title>
+                </titleStmt>
+                <publicationStmt>
+                    <p/>
+                </publicationStmt>
+                <sourceDesc>
+                    <msDesc xml:id="bamberg-sb-c-6-msdesc">
+                        <msIdentifier xml:id="bamberg-sb-c-6-ident">
+                            <repository ref="https://www.staatsbibliothek-bamberg.de/">
+                                <name>Staatsbibliothek</name>
+                                <geo>49.890972,10.894102</geo>
+                            </repository>
+                            <settlement ref="https://www.wikidata.org/wiki/Q3936">Bamberg</settlement>
+                            <country ref="https://www.wikidata.org/wiki/Q183">Deutschland</country>
+                            <collection>
+                                <idno type="shelfmark">Can. 6</idno>
+                            </collection>
+                            <altIdentifier type="old-signature">
+                                <idno type="shelfmark">C44</idno>
+                            </altIdentifier>
+                            <msName type="full">Bamberg, Staatsbibliothek, Can. 6</msName>
+                            <msName type="sigle">B</msName>
+                        </msIdentifier>
+
+                        <msContents>
+                        <summary>Am Anfang ein neu eingebundener Quaternio von dünnerem, stark abgeriebenen Pergament, auf dem die Texte auf fol. 1–9 stehen. Der Prolog gehörte somit ursprünglich nicht zum Text, auch die Admonitio Synodalis und das Konzil von Seligenstadt sind nachträglich eingefügt worden. Die Blätter 3–5 dürften mit einem weiteren, verlorenen Blatt ursprünglich am Ende des Codex gestanden haben, hierauf ist die alte Zählweise der Blätter ein Hinweis.
+Die Admonitio Synodalis erscheint hier außerhalb des Ordos als einzelnes Dokument.
+Die Synode von Seligenstadt dürfte ursprünglich am Ende des Codex gestanden haben, sie bricht durch Blattverlust nach Can. 19 ab.
+</summary>
+                        <msItem n="1" corresp="#decretum" class="main-text" facs="#">
+                            <locusGrp>
+                                <locus from="1r" to="2v"/>
+                                <locus from="6r" to="312r"/>
+                            </locusGrp>
+                            <author> <persName ref="https://viaf.org/viaf/111045814/">Burchard von
+                                Worms</persName> </author>
+                            <title xml:lang="lat">Decretum</title>
+                            <incipit>Bvrchardus solo nomine vvormaciinsis episcopvs.</incipit>
+                            <explicit>Sed in hęc ignem conflagrationis illius pertimescent
+                                    inmortales atque in corruptibiles facti sunt uiuorum trium
+                                    corruptibilia corpora atque mortalia in camino ardenti inlęsa
+                                    uiuere non potuerunt.</explicit>
+                            <note type="textual-family">Wormser Ordnung B</note>
+                            <note type="textual-subfamily">Deutsche Handschriftengruppe</note>
+                            <note type="text-genre"/>
+                            <textLang>Latein</textLang>
+                        </msItem>
+                        <msItem n="2" corresp="#admonitio-synodalis" class="begleittext" facs="#">
+                            <locusGrp>
+                                <locus from="3r" to="4v"/>
+                            </locusGrp>
+                            <author> <persName ref="unbekannt">Unbekannt</persName> </author>
+                            <title xml:lang="lat">Admonitio synodalis</title>
+                            <incipit>Sermo synodalis qui in singulis synodis parrochianis synodus presbiteris est enunciandus. Fratres
+                                    presbiteri et sacerdotes domini cooperatores ordinis nostri
+                                    estis [...].</incipit>
+                            <explicit>[…] praestante domino nostro iesu christo qui cum patre
+                                    et spiritu sancto uiuit et regnat deus per omnia
+                                    saecula.</explicit>
+                            <note type="textual-family"/>
+                            <note type="textual-subfamily"/>
+                            <note type="text-genre"/>
+                            <textLang>Latein</textLang>
+                        </msItem>
+                        <msItem n="3" corresp="#synode-seligenstadt" class="begleittext" facs="#">
+                            <locusGrp>
+                                <locus from="4vb" to="5v"/>
+                            </locusGrp>
+                            <author> <persName ref="unbekannt">Unbekannt</persName> </author>
+                            <title xml:lang="lat">Synode von Seligenstadt</title>
+                            <incipit>In dei nomine ego Aribo mogontinę sedis archiepiscopus quamuis indignus cum cęteris confribus nostris atque coepiscopus Burghardo Wormaciense quo Werinhario argentino Brunone augustense Eberhardo babenbergensi […]“</incipit>
+                            <explicit>Decretum est in eodem concilio ut omnis penitens dum carrinam ieiunet de loco ad locum non migregt [...]</explicit>
+                            <note type="textual-family"/>
+                            <note type="textual-subfamily">Erste Rezension</note>
+                            <note type="text-genre"/>
+                            <textLang>Latein</textLang>
+                        </msItem>
+                        <msItemStruct xml:id="bamberg-sb-c-6-msItemStruct-modern">
+                            <msItemStruct corresp="#decretum">
+                                <locus from="1r" to="2v"/>
+                                <title xml:lang="lat">Prolog und Inhaltsangabe zum Dekret Burchards
+                                    von Worms</title>
+                            </msItemStruct>
+                            <msItemStruct corresp="#admonitio-synodalis">
+                                <locus from="3r" to="4v"/>
+                                <title xml:lang="lat">Admonitio synodalis</title>
+                            </msItemStruct>
+                            <msItemStruct corresp="#synode-seligenstadt">
+                                <locus from="4vb" to="5v"/>
+                                <title xml:lang="lat">Synode von Seligenstadt</title>
+                            </msItemStruct>
+                            <msItemStruct corresp="#decretum">
+                                <locus from="6r" to="312r"/>
+                                <title xml:lang="lat">Decretum</title>
+                            </msItemStruct>
+                        </msItemStruct>
+                    </msContents>
+
+                        <physDesc>
+                            <objectDesc form="codex">
+                                <supportDesc material="parchment">
+                                    <extent>
+                                        <dimensions type="leaf">
+                                            <height quantity="33.0" unit="cm"/>
+                                            <width quantity="26.0" unit="cm"/>
+                                        </dimensions>
+                                        <measure unit="leaves" quantity="312"/>
+                                    </extent>
+                                    <condition>Einige Beschädigungen der Seiten an Fol. 1–2, 92, 142, 145, 167, 183, 193, 217, 260, 282, 297, 312 zzgl. weitere kleine Schäden</condition>
+                                </supportDesc>
+
+                                <layoutDesc>
+                                    <layout columns="2" writtenLines="30"/>
+                                </layoutDesc>
+                            </objectDesc>
+                            
+                            
+                            <handDesc hands="" xml:id="">
+                                <summary>35</summary>
+                                <handNote xml:id="" script="" medium="" scope="" scribeRef="" source=""/>
+                            </handDesc>
+
+                            <scriptDesc>
+                                <scriptNote>Karolingische Minuskel</scriptNote>
+                            </scriptDesc>
+                        </physDesc>
+
+                        <history>
+                            <summary>Geschrieben in Worms im ¼ d. 11. Jahrhunderts. Eigentum Dombibliothek Bamberg.</summary>
+                            <origin>
+                                <origPlace ref="https://www.wikidata.org/wiki/Q3852">
+                                    <name>Worms</name>
+                                    <geo>49.630167,8.359789</geo>
+                                </origPlace>
+                                <region ref="https://www.wikidata.org/wiki/Q1200">Rheinland-Pfalz</region> 
+                                <country ref="https://www.wikidata.org/wiki/Q183">Deutschland</country> 
+                                <origDate notAfter="1000" notBefore="1025">1000-1025</origDate>
+                            </origin>
+                        <provenance>
+                            <name ref="https://www.staatsbibliothek-bamberg.de/" type="org">Dombibliothek Bamberg</name> 
+                            <geo>49.89162, 10.8821</geo>
+                            <settlement ref="https://www.wikidata.org/wiki/Q3936">Bamberg</settlement> 
+                            <region ref="https://www.wikidata.org/wiki/Q980">Bayern</region> 
+                            <country ref="https://www.wikidata.org/wiki/Q183">Deutschland</country> 
+                        </provenance>
+                    </history>
+
+
+                        <additional>
+                            <surrogates> <bibl type="digi"> <title xml:lang="ger">Digitalisat</title>
+                            <ref>https://www.digitale-sammlungen.de/de/view/bsb00140701</ref>
+                            </bibl> <bibl type="iiif-manifest"> <title xml:lang="ger">iiif-Manifest</title>
+                            <ref>https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb00140701/manifest</ref>
+                            </bibl> <bibl type="cat"> <title xml:lang="ger">Katalogisat</title>
+                            <ref>http://digital.bib-bvb.de/view/bvb_mets/viewer.0.6.5.jsp?folder_id=0&amp;dvs=1718788261097~886&amp;pid=7091635&amp;locale=de&amp;usePid1=true&amp;usePid2=true</ref>
+                            </bibl> <bibl type="xml"> <title xml:lang="ger">XML-Datei</title>
+                            <idno>bamberg-sb-c-6</idno> </bibl> </surrogates>
+                            <listBibl>
+                                <listBibl type="catalogue">
+                                <bibl copyOf="7E2QQZ7K">Suckale-Redlefsen: Die Handschriften des 8.
+                                    bis 11. Jahrhunderts der Staatsbibliothek Bamberg. Wiesbaden
+                                    2004<citedRange/></bibl>
+                                <bibl copyOf="S4SDIXUE">Leitschuh/Fischer: Katalog der Handschriften
+                                    der Königlichen Bibliothek zu Bamberg. Wiesbaden
+                                    1966<citedRange>862–863</citedRange></bibl>
+                                </listBibl>
+                                <listBibl type="secondary-literature">
+                                <bibl copyOf="Q2QEZ56I">Jasper: Die Konzilien Deutschlands und
+                                    Reichsitaliens 1023 - 1059. Concilia aevi saxonici et salici
+                                    MXXIII - MLIX. Hannover
+                                    2010<citedRange>9-50</citedRange></bibl>
+                                <bibl copyOf="IZ6AQTX8">Lawson: L’homilie dite de Léon IV., in:
+                                    Revue d’Histoire et de Littérature religieuses (1914)
+                                    <citedRange>117-137</citedRange></bibl>
+                                <bibl copyOf="RPIDWKV2">Finsterwalder: Die sogenannte Homilia Leonis
+                                    IV. Ihre Bedeutung für Hinkmars Capitula und Reginos Inquisitio,
+                                    in: Zeitschrift der Savigny-Stiftung für Rechtsgeschichte:
+                                    Kanonistische Abteilung (1938)
+                                    <citedRange>639-664</citedRange></bibl>
+                                <bibl copyOf="HNENB7QM">Pokorny: Nochmals zur Admonitio Synodalis,
+                                    in: Zeitschrift der Savigny-Stiftung für Rechtsgeschichte:
+                                    Kanonistische Abteilung (1985)
+                                    <citedRange>20-51</citedRange></bibl>
+                                <bibl copyOf="JK6CRC4U">Schneider: Die Konzilsordines des Früh- und
+                                    Hochmittelalters. Hannover
+                                    1996<citedRange>483-487</citedRange></bibl>
+                                <bibl copyOf="NK2KPSWK">Amiet: Une "Admonitio Synodalis" de l'époque
+                                    carolingienne. Etude critique et édition.
+                                    1964<citedRange>12-82</citedRange></bibl>
+                                <bibl copyOf="CQBF2BBA">Vogel: Le pontifical romano-germanique du
+                                    dixième siècle. città del Vaticano 1963<citedRange/></bibl>
+                                <bibl copyOf="4NV87MNJ">Austin: How the Local Council of
+                                    Seligenstadt in 1023 drew upon Books of Church Law, in: The use
+                                    of canon law in ecclesiastical administration, 1000-1234. Leiden
+                                    2019<citedRange>108–120</citedRange></bibl>
+                                <bibl copyOf="X25FUV2K">Hoffmann/Pokorny: Das Dekret des Bischofs
+                                    Burchard von Worms. Textstufen – frühe Verbreitung – Vorlagen.
+                                    München 1991<citedRange>61-62</citedRange></bibl>
+                            </listBibl>
+                            </listBibl>      
+                        </additional>
+                    </msDesc>
+                </sourceDesc>
+            </fileDesc>
+        </teiHeader>
+    <text>
+        <body xml:lang=""><p>test</p></body>
+    </text>
+</TEI>

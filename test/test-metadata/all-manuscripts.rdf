@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about="http://example.org/manuscript/1">
+    <msTitle>Test1</msTitle>
+    <publicationStmt>CC0</publicationStmt>
+    <repository>Test1</repository>
+    <geoRepository>00.00, 00.00</geoRepository>
+    <settlementIdent>Test1</settlementIdent>
+    <countryIdent>Test1</countryIdent>
+    <idno>Test1</idno>
+    <msSigle>Test1</msSigle>
+    <altIdentifier>Test1</altIdentifier>
+    <msName>Test1</msName>
+    <summaryContents>test test test </summaryContents>
+    <material>pergament</material>
+    <height>30</height>
+    <width>20</width>
+    <leaves>300</leaves>
+    <condition>test test test</condition>
+    <columns>2</columns>
+    <lines>30</lines>
+    <hands>10</hands>
+    <script>Test1</script>
+    <summaryProvenance>test test test</summaryProvenance>
+    <origPlace>Test1</origPlace>
+    <geoOrigin>00.00, 00.00</geoOrigin>
+    <dateOrigin>1000</dateOrigin>
+    <regionOrigin>Test1</regionOrigin>
+    <countryOrigin>Test1</countryOrigin>
+    <prevOwner>Test1</prevOwner>
+    <geoProvenance>00.00, 00.00</geoProvenance>
+    <settlementProvenance>Test1</settlementProvenance>
+    <regionProvenance>Test1</regionProvenance>
+    <countryProvenance>Test1</countryProvenance>
+    <digi>https://https://burchards-dekret-digital.de/</digi>
+    <iiifManifest>https://https://burchards-dekret-digital.de/</iiifManifest>
+    <cat>https://https://burchards-dekret-digital.de/</cat>
+    <responsiblePersons>[{&quot;name&quot;:&quot;Michela&quot;,&quot;surname&quot;:&quot;Parma&quot;,&quot;affiliation&quot;:&quot;Uni Mainz&quot;},{&quot;name&quot;:&quot;Fabio&quot;,&quot;surname&quot;:&quot;Mariani&quot;,&quot;affiliation&quot;:&quot;Uni Augsburg&quot;}]</responsiblePersons>
+    <msItems>[{&quot;author&quot;:&quot;Test1&quot;,&quot;title&quot;:&quot;Test1&quot;,&quot;textLang&quot;:&quot;Test1&quot;,&quot;incipit&quot;:&quot;test test test&quot;,&quot;explicit&quot;:&quot;test test test&quot;,&quot;textFamily&quot;:&quot;Test1&quot;,&quot;textSubFamily&quot;:&quot;Test1&quot;,&quot;textGenre&quot;:&quot;Test1&quot;,&quot;pageRanges&quot;:[{&quot;from&quot;:&quot;1&quot;,&quot;to&quot;:&quot;100&quot;},{&quot;from&quot;:&quot;201&quot;,&quot;to&quot;:&quot;205&quot;},{&quot;from&quot;:&quot;207&quot;,&quot;to&quot;:&quot;210&quot;}]},{&quot;author&quot;:&quot;Test2&quot;,&quot;title&quot;:&quot;Test2&quot;,&quot;textLang&quot;:&quot;Test2&quot;,&quot;incipit&quot;:&quot;test test test&quot;,&quot;explicit&quot;:&quot;test test test&quot;,&quot;textFamily&quot;:&quot;Test2&quot;,&quot;textSubFamily&quot;:&quot;Test2&quot;,&quot;textGenre&quot;:&quot;Test2&quot;,&quot;pageRanges&quot;:[{&quot;from&quot;:&quot;101&quot;,&quot;to&quot;:&quot;200&quot;},{&quot;from&quot;:&quot;306&quot;,&quot;to&quot;:&quot;310&quot;},{&quot;from&quot;:&quot;311&quot;,&quot;to&quot;:&quot;315&quot;}]}]</msItems>
+    <literature>[{&quot;type&quot;:&quot;book&quot;,&quot;title&quot;:&quot;Title1&quot;,&quot;date&quot;:&quot;2000&quot;,&quot;citedRange&quot;:&quot;1-10&quot;,&quot;publisher&quot;:&quot;Test1&quot;,&quot;pubPlace&quot;:&quot;Test1&quot;,&quot;series&quot;:&quot;Test1&quot;,&quot;authors&quot;:[{&quot;forename&quot;:&quot;Author1&quot;,&quot;surname&quot;:&quot;Author1&quot;},{&quot;forename&quot;:&quot;Author2&quot;,&quot;surname&quot;:&quot;Author2&quot;}],&quot;editors&quot;:[&quot;Editor1&quot;,&quot;Editor2&quot;]},{&quot;type&quot;:&quot;journalArticle&quot;,&quot;title&quot;:&quot;Title2&quot;,&quot;date&quot;:&quot;2005&quot;,&quot;citedRange&quot;:&quot;1-20&quot;,&quot;publisher&quot;:&quot;Test2&quot;,&quot;pubPlace&quot;:&quot;Test2&quot;,&quot;series&quot;:&quot;Test2&quot;,&quot;authors&quot;:[{&quot;forename&quot;:&quot;Author1&quot;,&quot;surname&quot;:&quot;Author1&quot;},{&quot;forename&quot;:&quot;Author2&quot;,&quot;surname&quot;:&quot;Author2&quot;}],&quot;editors&quot;:[&quot;Editor1&quot;,&quot;Editor2&quot;,&quot;Editor3&quot;]}]</literature>
+  </rdf:Description>
+</rdf:RDF>

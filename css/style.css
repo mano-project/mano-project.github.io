@@ -1,0 +1,151 @@
+html, body {
+  height: 100%;
+  /*margin: 0;
+  display: flex;
+  flex-direction: column;*/
+}
+
+.navbar {
+  background-color: #f7f3ec !important;
+ padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+p{
+  font-size: 17px;
+}
+
+.mano{
+  color: #eeba2b;
+  font-family: monospace;
+  font-size: 18px;
+}
+
+.footer {
+  background-color: #f7f3ec !important;
+}
+
+.typewriter h1 {
+  color: #eeba2b;
+  font-family: monospace;
+  font-size: 70px;
+  overflow: hidden;
+  border-right: 0.10em solid #eeba2b;
+  white-space: nowrap;
+  letter-spacing: 0.15em;
+  animation: 
+    typing 1.5s steps(20, end),
+    blink-caret 1s step-end infinite;
+  margin: 0;
+}
+
+.hero-section {
+  padding-top: 100px;
+  padding-bottom: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.typewriter {
+  display: inline-block;
+}
+
+
+.hp-subtitle {
+  font-size: 1.9rem;
+  font-family: monospace;
+  color: #eeba2b;
+  margin-top: 0.25rem;
+}
+
+.offcanvas-title{
+  font-size: 3rem;
+  font-family: monospace;
+  color: #eeba2b;
+}
+
+
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: #eeba2b }
+}
+
+
+
+/*a {
+  color: #eeba2b;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+a:hover,
+a:focus {
+  color: #c7991f;
+  text-decoration: underline;
+}*/
+
+
+/*.container-page{
+    margin-top: 150px;
+    flex: 1;
+}*/
+
+.page-title{
+  font-size: 50px;
+  color: #eeba2b;
+  text-align: center;
+  font-family: monospace;
+}
+
+.page-subtitle{
+  font-size: 30px;
+  color: #eeba2b;
+  text-align: center;
+  font-family: monospace;
+  margin-bottom: 20px;
+}
+
+.team-name{
+  text-align: center;
+  margin-top:15px;
+  color: #eeba2b;
+  font-family: monospace;
+  font-size: 25px;
+}
+
+input.is-invalid {
+  border: 2px solid red !important;
+}
+
+
+section h3 {
+  color: #eeba2b;
+  text-align: center;
+  font-family: monospace;
+}
+
+section h2 {
+  color: #eeba2b;
+  font-family: monospace;
+  font-size: 50px;
+}
+
+
+
+
+@media (max-width: 576px) {
+  .typewriter h1 {
+  font-size: 40px;
+  }
+
+  .hp-subtitle {
+    font-size: 1.1rem;
+  }
+}

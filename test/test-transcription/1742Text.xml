@@ -1,0 +1,2084 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title type="main">Seereise 1742 (erste Seegemeine)</title>
+            <author ref="https://d-nb.info/gnd/117609080">Peter Böhler</author>
+            <respStmt>
+               <resp>Transkription</resp>
+               <persName>Emily Berger</persName>
+            </respStmt>
+            <respStmt>
+               <resp>Kollation (Zweittranskription)</resp>
+               <persName>N.N.</persName>
+            </respStmt>
+            <respStmt>
+               <resp>TEI-Transformation</resp>
+               <persName ref="https://d-nb.info/gnd/1133022898">Martin Prell</persName>
+            </respStmt>
+         </titleStmt>
+         <publicationStmt>
+            <publisher>
+               <orgName type="project">Moravians at Sea</orgName>
+               <orgName type="publisher" ref="https://d-nb.info/gnd/1235928594">Lehrstuhl für Geschlechtergeschichte der Friedrich-Schiller-Universität Jena</orgName>
+               <persName type="publisher" ref="https://d-nb.info/gnd/1133022898">Martin Prell</persName>
+            </publisher>
+            <date when="2024-11"/>
+            <availability>
+               <licence target="https://creativecommons.org/licenses/by/4.0/">
+                  <p>Namensnennung 4.0 International (CC BY 4.0)</p>
+               </licence>
+            </availability>
+         </publicationStmt>
+         <notesStmt>
+            <note type="textStatus" select="#transcription">
+               <note n="transcription">Ersttranskription ist erfolgt</note>
+               <note n="collation">Kollation (Zweittranskription) ist erfolgt</note>
+            </note>
+         </notesStmt>
+         <sourceDesc>
+            <msDesc>
+               <msIdentifier>
+                  <repository ref="https://www.unitaetsarchiv.de">Unitätsarchiv Herrnhut</repository>
+                  <idno type="shelfmark">R.14.A.35.3</idno>
+                  <msName>P. Böhlers Reisediarium 1742, von London nach Philadelphia</msName>
+               </msIdentifier>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+   </teiHeader>
+   <text>
+      <body>
+         <div type="diaryEntries" subtype="channel">
+            <pb facs="#f0001"/>
+            <div type="position" xml:id="position_1742_kan_1">
+               <div type="diaryEntry" xml:id="diaryEntry_1742_kan_1">
+                  <head><lb/><rs type="person">Boehlers</rs> Reise Diarium.
+                     <lb/><hi rendition="#u">Den</hi> 5/16 <hi rendition="#u">Martii</hi> 1741/2</head>
+                  <p>
+                     <lb/>Sie sollen wieder unter seinem Schatten sizen.
+                     <lb/>Es ist eine Sache da kein Zweifel ist, wir sind unterm Dache wo du
+                     <lb/>Wächter bist.
+                  </p>
+                  <p>
+                     <lb/>1.) Das Schiff fiel diesen Morgen hinunter nach <rs type="place">Deptford</rs>.
+                  </p>
+                  <p>
+                     <lb/>2.) <rs type="person">Oklee</rs> wurde heute von einem Preß-Gang hinweg genommen
+                     <lb/>Es machte uns viele Angst; der Heyland aber half ihm wieder durch.
+                     <lb/>Es war eine Zucht für <rs type="person">Oklee</rs>
+                  </p>
+                  <p>
+                     <lb/>3.) Es kamen sehr viele <rs type="person">Brr:</rs> u <rs type="person">Schww:</rs> von <rs type="place">London</rs> uns zu besuchen,
+                     <lb/>unter andern auch <rs type="person">Br: Whitefield</rs>, der alle unsre <rs type="person">Brr:</rs> Bandenweise sprach.
+                  </p>
+                  <p>
+                     <lb/>4.) Abends hatten alle <rs type="person">verheurathete Leute</rs> ein Liebesmahl welches
+                     <lb/><rs type="person">Hussey</rs> gab wegen seines GeburtsTages.
+                  </p>
+               </div>
+               <div type="diaryEntry" xml:id="diaryEntry_1742_kan_2">
+                  <head><lb/><hi rendition="#u">Den</hi> 6/17 Martii 174 1/2</head>
+                  <p>
+                     <lb/>Sie sollen mein Volck seyn u ich wil ihr Gott seyn in Wahrheit
+                     <lb/>u Gerechtigkeit. Du hälst uns gerne reine im Immer
+                     <lb/>und im Scheine das sehn wir alle wohl.
+                  </p>
+                  <p>
+                     <lb/>1.) Kam <rs type="person">M<hi rendition="#sup">r</hi>. Stonhouse</rs> u <rs type="person">Viney</rs>, lezterer ging wieder [?] [?]
+                  </p>
+                  <p>
+                     <lb/>2.) War eine Conferenz wobey <rs type="person">Stonehouse</rs> gegenwärtig war, darumen unsre Reise über <rs type="place">Madera</rs> [?] <rs type="place">Newlondon</rs> nach <rs type="place">Philadelphia</rs> festgesetzt wurde.
+                  </p>
+                  <p>
+                     <lb/>3.) <rs type="person">Whitfield</rs> kam, u wolte uns zu einer Conferenz nach <rs type="place">Depotford</rs> hinüber, der Heyland aber erlaubte es uns nicht.
+                  </p>
+                  <p>
+                     <lb/>4.) Um 10 Uhr giengen wir fort den Fluß hinunter.
+                  </p>
+                  <p>
+                     <lb/>5.) <rs type="person">Knolton Pain</rs> u <rs type="person">Senff</rs> besuchten uns.
+                  </p>
+                  <p>
+                     <lb/>6.) Wir hatten eine sehr geseegnete Singstunde auf der Decke,
+                     <lb/>welche <rs type="person">Br: Spangenberg</rs> hielt.
+                  </p>
+               </div>
+            </div>
+            <pb facs="#f0002"/>
+            <div type="position" xml:id="position_1742_kan_2">
+               <div type="diaryEntry" xml:id="diaryEntry_1742_kan_3">
+                  <head><lb/><hi rendition="#u">Den</hi> 7/18 <hi rendition="#u">Martii</hi></head>
+                  <p>
+                     <lb/>Ey gebt Staht Christi Geist, u thut was euch der heißt.
+                     <lb/>1.) Früh giengen wir nach <rs type="place">Gravesand</rs>.
+                  </p>
+                  <p>
+                     <lb/>2.) Es rann ein Schiff auf das unsere, doch giengs ohne sonderliche Schaden ab.
+                  </p>
+                  <p>
+                     <lb/>3.) <rs type="person">Spangenberg</rs> gieng ans Land wegen Clearing des Schiffs.
+                  </p>
+                  <p>
+                     <lb/>4.) <rs type="person">Böhler</rs> hielt uns teutsche und Englische Stunden.
+                  </p>
+                  <p>
+                     <lb/>5.) <rs type="person">Spangenberg</rs> kam wieder am Bord u sprach die <rs type="person">Brüder</rs>, und Sie die
+                     <lb/><rs type="person">Schwestern</rs>. Sie hielt auch den Schwestern eine 4telstunde.
+                  </p>
+                  <p>
+                     <lb/>6.) Wir hatten heute Besuch von <rs type="person">Metcalf</rs>, <rs type="person">Nash</rs>, <rs type="person">Bramton</rs>, <rs type="person">Jones</rs>,
+                     <lb/><rs type="person">Bowers</rs>, u M<hi rendition="#sup">r</hi>. <rs type="person">Detamotte</rs>.
+                  </p>
+               </div>
+               <div type="diaryEntry" xml:id="diaryEntry_1742_kan_4">
+                  <head><lb/><hi rendition="#u">Den 8 Martii</hi></head>
+                  <p>
+                     <lb/>fürchte dich nicht liebes Land, sondern sey
+                     <lb/>fröhlich und getrost: Ob er uns gleich von Kindheit an durcheine
+                     <lb/>unwegsame Bahn die Straße nehmen heißt.
+                  </p>
+                  <p>
+                     <lb/>1.) Ein Schiff war diese Nacht gleich bey unserm auf ein anders
+                     <lb/>gerennt und gesunken.
+                  </p>
+                  <p>
+                     <lb/>2.) <rs type="person">Marshall</rs> u <rs type="person">Hermsdorf</rs> kamen mit Briefen u einem Liede
+                     <lb/>von Schlichten auf die <rs type="person">Seegemeine</rs> an.
+                  </p>
+                  <p>
+                     <lb/>3.) <rs type="person">Spangenberg</rs> und sie nahmen ihren Abschied unter vielen
+                     <lb/>Thränen auf beyden Seiten.
+                  </p>
+                  <p>
+                     <lb/>4.) Nachmittags hielten wir eine Conferenz darinnen wir das Stunden-
+                     <lb/>Gebeth ausmachten nebst verschiednen andern Sachen.
+                     <lb/>5.) <rs type="person">Rice</rs> kam heute zum erstenmal in die Conferenz.
+                  </p>
+                  <p>
+                     <lb/>6.) <rs type="person">Oklee</rs> wurde heute dem <rs type="person">Captain</rs> zur Bedienung übergeben.
+                  </p>
+                  <p>
+                     <lb/>7.) Wir fuhren diesen Nachmittag 30 Meilen u gegen Abend ankerten wir
+                  </p>
+                  <p>
+                     <lb/>8.) Unsere Schiff Ordnung wurde heute ausgemacht.
+                  </p>
+                  <p>
+                     <lb/>9.) Unser <rs type="person">Captain</rs> war gar sehr bewegt, über dem Abschied welchen
+                     <lb/><rs type="person">Sp.</rs> mit uns hatte.
+                  </p>
+               </div>
+               <div type="diaryEntry" xml:id="diaryEntry_1742_kan_5">
+                  <head><lb/><hi rendition="#u">Den</hi> 9/20 <hi rendition="#u">Martii</hi></head>
+                  <p>
+                     <lb/>Wir wollen nichts in dieser Welt als daß wir
+                     <lb/>wollen dir gefallen.
+                  </p>
+                  <p>
+                     <lb/>1.) Heute fieng unsre Schiff Ordnung an mit den Stunden Conferenzen, und Lesen.
+                  </p>
+               </div>
+            </div>
+            
+            <div type="position" xml:id="position_1742_kan_3">
+               <div type="diaryEntry" xml:id="diaryEntry_1742_kan_6">
+                  <head><lb/><hi rendition="#u">Den</hi> 10/21 <hi rendition="#u">Martii</hi></head>
+                  <p>
+                     <lb/>Er führete sie einen richtigen Weg, daß sie giengen
+                     <lb/>zur Stadt wo sie wohnen konten. Ps. 107,7.
+                  </p>
+                  <p>
+                     <lb/>Folget mir ruft uns das Leben, was ihr seht, das wil ich geben.
+                  </p>
+                  <p>
+                     <lb/>1.) In der Conferenz wurde das Stundengebeth aus gemacht.
+                  </p>
+                  <p>
+                     <lb/>2.) Auch die Aenderung des Logirens.
+                  </p>
+                  <p>
+                     <lb/>3.) <rs type="person">Br. Hardten</rs> war heute krank.
+                  </p>
+                  <p>
+                     <lb/>4.) Das Stundengebeth nahm heute seinen Anfang mit 23 Persohnen.
+                  </p>
+                  <p>
+                     <lb/>5.) Wir kamen heute bey <rs type="place">Deal</rs> an.
+                  </p>
+                  <p>
+                     <lb/>6.) Ich schickte einen Brief an <rs type="person">Spangenberg</rs> darinnen ich ihm
+                     <lb/>Nachricht gab von dem was bißher vorgegangen.
+                  </p>
+                  <p>
+                     <lb/>7.) Heute in <rs type="person">Pieschens</rs> Bande wurde mit <rs type="person">Hardten</rs> gesprochen.
+                  </p>
+               </div>
+            
+               <div type="diaryEntry" xml:id="diaryEntry_1742_kan_7">
+                  <head><lb/><hi rendition="#u">Den</hi> 11/22 <hi rendition="#u">Martii.</hi></head>
+                  <p>
+                     <lb/>O Jerusalem. Ich wil Wächter auf deine Ma##ren bestellen, die den ganzen Tag und die ganze Nacht immer
+                     <lb/>stille schweigen sollen, u die des Hln gedenken sollen, auf daß
+                     <lb/>bey euch kein Schweigen sey, und ihr von ihm nicht schweiget,
+                     <lb/>biß daß Jerusalem gefertiget und gesezt werde zum Lobe
+                     <lb/>auf Erden. Jes: 622, 6, 7.
+                  </p>
+                  <p>
+                     <lb/>O daß alle Kräffte riefen, zu dem Buch der Gottes tieffen hephatah hallelujah
+                     <lb/>1.) Kam <rs type="person">Br: Ronner</rs> zu <rs type="person">Böhlern</rs>, und erzehlte ihm freywillig den
+                     <lb/>Druck seines Herzens.
+                  </p>
+                  <p>
+                     <lb/>2.) <rs type="person">Capt. Gladmann</rs> fuhr über nach <rs type="place">Deal</rs>, <rs type="person">Rice</rs>, <rs type="person">Turner</rs>, u
+                     <lb/><rs type="person">Meyer</rs> giengen mit ihm.
+                  </p>
+                  <p>
+                     <lb/>3.) Wir machten heute die Aendrung im Logiren
+                  </p>
+                  <p>
+                     <lb/>4.) Schickten Briefe an <rs type="person">Spangenbergen</rs>.
+                  </p>
+                  <pb facs="#f0003"/>
+                  <p>
+                     <lb/>5.) <rs type="person">Br: Hardten</rs> schrieb einen Brief an <rs type="person">Br: Piesch</rs> worinnen er Friede
+                     <lb/>anbiethet, aber doch seiner Frauen neue Beschuldigungen aufbürdet.
+                  </p>
+               </div>
+            
+               <div type="diaryEntry" xml:id="diaryEntry_1742_kan_8">
+                  <head><lb/><hi rendition="#u">Den</hi> 12/23 <hi rendition="#u">Martii</hi></head>
+                  <p>
+                     <lb/>Siehe des Herrn Hand ist nicht zu kurz daß er nicht helfen
+                     <lb/>könne, und seine Ohren sind nicht dicke worden daß er nicht höre.
+                     <lb/>Deine Hand ist immer rege, aber deine Stunden Schläge richten sich
+                     <lb/>doch allmenge nach dem vorbgestickten Nu.
+                  </p>
+                  <p>
+                     <lb/>1.) Giengen wir früh um 7 Uhr fort von den Downs mit gutem Winde, wir hatten guten Wind und Wetter. Wir erinnerten uns der heutigen Loosung mit großer Gnade, weil der
+                     <lb/>Feind uns ziemliche Hinderungen in <rs type="person">London</rs> machte, er konte
+                     <lb/>aber nicht weiter uns aufhalten, da die Stunde des Heylands gekommen war.
+                  </p>
+                  <p>
+                     <lb/>2.) Etliche unsrer <rs type="person">Geschwister</rs> waren sehr krank.
+                  </p>
+                  <p>
+                     <lb/>3.) In der Singstunde Abends wurde erinnert daß es heute Charfreytag in Teutschland sey, u wurde etwas vom Blut u Tode des
+                     <lb/>Lammes geredt.
+                  </p>
+               </div>
+            </div>
+            
+            <div type="position" xml:id="position_1742_kan_4">
+               <div type="diaryEntry" xml:id="diaryEntry_1742_kan_9">
+                  <head><lb/><hi rendition="#u">Den</hi> 13/24 <hi rendition="#u">Martii</hi></head>
+                  <p>
+                     <lb/>Unsre Thür werde Christo aufgethan.
+                  </p>
+                  <p>
+                     <lb/>1.) Wir passirten diesen Morgen die <rs type="person">Insul Wight</rs>, der Wind
+                     <lb/>war uns sehr favorable.
+                  </p>
+                  <p>
+                     <lb/>2.) Unsre <rs type="person">Geschwister</rs> waren heute meistentheils kranck, daher
+                     <lb/>wurde nicht viel aus der Conferenz.
+                  </p>
+                  <p>
+                     <lb/>3.) Abends in der Singstunde wurde Meldung gethan, daß
+                     <lb/>Morgen das Gedächtniß der Auferstehung Jesu gefeyert werde
+                     <lb/>in Deutschland.
+                  </p>
+                  <p>
+                     <lb/>4.) Unser <rs type="person">Boson</rs> redete heute mit <rs type="person">Böhlern</rs> wegen seiner Gemuthsumstände, u begehrte ein Englisch Gesangsbüchelgen.
+                  </p>
+               </div>
+            </div>
+            
+            <div type="position" xml:id="position_1742_kan_5">
+               <div type="diaryEntry" xml:id="diaryEntry_1742_kan_10">
+                  <head><lb/><hi rendition="#u">Den</hi> 14/25 <hi rendition="#u">Martii</hi></head>
+                  <p>
+                     <lb/>So spricht der Herr, der heilige in Israel, und ihr
+                     <lb/>Meister, forderte von mir die Zeichen, weiset meine Kinder und
+                     <lb/>das Werk meiner Hände zu mir Jes. 45, 11.
+                  </p>
+                  <p>
+                     <lb/>Hin zu eurem Jesu hin, er ist der Schuz, Jesus bleibet der Beschirmer,
+                     <lb/>gegen allerley Bestürmer, und biethet Truz.
+                  </p>
+                  <p>
+                     <lb/>1.) Der Wind war gut, wir passirten <rs type="place">Portland</rs>, <rs type="place">Plymouth</rs>,
+                     <lb/>konten aber den <rs type="person">Point Lizard</rs> nicht bey Tage erreichen.
+                  </p>
+                  <p>
+                     <lb/>2.) Es kam ein Schiff zu uns mit uns zu reden. Es gieng nach <rs type="place">Lisbon</rs>.
+                  </p>
+                  <p>
+                     <lb/>3.) Unsre <rs type="person">ledge Brr:</rs> waren früh um 4 Uhr auf der Decke, die Ostern
+                     <lb/>an zu fangen. Sie waren sehr vergnügt, u uns allen erwecklich.
+                  </p>
+                  <p>
+                     <lb/>4.) Vormittags hielten wir eine Englische und eine teutsche Stunde.
+                     <lb/>Die Englische hielten wir auf der Decke, es waren alle die <rs type="person">Seeleute</rs> dabey.
+                  </p>
+                  <p>
+                     <lb/>5.) Nachmittags hielt <rs type="person">Piesch</rs> den <rs type="person">teutschen Eheleuten</rs> eine 4telstunde.
+                     <lb/><rs type="person">Böhler</rs> aber den <rs type="person">englischen Eheleuten</rs>, u allen <rs type="person">ledigen Brüdern</rs>.
+                  </p>
+                  <p>
+                     <lb/>6.) Abends hatten wir eine sehr gesalbte Gemeinstunde über die heutige
+                     <lb/>Loosung.
+                  </p>
+               </div>
+            </div>
+            
+            <div type="position" xml:id="position_1742_kan_6">
+               <div type="diaryEntry" xml:id="diaryEntry_1742_kan_11">
+                  <head><lb/><hi rendition="#u">Den</hi> 15/26 <hi rendition="#u">Martii</hi></head>
+                  <p>
+                     <lb/>Uns du großer Meister laß das Zeugniß
+                     <lb/>wißen, daß die Seelen haben müßen.
+                  </p>
+                  <p>
+                     <lb/>1.) Heute Nacht waren wir Lands Ende passirt, u nun in der offnen See.
+                  </p>
+                  <p>
+                     <lb/>2.) Wir sahen auch ein fremdes Schiff, für dem sich die <rs type="person">Schiffleute</rs> furchten,
+                     <lb/>wir aber waren getrost.
+                  </p>
+                  <p>
+                     <lb/>3.) Wegen der Seekrankheit konte heute keine Conferenz noch
+                     <lb/>Stunden gehalten werden. Abends aber ging <rs type="person">Böhler</rs> doch hin und
+                     <lb/>sung den Kranken etliche Verse und bethete.
+                  </p>
+               </div>
+            </div>
+         </div>
+         
+         <div type="diaryEntries" subtype="atlantic">
+            <div type="position" xml:id="position_1742_atl_1">
+               <div type="diaryEntry" xml:id="diaryEntry_1742_atl_1">
+                  <head><lb/><hi rendition="#u">Den</hi> 16/27 <hi rendition="#u">Martii</hi></head>
+                  <p>
+                     <lb/>Verkündigt unter den Leuten sein Thun.
+                     <lb/>Und seine treue Zeugen, die können selbst nicht schweigen,
+                     <lb/>Er heißet sie auch wandern von einem Ort zum andern.
+                     <lb/>Unter unsern <rs type="person">Geschw:</rs> waren sonderlich sehr krank: <rs type="person">Mickschin</rs>,
+                     <lb/><rs type="person">Tannebergerin</rs>, <rs type="person">Yarrillin</rs>, <rs type="person">Ricin</rs>, <rs type="person">Husseyin</rs>, <rs type="person">Bruckerin</rs>,
+                     <lb/>welche sehr viel ausstehen müßen wegen des Brechens, und waren
+                     <lb/>nicht über 50 Persohnen ganz wohl, unter welchen unser Koch <rs type="person">Br: Wahnert</rs>,
+                     <lb/>u <rs type="person">seine Frau</rs> welche Krankenwärterin, u sich ganz unermüdet bewiesen
+                     <lb/>hat den <rs type="person">Schwestern</rs> zu dienen.
+                  </p>
+                  <pb facs="#f0004"/>
+                  <p>
+                     <lb/>2.) Wir sungen alle auf der Decke.
+                  </p>
+                  <p>
+                     <lb/>3.) Der Wind war sehr vor uns, aber wir waren in der <rs type="place">Spanischen See</rs>, und das Schiff wankte, das machte <rs type="person">unsre Leute</rs> sehr krank.
+                  </p>
+               </div>
+            </div>
+            
+            <div type="position" xml:id="position_1742_atl_2">
+               <div type="diaryEntry" xml:id="diaryEntry_1742_atl_2">
+                  <head><lb/><hi rendition="#u">Den</hi> 17/28 <hi rendition="#u">Martii</hi></head>
+                  <p>
+                     <lb/>Liebt den Herrn alle seine Heiligen.
+                  </p>
+                  <p>
+                     <lb/>O was vor ein Gnadengrund liegt im Lieben,
+                  </p>
+                  <p>
+                     <lb/>O was vor ein heilger Bund läßt sich üben.
+                  </p>
+                  <p>
+                     <lb/>Es war Calm und warmer Sonnenschein, daher brachten wir
+                     <lb/>alle unsre <rs type="person">Geschwister</rs> auf die Decke ausgenommen die <rs type="person">Tannenbergerin</rs>, u wir hielten ein Liebesmahl mit einander und sungen
+                     <lb/><rs type="person">Br. Schlichts</rs> Lied das er uns gemacht hatte.
+                  </p>
+                  <p>
+                     <lb/>2.) Abends war contrairer Wind, und in der Nacht bließ es
+                     <lb/>überaus stark, unsre <rs type="person">Geschwister</rs> waren abermals sehr krank.
+                  </p>
+                  <p>
+                     <lb/>3.) Wurde eine Singstunde gehalten
+                  </p>
+                  <p>
+                     <lb/>4.) Es regnete sehr in dieser Nacht.
+                  </p>
+               </div>
+            </div>
+            <div type="position" xml:id="position_1742_atl_3">
+               <div type="diaryEntry" xml:id="diaryEntry_1742_atl_3">
+                  <head><lb/><hi rendition="#u">Den</hi> 18/29 <hi rendition="#u">Martii</hi></head>
+                  <p>
+                     <lb/>Ich habe dich zum scharffen neuen Dreschwagen
+                     <lb/>gemacht der Zacken hat, daß du solst Berge zerdreschen und zermalmen, und die Hügel wie Spreu machen. Jes. 41.15.
+                  </p>
+                  <p>
+                     <lb/>So spann ihn an du Liebeshand, den stolzen Siegeswagen,
+                  </p>
+                  <p>
+                     <lb/>da lauter Wellen vorgespannt, in diesen Seegenstagen.
+                  </p>
+                  <p>
+                     <lb/>Es war uns ein geseegneter Tag. Wir waren <rs type="place">Deg: of Lat: 44, 23.</rs>
+                  </p>
+                  <p>
+                     <lb/>1.) Heute hatten wir wieder guten aber sehr starken Wind, u das
+                     <lb/>Schiff wankte sehr. Unsre <rs type="person">Geschwister</rs> waren abermals sehr krank.
+                  </p>
+                  <p>
+                     <lb/>2.) <rs type="person">Tannebergerin</rs> war sehr krank. Sie hatte eine sehr starke hizige
+                     <lb/>Krankheit, u in ihren Händen hatte sie Convulsiones.
+                  </p>
+                  <p>
+                     <lb/>3.) Diesen Abend machte sich unter den kranken Geschwistern eine
+                     <lb/>geseegnete Singstunde ganz von selbst.
+                  </p>
+               </div>
+            </div>
+            
+            <div type="position" xml:id="position_1742_atl_4">
+               <div type="diaryEntry" xml:id="diaryEntry_1742_atl_4">
+                  <head><lb/><hi rendition="#u">Den</hi> 19/30 <hi rendition="#u">Martii</hi></head>
+                  <p>
+                     <lb/>Kein Einwohner wird sagen ich bin schwach, denn
+                     <lb/>das Volck das drinnen wohnet wird Vergebung der Sünden haben.
+                     <lb/>Die Innigkeit im Blick der Gnade, machet auch männlich im
+                     <lb/>Heldenpfade. Waren im <rs type="place">42 Gr. 10 Min. Lat.</rs>
+                  </p>
+                  <p>
+                     <lb/>1.) Früh hatten wir contrairen Wind, u wurde auf einmal
+                     <lb/>ganz stürmisch, daß wir auch genöthigt waren unsre
+                     <lb/>Seegel zum Theil ein zu nehmen. Ich schlug drauf die Loosung
+                     <lb/>auf den 12 Jul. 1742. Und ehe eine 4telstunde vergieng war
+                     <lb/>der Wind ganz vortrefflich vor uns, so daß wir sehr geschwind
+                     <lb/>fortgiengen.
+                  </p>
+                  <p>
+                     <lb/>2.) Unsre <rs type="person">Geschwister</rs> waren heute ein wenig beßer als sies
+                     <lb/>bißher gewesen waren.
+                  </p>
+                  <p>
+                     <lb/>3.) Abends hatten wir eine geseegnete Singstunde. Am Ende
+                     <lb/>derselbigen wurden die <rs type="person">Geschwister</rs> am Morgenden Bettag
+                     <lb/>erinnert, und ihnen die Wohlthaten ans Herz gelegt, welche
+                     <lb/>uns der Heyland seither unsrer Abreise von <rs type="place">Engelland</rs> erzeigt hatte.
+                  </p>
+               </div>
+            </div>
+            
+            <div type="position" xml:id="position_1742_atl_5">
+               <div type="diaryEntry" xml:id="diaryEntry_1742_atl_5">
+                  <head><lb/><hi rendition="#u">Den</hi> 20/31 <hi rendition="#u">Martii</hi></head>
+                  <p>
+                     <lb/>Was noch übrig ist von der Tochter Zion, ist
+                     <lb/>wie ein Häußgen im Weinberge wie eine Nachthütte in den Gärten.
+                     <lb/>Brecht immer ein Vernunfts Gebäude. Seine Gemeine bleibt meine Freude.
+                     <lb/>Unsre <rs type="person">Geschwister</rs> waren heute um ein gutes Theil beßer als bißher.
+                     <lb/>Nachmittags hielten wir unsern Bettag. Wir sungen Verse, und
+                     <lb/>denn redete <rs type="person">Böhler</rs> über die Loosung deßelbigen Tages vom Einbrechen
+                     <lb/>der Vernunfts Gebäude, und vom Hangen an der <rs type="person">Gemeine</rs>. Ingleichen wurde geredet von der Führung des Heylandes wie sie
+                     <lb/>manches Mal so contradictorisch aussähe. e.g. der Israeliten
+                     <lb/>Ausgang aus Egypten. <rs type="person">Piesch</rs> bethete zuletzt sehr kräfftig.
+                  </p>
+               </div>
+            </div>
+            
+            <div type="position" xml:id="position_1742_atl_6">
+               <div type="diaryEntry" xml:id="diaryEntry_1742_atl_6">
+                  <head><lb/><hi rendition="#u">Den</hi> 21 Martii/1 Apr.</head>
+                  <p>
+                     <lb/>Wer ist mir gleich der da ruffe und verkündige und eines zurichte, der ich von der Welt her die Völcker seze.
+                     <lb/>laßet sieihnen die Zeichen u was kommen soll erkündigen.
+                     <lb/>Was du in unserm Sinn erweket, das wird von Zeit Zu Zeit noch
+                     <lb/>mehr entdeket.
+                  </p>
+                  <pb facs="#f0005"/>
+                  <p>
+                     <lb/>Es war sehr stürmisch diese Nacht und am Tage vermehrte es
+                     <lb/>sich, so daß wir genöthigt waren alle die Seegel einzunehmen
+                     <lb/>biß auf einen, und bunden das Ruder fest biß Nachmittags
+                     <lb/>um 3 Uhr. Da wir wieder anfiengen zu seegeln. Abends legte
+                     <lb/>sich der Wind.
+                  </p>
+                  <p>
+                     <lb/>2.) Wir konten früh keine Stunde halten. Ich gieng aber doch her nach zu
+                     <lb/>den <rs type="person">Geschwistern</rs> ein paar Verse mit ihnen zu singen. Ich fieng
+                     <lb/>an das Lied mit ihnen zu singen, welches <rs type="person">Schlicht</rs> auf die <rs type="person">Seegemeine</rs>
+                     <lb/>gemacht hatte, und der Heyland gab mir viele Gnade manchmal
+                     <lb/>ein Wort hin zu zu thun, sonderlich bei den Versen die Chöre betreffend.
+                     <lb/>Der Heyland war mit seinem Geist und Gnade gegenwärtig, die <rs type="person">Geschwister</rs> zu stärken in diesem Sturm.
+                  </p>
+                  <p>
+                     <lb/>3.) Abends hatten wir eine sehr geseegnete Gemeinstunde über die Loosung.
+                  </p>
+               </div>
+            </div>
+            
+            <div type="position" xml:id="position_1742_atl_7">
+               <div type="diaryEntry" xml:id="diaryEntry_1742_atl_7">
+                  <head><lb/><hi rendition="#u">Den</hi> 22 Mart/2 Apr</head>
+                  <p>
+                     <lb/>Du erfreuest das Jahr mit deinem Guth
+                     <lb/>Vor solche gnadenreiche Zeit sey Gott gelobt in Ewigkeit.
+                  </p>
+                  <p>
+                     <lb/>1.) Wir hatten heute unsre Frühstunde wieder in Seegen.
+                  </p>
+                  <p>
+                     <lb/>2.) Auch unsre Conferenz war geseegnet.
+                  </p>
+                  <p>
+                     <lb/>3.) <rs type="person">Rice</rs> wurde zum Diener unter <rs type="person">den Englischen</rs> ordentlich bestellt.
+                  </p>
+                  <p>
+                     <lb/>4.) Die teutsche Singstunde wurde auf 8 Uhr verlegt, und die
+                     <lb/>Englische wurde um 6 Uhr gehalten.
+                  </p>
+                  <p>
+                     <lb/>5.) Wurde das teutsche u engl: Lernen ausgemacht. <rs type="person">Bryzelius</rs>,
+                     <lb/><rs type="person">Hussey</rs> und <rs type="person">Powell</rs> sind die Schulmeister.
+                  </p>
+                  <p>
+                     <lb/>6.) <rs type="person">Powell</rs> wurde heute durch <rs type="person">Rice</rs> ermahnt wegen seines Licht-Brennens u andrer Sachen.
+                  </p>
+                  <p>
+                     <lb/>7.) Nachmittags war ein starkes Regenwetter, u Abends ein
+                     <lb/>sehr violenter Squall auf eine halbe Stunde. Nachdem selbigen
+                     <lb/>aber <hi rendition="#s">kam es</hi> war es überaus stille, so daß wir auch sehr geruhig
+                     <lb/>bey unserm Liebes Mahl beysammen sizen konten.
+                  </p>
+                  <pb facs="#f0006"/>
+                  <p>
+                     <lb/><rs type="person">B.</rs>
+                     <lb/>8.) Gegen 8 Uhr hatten wir ein allgemeines Liebesmahl, dazu wir
+                     <lb/>auch den <rs type="person">Captain</rs> admittirten der sehr vergnügt war u
+                     <lb/>die Güte des Hln preisete, der ihn ließe so viele von seinen Kindern über die See fahren. Ferner sagte er wie getrost ihn dieses
+                     <lb/>mache bey seinen Fatiguen.
+                  </p>
+               </div>
+            </div>
+            
+            <div type="position" xml:id="position_1742_atl_8">
+               <div type="diaryEntry" xml:id="diaryEntry_1742_atl_8">
+                  <head><lb/><hi rendition="#u">Den</hi> 23 Merz/3 Apr.</head>
+                  <p>
+                     <lb/>Sie sind ja mein Volck, Kinder die nicht falsch
+                     <lb/>sind, darum war er ihr Heyland. Wer sie ängstete, ängstete ihn auch,
+                     <lb/>u den Engel der vor ihnen ist half ihnen, er erlöste sie darinnen
+                     <lb/>daß er sie liebte, u ihrer schonte. Er nahm sie auf, u trug sie allezeit
+                     <lb/>von Alters her. Wär sonst mit niemand um zu gehn, als nur
+                     <lb/>mit unserm treuen Freunde, u säh uns keiner unsrer Feinde,
+                     <lb/>u durften nicht in Aemtern stehn, so wär uns um uns
+                     <lb/>selbst geistlich wir wißen ja an wen wir gläuben, auch
+                     <lb/>dürfen wir wohl in ihm bleiben, er kennt auch unsre
+                     <lb/>Zärtlichkeit.
+                  </p>
+                  <p>
+                     <lb/>1.) Wir hatten heute sehr starcken aber favorablen Wind.
+                  </p>
+                  <p>
+                     <lb/>2.) <rs type="person">Wahnertin</rs> war heute krank.
+                  </p>
+                  <p>
+                     <lb/>3.) Wir hielten keine Conferenz weil die <rs type="person">Geschwister</rs> es in der
+                     <lb/>Cabine nicht ausstehen konten, indem die Bewegung des Schiffs
+                     <lb/>zu groß war.
+                  </p>
+                  <p>
+                     <lb/>4.) Das englisch u teutsche Lernen fieng diesen Morgen an, allein
+                     <lb/>wegen der starken Bewegung des Schiffs waren sehr wenige Schüler.
+                  </p>
+                  <p>
+                     <lb/>5.) Heute hatten wir zum 1stenmal die englische Singstunde apart
+                     <lb/>auch ward um 1 Uhr die englische Versammlung auf der Decke gehalten.
+                  </p>
+                  <p>
+                     <lb/>6.) Es war heute englische Bande.
+                  </p>
+               </div>
+            </div>
+            
+            <div type="position" xml:id="position_1742_atl_9">
+               <div type="diaryEntry" xml:id="diaryEntry_1742_atl_9">
+                  <head><lb/><hi rendition="#u">Den</hi> 27 Martii/7 Aprilis</head>
+                  <p>
+                     <lb/>Es muß sich bücken alle Höhe den Menschen, u
+                     <lb/>demüthigen was hohe Leute sund, u der Hl. wird alleine hoch seyn
+                     <lb/>zu der Zeit. Weil der dem die Erdenhöhen jezo untern Füßen stehen,
+                     <lb/>hier ein armer Jude war.
+                     <lb/><rs type="person">B.</rs>
+                  </p>
+                  <pb facs="#f0007"/>
+                  <p>
+                     <lb/>1.) Diesen Nachmittag um 1 Uhr ankerten wir bey <rs type="place">Madera</rs>.
+                     <lb/>Alle unsre <rs type="place">Geschwister</rs> waren recht freudig u vergnügt.
+                  </p>
+                  <p>
+                     <lb/>2.) Der <rs type="person">Capitain Brandmüller</rs>, u <rs type="person">Böhler</rs> giengen gleich darauf
+                     <lb/>ans Land zum Kauffmann, an den wir recommandirt waren,
+                     <lb/>da denn alle Leute die nur hörten von den Umständen unsres
+                     <lb/>Schiffs sich verwunderten, weil wir keine Fracht hätten, nichts
+                     <lb/>hier kauffen wolten, auch keine neue Zeitungen mitbrachten.
+                  </p>
+                  <p>
+                     <lb/>3.) On Board hatten unsre <rs type="person">Geschwister</rs> auch Besuch von einem
+                     <lb/>Man of War. Diese Leute verwunderten sich sehr über unsre
+                     <lb/>Ordnung im Äußern.
+                  </p>
+               </div>
+
+               <div type="diaryEntry" xml:id="diaryEntry_1742_atl_10">
+                  <head><lb/><hi rendition="#u">Den</hi> 28 Marz/8 April</head>
+                  <p>
+                     <lb/>Er wird deinen Fuß nicht gleiten laßen Ps. 121, 3.
+                  </p>
+                  <p>
+                     <lb/>Man hat wenn die Liebe treibt feste Tritte und gerade Schritte.
+                  </p>
+                  <p>
+                     <lb/>1.) An diesem Seegenstage hatten wir eine geseegnete Conferenz
+                     <lb/>da uns der Heyl: in etl: Dingen neue Plane gegeben hat.
+                  </p>
+                  <p>
+                     <lb/>2.) Nachmittags hatten wir noch eine kleine Conferenz weil sich
+                     <lb/>die englischen Schwestern nicht befriedigen laßen wolten, wegen
+                     <lb/>ihres am Schiff bleiben, darinnen uns auch der Heyland Anweisung gab. Wir ließen gleich darauf die <rs type="person">englischen Schwestern</rs>
+                     <lb/>zusammen kommen, u redeten mit ihnen von diesem Plane.
+                  </p>
+                  <p>
+                     <lb/>3.) <rs type="person">Seidel</rs> mit etl: <rs type="person">ledigen Brr:</rs> ging diesen Nachmittag ans
+                     <lb/>Land, weil der Heyland davor war.
+                  </p>
+                  <p>
+                     <lb/>4.) Die englische 4telstunde hielt <rs type="person">Böhler</rs>, u die teutsche <rs type="person">Br: Piesch</rs>.
+                     <lb/>Der <rs type="person">Capitain</rs> war in der ersten.
+                  </p>
+                  <p>
+                     <lb/>5.) <rs type="person">Piesch</rs> hielt die teutsche Gemeinstunde.
+                  </p>
+                  <p>
+                     <lb/>6.) Viele Portugiesen waren heute auf unserm Schiff, sie führten sich aber sehr unhöflich auf; dieses gab unsern <rs type="person">englischen Schwestern</rs> ein Siegel auf das was wir mit ihrigen sprachen.
+                  </p>
+                  <p>
+                     <lb/>7.) Im Stundengebeth sungen wir das Tedeum kniend.
+                  </p>
+                  <p>
+                     <lb/>8.) <rs type="person">Meyer</rs> redete heute mit <rs type="person">Harten</rs>, u sagte ihm, daß wir kein Liebesmahl von ihm annehmen wolten, so lange er sich nicht änderte,
+                     <lb/>ingleichen daß seine Farbe eine Zuchtkrankheit
+                  </p>
+               </div>
+               
+               <div type="diaryEntry" xml:id="diaryEntry_1742_atl_11">
+                  <head><lb/><hi rendition="#u">Den</hi> 29 Martii/9 Apr.</head>
+                  <p>
+                     <lb/>Alle Lande bethen ihn an. Die Herlichkeit
+                     <lb/>Gottes ist offenbahr worden, so weit der Kreiß der Erde geht.
+                  </p>
+                  <p>
+                     <lb/>1.) Unsre Geschwister waren heute meistentheils beschäftigt mit
+                     <lb/>dem WaßerEinnehmen und Waschen.
+                  </p>
+                  <p>
+                     <lb/>2.) Vormittags ging <rs type="person">Piesch</rs> mit etl: Brr: ans Land um einzukaufen 
+                  </p>
+                  <p>
+                     <lb/>3.) Nachmittags ging <rs type="person">Böhler</rs> mit dem <rs type="person">Capitain</rs> ans Land, und
+                     <lb/>es wurde ihnen eine merkwürdige Beschreibung gegeben
+                     <lb/>von ein paar Pfaffen, welche erst kürzlich von <rs type="place">Lissbon</rs> hieher
+                     <lb/>gekommen und sehr scharff predigten, u von hier wollen nach
+                     <lb/>den <rs type="place">Westen Islands</rs> gehn, u denn von da nach <rs type="place">Ostindien</rs>,
+                     <lb/>wo sie zu sterben gedenken.
+                  </p>
+                  <p>
+                     <lb/>4.) Die <rs type="person">Schww:</rs> hielten heute ein Liebesmahl mit einander in
+                     <lb/>vielem Vergnügen.
+                  </p>
+               </div>
+               
+               <div type="diaryEntry" xml:id="diaryEntry_1742_atl_12">
+               <head><lb/><hi rendition="#u">Den</hi> 30 Martii/10 Aprilis</head>
+               <p>
+                  <lb/>hier sind die treuen Sinnen die niemand Unrecht thun.
+               </p>
+               <p>
+                  <lb/>1.) Es wurden heute die Briefe nach <rs type="place">Engelland</rs> ausgefertigt, worinnen
+                  <lb/>dem <rs type="person">Br: Spangenberg</rs> eine hinlängliche Nachricht gegeben wurde von
+                  <lb/>unsern Umständen.
+               </p>
+               <p>
+                  <lb/>2.) War ich noch einmal mit dem <rs type="person">Capitain</rs> an Lande, und
+                  <lb/>erhielten unsre Abfertigung von <rs type="person">M<hi rendition="#sup">r.</hi> Chambers</rs>.
+               </p>
+               <p>
+                  <lb/>3.) <rs type="person">Böhler</rs> wolte heute die 2 Pfaffen besuchen, sie waren aber nicht im Closter.
+               </p>
+               <p>
+                  <lb/>4.) Gegen Abend lichteten wir Anker, u da der Anker loß war, so war
+                  <lb/>auch der Wind weg, u wir waren in Gefahr auf andre Schiffe zu treiben.
+                  <lb/>Der Heyl: aber half gnädiglich durch.
+               </p>
+               </div>
+            </div>
+            
+            <div type="position" xml:id="position_1742_atl_10">
+               <div type="diaryEntry" xml:id="diaryEntry_1742_atl_13">
+                  <head><lb/><hi rendition="#u">Den</hi> 31 Martii/11 Apr.</head>
+                  <p>
+                     <lb/>Gerechtigkeit u Gericht ist seines Stuhls Vestung.
+                     <lb/>Liege unsern Geists Pallästen da zum Diamanten Grund, sey der
+                     <lb/>Endstein ihrer Vesten, ohne den noch nichts bestund.
+                  </p>
+                  <pb facs="#f0008"/>
+                  <p>
+                     <lb/>Unsre <rs type="person">Geschwister</rs> blieben heute alle wohl, denn es war ein schöner Tag
+                     <lb/>und gelindes Wetter und Wind, daß das Schiff nicht sehr wanckte.
+                  </p>
+               </div>
+            </div>
+            
+            <div type="position" xml:id="position_1742_atl_11">
+               <div type="diaryEntry" xml:id="diaryEntry_1742_atl_14">
+                  <head><lb/><hi rendition="#u">Den</hi> 1/12 <hi rendition="#u">Apr</hi></head>
+                  <p>
+                     <lb/>Wirf dein Anliegen auf den Hl. er wird dich versorgen.
+                     <lb/>Sorgest u so wolln wir schweigen, u dafür H. für dir unsre Knie beugen.
+                  </p>
+                  <p>
+                     <lb/>1.) <rs type="person">Br. Piesch</rs> redete heute mit <rs type="person">Sensemann</rs>, u <rs type="person">seiner Frau</rs>, da sie sich
+                     <lb/>denn sehr erkentlich erklährten
+                  </p>
+                  <p>
+                     <lb/>2.) Redete er mit <rs type="person">Almers</rs> u <rs type="person">seiner Frau</rs> da es auch geseegnet war.
+                  </p>
+                  <p>
+                     <lb/>3.) Man observiret, daß überhaupt jezo eine geseegnete Zeit ist,
+                     <lb/>nachdem die Seekrankheit nachgelaßen, so siehet man wieder
+                     <lb/>so viel lichte und heitre Gesichter.
+                  </p>
+                  <p>
+                     <lb/>4.) Redete <rs type="person">Piesch</rs>, <rs type="person">Böhler</rs>, u <rs type="person">seine Frau</rs> mit dem <rs type="person">jüngern Powell</rs>
+                     <lb/>sehr herzlich wegen seiner (Confusion!) Umstände.
+                  </p>
+               </div>
+            </div>
+            
+            <div type="position" xml:id="position_1742_atl_12">
+               <div type="diaryEntry" xml:id="diaryEntry_1742_atl_15">
+                  <head><lb/><hi rendition="#u">Den</hi> 2/13 <hi rendition="#u">Apr</hi></head>
+                  <p>
+                     <lb/>den Weg der verschloßen war, hat der Heyl: aufgethan.
+                  </p>
+                  <p>
+                     <lb/>1.) Seitdem wir <rs type="place">Madera</rs> verlaßen hatten, haben wir immer sehr
+                     <lb/>guten u starcken Wind gehabt, heute aber sind wir ganz besonders
+                     <lb/>geschwind geseegelt, u unser <rs type="person">Geschw:</rs> ist doch dabey wohl geblieben,
+                     <lb/>ausgenommen etl: wenige.
+                  </p>
+               </div>
+            </div>
+            
+            <div type="position" xml:id="position_1742_atl_13">
+               <div type="diaryEntry" xml:id="diaryEntry_1742_atl_16">
+                  <head><lb/><hi rendition="#u">Den</hi> 3/14 <hi rendition="#u">Apr</hi></head>
+                  <p>
+                     <lb/>Allgemählig werdet seelig.
+                  </p>
+                  <p>
+                     <lb/>1.) Unsere Conferenz wurde auf der Decke gehalten, weil mans
+                     <lb/>nicht wohl ausstehen konte in: der Cabine.
+                  </p>
+                  <p>
+                     <lb/>2.) <rs type="person">Piesch</rs> war etwas unpaß
+                  </p>
+                  <p>
+                     <lb/>3.) Abends hielten wir ein allgemeines Liebesmahl, daran wir
+                     <lb/>uns des Abendmahls in der <rs type="person">Gemeine</rs> erinnerten. <rs type="person">Bryzelius</rs>
+                     <lb/>machte ein Lied drauf der <rs type="person">Capitain</rs> war auch dabey. Wir
+                     <lb/>waren sehr vergnügt und geseegnet.
+                  </p>
+               </div>
+            </div>
+            
+            <div type="position" xml:id="position_1742_atl_14">
+               <div type="diaryEntry" xml:id="diaryEntry_1742_atl_17">
+                  <head><lb/><hi rendition="#u">Den</hi> 4/15 <hi rendition="#u">Apr.</hi></head>
+                  <p>
+                     <lb/>Saget unter den Heyden daß der Herr König ist
+                     <lb/>das ist der von seinem Throne den geraden Scepter neigt, der
+                     <lb/>ists, der die güldne Crone über seinem Haupte zeigt, der so prächtig
+                     <lb/>tritt herein, aus der Burg von Helffenbein, um den 1000 Starke stehen, die
+                     <lb/>mit ihm zu Felde gehen.
+                  </p>
+                  <p>
+                     <lb/>1.) Es fehlte heute schon nicht viel mehr an dem 4ten Theile zwischen <rs type="place">Madeira</rs> und <rs type="place">Pensylvanien</rs>, denn der Wind war bißhero immer
+                     <lb/>gut u wir waren heute schon <rs type="place">über 200 Leagues von Madera weg</rs>.
+                  </p>
+                  <p>
+                     <lb/>2.) Unsre 4telstunden waren heute ausgesetzt, unsre übrigen Versammlungen aber waren geseegnet.
+                  </p>
+                  <p>
+                     <lb/>3.) Wir haben gute Hoffnung von unserm <rs type="person">Bootsmanne</rs>
+                  </p>
+                  <p>
+                     <lb/>4.) Diesen Nachmittag saßen viele von unsern Eheleuten paarweise
+                     <lb/>auf der Decke. <rs type="person">Ich</rs> und <rs type="person">meine Frau</rs> giengen sie denn besuchen,
+                     <lb/>und redeten ein wenig mit ihnen.
+                  </p>
+               </div>
+            </div>
+            
+            <div type="position" xml:id="position_1742_atl_15">
+               <div type="diaryEntry" xml:id="diaryEntry_1742_atl_18">
+                  <head><lb/><hi rendition="#u">Den</hi> 5/16 <hi rendition="#u">Apr.</hi></head>
+                  <p>
+                     <lb/>Seine Augen sahen drauf. Nahes Liebeswesen, siehst
+                     <lb/>du deine Seelen in der Werkstatt ihrer Höhlen.
+                  </p>
+                  <p>
+                     <lb/>1.) Heute Nacht hielten die <rs type="person">ledigen Brr.</rs> eine geseegnete Bande
+                     <lb/>Wache u ein Liebesmahl dabey auf der Decke.
+                  </p>
+                  <p>
+                     <lb/>2.) Auch seegelte ein Schiff nicht weit von uns vorbey.
+                  </p>
+                  <p>
+                     <lb/>3.) Heute redete <rs type="person">Br: Piesch</rs> mit dem <rs type="person">Matrosen Timy</rs> u es schien
+                     <lb/>geseegnet. Er sagte er hätte in seinem Leben schon viele Sachen
+                     <lb/>gesehn, aber doch noch nicht ein solches Volk als wir.
+                  </p>
+                  <p>
+                     <lb/>4.) <rs type="person">Tanneberger</rs> ist wieder sehr krank.
+                  </p>
+               </div>
+            </div>
+            
+            <div type="position" xml:id="position_1742_atl_16">
+               <div type="diaryEntry" xml:id="diaryEntry_1742_atl_19">
+                  <head><lb/><hi rendition="#u">Den</hi> 6/17 <hi rendition="#u">Apr</hi> </head>
+                  <p>
+                     <lb/>Das Volck so im finstern wandelte, siehet ein groß
+                     <lb/>Licht, u über die so da wohnen im Ort u Schatten des Todes
+                     <lb/>scheinets helle.	Es will ihm Gott genädig seyn, und seinen
+                     <lb/>Seegen geben, sein Antliz wirds mit hellem Schein erleuchten
+                     <lb/>zum ewigen Leben.
+                  </p>
+                  <p>
+                     <lb/>1.) Heute wurden noch etl: <rs type="person">Brr:</rs> u <rs type="person">Schw:</rs> ins Stundengebeth
+                     <lb/>admittirt
+                  </p>
+                  <p>
+                     <lb/>2.) <rs type="person">Hartens</rs> Sache wurde vorgenommen, u mit ihm ganz kindl: gesprochen, er schrieb abends einen Brief darinnen er seinen Sinn erklährte
+                  </p>
+                  <p>
+                     <lb/>3. <rs type="person">Tanneberger</rs> hat sich heute wieder aufgemacht.
+                  </p>
+               </div>
+            </div>
+            <pb facs="#f0009"/>
+            
+            <div type="position" xml:id="position_1742_atl_17">
+               <div type="diaryEntry" xml:id="diaryEntry_1742_atl_20">
+                  <head><lb/><hi rendition="#u">Den</hi> 7/18 <hi rendition="#u">Apr.</hi></head>
+                  <p>
+                     <lb/>Gott ist erhöhrt bey den Schilden auf Erden.
+                     <lb/>Theils große die es trift sind Ammen u sind Pfleger u Gottes lezte Jäger.
+                  </p>
+                  <p>
+                     <lb/>1.) Heute Nacht hatte unsre <rs type="person">Schw. Hussey</rs> einen Zufall von einem Schlag
+                     <lb/>an den linken Arm, als sie gestern Abends auf der Decke lag: Sie ist
+                     <lb/>aber nun wieder vollig restituirt.
+                  </p>
+                  <p>
+                     <lb/>2.) Es wurde heute noch einmal mit <rs type="person">Harten</rs> geredt.
+                  </p>
+                  <p>
+                     <lb/>3.) Die <rs type="person">Hartin</rs> war heute zum 1stenmal beym Stundengebeth.
+                  </p>
+                  <p>
+                     <lb/>4.) Alle die <rs type="person">Arbeiter</rs> hatten heute einen besondern Seegen gespührt
+                     <lb/>in allen Winckeln wo man nur hinsahe.
+                  </p>
+                  <p>
+                     <lb/>5.) Die englischen Betstunden sind ein paar Teutschen besonders
+                     <lb/>von dem Heyland geseegnet gewesen.
+                  </p>
+                  <p>
+                     <lb/>6.) In der englischen Bande wurde heute auch ganz besonders
+                     <lb/>etwas gespühret. Sonderl: wurde mit dem <rs type="person">jüngern Powel</rs> gesprochen.
+                  </p>
+                  <p>
+                     <lb/>7.) Wir hatten eine geseegnete Streiterschafft Singstunde, bißher 
+                     <lb/>hatten wir immer Lamms Singstunden. Es war ganz besonders geseegnet.
+                  </p>
+                  <p>
+                     <lb/>8.) Man spührte auch daß die Gnade auch unter den <rs type="person">Matrosen</rs> arbeitete.
+                  </p>
+                  <p>
+                     <lb/>9.) <rs type="person">Böhlerin</rs> sprach auch mit der <rs type="person">großen Martha</rs>.
+                  </p>
+                  <p>
+                     <lb/>10.) Der <rs type="person">Schww:</rs> ihre 4telstunden hatten heute einen besonderen Seegen.
+                  </p>
+               </div>
+            </div>
+            
+            <div type="position" xml:id="position_1742_atl_18">
+               <div type="diaryEntry" xml:id="diaryEntry_1742_atl_21">
+                  <head><lb/><hi rendition="#u">Den</hi> 8/19 Apr.</head>
+                  <p>
+                     <lb/>Seelenschaz laß dich besizen, unsre Armuth gehet weit.
+                  </p>
+                  <p>
+                     <lb/>1.) Unsre <rs type="person">Schw: Hussey</rs> war heute viel beßer, u gab uns Hoffnung zur volligen Genesung.
+                  </p>
+                  <p>
+                     <lb/>2.) <rs type="person">Schw: Yarrill</rs> gab uns heute ein Liebesmahl vor die Eheleute,
+                     <lb/>es war sehr geseegnet.
+                  </p>
+                  <p>
+                     <lb/>3.) <rs type="person">Endter</rs> ist wieder krank.
+                  </p>
+               </div>
+            </div>
+            
+            <div type="position" xml:id="position_1742_atl_19">
+               <div type="diaryEntry" xml:id="diaryEntry_1742_atl_22">
+                  <head><lb/><hi rendition="#u">Den</hi> 9/20 <hi rendition="#u">Apr.</hi></head>
+                  <p>
+                     <lb/>Er macht es wunderbarlich, wir aber sehn ihm zu.
+                     <lb/>Thu uns die Augen auf damit wir sehen, was kein natürl: Aug gesehen hat.
+                  </p>
+                  <p>
+                     <lb/>1.) Unsre <rs type="person">Geschwister</rs> waren		meistens heute kränklich
+                     <lb/>wegen des trüben Wetters;
+                  </p>
+                  <p>
+                     <lb/>2.) Um der Ursache Willen konte keine englische Stunde gehalten werden
+                  </p>
+                  <p>
+                     <lb/>3.) Auch wurde keine Conferenz gehalten.
+                  </p>
+                  <p>
+                     <lb/>4.) Wir kriegten gute Hoffnung von unserm <rs type="person">Rwatswain</rs>
+                  </p>
+                  <p>
+                     <lb/>5.) Wir hatten auch einen schlimmen Squall.
+                  </p>
+               </div>
+            </div>
+            
+            <div type="position" xml:id="position_1742_atl_20">
+               <div type="diaryEntry" xml:id="diaryEntry_1742_atl_23">
+                  <head><lb/><hi rendition="#u">Den</hi> 10/21 <hi rendition="#u">Apr</hi></head>
+                  <p>
+                     <lb/>Er verheißt daß sein Bund ewiglich bleiben soll.
+                     <lb/>Wir sezen Guth und Bluth und Ehre dran, denn also hat es sich
+                     <lb/>bey uns gezeiget, daß Gott der Herr in Israel nicht leugte, es glaub
+                     <lb/>es wer da will u wer da kan.
+                  </p>
+                  <p>
+                     <lb/>1.) Heute haben wir etwas contrairen Wind gehabt.
+                  </p>
+                  <p>
+                     <lb/>2.) Die <rs type="person">Geschwister</rs> waren heute wieder etwas beßer.
+                  </p>
+                  <p>
+                     <lb/>3.) <rs type="person">Rice</rs> erzehlte daß einer unsrer Matrosen habe Bewegungen.
+                  </p>
+               </div>
+            </div>
+            
+            <div type="position" xml:id="position_1742_atl_21">
+               <div type="diaryEntry" xml:id="diaryEntry_1742_atl_24">
+                  <head><lb/><hi rendition="#u">Den</hi> 11/22 <hi rendition="#u">Apr</hi></head>
+                  <p>
+                     <lb/>Wohl dem Volk, des der Herr ein Gott ist, dem Volk, das
+                     <lb/>der Herr erwehlet hat zum Erbtheil. Seeligkeiten Seeligkeiten, allen Bürgern
+                     <lb/>Canaans, seyd geseegnet unsern Zeiten, Jesus blickt euch gnädig an.
+                  </p>
+                  <p>
+                     <lb/>1.) Unter den <rs type="person">englischen Geschwistern</rs> hat man heute einen besondern
+                     <lb/>Seegen gespüret sonderlich in der Gemeinstunde, da über die Loosung
+                     <lb/>geredet wurde von der Gemeine, dem Grunde, Seegen und andern Umständen derselben. Sie waren überaus bewegt.
+                  </p>
+                  <p>
+                     <lb/>2.) Man merkte heute auch einige Bewegungen am <rs type="person">jüngern Oklee</rs>
+                  </p>
+                  <p>
+                     <lb/>3.) Am <rs type="person">Br: Harten</rs> merkte man auch eine Aenderung, es wird sich wolgeben.
+                  </p>
+                  <p>
+                     <lb/>4.) In der engl: Frühstunde wurde geredet über Joan 16, 8, Seqq. es war geseegnet.
+                  </p>
+                  <p>
+                     <lb/>5.) Der Seegen des Heyl: ist auch augenscheinlich unter den <rs type="person">ledigen Brüdern</rs>.
+                  </p>
+                  <p>
+                     <lb/>6.) <rs type="person">Br: Wahnerts</rs> Geb: Tag war heute, da hatten die <rs type="person">Brr:</rs> ein Liebesmahl, versprochen ihm morgen Verse zu geben, vor diß Mal gaben sie ihm nur # 1659 den lezten Vers.
+                  </p>
+                  <p>
+                     <lb/>7.) Die teutsche Ehe 4telstunde hielt <rs type="person">Piesch</rs>, die englische <rs type="person">Böhler</rs>, die <rs type="person">ledigen
+                     <lb/>Br:</rs> hatte <rs type="person">Meyer</rs>, die Gemeinstunde hielt <rs type="person">Böhler</rs>.
+                  </p>
+                  <p>
+                     <lb/>8.) Von den <rs type="person">Matrosen</rs> kriegt man auch mehrere Hoffnung.
+                  </p>
+                  <p>
+                     <lb/>9.) Der Wind war heute wieder beßer.
+                  </p>
+               </div>
+            </div>
+            
+            <div type="position" xml:id="position_1742_atl_22">
+               <div type="diaryEntry" xml:id="diaryEntry_1742_atl_25">
+                  <head><lb/>Den 12/23 Apr.</head>
+                  <p>
+                     <lb/>Wohl dem der den Hln fürchtet, der große Lust hat zu seinem
+                     <lb/>gebothen; die an dich zurückgezognen Treiber des Arms der an die Arbeit
+                     <lb/>geht, die müßen bezeugen daß unsern Sinn ein ewiges Beugen zieht
+                     <lb/>an dich hin.
+                  </p>
+                  <pb facs="#f0010"/>
+                  <p>
+                     <lb/>1.) Heute hatte <rs type="person">Lyschys</rs> Bande eine Bandenwache und Liebesmahl.
+                  </p>
+                  <p>
+                     <lb/>2.) Reinigten wir heute den Plaz aus wo die <rs type="person">Verehlichten</rs> schlafen,
+                     <lb/>dabey der <rs type="person">Capitain</rs> selber geholfen hat, u mit großer Zufriedenheit den <rs type="person">Brüdern</rs> gedienet.
+                  </p>
+                  <p>
+                     <lb/>3.) Unser <rs type="person">jüngerer Br: Powell</rs> ist ganz lichte u seine Confusion ändert sich
+                  </p>
+                  <p>
+                     <lb/>4.) Nachmittags um 4 hatten wir ein allgemeines Liebesmahl bey Gelegenheit des <rs type="person">Br: Wahnerts</rs> Geburthstag, dabey ihm einige Verse <hi rendition="#s">gesungen</hi>
+                     <lb/>gemacht wurden.
+                  </p>
+                  <p>
+                     <lb/>5.) Die <rs type="person">kleine Marthel</rs> wurde heute nach dem Sinn des Heylandes
+                     <lb/>aus der englischen in der <rs type="person">Mickschin</rs> ihre Bande gethan; <rs type="person">Piesch</rs>,
+                     <lb/><rs type="person">ich</rs> und <rs type="person">meine Frau</rs> redeten mit ihr von dieser und andern Sachen,
+                     <lb/>neml: wegen des Umgangs mit <rs type="person">ihrem Mann</rs>, u wegen <rs type="person">ihrer Schwester</rs>,
+                     <lb/>ingleichen daß sie sich mehr soll zu thun machen mit den <rs type="person">Schwestern</rs>.
+                  </p>
+               </div>
+            </div>
+            
+            <div type="position" xml:id="position_1742_atl_23">
+               <div type="diaryEntry" xml:id="diaryEntry_1742_atl_26">
+                  <head><lb/><hi rendition="#u">Den</hi> 13/24 <hi rendition="#u">Apr.</hi></head>
+                  <p>
+                     <lb/>Verunreiniget das Land nicht, darinnen ihr wohnet,
+                     <lb/>darinnen er auch wohnet. Drück du uns selbst der Gnade Siegel
+                     <lb/>auf, daß uns kein Koth befleck den frohen Lauff.
+                  </p>
+                  <p>
+                     <lb/>1.) Es begegneten uns heute 2 Schiffe die von <rs type="place">St. Christophel</rs>
+                     <lb/>kommen, und nach <rs type="place">London</rs> giengen. Mit denen schickten wir
+                     <lb/>Briefe nach <rs type="place">London</rs>, darinnen wir Nachricht gaben von unsern
+                     <lb/>Umständen. Sie wusten Anfangs nicht was vor Schiff es wären, aber die meisten unsrer <rs type="person">Brr:</rs> waren sehr phlegmatisch dabey,
+                     <lb/>ob sie gleich etl: Canonen loßschoßen, u alle <rs type="person">Matrosen</rs> dachten
+                     <lb/>es seyen Spanier.
+                  </p>
+               </div>
+            </div>
+            
+            <div type="position" xml:id="position_1742_atl_24">
+               <div type="diaryEntry" xml:id="diaryEntry_1742_atl_27">
+                  <head><lb/><hi rendition="#u">Den</hi> 14/25 <hi rendition="#u">Apr.</hi></head>
+                  <p>
+                     <lb/>Bringe uns Herr wieder zu dir, daß wir wieder heim
+                     <lb/>kommen, verneure unsre Tage wie vor Alters. Und gieb uns denn
+                     <lb/>auch des freyen Kirchengangs rechten Brauch.
+                  </p>
+                  <p>
+                     <lb/>1.) Hatten wir früh eine sehr geseegnete Frühstunde über 1406.
+                  </p>
+                  <p>					
+                     <lb/>2.) Unsre Conf-[...]
+                  </p>
+               </div>
+            </div>
+            
+            <!--26.4. bis 14.5. fehlt in den Digitalisaten (aber Foliierung stimmt)
+            Lücke aus Boehlers Parallelbericht ergänzen?-->
+            
+            <div type="position" xml:id="position_1742_atl_25">
+               <div type="diaryEntry" xml:id="diaryEntry_1742_atl_28">
+                  <head><lb/>[<hi rendition="#u">Den</hi> 3/14 <hi rendition="#u">May</hi>]</head>
+                  <p>[...]
+                     <lb/>3.) Wir wurffen heute 3 Mal den Bleywurff, hatten aber
+                     <lb/>niemals Grund, ob wir gleich die Farbe des Waßers geändert sahen.
+                  </p>
+                  <p>
+                     <lb/>4.) Wir sahen heute ein Schiff.
+                  </p>
+               </div>
+            </div>
+            
+            <div type="position" xml:id="position_1742_atl_26">
+               <div type="diaryEntry" xml:id="diaryEntry_1742_atl_29">
+                  <head><lb/><hi rendition="#u">Den</hi> 4/15 <hi rendition="#u">May</hi></head>
+                  <p>
+                     <lb/>Wir können ja nicht zeugen an, wie hoch sein
+                     <lb/>Nahm erfreuen kan.
+                  </p>
+                  <p>
+                     <lb/>1.) Wir hatten heute noch gut Wetter, aber der Wind war nicht gut.
+                  </p>
+                  <p>
+                     <lb/>2.) Wir hatten heute eine geseegnete Conferenz, da von allerley
+                     <lb/>Materien geredet wurde.
+                  </p>
+                  <p>
+                     <lb/>3.) <rs type="person">Mickschin</rs> ist sehr unpäßlich, sie hat noch dazu das Fieber.
+                  </p>
+                  <p>
+                     <lb/>4.) Wir sahen heute 2 Schiffe.
+                  </p>
+                  <p>
+                     <lb/>5.) <rs type="person">Böhlerin</rs> sprach mit der <rs type="person">großen Marthe</rs> wegen ihrer Umstände.
+                  </p>
+                  <p>
+                     <lb/>6.) <rs type="person">Rice</rs> sprach mit dem Roson von seinem Herzen.
+                  </p>
+               </div>
+            </div>
+            
+            <div type="position" xml:id="position_1742_atl_27">
+               <div type="diaryEntry" xml:id="diaryEntry_1742_atl_30">
+                  <head><lb/><hi rendition="#u">Den</hi> 5/16 <hi rendition="#u">May</hi></head>
+                  <p>
+                     <lb/>Laß die zu Schanden werden die mich verfolgen,
+                     <lb/>und mich nicht, laß sie erschrecken, und mich nicht.
+                  </p>
+                  <p>
+                     <lb/>Wir wolten gerne Feinde sehn, die deine Freundlichkeit erhöhn.
+                  </p>
+                  <p>
+                     <lb/>1.) Es war heute ein besonderer Tag vor die <rs type="person">Engeländer</rs>. Der Heyl:
+                     <lb/>gab viele Gnade in der Betstunde zum Reden.
+                  </p>
+                  <p>
+                     <lb/>2.) Nachmittags hatten wir ein Liebesmahl mit allen <rs type="person">englischen Eheleuten</rs>, da wir von unserm ersten Anfang in <rs type="person">London</rs> redeten,
+                     <lb/>und von unserm Plan den wir hatten wegen unserer Reise nach
+                     <lb/><rs type="place">Pensylvanien</rs>. Es war sehr geseegnet. <rs type="person">Böhlers</rs> hatten auf diese
+                     <lb/>Gelegenheit ein Lied gemacht.
+                  </p>
+                  <p>
+                     <lb/>3.) Nachhero kam <rs type="person">Br: Joh: Powell</rs> mit mir zu sprechen, da er
+                     <lb/>denn die bittersten Thränen vor mir weinte wegen seiner Umstände, daß er die <rs type="person">Gemeine</rs> so sehr liebte, u doch mit seiner Frau
+                     <lb/>nicht könte zufrieden seyn.
+                  </p>
+                  <p>
+                     <lb/>4.) Ich hatte heute einen gründlichen Discours mit <rs type="person">Rice</rs> vom
+                     <lb/>Ehestande, da ich was Reelles in ihm fand.
+                  </p>
+               </div>
+            </div>
+            
+            <div type="position" xml:id="position_1742_atl_28">
+               <div type="diaryEntry" xml:id="diaryEntry_1742_atl_31">
+                  <head><lb/><hi rendition="#u">Den</hi> 6/17 <hi rendition="#u">May</hi></head>
+                  <p>
+                     <lb/>Er stirbt nimmer, er lebt immer.
+                  </p>
+                  <p>
+                     <lb/>1.) Unsre Frühstunde wurde heute gehalten über 1444 u eben
+                     <lb/>da zum Anfange gebethet wurde, schrien sie auf der Decke,
+                  </p>
+               </div>
+            </div>
+            <!--17.5. bis 20.5. fehlt (Fol80 und 81 fehlen; ist 6310.jpg in Boehlers Parallelbericht-->
+            
+            
+            <pb facs="#f0011"/>
+            
+            <div type="position" xml:id="position_1742_atl_29">
+               <div type="diaryEntry" xml:id="diaryEntry_1742_atl_32">
+                  <head><lb/><hi rendition="#u">Den</hi> 10/21 <hi rendition="#u">May</hi></head>
+                  <p> Ich werde nicht sterben sondern leben u des Hl. Werk
+                     <lb/>verkündigen. Die äußre Hütte müße auch noch stehen bleiben
+                     <lb/>zum Gebrauch, es grüne unser Leben dir, u bringe täglich was herfür.
+                  </p>
+                  <p>
+                     <lb/>1.) Der Heyland gab uns heute einen guten Wind, u auch dann und
+                     <lb/>wann helles Wetter daß wir konten das Land sehen und uns also
+                     <lb/>darnach richten. Einmal waren wir im Nebel schon recht nahe
+                     <lb/>kommen, aber der Heyland half uns wieder. Abends sahen wir auch
+                     <lb/><rs type="place">Black Island</rs> Um 9 – 10 Uhr wurffen wir einen Anker aus.
+                  </p>
+                  <p>
+                     <lb/>2.) Es ist heute abermals mit dem <rs type="person">jüngern Powel</rs> u <rs type="person">seiner
+                     <lb/>Frau</rs>, jedem besonders geredet worden, u auf die arme Sünderschafft
+                     <lb/>geführt worden.
+                  </p>
+                  <p>
+                     <lb/>3.) <rs type="person">Bryzeliusin</rs> war heute ohnmächtig.
+                  </p>
+               </div>
+            </div>
+            
+            <div type="position" xml:id="position_1742_atl_30">
+               <div type="diaryEntry" xml:id="diaryEntry_1742_atl_33">
+                  <head><lb/><hi rendition="#u">Den</hi> 11/22 <hi rendition="#u">May</hi></head>
+                  <p>
+                     <lb/>Ihr sollt Priester des Hln heißen, und man wird
+                     <lb/>euch Diener unsres Gottes nennen, und werdet der Heyden
+                     <lb/>Güther eßen, und über eure Herlichkeit euch rühmen.
+                     <lb/>Das ist den Zeugen gleich ins Herz gegraben, ich sterbe oder ich muß Kinder haben, und aller Sprichwort ist, man wird nicht frölich,
+                     <lb/>biß eine große Zahl von Seelen seelig.
+                  </p>
+                  <p>
+                     <lb/>1.) Früh zwischen 7 – 8 Uhr huben wir unsre Anker auf, der
+                     <lb/>Wind war aber contrair, doch kamen wir zwischen <rs type="place">Long Island</rs>
+                     <lb/>und dem nechsten Lande hinein, nicht weit von <rs type="place">Fishers Island</rs>.
+                     <lb/>Unsre Walze war heute gebrochen, daß wir bald den Anker
+                     <lb/>verlohren hätten, auch brachen einpaar Foreshrouts.
+                  </p>
+                  <p>
+                     <lb/>2.) Es war alles erfreut und lebendig, das Gebüsche und grünen
+                     <lb/>Felder zu sehen.
+                  </p>
+               </div>
+            </div>
+            
+            <div type="position" xml:id="position_1742_atl_31">
+               <div type="diaryEntry" xml:id="diaryEntry_1742_atl_34">
+                  <head><lb/><hi rendition="#u">Den</hi> 12/23 <hi rendition="#u">May</hi></head>
+                  <p>
+                     <lb/>Wolf und Lamm sollen weyden zugleich. Das Testament
+                     <lb/>des Hln erfüllt, daß die Gemein in Liebe erbaut, von Freund und
+                     <lb/>Feinden wird beschaut, so steht der ewgen Liebe Bild.
+                  </p>
+                  <p>
+                     <lb/>1.) Früh morgens hüben wir Ancker, und hatten noch contrairen Wind.
+                     <lb/>Als wir aber in der Conferenz beysammen waren, kriegten wir
+                     <lb/>guten Wind, und begegneten einer Fischers Sloope, die lehnte uns
+                     <lb/>einen Pilot, der uns nach <rs type="place">Newlondon</rs> brachte, so daß wir um
+                     <lb/>12 – 1 Uhr ankerten, diese Sloope gehörte einem Siebentäger der
+                     <lb/>auch selbst da war, u uns Abends ein Faß Cyder schenkte. <rs type="person">Piesch</rs>
+                     <lb/>und <rs type="person">Meyer</rs> besuchten ihn auf seiner Sloope, er hat sehr herzlich mit
+                     <lb/>ihnen gesprochen, er hat ehemals auf der Ronneburg gewohnt.
+                  </p>
+                  <p>
+                     <lb/>2.) Der <rs type="person">Capitain</rs>, <rs type="person">Brandmüller</rs>, und <rs type="person">Böhler</rs> giengen in die Stadt und
+                     <lb/>erkundigten sich wegen des Registers und der Reise des <rs type="person">Pieschen</rs>
+                     <lb/>konten aber weiter nichts Hinlängliches erfahren.
+                  </p>
+                  <p>
+                     <lb/>3.) Ich schrieb Briefe an <rs type="person">Z. Bennezet</rs> und <rs type="person">Noble</rs> unsre Ankunfft zu berichten.
+                  </p>
+                  <p>
+                     <lb/>4.) Heute in der Conferenz wurde ausgemacht daß wir solten
+                     <lb/>meistens durchs Land reisen.
+                  </p>
+                  <p>
+                     <lb/>5.) Die <rs type="person">ledigen Brr:</rs> haben heute eine Bandenwache, u Liebesmahl gehabt.
+                  </p>
+               </div>
+            
+               <div type="diaryEntry" xml:id="diaryEntry_1742_atl_35">
+                  <head><lb/><hi rendition="#u">Den</hi> 13/24 <hi rendition="#u">May</hi></head>
+                  <p>
+                     <lb/>Mein Freund komme in seinen Garten, und eße seiner
+                     <lb/>edlen Früchte. So wird er schön und herzl: grünen, und dir zur Lust
+                     <lb/>und Freude dienen, so wird unser Herze fein, dein gewünschter Garten seyn.
+                     <lb/>Früh um 5 Uhr giengen wir ans Land und begruben <rs type="person">Mickschens
+                     <lb/>Kind</rs>; Wir legten es unter einen großen Stein auf der Ost Seite
+                     <lb/>des Flußes nicht weit vom Ufer. Es war <rs type="person">Piesch</rs>, <rs type="person">Böhler</rs> und <rs type="person">sie</rs>,
+                     <lb/><rs type="person">Brandmüller</rs>, <rs type="person">Meyer</rs>, <rs type="person">Rice</rs>, <rs type="person">Bryzelius</rs>, <rs type="person">Miksch</rs>, <rs type="person">Seydel</rs> und
+                     <lb/><rs type="person">Schnall</rs> mit uns. Es war ein recht gesalbt und geseegnet Begräbniß.
+                     <lb/>Der Heyland war mit da.
+                  </p>
+                  <p>
+                     <lb/>2.) Es wurde auch für gut befunden des Mannes (: Siebentägers :)
+                     <lb/>Sloope zu nehmen, u mit nach <rs type="place">New-Brunswick</rs> zu fahren.
+                  </p>
+                  <p>
+                     <lb/>3.) Gab ich <rs type="person">Br: Piesch</rs> 9 Päcklein Briefe.
+                  </p>
+                  <p>
+                     <lb/>4.) War ich mit dem <rs type="person">Capitain</rs> bey dem Collets der sich denn willig
+                     <lb/>erwieß mir Copie des Registers zu geben.
+                  </p>
+                  <pb facs="#f0012"/>
+                  <p>
+                     <lb/>6.) <rs type="person">Böhler</rs> war heute wieder in der Stadt bey dem <rs type="person">Kauffmann Robertson</rs>,
+                     <lb/>der ein Gottes fürchtiger Mann ist, mit dem wir Gelegenheit zu
+                     <lb/>sprechen hatten. Er gieng hernach mit uns aufs Schiff; Auch sprachen
+                     <lb/>wir mit dem der die Versammlungen in dieser Stadt hält. Die <rs type="person">Moravians</rs> sind hier sehr übel berüchtiget.
+                  </p>
+                  <p>
+                     <lb/>7.) Viele von unsern <rs type="person">Geschwistern</rs> waren heute an Lande.
+                  </p>
+               </div>
+            
+               <div type="diaryEntry" xml:id="diaryEntry_1742_atl_36">
+                  <head><lb/><hi rendition="#u">Den</hi> 14/25 <hi rendition="#u">May</hi></head>
+                  <p>
+                     <lb/>Wir sehen mit sehnenden Augen daß der Hl. mit uns
+                     <lb/>ist; Bald sehn die blöden Augen der menschlichen Natur, die
+                     <lb/>nimmer vor dir taugen, sich weder Bahn noch Spuhr, bald zieht
+                     <lb/>dein seeliges Winken die Decke wieder weg, wir dachten zu versinken,
+                     <lb/>und zeigt sich Spuhr und Steg.
+                  </p>
+                  <p>
+                     <lb/>1.) Es war heute ein besonderer Tag, der Heyl: hat allenthalben sich
+                     <lb/>sehr gnädig bezeugt.
+                  </p>
+                  <p>
+                     <lb/>2.) Ich schreibe heute Briefe nach <rs type="place">Engelland</rs>, <rs type="place">Newyorck</rs>, <rs type="place">Suriname</rs>,
+                     <lb/><rs type="place">Philadelphia</rs>, <rs type="place">Jork</rs>
+                  </p>
+                  <p>
+                     <lb/>3.) Heute war <rs type="person">Böhler</rs> mit <rs type="person">seiner Frau</rs> in der Stadt und besuchten
+                     <lb/>die erweckten Leute, welche uns sehr freundlich aufnahmen,
+                     <lb/>und mit denen wir geseegnete Unterredung hatten vom Blut des
+                     <lb/>Heylandes. Sie verlangten von mir eine Stunde zu halten, welches ich that
+                     <lb/>über Luc. 15. Ihre Praejudicia waren meistentheils weggefallen,
+                     <lb/>und waren mit uns zufrieden. Wir giengen Abends noch ans Schiff,
+                     <lb/>doch mit großen Schwierigkeiten.
+                  </p>
+                  <p>
+                     <lb/>4.) Der Collector war heute sehr freundlich mit uns, und versprach
+                     <lb/>uns das Register fertig zu machen, und gab uns seinen Rath wie
+                     <lb/>wirs anfangen solten ein neues zu kriegen.
+                  </p>
+               </div>
+            
+               <div type="diaryEntry" xml:id="diaryEntry_1742_atl_37">
+                  <head><lb/><hi rendition="#u">Den</hi> 15/26 <hi rendition="#u">May</hi></head>
+                  <p>
+                     <lb/>Er wird den ersten Stein aufführen, daß man ruffen
+                     <lb/>wird: Glück zu! Glück zu. Man trägt seinen Theil aufs
+                     <lb/>Baugerüste, und keiner thut als ob man müste.
+                  </p>
+                  <p>
+                     <lb/>1.) In der Conferenz wurde <rs type="person">Pieschens</rs> Reise überlegt, darüber
+                     <lb/>wir aber in eine andre u geseegnete Materie kamen. Weil es schien,
+                     <lb/>als ob unser Schiff noch in etl: Tagen nicht von hier weggehen
+                     <lb/>würde, und wir die meisten von den Brüdern je eher je lieber
+                     <lb/>in <rs type="place">Pensylvanien</rs> wünschten.
+                  </p>
+                  <p>
+                     <lb/>2.) Unsere <rs type="person">Brr:</rs> 24 an der Zahl giengen heute mit der Sloope des
+                     <lb/>Siebentägers von hier weg. <rs type="person">Böhler</rs> gieng noch mit ihnen auf die
+                     <lb/>Sloope, und da sangen und betheten sie noch mit einander,
+                     <lb/>u schieden in Seegen von einander. Unser Voneinanderscheiden
+                     <lb/>war allen <rs type="person">Geschwistern</rs> wie ein Tod.
+                  </p>
+                  <p>
+                     <lb/>3.) Wir kriegten heute auch unser Register.
+                  </p>
+                  <p>
+                     <lb/>4.) Es besuchten uns auch etl: Freunde aus der Stadt mit denen
+                     <lb/>wir einen geseegneten Discours hatten. Sie blieben in
+                     <lb/>unsrer Singstunde, und giengen vergnügt nach Hause.
+                  </p>
+                  <p>
+                     <lb/>5.) Abends feyerten wir das Andenken des Bettages mit
+                     <lb/>vieler Beugung und Gnade. Es wurde geredet über die
+                     <lb/>Loosung, und gebethet mit vielen Thränen. Hernach gaben wir
+                     <lb/>alle Verse für den <rs type="person">Br: Z.</rs> auf seinem GeburthsTag.
+                  </p>
+                  <p>
+                     <lb/>6.) Mein Abschiednehmen von den <rs type="person">Brüdern</rs> auf ihrer Sloope
+                     <lb/>hat den Leuten aus <rs type="person">New London</rs> einen tiefen Eindruck gemacht.
+                  </p>
+                  <p>
+                     <lb/>7.) Der <rs type="person">Capitain</rs> hätte lieber alle <rs type="person">seine Passagier</rs> bey sich
+                     <lb/>behalten, u es that ihm wehe da die <rs type="person">Brr:</rs> Abschied von ihn nahmen.
+                  </p>
+               </div>
+            
+               <div type="diaryEntry" xml:id="diaryEntry_1742_atl_38">
+                  <head><lb/><hi rendition="#u">Den</hi> 16/27 <hi rendition="#u">May</hi></head>
+                  <p>
+                     <lb/>Der Herr ist mein Licht und mein Heyl, vor wem
+                     <lb/>solt ich mich fürchten. Mitten im Lichte, Gott im Gesichte, macht
+                     <lb/>uns kein Teufel die Hoffnung zu nichte.
+                  </p>
+                  <p>
+                     <lb/>1.) <rs type="person">Früh</rs> hielt eine teutsche Stunde über: Wenn du mich demüthigst machst du mich groß.
+                  </p>
+                  <p>
+                     <lb/>2.) <rs type="person">Böhler</rs> und <rs type="person">seine Frau</rs> giengen wieder in die Stadt, u
+                     <lb/>hörten <rs type="person">Mr. Adams</rs> predigen. Hernach besuchten wir <rs type="person">Mr.
+                     <lb/>Robertson</rs>, und giengen hernach zu <rs type="person">Mr. Courtas</rs> in
+                     <lb/>die Stunde, und auf Begehren redete ich über Joan 19, 34.
+                     <pb facs="#f0013"/>
+                     <lb/>zu sehr vielen Menschen der Heyland war uns sehr gnädig. Nachdem ich geendigt hatte, giengen viele Leute fort, aber es blieben
+                     <lb/>doch noch etwa 40 biß 50 da, welches alles erweckte Leute waren,
+                     <lb/>worunter auch Indianer und Negers da sung ich das Lied mit
+                     <lb/>ihnen: Sinners come the Saviour see (: Kommt Sünder
+                     <lb/>und blicket pp : und redete dann und wann ein Wort, welches
+                     <lb/>die Leute sehr anfaßte, und ihnen einen tieffen Eindruck gab.
+                     <lb/>Hernach giengen wir zum alten <rs type="person">Christophers</rs>, wo wir sehr freundlich aufgenommen wurden, sie begleiteten uns biß ans Schiff.
+                  </p>
+                  <p>
+                     <lb/>3.) <rs type="person">Bryzelius</rs> mit <rs type="person">seiner Frau</rs> und noch etlichen <rs type="person">Brüdern</rs>
+                     <lb/>und <rs type="person">Schwestern</rs> giengen heute ans Land, und kamen zu einem Bauer ins Hauß, der sie freundlich aufnahm, und die Leute
+                     <lb/>begehrten sie solten ein Lied vor ihnen singen, so sungen si:
+                     <lb/>das Lied: Lamm Lamm o Lamm, pp. Die Leute bezeugten eine große 
+                     <lb/>Begierde etwas zu hören, und noch mehr von unsern <rs type="person">Geschwistern</rs> zu sehen und zu hören. Sie schenckten ihnen eines
+                     <lb/>von unsern englischen Gesangsbüchern auf ihr Begehr.
+                  </p>
+                  <p>
+                     <lb/>4.) Abends um 8 Uhr kamen 6 junge ledige Brüder von der <rs type="place">East-Side des Flußes</rs>, welche gedachten nach <rs type="place">London</rs> zu gehen und
+                     <lb/>mich zu hören, als sie aber vernahmen, daß ich an das Schiff gegangen,
+                     <lb/>so kamen sie auch aufs Schiff, daher beschloß ich eine englische
+                     <lb/>Stunde zu halten, und redete über die Loosung. Der Heyland ließ
+                     <lb/>sich nicht unbezeugt. Sie invitirten mich auf ihre Seite zu
+                     <lb/>kommen, und Stunde zu halten. Ich konte ihnen nichts versprechen.
+                  </p>
+                  <p>
+                     <lb/>5.) Die Leute von dem <rs type="place">West Shoar</rs> haben bey dem <rs type="person">Br: Powel</rs> angehalten daß ich einmal zu ihnen kommen, und Stunde bey
+                     <lb/>ihnen halten solle. Ich überlegte es mit den <rs type="person">Brüdern</rs>, und
+                     <lb/>sie warens zu frieden, daß ich etwas morgen früh gehen
+                     <lb/>möchte. 	
+                  </p>
+               </div>
+            
+               <div type="diaryEntry" xml:id="diaryEntry_1742_atl_39">
+                  <head><lb/><hi rendition="#u">Den</hi> 17/28 <hi rendition="#u">May</hi></head>
+                  <p>
+                     <lb/>Er dachte an uns da wir untergedrückt waren
+                     <lb/>du denkst an uns, wenn alle uns vergeßen, und uns, was wir an dir
+                     <lb/>verdient zumeßen, wenn alle uns zuwider seyn, so hilfst du ein.
+                  </p>
+                  <p>
+                     <lb/>1.) Früh morgens kam <rs type="person">Morry</rs> und noch ein Mann ans Schiff. Der erste
+                     <lb/>bezeugte sein Vergnügen über uns, und insonderheit, daß er sehe, daß die
+                     <lb/>uns beygelegten Irrthümer welche <rs type="person">M<hi rendition="#sup">r.</hi> Tennent</rs> hat aufgesetzt,
+                     <lb/>nicht so wären.
+                  </p>
+                  <p>
+                     <lb/>2.) Es kamen wol 50 Menschen zu uns aufs Schiff uns und unsre Einrichtung zu sehen. Sie waren alle sehr vergnügt. Wir gaben ihnen
+                     <lb/>zu eßen so viel wir hatten. Nachhero giengen sie alle mit mir aufs
+                     <lb/>Land zum Thinker alwo ich eine Versammlung hielt, zu einer großen
+                     <lb/>Anzahl Menschen über Jes: 43, 24. 25. Der Heyland seegnete es.
+                  </p>
+                  <p>
+                     <lb/>3.) Es sprach ein alter Mann mit mir, der 10 Meilen aus dem Lande
+                     <lb/>kommen war, um uns zu sehen und zu hören.
+                  </p>
+                  <p>
+                     <lb/>4.) Hernach giengen wir in die Stadt, und da hielt eine Stunde in
+                     <lb/>des <rs type="person">ältern Christophers</rs> Hause. Ich redete über 1 Petr. 1. Der Heiland
+                     <lb/>war sehr gnädig gegenwärtig. Unser Abschied that ihnen sehr wehe,
+                     <lb/>und sie wünschten uns bald wieder zu sehen. Sie begleiteten uns
+                     <lb/>zum Boat, alwo wir ihnen noch einen Vers sungen. Es war
+                     <lb/>schon 10 Uhr als wir aufs Schiff kamen. Wir funden alle unsre
+                     <lb/><rs type="person">Geschwister</rs> vergnügt.
+                  </p>
+                  <p>
+                     <lb/>5.) <rs type="person">Bryzelius</rs> blieb zu Hause, und hielt die Singstunde, <rs type="person">Meyer</rs>
+                     <lb/>war bey mir.
+                  </p>
+               </div>
+            
+               <div type="diaryEntry" xml:id="diaryEntry_1742_atl_40">
+                  <head><lb/><hi rendition="#u">Den</hi> 18/29 <hi rendition="#u">May</hi></head>
+                  <p>
+                     <lb/>Gott, es ist mein rechter Ernst. Daß dein Name 
+                     <lb/>heilig sey, wir ein tüchtig Salz der Erden, u von aller Dummheit frey.
+                  </p>
+                  <p>
+                     <lb/>1.) In aller Frühe kam der <rs type="person">jüngere Christophers</rs> und <rs type="person">Robertson</rs>,
+                     <lb/>uns noch einmal zu sehen; der leztere begehrte mit mir allein
+                     <lb/>zu sprechen, und erzehlte mir seinen Zustand mit Thränen:
+                     <lb/>Sie hatten ein großes Verlangen nach unsern <rs type="person">Brüdern</rs>, daher
+                     <lb/>gaben wir ihnen noch etliche Gesangbücher.
+                     <lb/><rs type="person">C.</rs>
+                  </p>
+                  <pb facs="#f0014"/>
+                  <p>
+                     <lb/>2.) Es kamen auch noch sonst noch etliche Manns- und auch ledige Weiber-Leute uns zu besuchen. Daher hielt ich ihnen noch eine kurze Rede über
+                     <lb/>den Vers: O Gnade wie bist du so leicht zu ergreiffen. Hernach sang ich 
+                     <lb/>noch etliche teutsche Verse.
+                  </p>
+                  <p>
+                     <lb/>3.) Wir huben unsre Anker auf, konten aber nicht gleich fort kommen,
+                     <lb/>weil der <rs type="person">ältere Powell</rs> und <rs type="person">Turner</rs> nicht da waren, endlich aber
+                     <lb/>kamen sie, und wir giengen ohngefehr um 10 Uhr aus dem Hafen
+                     <lb/>hinaus. Der Wind war gut, und um 8 Uhr Abends waren wir schon
+                     <lb/>bey 70 Meilen gefahren.
+                  </p>
+                  <p>
+                     <lb/>4.) <rs type="person">Morry</rs> unser <rs type="person">Pilot</rs> redete heute auch mit mir von seiner Bekehrung.
+                  </p>
+                  <p>
+                     <lb/>5.) Als wir fortfuhren von <rs type="place">New London</rs> sahen die Leute uns allenthalben aus
+                     <lb/>den Häusern und von den Felsen nach, so weit sie konten. <rs type="person">Bryzelius</rs> bließ das Waldhorn dabey.
+                  </p>
+                  <p>
+                     <lb/>6.) Ich sprach wiederum mit dem <rs type="person">jüngern Powel</rs>, der Heyland erbarme
+                     <lb/>sich sein.
+                  </p>
+                  <p>
+                     <lb/>7.) Wir hatten heute auch eine sehr geseegnete offenherzige englische Bande
+                     <lb/>gehabt, sonderl: wurde ziemlich dem <rs type="person">ältern Powel</rs> ans Herz geredt.
+                     <lb/><rs type="person">Hussey</rs> gab Gelegenheit zu den Materien.
+                  </p>
+               </div>
+            </div>
+         </div>
+         
+         <div type="diaryEntries" subtype="america">
+            
+            <div type="position" xml:id="position_1742_ame_1">
+               <div type="diaryEntry" xml:id="diaryEntry_1742_ame_1">
+                  <head><lb/><hi rendition="#u">Den</hi> 19/30 <hi rendition="#u">May</hi></head>
+                  <p>
+                     <lb/>Laß uns nicht geschändet werden: Laß den Thron deiner
+                     <lb/>Herrlichkeit nicht verspottet werden: Gedenks doch, und laß deinen Bund
+                     <lb/>mit uns nicht aufhören.
+                     <lb/>Der Grund da wir uns gründen, ist Christus und sein Blut, das machet daß
+                     <lb/>wir finden ein unaufhörlich Gut.
+                     <lb/>1.) Früh redete der <rs type="person">Pilot</rs> mit mir von seinem Herzen.
+                  </p>
+                  <p>
+                     <lb/>2.) Wir reiseten heute durch einen gefährlichen Ort, genannt <rs type="place">Hellgate</rs>,
+                     <lb/>oder das Höllenthor, welcher viele Felsen hat, und einen starken Zug des
+                     <lb/>Waßers. Der Heyland aber half uns gnädig durch, obgleich das Schiff schon
+                     <lb/>einmal ausreißen wolte.
+                  </p>
+                  <p>
+                     <lb/>3.) 4 von unsern <rs type="person">Matrosen</rs> waren in Gefahr gepreßt zu werden, daher
+                     <lb/>ließen wir sie ans Land gehen, sie waren sehr erkentlich dafür.
+                  </p>
+                  <p>
+                     <lb/>4.) Um 10 Uhr kamen wir in <rs type="place">Newyork</rs> an. Wir giengen gleich zum
+                     <lb/><rs type="person">Br: Noble</rs>, er aber war nicht zu Hause, daher hatte Gelegenheit
+                     <lb/>mit <rs type="person">seiner Frau</rs> zu sprechen, welche sich sehr freute, aber erzehlte,
+                     <lb/>daß der <rs type="person">Tennent</rs> ihren Mann so confus gemacht habe, durch seine
+                     <lb/>Predigt die er gegen den Br: Ludewig und uns alle gehalten. Als ich
+                     <lb/>durch die Stadt gieng, kanten mich noch einige Leute, und sagten es gleich
+                     <lb/>einigen <rs type="person">Brr:</rs> u <rs type="person">Schw:</rs> welche denn ungeruffen zu mir kamen.
+                  </p>
+                  <p>
+                     <lb/>5.) Ich besuchte auch <rs type="person">Jacob Bempern</rs>, der mich freundlich annahm,
+                     <lb/>und mir etwas von des <rs type="person">Grafen</rs> Disappointment in <rs type="place">Pensylvanien</rs>
+                     <lb/>erzehlte
+                  </p>
+                  <p>
+                     <lb/>6.) Zwey von <rs type="person">Captain Brionds</rs> Töchtern kamen zu <rs type="person">Nobles</rs>,
+                     <lb/>uns zu sehen, sie konten aber nicht lange bleiben, weil ihnen ihr
+                     <lb/>Vater gedrohet, er wolle sie fortjagen wenn sie zu uns giengen. Sie
+                     <lb/>durfften auch nicht in die Stunde kommen welche ich hielt. Sie schlichen
+                     <lb/>sich aber doch Abends zwischen 10 und 11 Uhr, da alles in ihrem Hause
+                     <lb/>schlafen war, heimlich weg, und kamen zu uns, u blieben biß 1 Uhr bey
+                     <lb/>uns. Wir freuten und liebten uns untereinander.
+                  </p>
+                  <p>
+                     <lb/>7.) Als wir bey <rs type="person">Nobles</rs> waren, überlegten <rs type="person">Bryzelius</rs> und <rs type="person">ich</rs> und 
+                     <lb/><rs type="person">meine Frau</rs> es mit einander, ob wir heute nicht fortgehen sollten. Des
+                     <lb/>Heylnds Antwort aber war wir sollten heute nicht daran denken* und ob wir
+                     <lb/>einige unsrer Leute solten laßen ans Land gehen? * Nein.
+                  </p>
+                  <p>
+                     <lb/>8.) Daher gieng die <rs type="person">Schwester Noble</rs> und <rs type="person">Windover</rs> mit <rs type="person">ihrem Manne</rs>
+                     <lb/>und <rs type="person">Mädgen</rs> mit uns ans Schiff, unser <rs type="person">Geschwister</rs> zu besuchen.
+                     <lb/>Sie erfreuten sich, einander so vergnügt und wohl zu sehen.
+                  </p>
+                  <p>
+                     <lb/>9.) Eine Stunde hernach sahen wir <rs type="person">Br: Noble</rs> auf dem Ferry Boat herüber
+                     <lb/>fahren. Daher gieng ich mit unserm Boat und holte ihn ab. Er erfreute
+                     <lb/>sich uns zu sehen, und war sehr offenherzig und vergnügt mit uns.
+                     <lb/>Er erzehlte mir aber auch gleich, daß ihn <rs type="person">Gilbert Tennent</rs> confus
+                     <lb/>gemacht habe durch seine 4 Predigten die er gegen unsre vermeynten
+                     <lb/>Irrthümer so plausible in <rs type="place">Newyork</rs> vorgestellt. Wir waren aber
+                     <lb/>nicht lange beysammen, so lebte ihm sein Herz auf, und er war
+                     <lb/>ganz ein andrer Mensch.
+                  </p>
+                  <pb facs="#f0015"/>
+                  <p>
+                     <lb/>10.) Abends gieng <rs type="person">ich</rs> und <rs type="person">meine Frau</rs> und <rs type="person">Br: Meyer</rs> in die Stadt,
+                     <lb/>und hatten einen geseegneten Umgang mit unsern <rs type="person">Brr:</rs> und <rs type="person">Schww:</rs>
+                     <lb/>Ich hielt auch eine Stunde über den 23sten Psalm. Der Heyland war
+                     <lb/>uns nahe mit seinem Geist.
+                  </p>
+                  <p>
+                     <lb/>11.) Abends hatten wir mit <rs type="person">Br: Noble</rs> und <rs type="person">ihr</rs> noch manche geseegnete und erfreuliche Discourse biß Nachts um 2 Uhr.
+                  </p>
+                  <p>
+                     <lb/>12.) Als wir in <rs type="place">Newyork</rs> ankamen, erkundigten wir uns
+                     <lb/>wegen unsrer <rs type="person">Brr:</rs> die mit <rs type="person">Pieschen</rs> voraus gegangen, und
+                     <lb/>welche wir vermutheten schon in <rs type="place">Philadelphia</rs> zu seyn,
+                     <lb/>allein wir erfuhren nichts von ihnen, das verursachte uns
+                     <lb/>allerley Gedancken. Nachmittags um 4 Uhr aber traten
+                     <lb/><rs type="person">Br: Piesch</rs> und <rs type="person">Brandmüller</rs> unvermuthet in die Stube,
+                     <lb/>bey <rs type="person">Nobles</rs> welches uns erstaunte und erfreute. Es war
+                     <lb/>ihnen wunderbahr, aber doch seelig gegangen auf ihrer Reise,
+                     <lb/>wie folgt: Den Tag da sie von hier abreiseten, hatten sie
+                     <lb/>zwar guten Wind, allein sie fuhren einen unrechten Weg, entweder aus Versehen, oder mit Bedacht, und so kamen sie nicht weit,
+                     <lb/>und den andern Tag war Calm, daher musten sie sehr hart rudern,
+                     <lb/>daß sie nur ein kleines Stück fortkamen. Am 28sten fuhren
+                     <lb/>sie in <rs type="place">Newhaven</rs> an, und weil es noch Tag war, giengen
+                     <lb/>sie in etl: Partien aufs Land ihnen eine Bewegung zu machen.
+                     <lb/>Die Leute dachten Anfangs: Die <rs type="person">Brüder</rs> seyen Spanier, und
+                     <lb/>lieffen davon wenn sie sie sahen. Andere fragten ob sie dem
+                     <lb/><rs type="person">Grafen Z.</rs> angehörten, und als sie hörten, daß wir <rs type="person">Moravian</rs>
+                     <lb/>wären, kamen sie hauffenweise aufs Schiff etwas vom Heyl:
+                     <lb/>zu hören. Das Schiff war ganz voll, und unterschiedliche
+                     <lb/><rs type="person">Brüder</rs> redeten hier und da unter ihnen. Viele waren sehr
+                     <lb/>um ihr Heyl bekümmert, andre thaten unterschiedliche Fragen,
+                     <lb/>von der Gnadenwahl, auch waren Studenten da, die zuhörten,
+                     <lb/>sie wurden bewegt in ihren Herzen, und bathen daß etl: <rs type="person">Brüder</rs>
+                     <lb/>mit ihnen in ihr College gehen mögen, und als etl: giengen,
+                     <lb/>versammlete sich ein schönes Häufflein in einem großen Zimmer:
+                     <lb/>Sie brachten <rs type="person">M<hi rendition="#sup">r.</hi> Gilbert Tennents</rs> Aufsaz von des <rs type="person">Grafens</rs>
+                     <lb/>und der <rs type="person">Brüder</rs> Irthümern die er aus ihren Reden in gedruckten Predigten zusammengeklaubt, und verlangten daß die
+                     <lb/><rs type="person">Brüder</rs> sich über einen jeden erklähren solten. Es waren viele
+                     <lb/>solche, manche aber kamen mit unsrer Lehre überein. Sie waren herzl.
+                     <lb/>froh daß sie den Sinn und Ehre der <rs type="person">Gemeine</rs> zu wißen kriegten, u
+                     <lb/>den falschen Beschuldigungen nicht mehr glauben dürften.
+                     <lb/>Sie bewiesen sich freundlich und herzlich u wolten gern näher mit 
+                     <lb/>der <rs type="person">Gemeine</rs> bekant werden. Unter der Zeit redete ein anderer
+                     <lb/>Bruder mit einem kleinen Knaben, der auch aufs Schiff kommen
+                     <lb/>war, der erzehlte seine Erweckung, und daß die <rs type="person">Brr:</rs> Versammlungen hätten,
+                     <lb/>und wie ihnen der Heyland so lieb wäre. Er war überaus artig und
+                     <lb/>blieb biß in die Nacht auf dem Schiff; Es waren biß nach Mitternacht
+                     <lb/>Leute aufm Schiff, die zuhörten, als <rs type="person">Piesch</rs> die Singstunde hielt und
+                     <lb/>über die Loosung redete. Es gefiehl ihnen sehr wohl. Den 29sten früh
+                     <lb/>giengen die <rs type="person">Brüder</rs> von hier ab, und kamen Abends nach <rs type="place">New Greenwich</rs>. Die Leute furchten sich hier abermals vor den <rs type="person">Brüdern</rs>. Als
+                     <lb/>ihnen aber die <rs type="person">Brr:</rs> bezeugten, daß sie Friedens Kinder seyen, faßten
+                     <lb/>sie sich ein Herz und traten um die <rs type="person">Brr:</rs> herum, und wolten haben,
+                     <lb/>daß sie eine Stunde halten solten. Sie versammleten sich zu dem
+                     <lb/>Ende in unterschiedlichen Häusern, sie mustens ihnen aber
+                     <lb/>abschlagen, weil sie keine Zeit hatten, und redeten nur in 
+                     <lb/>etlichen Häusern etwas vom Heyland, dadurch die Leute sehr an-
+                     <lb/>gefaßt wurden in ihren Herzen, und um Arbeiter unter sie bathen.
+                     <pb facs="#f0016"/>
+                     <lb/>Die <rs type="person">Brr:</rs> kamen erst Nachts um 11 Uhr wieder aufs Schiff, und
+                     <lb/>wunderten sich über die Leitung des Heylands der sie so kennerhafft mit erweckten Leuten bekant gemacht. Den 30sten fuhren 
+                     <lb/>früh die <rs type="person">Brüder</rs> wieder von hier ab, und die Sloope mit den
+                     <lb/>meisten <rs type="person">Brüdern</rs> kam Nachmittags um 4 Uhr vor <rs type="place">Newyork</rs> an,
+                     <lb/>und die <rs type="person">Brr:</rs> kamen wieder auf unser Schiff. Etl: englische
+                     <lb/>und teutsche Brr: aber waren mit Gutbefinden in den der übrigen
+                     <lb/>ans Land gesezt, auf <rs type="place">Long Island</rs>, damit sie nicht möchten zu 
+                     <lb/>Matrosen weggenommen werden. Diese hatten 30 Meilen zu gehen,
+                     <lb/>biß zu einer Ferry, allwo die <rs type="person">Brr:</rs> sie wiederum zu sich nehmen
+                     <lb/>wolten. Sie hörten auf diesem ihren Wege hin und wieder von
+                     <lb/>erweckten Seelen. In <rs type="place">Natbush</rs> sezten sie sich vor einem Hause
+                     <lb/>nieder, die Leute hießen sie hinein kommen u gaben ihnen zu
+                     <lb/>eßen und zu trinken. Sie erzehlten auch von einem teutschen
+                     <lb/>Grafen der mit seiner Tochter auf dieser Insul gewesen und
+                     <lb/>2 Indianer bey sich gehabt, die den Leuten etwas vom Heyland gesagt
+                     <lb/>hätten. Die Leute sagten: daß dieser Graf von Europa vertrieben,
+                     <lb/>und nicht mehr hinkommen dürffe weil er sich mit so schlechten
+                     <lb/>Leuten auch Indianern zu thun mache, u mit ihnen eße u trinke.
+                     <lb/>Wir berichteten sie von diesem Grafen, und sagten ihnen was
+                     <lb/>vom Heyland, welches sie sehr gern hörten. Der alte Mann nahm
+                     <lb/>hernach sein Pferd und legte unsre Kleider drauf und ritte 5 Meilen durch einen Wald mit uns, und brachte uns an den Ort
+                     <lb/>wo wir auf unsre <rs type="person">Brr:</rs> warten solten. Wir giengen in einen
+                     <lb/>Gasthoff. Bald darauf kam ein Mensch mit einem Pferde,
+                     <lb/>sahe uns an, und sagte ob wir nicht <rs type="person">Mährische Brr:</rs> wären,
+                     <lb/>und als wir Ja sagten, bath er uns, daß wir möchten mit
+                     <lb/>ihm in seines Vaters Hauß kommen, er habe schon etliche Tage in
+                     <lb/><rs type="place">Newhoff</rs> auf uns gewartet. Wir ließen uns überreden und
+                     <lb/>giengen hin. Es war <rs type="person">Jacques Kattelgou</rs>. Er war froh uns
+                     <lb/>zu sehen, und wir redeten biß nach Mitternacht mit ihnen.
+                     <lb/>Den andern Morgen früh giengen wir auf unser Schiff.
+                  </p>
+               </div>
+
+               <div type="diaryEntry" xml:id="diaryEntry_1742_ame_2">
+                  <head><lb/><hi rendition="#u">Den</hi> 20/31 <hi rendition="#u">May</hi></head>
+                  <p>
+                     <lb/>Von ihm haben wir ein klein Wörtlein vernommen.
+                     <lb/>Er ist ein unbegreifflich Meer, wir senken uns in sein Erbarmen.
+                  </p>
+                  <p>
+                     <lb/>1.) Früh morgens kam <rs type="person">Br: Piesch</rs> und <rs type="person">Bryzelius</rs> noch einmal in
+                     <lb/>die Stadt und besuchten die Geschw:
+                  </p>
+                  <p>
+                     <lb/>2.) <rs type="person">Br: Brandmüller</rs> und <rs type="person">Rice</rs> giengen zu Lande fort um
+                     <lb/>die <rs type="person">Brr:</rs> ab zu hohlen die bey der Ferry auf uns warteten.
+                  </p>
+                  <p>
+                     <lb/>3.) <rs type="person">Böhler</rs> und <rs type="person">seine Frau</rs> besuchten den <rs type="person">Wendone</rs> und <rs type="person">seine
+                     <lb/>Frau</rs>, alwo sie<hi rendition="#s">ch</hi> auch den <rs type="person">Waldron</rs> antrafen und mit ihm
+                     <lb/>sprachen.
+                  </p>
+                  <p>
+                     <lb/>4.) <rs type="person">Noble</rs> und <rs type="person">seine Frau</rs>, <rs type="person">ihre Magd</rs> mit dem <rs type="person">Kinde</rs>, <rs type="person">Wendooer</rs> mit <rs type="person">seiner 
+                     <lb/>Frau</rs> u <rs type="person">Magd</rs>, giengen mit uns aufs Schiff. Wir huben den Anker u giengen unter Seegel um 9 Uhr. Ich gieng indeßen mit dem <rs type="person">Br: Noble</rs> übers Waßer u
+                     <lb/>besuchte den <rs type="person">Timothy Horsefield</rs> u <rs type="person">seine Frau</rs>, welche sich freueten mich
+                     <lb/>zu sehen. Ich konte aber nicht viel mit ihnen reden weil das Schiff
+                     <lb/>schon fortgieng.
+                  </p>
+                  <p>
+                     <lb/>5.) Um 12 Uhr kamen auch unsre <rs type="person">Brr:</rs> alle aufs Schiff, und <rs type="person">Jaques Kattelgow</rs> mit ihnen, bey dem sie heute Nacht logirt hatten.
+                  </p>
+                  <p>
+                     <lb/>6.) Weil der Wind und Waßer gegen uns war, so musten wir Anker werfen,
+                     <lb/>nicht weit von <rs type="person">Jacques`s</rs> Hause, u unsre <rs type="person">Brr:</rs> u <rs type="person">Schww:</rs> blieben  den ganzen Nachmittag
+                     <lb/>bey uns.
+                  </p>
+                  <p>
+                     <lb/>7.) Ich hielt denn eine englische Stunde über die heutige Loosung die der Heyl:
+                     <lb/>salbte und seegnete.
+                  </p>
+                  <p>
+                     <lb/>8.) Die meiste Zeit sprach ich mit dem <rs type="person">Noble</rs>, ließ ihn einige Briefe sehn welche
+                     <lb/>ihn sehr erfreuten, und er war überhaupt mit mir wie mit seinem eigenen Herzen,
+                     <lb/>die übrigen besuchten unsere übrige <rs type="person">Geschwister</rs> als sie eben Abends ans Land giengen
+                     <lb/>machten sies mit dem <rs type="person">Piesch</rs> aus, daß ich möchte mitgehn, welches denn geschahe, da ich denn noch manche Gelegenheit hatte etwas zu reden.
+                  </p>
+                  <pb facs="#f0017"/>
+                  <p>
+                     <lb/>10.) Die beyden <rs type="person">Powel</rs> giengen mit ans Land, u <rs type="person">Noble</rs> nahm Gelegenheit mit <rs type="person">dem
+                     <lb/>jüngern</rs> zu sprechen, der ihm denn alle seine Noth klagte. <rs type="person">Noble</rs> aber legte es an seinen
+                     <lb/>rechten Ort, und legte ihm kein Polster unter.
+                  </p>
+                  <p>
+                     <lb/>11.) Wir giengen in der Nacht noch wieder auf unser Schiff, es war aber schon alles
+                     <lb/>schlafen da wir ankamen.
+                  </p>
+                  <p>
+                     <lb/>12.) <rs type="person">Noble</rs> verließen wir ganz vergnügt, er fängt an die Pfarrer dh zusehen u sieht
+                     <lb/>was aus ihren Predigten werden wird. Er wünscht sehr daß jemand von unsrer <rs type="person">Gemeine</rs> hinkommen möge nach <rs type="place">NewYork</rs>, u sich der Seelen annehmen.
+                  </p>
+               </div>
+            </div>
+            
+            <div type="position" xml:id="position_1742_ame_2">
+            
+               <div type="diaryEntry" xml:id="diaryEntry_1742_ame_3">
+                  <head><lb/><hi rendition="#u">Den</hi> 21 May/1 Jun.</head>
+                  <p>
+                     <lb/>Wohldir Israel, wer ist dir gleich, du Volck, das du dh den Hln deinen Gott
+                     <lb/>seelig wirst, der deine Hülfe Schild, und das Schwerd deines Sieges ist. Deinen Feinden wirds fehlen, du aber wirst auf ihrer Höhe einhertreten. Weil er in der Ewigkeit
+                     <lb/>vorbestimmet eine Zeit, da sein Häuflein seyn und bleiben wird.
+                  </p>
+                  <p>
+                     <lb/>1.) Früh huben wir Anker auf, der Wind aber war contrair, daher musten wir zwischen den Sandbäncken immer laviren biß wir zu Mittage ohngefehr
+                     <lb/>hinaus kamen.
+                  </p>
+                  <p>
+                     <lb/>2.) Unser <rs type="person">Pilot</rs> gieng geseegnet und vergnügt von uns. Er war
+                     <lb/>gebeugt über die Gelegenheit die er gehabt, mit uns zu reisen, wir
+                     <lb/>gaben ihm ein Gesangbuch. Auch gieng <rs type="person">Timmy Commings</rs>, einer
+                     <lb/>unsrer <rs type="person">Matrosen</rs> mit fort.
+                  </p>
+                  <p>
+                     <lb/>3.) Es wurde auch heute mit der <rs type="person">großen Martha</rs> gesprochen, wegen
+                     <lb/>ihrer Aufführung gegen <rs type="person">ihren Mann</rs>; sie hat aber wenig Gefühl
+                     <lb/>in ihrem Herzen davon.
+                  </p>
+                  <p>
+                     <lb/>4.) <rs type="person">Werner</rs> wurde auch gesprochen wegen seines Mißvergnügens mit
+                     <lb/>den <rs type="person">Brüdern</rs>, er ist aber ein armes schwaches Gemüth.
+                  </p>
+                  <p>
+                     <lb/>5.) Nachmittags war die Conferenz beysammen, und erzehlten einander was uns begegnet wäre wahrend unserer 
+                     <lb/>Abwesenheit.
+                  </p>
+                  <p>
+                     <lb/>6.) Die <rs type="person">ledigen Brüder</rs> hatten eine recht geseegnete Viertelstunde, auf der Decke,
+                     <lb/>sie waren alle so rege und munter,
+                  </p>
+               </div>
+            </div>
+            
+            <div type="position" xml:id="position_1742_ame_3">
+            
+               <div type="diaryEntry" xml:id="diaryEntry_1742_ame_4">
+                  <head><lb/>Den 22t. Maj./2. Jun. 1742.</head>
+                  <p>
+                     <lb/>Ich will ihr Trauren in Freude verkehren,
+                     <lb/>u. sie trösten, u. sie erfreuen, nach ihrer 
+                     <lb/>Betrübnis.
+                  </p>
+                  <p>
+                     <lb/>Und wir begehren nichts zurück von
+                     <lb/>aller Schwürigkeiten.
+                  </p>
+                  <p>
+                     <lb/>1.) Diesen Morgen, mit Anbruch des Tages
+                     <lb/>kriegten wir gut Wind, der auch d gantzen
+                     <lb/>Tag hielte : aber wir warfen doch gegen
+                     <lb/>Abend Anker, weil wir um die Gegend
+                     <lb/>der Sandbanck bey <rs type="place">Great Egg Harbour</rs>
+                     <lb/>waren.
+                  </p>
+                  <p>
+                     <lb/>2.) Die von der Conferenz hatten diesen
+                     <lb/>Nachmittag ein Liebes Mahl, darinnen sie
+                     <lb/>ihr Diarium miteinander durchlasen.
+                  </p>
+               </div>
+            </div>
+            
+            <div type="position" xml:id="position_1742_ame_4">
+               <div type="diaryEntry" xml:id="diaryEntry_1742_ame_5">
+                  <head><lb/>Den 23t. Maj./3t. Jun. 1742</head>
+                  <p>
+                     <lb/>Sie sollen sicher drinnen wohnen, und
+                     <lb/>Häuser bauen w. Weinberge pflantzen
+                     <lb/>ja sicher sollen sie wohnen, wenn ich
+                     <lb/>das Recht gehen laße über alle ihre
+                     <lb/>Feinde um u. um; u. sollen erfahren daß
+                     <lb/>ich der Hl. ihr Gott bin.
+                  </p>
+                  <p>
+                     <lb/>Durch Ehr u. Schande
+                  </p>
+                  <p>
+                     <lb/>In welch[em] Lande
+                  </p>
+                  <p>
+                     <lb/>Man sich befande
+                  </p>
+                  <p>
+                     <lb/>Wind kaum geweht.		<rs type="person"> F.</rs>
+                  </p>
+                  <pb facs="#f0018"/>
+                  <p>
+                     <lb/>1.) Früh mit dem Tage huben wir
+                     <lb/>Anker auf, allein wir giengen nicht
+                     <lb/>sonderl. weil die Schiffleute immer
+                     <lb/>von Ferne vermeinten, Sandbänke zu
+                     <lb/>sehen: Und da kehrten wir immer wieder
+                     <lb/>um: Endl. aber sezte der <rs type="person">Captain</rs>
+                     <lb/>das Bot aus u. lies nachsehen, so
+                     <lb/>fanden sie daß es keine wären. Daher
+                     <lb/>dreheten wir endl. aufs Land zu u. sahen
+                     <lb/>gegen Abend <rs type="person">Cap May in Hinlopen</rs>.
+                     <lb/>Konten aber nicht hinein kommen, weil der
+                     <lb/>Wind contrair. Daher dreheten wir uns
+                     <lb/>abends wieder in die See.
+                  </p>
+                  <p>
+                     <lb/>2.) Der <rs type="person">ältere Powel</rs> gab diesen
+                     <lb/>Nachm. d <rs type="person">Engl. Eheleuten</rs> ein Liebes Mahl.
+                     <lb/>Er war gantz munter dabey u. vergnügt.
+                  </p>
+                  <p>
+                     <lb/>3.) Die Gemein-Stunde hielt
+                     <lb/><rs type="person">Böhler.</rs>
+                  </p>
+               </div>
+            </div>
+            
+            <div type="position" xml:id="position_1742_ame_5">
+               <div type="diaryEntry" xml:id="diaryEntry_1742_ame_6">
+                  <head><lb/>d 24t. May./4. Jun.</head>
+                  <p>
+                     <lb/>Du wollest dich aufmachen u. über
+                     <lb/>Zion erbarmen. Denn es ist Zeit,
+                     <lb/>daß du ihr gnädig seyst, u. die
+                     <lb/>Stunde ist kommen. Deine ###ste wolten
+                     <lb/>gerne, daß sie gebauet würden
+                     <lb/>u. sähen gerne, daß ihre Steine u.
+                     <lb/>Kalck zu gerichtet würden.
+                     <lb/>Gott laße unser Flehen
+                     <lb/>bey ihn erhöret seyn,
+                     <lb/>daß nur sie wahren sehen
+                     <lb/>die heilige Gemeine.
+                     <lb/>Früh sahen wir das <rs type="place">Pensylvanische
+                     <lb/>Land von Cape Hinlopen</rs> und um
+                     <lb/>10 – 11. Uhr kam ein Pilot zu uns;
+                     <lb/>der Wind war gut, aber das Waßer
+                     <lb/>gegen uns, daher gingen wir nur sachte fort
+                     <lb/>bis Nachen. 4. Uhr. Als wir aber etl. Leagues
+                     <lb/>gefahren, zog sich in Nortt-West ein schwarzes
+                     <lb/>Gewölcke mit Bliz u. Donner-Wetter auf
+                     <lb/>daher musten wir in aller Geschwindikeit Anker
+                     <lb/>werffen, als wir eben <rs type="place">zwischen 12. Sandbänken
+                     <lb/>Guidings a Brandy Wine in Delawarre
+                     <lb/>Bay</rs> waren.
+                  </p>
+                  <p>
+                     <lb/>2.) Die Gnaden-Führung des Heilandes,
+                     <lb/>daß er uns in dieses Land gebracht hat,
+                     <lb/>war uns allen heute recht wichtig, u. wir
+                     <lb/>erfreuten uns über sein Erbarmen womit er
+                     <lb/>uns geleitet hatte. Die Losung dabey war uns
+                     <lb/>so merckwürdig, welche so gut accordirte
+                     <lb/>mit der welche wir gelobt als wir von <rs type="place">Deal</rs>
+                     <lb/>abfuhren, u. überhaupt uns zur Pensylvanish Sache Muth machten.
+                  </p>
+                  <pb facs="#f0019"/>
+                  <p>
+                     <lb/>3.) Nach 8. Uhr in der Nacht fing der Wind
+                     <lb/>überraus stark an zu wehen u. das Schiff
+                     <lb/>wanckte sehr: Zwischen 11. u 12. Uhr zerbrachen die Hölzer in der Walze womit man den
+                     <lb/>Anker heraufziehe, u. obgleich
+                     <lb/>darinen war so hielten die doch ### auf, sondern
+                     <lb/>zerbrachen wie Schwefelhölzechen u. das Ankerthau zerriß sich mit großem Krach aus
+                     <lb/>dem Schiffe loos, u. unser Schiff hatte also
+                     <lb/>keinen Halt mehr. Es lief gleich alles auf die
+                     <lb/>Decke u. manche dachten der Mast sey eingebrochen, andre der Donner habe eingeschlgn
+                     <lb/>u. s. f. Das Schiff war wohl währender
+                     <lb/>Reise noch nicht in größere Gefahr gewesen
+                     <lb/>als diesesmahl. Weil aber der Sheattnoor parat war, so huben sie gleich
+                     <lb/>das Seil looß das di## er hing, u.
+                     <lb/>ließen ihn in d Grund fahren, welches
+                     <lb/>denn auch d. heut . gelingen lies, daß er
+                     <lb/>das Schiff erhielte das es u auf die
+                     <lb/>Sandbänke triebe. Sie hatten etl.
+                     <lb/>Stunden mit der Sache zu thun. Wir
+                     <lb/>haben auch darinnen die augenscheinl. Errettung
+                     <lb/>des Heil. u gesehen, daß niemand aber
+                     <lb/>Schaden litte. <rs type="person">Br. Schnell</rs> ist kaum v.
+                     <lb/>der Wälze aufgestanden : So ging s: mit d
+                     <lb/>Ankher-Tauesteeg. Hätte er d Ankher noch
+                     <lb/>draußen gesezt so hätte es ihn in kl. Stücke
+                     <lb/>geqwetscht. Und so hätte es auch <rs type="person">Br.
+                     <lb/>Pryzelig</rs> be### können, wenn er noch eine
+                     <lb/>halbe Minute an ein Ort geblieben wäre: Denn
+                     <lb/>ihn der Anker-Thau mit hätte erwischen
+                     <lb/>können, <hi rendition="#s">wenn er noch eine halbe Minute an ein
+                     <lb/>gewißen Orte geblieben wäre da ich den Ankerhtau
+                     <lb/>auch hätte erer sehen könen.</hi>
+                  </p>
+               </div>
+
+               <div type="diaryEntry" xml:id="diaryEntry_1742_ame_7">
+                  <head><lb/>d 25t. May./5t. Jun.</head>
+                  <p>
+                     <lb/>Euch die ihr meinen Namen fürchtet soll aufgehen die Sonne d. Gerechtig keit u. Heil
+                     <lb/>unter denselben Flügeln u. ihr sollt ein u.
+                     <lb/>aus gehn u. genesen, wie die Mastkälber.
+                  </p>
+                  <p>
+                     <lb/>Von Abend bis zum Morgen
+                  </p>
+                  <p>
+                     <lb/>Thut er uns wohl versorgen
+                  </p>
+                  <p>
+                     <lb/>Zu Waßer u. zu Land.
+                  </p>
+                  <p>
+                     <lb/>1.) In d. teutschen Frühstunde geredet über
+                     <lb/>die Geste. Losung mit Seg.
+                  </p>
+                  <p>
+                     <lb/>2.) Wir hatten heute den gantzen Tag genug
+                     <lb/>zu thun uns. Anker u. Ankerthau
+                     <lb/>wieder zu holen u. die Walze wieder in
+                     <lb/>Ordnung zu bringen.
+                  </p>
+                  <p>
+                     <lb/>3.) Die Wohlthat des Lammes die er uns diese
+                     <lb/>Nacht erwiesen hat, war uns heute
+                     <lb/>sehr lebenig u. wichtig u. wir zerschmelzten
+                     <lb/>vor ihm, weil er uns. gn. Hl. ist.
+                  </p>
+                  <p>
+                     <lb/>4.) Abends 8. Uhr waren wir wieder in Richtigkeit
+                     <lb/>mit uns. Schiff hatte den Anker u. Thau
+                     <lb/>im Schiff u. unsre Rigging wieder in
+                     <lb/>Ordnung.
+                  </p>
+               </div>
+            </div>
+            <pb facs="#f0020"/>
+            
+            <div type="position" xml:id="position_1742_ame_6">
+            
+               <div type="diaryEntry" xml:id="diaryEntry_1742_ame_8">
+                  <head><lb/>d 26. May./6. Jun.</head>
+                  <p>
+                     <lb/>Der Egypter Handl u. der Mohren Gewerbe soll sich dir ergeben.
+                     <lb/>also daß jederman
+                     <lb/>von Zion sagen kan,
+                     <lb/>daß da Leute von [?] Orte
+                     <lb/>die vor sehr hart
+                     <lb/>geschmüget [?] u. sehr zart.
+                  </p>
+                  <p>
+                     <lb/>1.) Früh um 6 zogen wir Anker musten
+                     <lb/>aber wieder um 12. ihn aus werffen
+                     <lb/>weil d. Wind u. Waßer [?] nur war.
+                  </p>
+                  <p>
+                     <lb/>2.) Wir hatten eine ges. Frühstunde.
+                  </p>
+                  <p> 
+                     <lb/>3.) In d. Engl. Frühstunde wurde v.
+                     <lb/>d. Gehorsam des Evangelii geredt,
+                     <lb/>über d heutigen Text.
+                  </p>
+                  <p>
+                     <lb/>4.) Nachen kriegten wir guten Wind, daher
+                     <lb/>segelten wir gegen das Waßer u. paßir
+                     <lb/>ten <rs type="place">Bombey Hook</rs> ehe es Nacht war.
+                  </p>
+                  <p>
+                     <lb/>5.) <rs type="person"><hi rendition="#u">Werner</hi></rs> u. <rs type="person"><hi rendition="#u">Post</hi></rs> machten uns beyde
+                     <lb/>Freude.
+                  </p>
+                  <p>
+                     <lb/>6.) <rs type="person">Böhler</rs> redete mit dem <rs type="person">jüng. Powel</rs>
+                     <lb/>der in großem Elende steckt u.
+                     <lb/>uns ja verlaßen gedenckt.
+                  </p>
+                  <p>
+                     <lb/>7.) Uns. Wandel wird 1 Matrose auch
+                     <lb/>einen [?] Eindruck im Hertz zurücklaßen. 
+                  </p>
+               </div>
+            </div>
+            
+            <div type="position" xml:id="position_1742_ame_7">
+               <div type="diaryEntry" xml:id="diaryEntry_1742_ame_9">
+                  <head><lb/>d 27t. May/7t. Jun.</head>
+                  <p>
+                     <lb/>Ja ich will euch tragen bis ins Alter
+                  </p>
+                  <p>
+                     <lb/>u. bis ihr Grau werdt, ich wills thun,
+                  </p>
+                  <p>
+                     <lb/>ich will heben, tragen u erretten.
+                  </p>
+                  <p>
+                     <lb/>bis wir das Triumphs-Lied singen,
+                  </p>
+                  <p>
+                     <lb/>So gewonnen wie geizt.
+                  </p>
+                  <p>
+                     <lb/>Wir waren heute Nacht immer starck fortgesegelt, daß wir früh 6. Uhr nur noch 12.
+                     <lb/>Meilen v. <rs type="place">Philadelphia</rs> waren.
+                  </p>
+                  <p>
+                     <lb/>2.) Wir [?] in <rs type="place">Philadelphia</rs> um 11. Uhr waren.
+                     <lb/>Unsre <rs type="person">Brr.</rs> kamen gleich ans Schiff, außer
+                     <lb/><rs type="person">Ludewig</rs>, der just in d. Engl. Kirche predigte.
+                  </p>
+                  <p>
+                     <lb/>3.) Nach der Predigt kam er zu uns, empfing uns u. freute s. mit uns
+                  </p>
+                  <p>
+                     <lb/>4.) Es wurde uns gemacht, daß vor die
+                     <lb/><rs type="person">Engl. Geschw.</rs> ein Haus gantz besonders gemiethet werden solte, welches war <rs type="person">Br. Evans’s.</rs>
+                     <lb/>Die <rs type="person">teutsch. verhayrathete Geschw.</rs> solten
+                     <lb/>in <rs type="person">Ludewigs</rs> Hause wohnen, u. die <rs type="person">teutsche
+                     <lb/>ledigen Brr.</rs> aufm Schiff wohnen bleiben,
+                     <lb/>unter d. Auf Sicht <rs type="person">Br. Weyners</rs> bis wir
+                     <lb/>nach d. <rs type="place">Jork</rs> ges.
+                  </p>
+                  <p>
+                     <lb/>5.) Wir sahen heute v. uns. Geschw.
+                     <lb/><rs type="person">Ludewig</rs>, <rs type="person">Anna</rs>, <rs type="person">Moltherin</rs>,
+                     <lb/><rs type="person">Rauch</rs>, <rs type="person">Fröhlich</rs>, <rs type="person">Buttner</rs>, <rs type="person">Pyrlaeni.</rs>
+                  </p>
+               </div>
+            </div>
+         </div>
+      </body>
+   </text>
+</TEI>
