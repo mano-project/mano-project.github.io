@@ -16,7 +16,7 @@ function addManuscriptForm(data = {}) {
   form.className = 'accordion mb-4';
   form.setAttribute('data-index', manuscriptCounter);
   form.innerHTML = `
-    <div class="container border rounded p-4">
+    <div class="container manuscript-container border rounded p-4">
         <h4 class="pb-3">${title}</h4>
         <div class="accordion" id="accordion-${id}">
             <form id="${formId}" class="msForm">

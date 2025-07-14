@@ -148,4 +148,18 @@ section h2 {
   .hp-subtitle {
     font-size: 1.1rem;
   }
+
+.container-page{
+  padding-left:0px;
+  padding-right:0px;
+}
+  .manuscript-container{
+    padding: 8px!important;
+  }
+  .accordion-body {
+    padding:0px;
+  }
+  .accordion-body h6 {
+    padding-left:8px;
+  }
 }
