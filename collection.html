@@ -63,16 +63,24 @@
           <h1 class="page-title">Metadata Collection</h1>
 
           <div class="row my-4 align-items-end">
-            <div class="col-md-6 d-flex justify-content-start">
-              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#infoMetadataCollection">
-                About Metadata Collection
-              </button>
-            </div>
-            <div class="col-md-6 d-flex justify-content-end">
-              <a href="https://github.com/mano-project/mano-metadata/tree/main/data" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Contribute to the Collection
-              <i class="fab fa-github fa-xl ms-2"></i></a>
-            </div>
+          <!-- Left column -->
+          <div class="col-12 col-md-6 d-flex justify-content-start mb-2 mb-md-0">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#infoMetadataCollection">
+              About Metadata Collection
+            </button>
           </div>
+
+          <!-- Right column -->
+          <div class="col-12 col-md-6 d-flex justify-content-start justify-content-md-end">
+            <a href="https://github.com/mano-project/mano-metadata/tree/main/data" 
+              class="btn btn-primary" 
+              target="_blank" 
+              rel="noopener noreferrer">
+              Contribute to the Collection <i class="fab fa-github fa-xl ms-2"></i>
+            </a>
+          </div>
+        </div>
+
 
           <!-- About Metadata Editor Modal -->
           <div class="modal fade" id="infoMetadataCollection" tabindex="-1" aria-labelledby="infoMetadataCollectionLabel" aria-hidden="true">

@@ -69,7 +69,7 @@
                     <li class="nav-item"><a class="nav-link" href="resources.html">Resources</a></li>
                     <li class="nav-item"><a class="nav-link" href="editor.html">Metadata Editor</a></li>
                     <li class="nav-item"><a class="nav-link" href="collection.html">Metadata Collection</a></li>
-                    <li class="nav-item"><a class="nav-link editor" href="viewer.html">Transcription Viewer</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="viewer.html">Transcription Viewer</a></li>
                     <li class="nav-item"><a class="nav-link" href="contacts.html">Contacts</a></li>
                     </ul>
                 </div>
@@ -82,14 +82,43 @@
             <button onclick="history.back()" class="btn btn-sm btn-outline-secondary">&larr; Back</button>
           </div>
           <h1 class="page-title">Transcription Viewer</h1>
-          
-            
-                <div class="row mb-3">
-                    <div class="col">
-                        <label for="xmlFileInput" class="form-label">Upload TEI-XML</label>
-                        <input class="form-control" type="file" id="xmlFileInput" accept=".xml">
-                    </div>
+
+          <div class="row align-items-end my-4">
+            <!-- Button column -->
+            <div class="col-md-auto mb-3 mb-md-0">
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#infoTranscriptionViewer">
+                About Transcription Viewer
+              </button>
+            </div>
+
+            <!-- File input column -->
+            <div class="col-md mb-3 mb-md-0">
+              <label for="xmlFileInput" class="form-label">Upload TEI-XML</label>
+              <input class="form-control" type="file" id="xmlFileInput" accept=".xml">
+            </div>
+          </div>
+
+
+          <!-- About Metadata Editor Modal -->
+          <div class="modal fade" id="infoTranscriptionViewer" tabindex="-1" aria-labelledby="infoTranscriptionViewerLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="infoTranscriptionViewerLabel">About Metadata Editor</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
+                <div class="modal-body">
+                  <span>The Transcription Viewer allows the upload of manuscript transcriptions created with external tools in XML format. Once loaded, the transcription is displayed in three synchronized views: the <b>raw XML code</b>, a <b>rendered text</b> version with basic styling, and - when available - <b>digitized manuscript images</b> aligned with the transcription. This setup enables a combined view of structure, content, and original manuscript facsimiles.
+                  <br/>The XML can be modified directly within the editor panel. By clicking <b>Update Preview</b>, the visual rendering and image alignment are refreshed to reflect the changes. The updated transcription may then be downloaded as a new XML file for further use.
+                  </span>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
 
                 <div id="pageNav" class="text-center mb-3">
                   <button class="btn btn-outline-primary btn-sm" onclick="previousPage()">Previous Page</button>

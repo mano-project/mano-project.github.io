@@ -66,21 +66,25 @@
                     
           <div class="container data-enter">
             <div class="row my-4 align-items-end">
-              <div class="col-md-4 d-flex justify-content-start">
+              <!-- Left column -->
+              <div class="col-12 col-md-4 d-flex justify-content-start mb-2 mb-md-0">
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#infoMetadataEditor">
                   About Metadata Editor
                 </button>
               </div>
 
-              <div class="col-md-4 text-center">
+              <!-- Middle column -->
+              <div class="col-12 col-md-4 text-start text-md-center mb-2 mb-md-0">
                 <label for="fileUpload" class="form-label">Upload XML or JSON</label>
                 <input type="file" id="fileUpload" class="form-control" accept=".xml,.json">
               </div>
 
-              <div class="col-md-4 d-flex justify-content-end">
+              <!-- Right column -->
+              <div class="col-12 col-md-4 d-flex justify-content-start justify-content-md-end">
                 <button id="addManuscriptBtn" class="btn btn-primary">Add manuscript</button>
               </div>
             </div>
+
             <div id="manuscriptFormsContainer"></div>
             <div class="text-center mt-5">
               <div class="dropdown">

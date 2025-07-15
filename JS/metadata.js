@@ -6,7 +6,7 @@ document.getElementById('addManuscriptBtn').addEventListener('click', () => {
   addManuscriptForm();
 });
 
-function addManuscriptForm(data = {}) {
+function addManuscriptForm(data = {}, shouldScroll = true) {
   manuscriptCounter++;
   const id = `manuscript-${manuscriptCounter}`;
   const formId = `msForm-${manuscriptCounter}`;
@@ -315,7 +315,10 @@ function addManuscriptForm(data = {}) {
     `;
   container.appendChild(form);
   
-  form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  // ✅ Scroll only if explicitly requested
+  if (shouldScroll) {
+    form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
 
   return form
 }
@@ -1252,7 +1255,7 @@ document.getElementById('fileUpload').addEventListener('change', function (e) {
   reader.readAsText(file);
 });
 
-addManuscriptForm();
+addManuscriptForm({}, false);
 
 
 document.addEventListener('input', function (e) {
