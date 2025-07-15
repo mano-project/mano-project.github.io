@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" translate="no" class="notranslate">
     <head>
         <title>MANO - Manuscripts online</title>
-        <meta name="keywords" content="MANO, Manuscripts Online, Herbstakademie">
+        <meta name="keywords" content="MANO, Manuscripts Online, Home">
         <meta name="description" content="">
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0 shrink-to-fit=no"/>
@@ -43,8 +43,10 @@
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                     <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="background.html">Background</a></li>
-                    <li class="nav-item"><a class="nav-link" href="playground.html">Playground</a></li>
+                    <li class="nav-item"><a class="nav-link" href="resources.html">Resources</a></li>
+                    <li class="nav-item"><a class="nav-link" href="editor.html">Metadata Editor</a></li>
+                    <li class="nav-item"><a class="nav-link" href="collection.html">Metadata Collection</a></li>
+                    <li class="nav-item"><a class="nav-link" href="viewer.html">Transcription Viewer</a></li>
                     <li class="nav-item"><a class="nav-link" href="contacts.html">Contacts</a></li>
                     </ul>
                 </div>
@@ -63,20 +65,21 @@
         <section class="bg-light py-2 my-3">
             <div class="container my-5">
                 <div class="row text-center">
-                    <div class="col-md-4 mb-5">
-                        <h3>Learning Materials</h3>
-                        <p>Learn about digital editing, TEI standards, and manuscript studies through curated resources.</p>
-                        <a href="background.html" class="btn btn-sm btn-outline-primary">Read More</a>
-                    </div>
+                   
                     <div class="col-md-4 mb-5">
                         <h3>Metadata Editor</h3>
                         <p>Enter and structure manuscript metadata using TEI structure. Export your data in multiple formats.</p>
-                        <a href="playground-metadata.html" class="btn btn-sm btn-outline-primary">Try it</a>
+                        <a href="editor.html" class="btn btn-sm btn-outline-primary">Enter data</a>
+                    </div>
+                     <div class="col-md-4 mb-5">
+                        <h3>Metadata Collection</h3>
+                        <p>Browse the collection of manuscript descriptions generated and enriched by users.</p>
+                        <a href="collection.html" class="btn btn-sm btn-outline-primary">Browse the collection</a>
                     </div>
                     <div class="col-md-4">
-                        <h3>Transcription Tool</h3>
+                        <h3>Transcription Viewer</h3>
                         <p>Work with XML transcriptions side-by-side with facsimiles and live preview.</p>
-                        <a href="playground-transcription.html" class="btn btn-sm btn-outline-primary">Transcribe</a>
+                        <a href="viewer.html" class="btn btn-sm btn-outline-primary">View your transcription</a>
                     </div>
                 </div>
             </div>
@@ -85,38 +88,42 @@
         <section class="container my-5">
             <h2 class="text-center">What is &lt;MANO&gt;?</h2>
             
-            <p style="text-align: justify;"><span class="mano">&lt;MANO&gt;</span> is a digital platform designed to support the scholarly study, description, and transcription of medieval manuscripts. Created for academic training and research purposes, <span class="mano">&lt;MANO&gt;</span> serves as a workspace where users can interact with digitized manuscript sources through structured metadata entry and transcription tools. By combining a user-friendly interface with compliance to <a href="https://tei-c.org/guidelines/p5/" target="_blank">TEI P5</a> standards, it allows researchers, students, and educators to create rich, interoperable descriptions of manuscripts, encode historical data, and analyze textual structures with precision. The platform enables users to upload, annotate, and export their work in widely used formats such as XML, JSON, RDF, and CSV, ensuring compatibility with other digital humanities projects and long-term reusability of the data.</p>
-            <p style="text-align: justify;">One of <span class="mano">&lt;MANO&gt;</span>'s key strengths lies in its dual focus on structure and content. The <a href="playground.html">Playground</a> section of the site offers two powerful modules: one for the creation and editing of manuscript metadata, and another for XML-based transcription. The <a href="playground-metadata.html">Metadata editor</a> facilitates the documentation of a manuscript's physical, historical, and codicological features, including origin, provenance, script, dimensions, and more, while offering download options for further analysis or archival purposes. The <a href="playground-transcription.html">Transcription tool</a> supports TEI XML encoding and provides a visual interface where users can simultaneously view XML code, rendered transcription, and manuscript facsimiles. This integrated setup makes <span class="mano">&lt;MANO&gt;</span> a practical and pedagogical tool for teaching manuscript studies, experimenting with digital editing, and engaging in collaborative research. It empowers users not only to study manuscripts but to meaningfully contribute to the creation of digital scholarly resources.</p>
+            <p style="text-align: justify;"><span class="mano">&lt;MANO&gt;</span> is a digital platform designed to support the scholarly study, structured description, and transcription of manuscripts. Developed for academic research and teaching, <span class="mano">&lt;MANO&gt;</span> serves as a workspace where users can interact with sources through structured metadata entry, manuscripts metadata collections and transcription viewer. By combining a user-friendly interface with compliance to <a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/MS.html" target="_blank">TEI P5 manuscript description guidelines</a>, the platform enables the creation of interoperable metadata, encoding of historical and codicological data, and export of information in widely used formats such as TEI-XML, JSON, RDF, and CSV. This ensures both compatibility with other digital humanities initiatives and long-term reusability of the data.</p>
+            <p style="text-align: justify;">The <a href="editor.html">Metadata editor</a> facilitates detailed documentation of a manuscript's physical, historical, and codicological features - such as origin, provenance, script, dimensions, and more - while offering download options for further analysis or archival purposes. Once manuscript metadata is finalized, the resulting JSON files can be contributed to the <span class="mano">&lt;MANO&gt;</span> GitHub repository. All records automatically become part of the publicly accessible <a href="collection.html">Metadata Collection</a>, where manuscript descriptions contributed by the community can be explored, searched, and filtered. 
+            The <a href="viewer.html">Transcription Viewer</a> supports TEI XML encoding and provides a visual interface where users can simultaneously view XML code, rendered transcription, and digitized facsimiles for a fully synchronized editing and reading experience.
+            
+            In addition, the <a href="resources.html">Resources</a> section provides learning materials, guidelines, and references for manuscript studies, TEI encoding, and digital editing practices. This combination of structured metadata management, collaborative metadata sharing, transcription tools, and educational resources makes <span class="mano">&lt;MANO&gt;</span> a practical tool for teaching manuscript studies, experimenting with digital editing, and engaging in collaborative research. It empowers users not only to study manuscripts but to meaningfully contribute to the creation of digital scholarly resources.</p>
         </section>
 
         
-        <footer class="footer bg-body-tertiary text-center text-lg-start py-3 border-top">
+        <footer class="footer bg-body-tertiary text-center py-4">
             <div class="container">
-                <div class="row align-items-center text-center text-lg-start">
 
-                    <!-- Left Section -->
-                    <div class="col-12 col-lg-4 mb-2 mb-lg-0 text-lg-start">
-                        <span>© 2025 <span class="mano">&lt;MANO&gt;</span></span>
-                    </div>
+            <!-- Logo centered -->
+            <div class="mb-3">
+                <a class="navbar-brand" href="index.html">
+                <img src="images/MANO.png" alt="Logo" width="80">
+                </a>
+            </div>
 
-                    <!-- Center Section (Logo) -->
-                    <div class="col-12 col-lg-4 mb-2 mb-lg-0 text-center">
-                        <a class="navbar-brand" href="index.html">
-                        <img src="images/MANO.png" alt="Logo" width="50">
-                        </a>
-                    </div>
+            <!-- Links centered in one line -->
+            <div class="mb-3">
+                <a class="footer-link mx-2" href="index.html">Home</a>
+                <a class="footer-link mx-2" href="resources.html">Resources</a>
+                <a class="footer-link mx-2" href="editor.html">Metadata Editor</a>
+                <a class="footer-link mx-2" href="collection.html">Metadata Collection</a>
+                <a class="footer-link mx-2" href="viewer.html">Transcription Viewer</a>
+                <a class="footer-link mx-2" href="contacts.html">Contacts</a>
+            </div>
 
-                    <!-- Right Section (Links) -->
-                    <div class="col-12 col-lg-4 text-lg-end">
-                        <a class="footer-link mx-2" href="index.html">Home</a>
-                        <a class="footer-link mx-2" href="background.html">Background</a>
-                        <a class="footer-link mx-2" href="playground.html">Playground</a>
-                        <a class="footer-link mx-2" href="contacts.html">Contacts</a>
-                    </div>
+            <!-- Copyright centered -->
+            <div class="text-center mt-2">
+                <span>© 2025 <span class="mano">&lt;MANO&gt;</span></span>
+            </div>
 
-                </div>
             </div>
         </footer>
+
     </body>
 </html>
     

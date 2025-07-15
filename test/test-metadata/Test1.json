@@ -1,0 +1,149 @@
+[
+  {
+    "msTitle": "Test1",
+    "publicationStmt": "CC0",
+    "repository": "Test1",
+    "geoRepository": "00.00, 00.00",
+    "settlementIdent": "Test1",
+    "countryIdent": "Test1",
+    "idno": "Test1",
+    "msSigle": "Test1",
+    "altIdentifier": "Test1",
+    "msName": "Test1",
+    "summaryContents": "test test test ",
+    "material": "pergament",
+    "height": "30",
+    "width": "20",
+    "leaves": "300",
+    "condition": "test test test",
+    "columns": "2",
+    "lines": "30",
+    "hands": "10",
+    "script": "Test1",
+    "summaryProvenance": "test test test",
+    "origPlace": "Test1",
+    "geoOrigin": "00.00, 00.00",
+    "dateOrigin": "1000",
+    "regionOrigin": "Test1",
+    "countryOrigin": "Test1",
+    "prevOwner": "Test1",
+    "geoProvenance": "00.00, 00.00",
+    "settlementProvenance": "Test1",
+    "regionProvenance": "Test1",
+    "countryProvenance": "Test1",
+    "digi": "https://https://burchards-dekret-digital.de/",
+    "iiifManifest": "https://https://burchards-dekret-digital.de/",
+    "cat": "https://https://burchards-dekret-digital.de/",
+    "responsiblePersons": [
+      {
+        "name": "Michela",
+        "surname": "Parma",
+        "affiliation": "Uni Mainz"
+      },
+      {
+        "name": "Fabio",
+        "surname": "Mariani",
+        "affiliation": "Uni Augsburg"
+      }
+    ],
+    "msItems": [
+      {
+        "author": "Test1",
+        "title": "Test1",
+        "textLang": "Test1",
+        "incipit": "test test test",
+        "explicit": "test test test",
+        "textFamily": "Test1",
+        "textSubFamily": "Test1",
+        "textGenre": "Test1",
+        "pageRanges": [
+          {
+            "from": "1",
+            "to": "100"
+          },
+          {
+            "from": "201",
+            "to": "205"
+          },
+          {
+            "from": "207",
+            "to": "210"
+          }
+        ]
+      },
+      {
+        "author": "Test2",
+        "title": "Test2",
+        "textLang": "Test2",
+        "incipit": "test test test",
+        "explicit": "test test test",
+        "textFamily": "Test2",
+        "textSubFamily": "Test2",
+        "textGenre": "Test2",
+        "pageRanges": [
+          {
+            "from": "101",
+            "to": "200"
+          },
+          {
+            "from": "306",
+            "to": "310"
+          },
+          {
+            "from": "311",
+            "to": "315"
+          }
+        ]
+      }
+    ],
+    "literature": [
+      {
+        "type": "book",
+        "title": "Title1",
+        "date": "2000",
+        "citedRange": "1-10",
+        "publisher": "Test1",
+        "pubPlace": "Test1",
+        "series": "Test1",
+        "authors": [
+          {
+            "forename": "Author1",
+            "surname": "Author1"
+          },
+          {
+            "forename": "Author2",
+            "surname": "Author2"
+          }
+        ],
+        "editors": [
+          "Editor1",
+          "Editor2"
+        ]
+      },
+      {
+        "type": "journalArticle",
+        "title": "Title2",
+        "date": "2005",
+        "citedRange": "1-20",
+        "publisher": "Test2",
+        "pubPlace": "Test2",
+        "series": "Test2",
+        "authors": [
+          {
+            "forename": "Author1",
+            "surname": "Author1"
+          },
+          {
+            "forename": "Author2",
+            "surname": "Author2"
+          }
+        ],
+        "editors": [
+          "Editor1",
+          "Editor2",
+          "Editor3"
+        ]
+      }
+    ]
+  }
+]

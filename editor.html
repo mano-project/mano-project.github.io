@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" translate="no" class="notranslate">
     <head>
-        <title>MANO - Playground Metadata</title>
-        <meta name="keywords" content="MANO, Manuscripts Online, Herbstakademie, Playground">
+        <title>MANO - Metadata Editor</title>
+        <meta name="keywords" content="MANO, Manuscripts Online, Metadata Editor">
         <meta name="description" content="">
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0 shrink-to-fit=no"/>
@@ -47,8 +47,10 @@
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                     <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="background.html">Background</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="playground.html">Playground</a></li>
+                    <li class="nav-item"><a class="nav-link" href="resources.html">Resources</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="editor.html">Metadata Editor</a></li>
+                    <li class="nav-item"><a class="nav-link" href="collection.html">Metadata Collection</a></li>
+                    <li class="nav-item"><a class="nav-link" href="viewer.html">Transcription Viewer</a></li>
                     <li class="nav-item"><a class="nav-link" href="contacts.html">Contacts</a></li>
                     </ul>
                 </div>
@@ -61,22 +63,29 @@
             <button onclick="history.back()" class="btn btn-sm btn-outline-secondary">&larr; Back</button>
           </div>
           <h1 class="page-title">Metadata Editor</h1>
-          
+                    
           <div class="container data-enter">
-            <div class="mb-4 row align-items-end">
-              <div class="col-md-6">
+            <div class="row my-4 align-items-end">
+              <div class="col-md-4 d-flex justify-content-start">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#infoMetadataEditor">
+                  About Metadata Editor
+                </button>
+              </div>
+
+              <div class="col-md-4 text-center">
                 <label for="fileUpload" class="form-label">Upload XML or JSON</label>
                 <input type="file" id="fileUpload" class="form-control" accept=".xml,.json">
               </div>
-              <div class="col-md-6">
-                <button id="addManuscriptBtn" class="btn btn-primary mt-3">Add manuscript</button>
+
+              <div class="col-md-4 d-flex justify-content-end">
+                <button id="addManuscriptBtn" class="btn btn-primary">Add manuscript</button>
               </div>
             </div>
             <div id="manuscriptFormsContainer"></div>
             <div class="text-center mt-5">
               <div class="dropdown">
                 <button class="btn btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Download manuscript metadata
+                  Download Metadata
                 </button>
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item" id="downloadAllJSON">JSON</a></li>
@@ -87,6 +96,35 @@
             </div>
           </div>
         </div>
+
+        <!-- About Metadata Editor Modal -->
+          <div class="modal fade" id="infoMetadataEditor" tabindex="-1" aria-labelledby="infoMetadataEditorLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="infoMetadataEditorLabel">About Metadata Editor</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <p>The Metadata Editor enables the structured creation and management of manuscript metadata in full compliance with the <a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/MS.html" target="_blank">TEI P5 manuscript description guidelines</a>. A single session may include the description of one or multiple manuscripts. Each manuscript can be exported individually in TEI-XML, JSON, CSV, or RDF formats, while all manuscripts described during the session may also be downloaded collectively in these same formats.
+                  </p>
+                  <p>
+                    Existing metadata files, provided in JSON or TEI-XML, may be reloaded into the editor. When the file is compliant with the metadata structre implemented in MANO, the information is automatically restored into the form, allowing previously interrupted work to be resumed seamlessly without the need for manual re-entry.
+                  </p>
+                  <p>
+                    JSON metadata files can be uploaded to the 
+                    <a href="https://github.com/mano-project/mano-metadata/tree/main/data" target="_blank">MANO GitHub repository</a>. Once accepted, these 
+                    records will enrich the publicly accessible 
+                    <a href="collection.html">MANO Metadata Collection</a>, enriching the shared digital resource for manuscript research.
+                  </p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
 
         <!-- Modal for XML display -->
         <div class="modal fade" id="xmlModal" tabindex="-1" aria-labelledby="xmlModalLabel" aria-hidden="true">
@@ -103,29 +141,31 @@
           </div>
         </div>
 
-        <footer class="footer bg-body-tertiary text-center text-lg-start py-3 border-top">
+        <footer class="footer bg-body-tertiary text-center py-4">
             <div class="container">
-                <div class="row align-items-center text-center text-lg-start">
-                    <!-- Left Section -->
-                    <div class="col-12 col-lg-4 mb-2 mb-lg-0 text-lg-start">
-                        <span>© 2025 <span class="mano">&lt;MANO&gt;</span></span>
-                    </div>
 
-                    <!-- Center Section (Logo) -->
-                    <div class="col-12 col-lg-4 mb-2 mb-lg-0 text-center">
-                        <a class="navbar-brand" href="index.html">
-                        <img src="images/MANO.png" alt="Logo" width="50">
-                        </a>
-                    </div>
+            <!-- Logo centered -->
+            <div class="mb-3">
+                <a class="navbar-brand" href="index.html">
+                <img src="images/MANO.png" alt="Logo" width="80">
+                </a>
+            </div>
 
-                    <!-- Right Section (Links) -->
-                    <div class="col-12 col-lg-4 text-lg-end">
-                        <a class="footer-link mx-2" href="index.html">Home</a>
-                        <a class="footer-link mx-2" href="background.html">Background</a>
-                        <a class="footer-link mx-2" href="playground.html">Playground</a>
-                        <a class="footer-link mx-2" href="contacts.html">Contacts</a>
-                    </div>
-                </div>
+            <!-- Links centered in one line -->
+            <div class="mb-3">
+                <a class="footer-link mx-2" href="index.html">Home</a>
+                <a class="footer-link mx-2" href="resources.html">Resources</a>
+                <a class="footer-link mx-2" href="editor.html">Metadata Editor</a>
+                <a class="footer-link mx-2" href="collection.html">Metadata Collection</a>
+                <a class="footer-link mx-2" href="viewer.html">Transcription Viewer</a>
+                <a class="footer-link mx-2" href="contacts.html">Contacts</a>
+            </div>
+
+            <!-- Copyright centered -->
+            <div class="text-center mt-2">
+                <span>© 2025 <span class="mano">&lt;MANO&gt;</span></span>
+            </div>
+
             </div>
         </footer>
 

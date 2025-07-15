@@ -35,7 +35,7 @@ function addManuscriptForm(data = {}) {
                                     </div>
                                     
                                     <div class="col-md-6">
-                                        <label class="form-label">Publication details</label>
+                                        <label class="form-label">License</label>
                                         <select class="form-select" name="publicationStmt">
                                             <option value="">Please select</option>
                                             ${['CC BY','CC BY-SA','CC BY-ND','CC BY-NC','CC BY-NC-SA','CC BY-NC-ND','CC0']
@@ -314,6 +314,8 @@ function addManuscriptForm(data = {}) {
     </div>
     `;
   container.appendChild(form);
+  
+  form.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
   return form
 }
@@ -872,7 +874,7 @@ function downloadXML(formId) {
 
 
 // Download JSON, CSV, RDF
-document.getElementById('downloadAllJSON').addEventListener('click', () => {
+/*document.getElementById('downloadAllJSON').addEventListener('click', () => {
   const all = [...document.querySelectorAll('.msForm')].map(f => getFormData(f.id));
   downloadFile('all-manuscripts.json', JSON.stringify(all, null, 2), 'application/json');
 });
@@ -905,7 +907,50 @@ document.getElementById('downloadAllRDF').addEventListener('click', () => {
   });
   rdf += '</rdf:RDF>';
   downloadFile('all-manuscripts.rdf', rdf, 'application/rdf+xml');
+});*/
+
+function buildCombinedFileName(all) {
+  const titles = all.map(row => row.msTitle?.trim() || 'Untitled');
+  return titles.join('_').replace(/[\\/:*?"<>|]/g, '_');
+}
+
+document.getElementById('downloadAllJSON').addEventListener('click', () => {
+  const all = [...document.querySelectorAll('.msForm')].map(f => getFormData(f.id));
+  const fileBase = buildCombinedFileName(all);
+  downloadFile(`${fileBase}.json`, JSON.stringify(all, null, 2), 'application/json');
 });
+
+document.getElementById('downloadAllCSV').addEventListener('click', () => {
+  const all = [...document.querySelectorAll('.msForm')].map(f => getFormData(f.id));
+  const headers = Object.keys(all[0] || {});
+  const csv = [headers.join(',')].concat(
+    all.map(row =>
+      headers.map(h => {
+        const val = row[h];
+        const str = typeof val === 'string' ? val : JSON.stringify(val);
+        return `"${(str || '').replace(/"/g, '""')}"`;
+      }).join(',')
+    )
+  ).join('\n');
+  const fileBase = buildCombinedFileName(all);
+  downloadFile(`${fileBase}.csv`, csv, 'text/csv');
+});
+
+document.getElementById('downloadAllRDF').addEventListener('click', () => {
+  const all = [...document.querySelectorAll('.msForm')].map(f => getFormData(f.id));
+  let rdf = `<?xml version="1.0"?>\n<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">\n`;
+  all.forEach((row, i) => {
+    rdf += `  <rdf:Description rdf:about="http://example.org/manuscript/${i + 1}">\n`;
+    for (const key in row) {
+      rdf += `    <${key}>${escapeXml(row[key])}</${key}>\n`;
+    }
+    rdf += `  </rdf:Description>\n`;
+  });
+  rdf += '</rdf:RDF>';
+  const fileBase = buildCombinedFileName(all);
+  downloadFile(`${fileBase}.rdf`, rdf, 'application/rdf+xml');
+});
+
 
 function downloadFile(filename, content, type) {
   const blob = new Blob([content], { type });
