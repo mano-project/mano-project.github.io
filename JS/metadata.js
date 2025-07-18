@@ -68,22 +68,22 @@ function addManuscriptForm(data = {}, shouldScroll = true) {
                                 <div class="row mb-3">
                                     <div class="col-md">
                                         <label class="form-label">Library</label>
-                                        <input type="text" class="form-control" name="repository" value="${data.repository || ''}">
+                                        <input type="text" class="form-control lod-autocomplete" data-lod="wikidata-place" name="repository" value="${data.repository || ''}">
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <div class="col-md">
                                         <label class="form-label">Geographical coordinates</label>
                                         <input type="text" class="form-control geo-coord" name="geoRepository"
-                                        placeholder="Enter geographical coordinates of the library"
+                                        placeholder="Library's geo coordinates"
                                         data-error="Please enter in the format: 49.890972, 10.894102" value="${data.geoRepository || ''}">
                                     </div>
                                     <div class="col-md">
-                                        <label class="form-label">Place</label>
+                                        <label class="form-label">Settlement</label>
                                         <input type="text" class="form-control" name="settlementIdent" value="${data.settlementIdent || ''}">
                                     </div>
                                     <div class="col-md">
-                                        <label class="form-label">Land</label>
+                                        <label class="form-label">Country</label>
                                         <input type="text" class="form-control" name="countryIdent" value="${data.countryIdent || ''}">
                                     </div>
                                 </div>
@@ -137,46 +137,53 @@ function addManuscriptForm(data = {}, shouldScroll = true) {
                     <div id="collapse3-${id}" class="accordion-collapse collapse" aria-labelledby="heading3-${id}">
                         <div class="accordion-body">
                             <fieldset class="p-3">
-                                <div class="row mb-3">
-                                    <div class="col-md-3">
-                                        <label class="form-label">Material</label>
-                                        <input type="text" class="form-control" name="material" value="${data.material || ''}">
-                                    </div>
-                                    <div class="col-md-3">
-                                        <label class="form-label">Height (cm)</label>
-                                        <input type="number" class="form-control" name="height" value="${data.height || ''}" min="1">
-                                    </div>
-                                    <div class="col-md-3">
-                                        <label class="form-label">Width (cm)</label>
-                                        <input type="number" class="form-control" name="width" value="${data.width || ''}" min="1">
-                                    </div>
-                                    <div class="col-md-3">
-                                        <label class="form-label">Leaves</label>
-                                        <input type="number" class="form-control" name="leaves" value="${data.leaves || ''}" min="1" step="1">
-                                    </div>
-                                </div>
-                                <div class="mb-3">
+                              <div class="row mb-3">
+                                <div class="col-md-6">
                                     <label class="form-label">Condition</label>
                                     <input type="text" class="form-control" name="condition" value="${data.condition || ''}">
                                 </div>
+                                <div class="col-md-2">
+                                    <label class="form-label">Hands</label>
+                                    <input type="number" class="form-control" name="hands" value="${data.hands || ''}" min="1" step="1">
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">Font description</label>
+                                    <input type="text" class="form-control lod-autocomplete" data-lod="getty-script" name="script" value="${data.script || ''}">
+                                </div>
+                              </div>
                                 <div class="row mb-3">
-                                    <div class="col-md-3">
+                                    <div class="col-md-2">
+                                      <label class="form-label">Material</label>
+                                      <select class="form-select" name="material">
+                                        <option value="">Please select</option>
+                                        <option value="parchment" ${data.material === 'parchment' ? 'selected' : ''}>Parchment</option>
+                                        <option value="paper" ${data.material === 'paper' ? 'selected' : ''}>Paper</option>
+                                        <option value="papyrus" ${data.material === 'papyrus' ? 'selected' : ''}>Papyrus</option>
+                                      </select>
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <label class="form-label">Height (cm)</label>
+                                        <input type="number" class="form-control" name="height" value="${data.height || ''}" min="1">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label class="form-label">Width (cm)</label>
+                                        <input type="number" class="form-control" name="width" value="${data.width || ''}" min="1">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label class="form-label">Leaves</label>
+                                        <input type="number" class="form-control" name="leaves" value="${data.leaves || ''}" min="1" step="1">
+                                    </div>
+                                    <div class="col-md-2">
                                         <label class="form-label">Columns</label>
                                         <input type="number" class="form-control" name="columns" value="${data.columns || ''}" min="0" step="1">
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-2">
                                         <label class="form-label">Lines</label>
                                         <input type="number" class="form-control" name="lines" value="${data.lines || ''}" min="1" step="1">
                                     </div>
-                                    <div class="col-md-3">
-                                        <label class="form-label">Hands</label>
-                                        <input type="number" class="form-control" name="hands" value="${data.hands || ''}" min="1" step="1">
-                                    </div>
-                                    <div class="col-md-3">
-                                        <label class="form-label">Font description</label>
-                                        <input type="text" class="form-control" name="script" value="${data.script || ''}">
-                                    </div>
                                 </div>
+                                
                             </fieldset>
                         </div>
                     </div>
@@ -184,7 +191,7 @@ function addManuscriptForm(data = {}, shouldScroll = true) {
 
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="heading4-${id}">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4-${id}" aria-expanded="false" aria-controls="collapse4-${id}">4. Place of origin and provenance</button>
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4-${id}" aria-expanded="false" aria-controls="collapse4-${id}">4. History</button>
                     </h2>
                     <div id="collapse4-${id}" class="accordion-collapse collapse" aria-labelledby="heading4-${id}">
                         <div class="accordion-body">
@@ -197,61 +204,41 @@ function addManuscriptForm(data = {}, shouldScroll = true) {
                             <h6>Place of origin</h6>
                             <fieldset class="p-3">
                                 <div class="row mb-3">
-                                    <div class="col-md-6">
+                                    <div class="col-md">
                                         <label class="form-label">Place of origin</label>
-                                        <input type="text" class="form-control" name="origPlace" value="${data.origPlace || ''}">
+                                        <input type="text" class="form-control lod-autocomplete" data-lod="wikidata-place" name="origPlace" value="${data.origPlace || ''}">
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md">
                                         <label class="form-label">Geographical coordinates</label>
                                         <input type="text" class="form-control geo-coord" name="geoOrigin"
-                                        placeholder="Enter geographical coordinates of the place of origin"
-                                        data-error="Bitte im Format: 49.890972, 10.894102 eingeben" value="${data.geoOrigin || ''}">
-                                    </div>     
-                                </div>
-                                <div class="row mb-3">
+                                        placeholder="Origin place's geo coordinates"
+                                        data-error="Please enter in the format: 49.890972, 10.894102" value="${data.geoOrigin || ''}">
+                                    </div>  
                                     <div class="col-md">
-                                        <label class="form-label">Date of origin</label>
-                                        <input type="text" class="form-control" name="dateOrigin" value="${data.dateOrigin || ''}">
-                                    </div>
-                                    <div class="col-md">
-                                        <label class="form-label">Region</label>
-                                        <input type="text" class="form-control" name="regionOrigin" value="${data.regionOrigin || ''}">
-                                    </div>
-                                    <div class="col-md">
-                                        <label class="form-label">Land</label>
+                                        <label class="form-label">Country</label>
                                         <input type="text" class="form-control" name="countryOrigin" value="${data.countryOrigin || ''}">
+                                    </div>
+                                    
+                                       
+                                </div>
+                                <div class="row mb-3">                                                                     
+                                    <div class="col-md">
+                                      <label class="form-label">Earliest possible date of origin</label>
+                                      <input type="text" class="form-control" name="dateOriginNotBefore" value="${data.dateOriginNotBefore || ''}">
+                                    </div>
+                                    <div class="col-md">
+                                      <label class="form-label">Latest possible date of origin</label>
+                                      <input type="text" class="form-control" name="dateOriginNotAfter" value="${data.dateOriginNotAfter || ''}">
                                     </div>
                                 </div>
                             </fieldset>
                             
                             <h6>Provenance</h6>
                             <fieldset class="p-3">
-                                <div class="row mb-3">
-                                    <div class="col-md-6">
-                                        <label class="form-label">Previous owner</label>
-                                        <input type="text" class="form-control" name="prevOwner" value="${data.prevOwner || ''}">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label class="form-label">Geographical coordinates</label>
-                                        <input type="text" class="form-control geo-coord" name="geoProvenance"
-                                        placeholder="Enter geographical coordinates of the provenance place"
-                                        data-error="Bitte im Format: 49.890972, 10.894102 eingeben" value="${data.geoProvenance || ''}">
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <div class="col-md">
-                                    <label class="form-label">Place</label>
-                                    <input type="text" class="form-control" name="settlementProvenance" value="${data.settlementProvenance || ''}">
-                                </div>
-                                    <div class="col-md">
-                                        <label class="form-label">Region</label>
-                                        <input type="text" class="form-control" name="regionProvenance" value="${data.regionProvenance || ''}">
-                                    </div>
-                                    <div class="col-md">
-                                        <label class="form-label">Land</label>
-                                        <input type="text" class="form-control" name="countryProvenance" value="${data.countryProvenance || ''}">
-                                    </div>
-                                </div>
+                              <div class="provenance-container"></div>
+                              <div class="d-flex justify-content-start">
+                                <button type="button" class="btn btn-sm btn-outline-primary" onclick="addProvenanceItem(this)">Add Provenance</button>
+                              </div>
                             </fieldset>
                         </div>
                     </div>
@@ -332,17 +319,25 @@ function addRespPerson(button) {
   row.className = 'border rounded p-3 mb-3 bg-light';
   row.innerHTML = `
     <div class="row mb-2">
-      <div class="col-md-4">
+      <div class="col-md">
         <label class="form-label">Name</label>
         <input type="text" class="form-control" name="respStmtName-${index}">
       </div>
-      <div class="col-md-4">
+      <div class="col-md">
         <label class="form-label">Surname</label>
         <input type="text" class="form-control" name="respStmtSurname-${index}">
       </div>
-      <div class="col-md-4">
+      <div class="col-md">
         <label class="form-label">Affiliation</label>
-        <input type="text" class="form-control" name="respStmtAffiliation-${index}">
+        <input type="text" class="form-control lod-autocomplete" 
+              data-lod="wikidata-place" 
+              name="respStmtAffiliation-${index}" 
+              placeholder="e.g. University of Oxford">
+      </div>
+
+      <div class="col-md">
+        <label class="form-label">External identifier (ORCID, GND, etc.)</label>
+        <input type="url" class="form-control" name="respStmtRef-${index}" placeholder="https://orcid.org/xxxx-xxxx-xxxx-xxxx">
       </div>
     </div>
 
@@ -368,7 +363,13 @@ function addMsItem(button, itemData = {}) {
     <div class="row mb-2">
       <div class="col-md-6">
         <label class="form-label">Author</label>
-        <input type="text" class="form-control" name="msItemAuthor-${index}" placeholder="Enter author" value="${itemData.author || ''}">
+        <input type="text" class="form-control lod-autocomplete" data-lod="wikidata-person" name="msItemAuthor-${index}" placeholder="Enter author" value="${itemData.author || ''}">
+        <div class="form-check mt-1">
+          <input class="form-check-input unknown-author-toggle" type="checkbox" id="unknownAuthor-${index}">
+          <label class="form-check-label" for="unknownAuthor-${index}">
+            Unknown or Anonymous Author
+          </label>
+        </div>
       </div>
       <div class="col-md-6">
         <label class="form-label">Title</label>
@@ -397,7 +398,7 @@ function addMsItem(button, itemData = {}) {
     <div class="row mb-2">
       <div class="col-md-6">
         <label class="form-label">Textual family</label>
-        <input type="text" class="form-control" name="msItemFamily-${index}" placeholder="Eter textual family" value="${itemData.textFamily || ''}">
+        <input type="text" class="form-control" name="msItemFamily-${index}" placeholder="Enter textual family" value="${itemData.textFamily || ''}">
       </div>
       <div class="col-md-6">
         <label class="form-label">Textual subfamily</label>
@@ -407,7 +408,7 @@ function addMsItem(button, itemData = {}) {
     <div class="row mb-2">
       <div class="col-md-6">
         <label class="form-label">Text languge</label>
-        <input type="text" class="form-control" name="msItemLang-${index}" placeholder="Enter text language" value="${itemData.textLang || ''}">
+        <input type="text" class="form-control lod-autocomplete" data-lod="wikidata-lang" name="msItemLang-${index}" placeholder="Enter text language" value="${itemData.textLang || ''}">
       </div>
       <div class="col-md-6">
         <label class="form-label">Text genre</label>
@@ -415,7 +416,27 @@ function addMsItem(button, itemData = {}) {
       </div>
     </div>
   `;
+  
   container.appendChild(block);
+
+  // Add toggle behavior
+  const authorInput = block.querySelector(`[name="msItemAuthor-${index}"]`);
+  const checkbox = block.querySelector(`#unknownAuthor-${index}`);
+
+  checkbox.addEventListener('change', () => {
+    if (checkbox.checked) {
+      // Pre-fill with Unknown
+      authorInput.value = 'Unknown or Anonymous';
+      authorInput.dataset.lodUri = 'https://www.wikidata.org/wiki/Q4233718';
+      authorInput.disabled = true; // disable editing
+    } else {
+      // Re-enable normal lookup
+      authorInput.value = '';
+      delete authorInput.dataset.lodUri;
+      authorInput.disabled = false;
+    }
+  });
+
 
   // Add initial page range
   // Add all page ranges
@@ -466,6 +487,63 @@ function addPageRange(button, msItemIndex, preset = []) {
   `;
   container.appendChild(div);
 }
+
+function addProvenanceItem(button, itemData = {}) {
+  const fieldset = button.closest('fieldset');
+  const container = fieldset.querySelector('.provenance-container');
+  const index = container.children.length;
+
+  const row = document.createElement('div');
+  row.className = 'border rounded p-3 mb-3 bg-light';
+  row.innerHTML = `
+    <div class="d-flex justify-content-between align-items-center mb-2">
+      <strong>Provenance ${index + 1}</strong>
+      <button type="button" class="btn btn-sm btn-danger" onclick="this.closest('.border').remove()">Delete</button>
+    </div>
+
+    <div class="row mb-2">
+      <div class="col-md">
+        <label class="form-label">Previous owner</label>
+        <div class="input-group">
+          <input type="text" 
+                 class="form-control lod-autocomplete col-md-8" 
+                 data-lod="wikidata-generic" 
+                 name="provName-${index}" 
+                 value="${itemData.name || ''}">
+          <select class="form-select col-md-4" name="provType-${index}">
+            <option value="">Select type</option>
+            <option value="org" ${itemData.type === 'org' ? 'selected' : ''}>Organisation</option>
+            <option value="person" ${itemData.type === 'person' ? 'selected' : ''}>Person</option>
+            <option value="place" ${itemData.type === 'place' ? 'selected' : ''}>Place</option>
+          </select>
+        </div>
+      </div>
+      
+    </div>
+
+    <div class="row mb-2">
+      <div class="col-md">
+        <label class="form-label">Period of ownership</label>
+        <input type="text" class="form-control" name="provDate-${index}" value="${itemData.date || ''}">
+      </div>
+      <div class="col-md">
+        <label class="form-label">Geographical coordinates</label>
+        <input type="text" class="form-control geo-coord" name="provGeo-${index}" value="${itemData.geo || ''}">
+      </div>
+      <div class="col-md">
+        <label class="form-label">Settlement</label>
+        <input type="text" class="form-control lod-autocomplete" data-lod="wikidata-place" name="provSettlement-${index}" value="${itemData.settlement || ''}">
+      </div>
+      <div class="col-md">
+        <label class="form-label">Country</label>
+        <input type="text" class="form-control" name="provCountry-${index}" value="${itemData.country || ''}">
+      </div>
+    </div>
+  `;
+
+  container.appendChild(row);
+}
+
 
 function addLiteratureItem(button) {
   const fieldset = button.closest('fieldset');
@@ -608,14 +686,27 @@ function getFormData(formId) {
     const name = form.querySelector(`[name="respStmtName-${i}"]`);
     const surname = form.querySelector(`[name="respStmtSurname-${i}"]`);
     const affil = form.querySelector(`[name="respStmtAffiliation-${i}"]`);
+    
+    // Stop if no more responsible persons
     if (!name || !surname || !affil) break;
+    
+    const refField = form.querySelector(`[name="respStmtRef-${i}"]`);
+    const affiliationValue = affil.value || '';
+    const affiliationUri = affil.dataset.lodUri || '';
+    const ref = refField ? refField.value : '';
+    
     persons.push({
       name: name.value,
       surname: surname.value,
-      affiliation: affil.value
+      affiliation: affiliationValue,
+      affiliationUri: affiliationUri,
+      ref: ref
     });
+    
     i++;
   }
+
+
   data.responsiblePersons = persons;
 
   // msItems with pageRanges
@@ -650,6 +741,27 @@ function getFormData(formId) {
     j++;
   }
   data.msItems = items;
+
+  // Provenance entries
+  const provenance = [];
+  let p = 0;
+  while (true) {
+    const name = form.querySelector(`[name="provName-${p}"]`);
+    if (!name) break;
+
+    provenance.push({
+      name: name.value,
+      type: form.querySelector(`[name="provType-${p}"]`)?.value || '',
+      date: form.querySelector(`[name="provDate-${p}"]`)?.value || '',
+      geo: form.querySelector(`[name="provGeo-${p}"]`)?.value || '',
+      settlement: form.querySelector(`[name="provSettlement-${p}"]`)?.value || '',
+      country: form.querySelector(`[name="provCountry-${p}"]`)?.value || ''
+    });
+
+    p++;
+  }
+  data.provenance = provenance;
+
 
   // Literature
   const literature = [];
@@ -711,11 +823,32 @@ function deleteManuscriptForm(button) {
 }
 
 
+function getFieldValueAndUri(form, name) {
+  const field = form.querySelector(`[name="${name}"]`);
+  if (!field) return { value: '', uri: '' };
+  return { value: field.value.trim(), uri: field.dataset.lodUri || '' };
+}
 
+function xmlWithRef(tag, fieldData) {
+  if (!fieldData.value) return '';
+  if (fieldData.uri) return `<${tag} ref="${escapeXml(fieldData.uri)}">${escapeXml(fieldData.value)}</${tag}>`;
+  return `<${tag}>${escapeXml(fieldData.value)}</${tag}>`;
+}
 
+function buildXML(data, formId) {
+  const form = document.getElementById(formId);
+  
+  // Fetch LOD-aware fields
+  const repo = getFieldValueAndUri(form, 'repository');
+  const origPlace = getFieldValueAndUri(form, 'origPlace');
+  const provPlace = getFieldValueAndUri(form, 'settlementProvenance');
+  const scriptField = getFieldValueAndUri(form, 'script');
 
+  const settlementIdentField = getFieldValueAndUri(form, 'settlementIdent');
+  const countryIdentField = getFieldValueAndUri(form, 'countryIdent');
+  const countryOriginField = getFieldValueAndUri(form, 'countryOrigin');
 
-function buildXML(data) {
+  
   return `<?xml version="1.0" encoding="UTF-8"?>
 <TEI xmlns="http://www.tei-c.org/ns/1.0">
   <teiHeader>
@@ -723,11 +856,13 @@ function buildXML(data) {
       <titleStmt>
         <title type="main">${escapeXml(data.msTitle)}</title>
         ${data.responsiblePersons.map(p => `
-        <respStmt>
+        <respStmt${p.ref ? ` ref="${escapeXml(p.ref)}"` : ''}>
           <persName>
             <forename>${escapeXml(p.name)}</forename>
             <surname>${escapeXml(p.surname)}</surname>
-            <affiliation>${escapeXml(p.affiliation)}</affiliation>
+            <affiliation${p.affiliationUri ? ` ref="${escapeXml(p.affiliationUri)}"` : ''}>
+              ${escapeXml(p.affiliation)}
+            </affiliation>
           </persName>
         </respStmt>`).join('\n')}
       </titleStmt>
@@ -739,12 +874,11 @@ function buildXML(data) {
       <sourceDesc>
         <msDesc>
           <msIdentifier>
-            <repository>
-              <name>${escapeXml(data.repository)}</name>
-              <geo>${escapeXml(data.geoRepository)}</geo>
-            </repository>
-            <settlement>${escapeXml(data.settlementIdent)}</settlement>
-            <country>${escapeXml(data.countryIdent)}</country>
+            ${xmlWithRef('repository', repo)}
+            <geo>${escapeXml(data.geoRepository)}</geo>
+            ${xmlWithRef('settlement', settlementIdentField)}
+            ${xmlWithRef('country', countryIdentField)}
+
             <collection><idno type="shelfmark">${escapeXml(data.idno)}</idno></collection>
             <msName type="sigle">${escapeXml(data.msSigle)}</msName>
             <altIdentifier><idno>${escapeXml(data.altIdentifier)}</idno></altIdentifier>
@@ -752,20 +886,23 @@ function buildXML(data) {
           </msIdentifier>
           <msContents>
             <summary>${escapeXml(data.summaryContents)}</summary>
-            ${(data.msItems || []).map(item => `
+            ${(data.msItems || []).map((item, idx) => {
+              const authorField = getFieldValueAndUri(form, `msItemAuthor-${idx}`);
+              const langField = getFieldValueAndUri(form, `msItemLang-${idx}`);
+              return `
             <msItem>
-              <author>${escapeXml(item.author)}</author>
+              ${xmlWithRef('author', authorField)}
               <title>${escapeXml(item.title)}</title>
               <locusGrp>
                 ${(item.pageRanges || []).map(pr => `<locus from="${escapeXml(pr.from)}" to="${escapeXml(pr.to)}"/>`).join('\n')}
               </locusGrp>
-              <textLang>${escapeXml(item.textLang)}</textLang>
+              ${xmlWithRef('textLang', langField)}
               <incipit>${escapeXml(item.incipit)}</incipit>
               <explicit>${escapeXml(item.explicit)}</explicit>
               <note type="textual-family">${escapeXml(item.textFamily)}</note>
               <note type="textual-subfamily">${escapeXml(item.textSubFamily)}</note>
               <note type="text-genre">${escapeXml(item.textGenre)}</note>
-            </msItem>`).join('\n')}
+            </msItem>`;}).join('\n')}
           </msContents>
           <physDesc>
             <objectDesc>
@@ -787,27 +924,30 @@ function buildXML(data) {
               <summary>${escapeXml(data.hands)}</summary>
             </handDesc>
             <scriptDesc>
-              <scriptNote>${escapeXml(data.script)}</scriptNote>
+              ${xmlWithRef('scriptNote', scriptField)}
             </scriptDesc>
           </physDesc>
           <history>
             <summary>${escapeXml(data.summaryProvenance)}</summary>
             <origin>
-              <origPlace>
-                <name>${escapeXml(data.origPlace)}</name>
-                <geo>${escapeXml(data.geoOrigin)}</geo>
-              </origPlace>
-              <region>${escapeXml(data.regionOrigin)}</region>
-              <country>${escapeXml(data.countryOrigin)}</country>
-              <origDate>${escapeXml(data.dateOrigin)}</origDate>
+              ${xmlWithRef('origPlace', origPlace)}
+              <geo>${escapeXml(data.geoOrigin)}</geo>
+              ${xmlWithRef('country', countryOriginField)}
+              <origDate notBefore="${escapeXml(data.dateOriginNotBefore)}" notAfter="${escapeXml(data.dateOriginNotAfter)}"></origDate>
             </origin>
+            
+            ${(data.provenance || []).map((prov, i) => {
+              const provSettlementField = getFieldValueAndUri(form, `provSettlement-${i}`);
+              const provCountryField = getFieldValueAndUri(form, `provCountry-${i}`);
+              return `
             <provenance>
-              <name>${escapeXml(data.prevOwner)}</name>
-              <geo>${escapeXml(data.geoProvenance)}</geo>
-              <settlement>${escapeXml(data.settlementProvenance)}</settlement>
-              <region>${escapeXml(data.regionProvenance)}</region>
-              <country>${escapeXml(data.countryProvenance)}</country>
-            </provenance>
+              <name type="${escapeXml(prov.type)}">${escapeXml(prov.name)}</name>
+              <date when="${escapeXml(prov.date)}"></date>
+              <geo>${escapeXml(prov.geo)}</geo>
+              ${xmlWithRef('settlement', provSettlementField)}
+              ${xmlWithRef('country', provCountryField)}
+            </provenance>`;
+            }).join('\n')}
           </history>
           <additional>
             <surrogates> 
@@ -848,9 +988,10 @@ function buildXML(data) {
 </TEI>`;
 }
 
+
 function generateXML(formId) {
   const data = getFormData(formId);
-  const xml = buildXML(data);
+   const xml = buildXML(data, formId); 
   // Open modal
   document.getElementById('modalXmlContent').textContent = xml;
   const modal = new bootstrap.Modal(document.getElementById('xmlModal'));
@@ -861,7 +1002,7 @@ function generateXML(formId) {
 
 function downloadXML(formId) {
   const data = getFormData(formId);
-  const xmlContent = buildXML(data);
+  const xmlContent = buildXML(data, formId);
   const blob = new Blob([xmlContent], { type: 'application/xml' });
 
   const form = document.getElementById(formId);
@@ -874,43 +1015,6 @@ function downloadXML(formId) {
   a.click();
 }
 
-
-
-// Download JSON, CSV, RDF
-/*document.getElementById('downloadAllJSON').addEventListener('click', () => {
-  const all = [...document.querySelectorAll('.msForm')].map(f => getFormData(f.id));
-  downloadFile('all-manuscripts.json', JSON.stringify(all, null, 2), 'application/json');
-});
-
-document.getElementById('downloadAllCSV').addEventListener('click', () => {
-  const all = [...document.querySelectorAll('.msForm')].map(f => getFormData(f.id));
-  const headers = Object.keys(all[0] || {});
-  const csv = [headers.join(',')].concat(
-    all.map(row =>
-      headers.map(h => {
-        const val = row[h];
-        const str = typeof val === 'string' ? val : JSON.stringify(val);
-        return `"${(str || '').replace(/"/g, '""')}"`;
-      }).join(',')
-    )
-  ).join('\n');
-  downloadFile('all-manuscripts.csv', csv, 'text/csv');
-});
-
-
-document.getElementById('downloadAllRDF').addEventListener('click', () => {
-  const all = [...document.querySelectorAll('.msForm')].map(f => getFormData(f.id));
-  let rdf = `<?xml version="1.0"?>\n<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">\n`;
-  all.forEach((row, i) => {
-    rdf += `  <rdf:Description rdf:about="http://example.org/manuscript/${i + 1}">\n`;
-    for (const key in row) {
-      rdf += `    <${key}>${escapeXml(row[key])}</${key}>\n`;
-    }
-    rdf += `  </rdf:Description>\n`;
-  });
-  rdf += '</rdf:RDF>';
-  downloadFile('all-manuscripts.rdf', rdf, 'application/rdf+xml');
-});*/
 
 function buildCombinedFileName(all) {
   const titles = all.map(row => row.msTitle?.trim() || 'Untitled');
@@ -977,7 +1081,6 @@ document.getElementById('fileUpload').addEventListener('change', function (e) {
     if (file.name.endsWith('.json')) {
       try {
         const data = JSON.parse(content);
-        console.log("Parsed JSON:", data); //for debugging
 
         const records = Array.isArray(data) ? data : [data];
         records.forEach((rec, i) => {
@@ -1108,13 +1211,12 @@ document.getElementById('fileUpload').addEventListener('change', function (e) {
         summaryProvenance: get("history > summary"),
         origPlace: get("origin > origPlace > name"),
         geoOrigin: get("origin > origPlace > geo"),
-        dateOrigin: get("origin > origDate"),
-        regionOrigin: get("origin > region"),
+        dateOriginNotBefore: getAttr("origin > origDate", "notBefore"),
+        dateOriginNotAfter: getAttr("origin > origDate", "notAfter"),
         countryOrigin: get("origin > country"),
         prevOwner: get("provenance > name"),
         geoProvenance: get("provenance > geo"),
         settlementProvenance: get("provenance > settlement"),
-        regionProvenance: get("provenance > region"),
         countryProvenance: get("provenance > country"),
 
         // Accordion 5 
@@ -1292,3 +1394,391 @@ function validateField(field, regex) {
     field.classList.remove('is-invalid');
   }
 }
+
+//LOD
+
+async function safeFetchJSON(url) {
+  try {
+    const res = await fetch(url);
+    const text = await res.text();
+
+    if (!res.ok) {
+      console.warn(`LOD request failed: ${res.status} ${res.statusText}`);
+      return null;
+    }
+
+    if (!text.trim()) return null;
+    return JSON.parse(text);
+  } catch (err) {
+    console.warn("LOD fetch failed:", err);
+    return null;
+  }
+}
+
+
+
+async function searchWikidataPlaces(term) {
+  const url = `https://www.wikidata.org/w/api.php?action=wbsearchentities&search=${encodeURIComponent(term)}&language=en&type=item&format=json&origin=*`;
+  const data = await safeFetchJSON(url);
+  if (!data || !data.search) return [];
+  
+  return data.search.map(w => ({
+    label: `${w.label} (${w.description || 'entity'})`,
+    uri: w.concepturi
+  }));
+}
+
+
+
+async function searchWikidataPersons(term) {
+  const url = `https://www.wikidata.org/w/api.php?action=wbsearchentities&search=${encodeURIComponent(term)}&language=en&type=item&format=json&origin=*`;
+  const data = await safeFetchJSON(url);
+  if (!data || !data.search) return [];
+  return data.search.map(w => ({
+    label: `${w.label} (${w.description || 'person'})`,
+    uri: w.concepturi
+  }));
+}
+
+async function searchWikidataGeneric(term) {
+  const url = `https://www.wikidata.org/w/api.php?action=wbsearchentities&search=${encodeURIComponent(term)}&language=en&type=item&format=json&origin=*`;
+  const data = await safeFetchJSON(url);
+  if (!data || !data.search) return [];
+
+  return data.search.map(w => ({
+    label: `${w.label} (${w.description || 'entity'})`,
+    uri: w.concepturi
+  }));
+}
+
+async function searchWikidataLanguages(term) {
+  const url = `https://www.wikidata.org/w/api.php?action=wbsearchentities&search=${encodeURIComponent(term)}&language=en&format=json&origin=*`;
+  const data = await safeFetchJSON(url);
+  if (!data || !data.search) return [];
+  return data.search.map(w => ({
+    label: `${w.label} (${w.description || 'language'})`,
+    uri: w.concepturi
+  }));
+}
+
+async function searchGettyScripts(term) {
+  const query = `SELECT ?term ?termLabel WHERE { ?term a gvp:Concept; skos:prefLabel ?termLabel . FILTER(CONTAINS(LCASE(?termLabel), \"${term.toLowerCase()}\")) } LIMIT 10`;
+  const url = `https://vocab.getty.edu/sparql.json?query=${encodeURIComponent(query)}`;
+  const data = await safeFetchJSON(url);
+  if (!data || !data.results) return [];
+  return data.results.bindings.map(r => ({
+    label: r.termLabel.value,
+    uri: r.term.value
+  }));
+}
+
+function showDropdown(field, results, loading = false) {
+  // Remove old dropdown
+  let old = field.parentNode.querySelector('.lod-dropdown');
+  if (old) old.remove();
+
+  const dropdown = document.createElement('div');
+  dropdown.className = 'lod-dropdown border bg-light';
+  dropdown.style.position = 'absolute';
+  dropdown.style.zIndex = 9999;
+  dropdown.style.width = field.offsetWidth + 'px';
+  dropdown.style.maxHeight = '200px';
+  dropdown.style.overflowY = 'auto';
+
+  if (loading) {
+    dropdown.innerHTML = `<div class="lod-item p-1 text-muted">Loading...</div>`;
+  } else if (!results.length) {
+    dropdown.innerHTML = `<div class="lod-item p-1 text-muted">No matches found</div>`;
+  } else {
+    results.forEach(r => {
+      const item = document.createElement('div');
+      item.className = 'lod-item p-1';
+      item.textContent = r.label;
+      item.style.cursor = 'pointer';
+
+      item.addEventListener('click', async () => {
+        // ✅ Always fill the selected label + URI
+        field.value = r.label;
+        field.dataset.lodUri = r.uri;
+
+        // Fetch full Wikidata entity
+        const qid = r.uri.split('/').pop();
+        const entity = await fetchWikidataEntityDetails(qid);
+        const form = field.closest('form');
+
+        // ✅ Try to auto-fill geo info if available (works for places/orgs, skipped for persons)
+        await tryAutofillGeo(entity, field, form);
+
+        // ✅ Badge with link
+        let badge = field.parentNode.querySelector('.lod-link');
+        if (!badge) {
+          badge = document.createElement('small');
+          badge.className = 'lod-link text-muted d-block mt-1';
+          field.insertAdjacentElement('afterend', badge);
+        }
+        const sourceLabel = getSourceLabel(r.uri);
+        badge.innerHTML = `
+          <a href="${r.uri}" target="_blank">See link in ${sourceLabel}</a>
+          <button type="button" class="btn btn-sm btn-link text-danger ms-2 lod-clear-btn">(Remove link)</button>
+        `;
+
+        // ✅ Remove link clears field & any dependent geo fields
+        badge.querySelector('.lod-clear-btn').addEventListener('click', () => {
+          delete field.dataset.lodUri;
+          field.value = '';
+          badge.remove();
+
+          const form = field.closest('form');
+          if (field.name === 'repository') {
+            form.querySelector('[name="geoRepository"]').value = '';
+            form.querySelector('[name="settlementIdent"]').value = '';
+            form.querySelector('[name="countryIdent"]').value = '';
+          } else if (field.name === 'origPlace') {
+            form.querySelector('[name="geoOrigin"]').value = '';
+            form.querySelector('[name="countryOrigin"]').value = '';
+          } else if (field.name.startsWith('provName')) {
+            const provIndex = field.name.split('-')[1];
+            form.querySelector(`[name="provGeo-${provIndex}"]`).value = '';
+            form.querySelector(`[name="provSettlement-${provIndex}"]`).value = '';
+            form.querySelector(`[name="provCountry-${provIndex}"]`).value = '';
+          } else if (field.name.startsWith('provSettlement')) {
+            const provIndex = field.name.split('-')[1];
+            form.querySelector(`[name="provGeo-${provIndex}"]`).value = '';
+            form.querySelector(`[name="provSettlement-${provIndex}"]`).value = '';
+            form.querySelector(`[name="provCountry-${provIndex}"]`).value = '';
+          }
+        });
+
+        dropdown.remove(); // Close dropdown after selection
+      });
+
+      dropdown.appendChild(item);
+    });
+  }
+
+  field.insertAdjacentElement('afterend', dropdown);
+
+  // ✅ Hide dropdown when clicking outside
+  document.addEventListener('click', (ev) => {
+    if (!dropdown.contains(ev.target) && ev.target !== field) dropdown.remove();
+  }, { once: true });
+}
+
+
+
+// === Enhanced Input Listener with loading state ===
+document.addEventListener('input', async (e) => {
+  const field = e.target;
+  if (!field.classList.contains('lod-autocomplete')) return;
+
+  const query = field.value.trim();
+  if (query.length < 3) return;
+
+  showDropdown(field, [], true); // show loading
+
+  const source = field.dataset.lod;
+  let results = [];
+
+  if (source === 'wikidata-place') results = await searchWikidataPlaces(query);
+  else if (source === 'wikidata-person') results = await searchWikidataPersons(query);
+  else if (source === 'wikidata-generic') results = await searchWikidataGeneric(query);
+  else if (source === 'wikidata-lang') results = await searchWikidataLanguages(query);
+  else if (source === 'getty-script') results = await searchGettyScripts(query);
+
+  showDropdown(field, results);
+});
+
+
+function getSourceLabel(uri) {
+  if (uri.includes('wikidata.org')) return 'Wikidata';
+  if (uri.includes('getty.edu')) return 'Getty Vocabularies';
+  return 'LOD Source';
+}
+
+
+// Fetch full Wikidata entity JSON
+async function fetchWikidataEntityDetails(qid) {
+  const url = `https://www.wikidata.org/wiki/Special:EntityData/${qid}.json`;
+  const res = await fetch(url);
+  const data = await res.json();
+  return data.entities[qid];
+}
+
+// Extract lat/lon, settlement label, and country QID
+/*function extractPlaceDetails(entity) {
+  const details = {
+    lat: '',
+    lon: '',
+    settlementQID: '', // city QID
+    settlementLabel: entity.labels?.en?.value || '',
+    countryQID: ''
+  };
+
+  // Coordinates (P625)
+  if (entity.claims?.P625) {
+    const coords = entity.claims.P625[0].mainsnak.datavalue.value;
+    details.lat = coords.latitude;
+    details.lon = coords.longitude;
+  }
+
+  // Settlement (P131)
+  if (entity.claims?.P131) {
+    details.settlementQID = entity.claims.P131[0].mainsnak.datavalue.value.id;
+  }
+
+  // Country (P17)
+  if (entity.claims?.P17) {
+    details.countryQID = entity.claims.P17[0].mainsnak.datavalue.value.id;
+  }
+
+  return details;
+}*/
+
+
+
+function extractPlaceDetails(entity) {
+  const details = {
+    lat: '',
+    lon: '',
+    settlementQID: '',
+    settlementLabel: entity.labels?.en?.value || '',
+    countryQID: ''
+  };
+
+  // ✅ Coordinates (P625)
+  if (entity.claims?.P625) {
+    const coords = entity.claims.P625[0].mainsnak.datavalue.value;
+    details.lat = coords.latitude;
+    details.lon = coords.longitude;
+  }
+
+  // ✅ Helper to safely get start time
+  function getStartTime(claim) {
+    const p580 = claim.qualifiers?.P580;
+    if (p580 && p580.length > 0 && p580[0].datavalue?.value?.time) {
+      const timeVal = p580[0].datavalue.value.time; // +YYYY-MM-DDT00:00:00Z
+      return new Date(timeVal.replace('+', '')).getTime();
+    }
+    return null; // no start time → current
+  }
+
+  // ✅ Helper to sort current first, then most recent
+  function sortByCurrentThenRecent(a, b) {
+    if (!a.startTime && !b.startTime) return 0;
+    if (!a.startTime) return -1; // a = current
+    if (!b.startTime) return 1;  // b = current
+    return b.startTime - a.startTime; // latest first
+  }
+
+  // ✅ Settlement (P131) → rank-aware
+  if (entity.claims?.P131) {
+    const settlements = entity.claims.P131
+      .filter(claim => claim.rank !== "deprecated")
+      .map(claim => ({
+        qid: claim.mainsnak.datavalue.value.id,
+        rank: claim.rank,
+        startTime: getStartTime(claim)
+      }));
+
+    // Prefer preferred rank first
+    const preferred = settlements.filter(s => s.rank === "preferred");
+    const normal = settlements.filter(s => s.rank !== "preferred");
+
+    const sortedSettlements = preferred.length > 0
+      ? preferred.sort(sortByCurrentThenRecent)
+      : normal.sort(sortByCurrentThenRecent);
+
+    details.settlementQID = sortedSettlements[0]?.qid || '';
+  }
+
+  // ✅ Country (P17) → rank-aware
+  if (entity.claims?.P17) {
+    const countries = entity.claims.P17
+      .filter(claim => claim.rank !== "deprecated")
+      .map(claim => ({
+        qid: claim.mainsnak.datavalue.value.id,
+        rank: claim.rank,
+        startTime: getStartTime(claim)
+      }));
+
+    // Prefer preferred rank first
+    const preferred = countries.filter(c => c.rank === "preferred");
+    const normal = countries.filter(c => c.rank !== "preferred");
+
+    const sortedCountries = preferred.length > 0
+      ? preferred.sort(sortByCurrentThenRecent)
+      : normal.sort(sortByCurrentThenRecent);
+
+    details.countryQID = sortedCountries[0]?.qid || '';
+  }
+
+  return details;
+}
+
+
+
+
+
+// Fetch a readable label for a given QID
+async function fetchWikidataLabel(qid) {
+  const url = `https://www.wikidata.org/wiki/Special:EntityData/${qid}.json`;
+  const res = await fetch(url);
+  const data = await res.json();
+  return data.entities[qid]?.labels?.en?.value || qid;
+}
+
+
+async function tryAutofillGeo(entity, field, form) {
+  const details = await extractPlaceDetails(entity);
+
+  // If no coordinates at all → skip
+  if (!details.lat && !details.lon && !details.settlementQID && !details.countryQID) return;
+
+  let geoField, settlementField, countryField;
+
+  if (field.name === 'repository') {
+    geoField = form.querySelector('[name="geoRepository"]');
+    settlementField = form.querySelector('[name="settlementIdent"]');
+    countryField = form.querySelector('[name="countryIdent"]');
+  } else if (field.name === 'origPlace') {
+    geoField = form.querySelector('[name="geoOrigin"]');
+    settlementField = null; // origPlace doesn’t have settlement
+    countryField = form.querySelector('[name="countryOrigin"]');
+  } else if (field.name.startsWith('provName')) {
+    const provIndex = field.name.split('-')[1];
+    geoField = form.querySelector(`[name="provGeo-${provIndex}"]`);
+    settlementField = form.querySelector(`[name="provSettlement-${provIndex}"]`);
+    countryField = form.querySelector(`[name="provCountry-${provIndex}"]`);
+  } else if (field.name.startsWith('provSettlement')) {
+    const provIndex = field.name.split('-')[1];
+    geoField = form.querySelector(`[name="provGeo-${provIndex}"]`);
+    settlementField = form.querySelector(`[name="provSettlement-${provIndex}"]`);
+    countryField = form.querySelector(`[name="provCountry-${provIndex}"]`);
+  }
+
+  if (!geoField && !settlementField && !countryField) return;
+
+  // ✅ Coordinates
+  if (geoField && details.lat && details.lon) {
+    geoField.value = `${details.lat}, ${details.lon}`;
+  }
+
+  // ✅ Settlement (if exists)
+  if (settlementField && details.settlementQID) {
+    const settlementEntity = await fetchWikidataEntityDetails(details.settlementQID);
+    const settlementLabel = settlementEntity.labels?.en?.value || '';
+    settlementField.value = settlementLabel;
+    settlementField.dataset.lodUri = `https://www.wikidata.org/entity/${details.settlementQID}`;
+  }
+
+  // ✅ Country
+  if (countryField && details.countryQID) {
+    const countryLabel = await fetchWikidataLabel(details.countryQID);
+    countryField.value = countryLabel;
+    countryField.dataset.lodUri = `https://www.wikidata.org/entity/${details.countryQID}`;
+  }
+}
+
+
+
+

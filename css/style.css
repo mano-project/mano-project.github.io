@@ -163,3 +163,14 @@ section h2 {
     padding-left:8px;
   }
 }
+
+
+
+.lod-dropdown {
+  background: #fff;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  font-size: 14px;
+}
+.lod-item:hover {
+  background: #e9ecef;
+}
