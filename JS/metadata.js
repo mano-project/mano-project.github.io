@@ -302,7 +302,7 @@ function addManuscriptForm(data = {}, shouldScroll = true) {
     `;
   container.appendChild(form);
   
-  // ✅ Scroll only if explicitly requested
+  //  Scroll only if explicitly requested
   if (shouldScroll) {
     form.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
@@ -667,49 +667,55 @@ function getFormData(formId) {
   const form = document.getElementById(formId);
   const data = {};
 
-  // Normal fields
+  //First, get all basic (non-LOD) fields as plain text
   Array.from(form.elements).forEach(el => {
-  if (
-    el.name &&
-    !el.name.startsWith('respStmt') &&
-    !el.name.startsWith('msItem') &&
-    !el.name.startsWith('bibl')
-  ) {
-    data[el.name] = el.value;
-  }
-});
+    if (
+      el.name &&
+      !el.name.startsWith('respStmt') &&
+      !el.name.startsWith('msItem') &&
+      !el.name.startsWith('bibl') &&
+      !el.name.startsWith('prov') //skip raw provenance fields
+    ) {
+      data[el.name] = el.value;
+    }
+  });
 
-  // Responsible persons
+  //Now override LOD-aware fields with {value, uri}
+  data.repository      = getFieldValueAndUri(form, 'repository');
+  data.settlementIdent = getFieldValueAndUri(form, 'settlementIdent');
+  data.countryIdent    = getFieldValueAndUri(form, 'countryIdent');
+  data.origPlace       = getFieldValueAndUri(form, 'origPlace');
+  data.countryOrigin   = getFieldValueAndUri(form, 'countryOrigin');
+  data.script          = getFieldValueAndUri(form, 'script');
+
+  //Responsible persons (standardized affiliation)
   const persons = [];
   let i = 0;
   while (true) {
     const name = form.querySelector(`[name="respStmtName-${i}"]`);
     const surname = form.querySelector(`[name="respStmtSurname-${i}"]`);
-    const affil = form.querySelector(`[name="respStmtAffiliation-${i}"]`);
-    
-    // Stop if no more responsible persons
-    if (!name || !surname || !affil) break;
-    
+    const affilField = form.querySelector(`[name="respStmtAffiliation-${i}"]`);
+
+    if (!name || !surname || !affilField) break;
+
     const refField = form.querySelector(`[name="respStmtRef-${i}"]`);
-    const affiliationValue = affil.value || '';
-    const affiliationUri = affil.dataset.lodUri || '';
     const ref = refField ? refField.value : '';
-    
+
+    //Standardize affiliation as { value, uri }
+    const affiliation = getFieldValueAndUri(form, `respStmtAffiliation-${i}`);
+
     persons.push({
       name: name.value,
       surname: surname.value,
-      affiliation: affiliationValue,
-      affiliationUri: affiliationUri,
+      affiliation: affiliation, // now { value, uri }
       ref: ref
     });
-    
+
     i++;
   }
-
-
   data.responsiblePersons = persons;
 
-  // msItems with pageRanges
+  //msItems with pageRanges
   const items = [];
   let j = 0;
   while (true) {
@@ -727,9 +733,9 @@ function getFormData(formId) {
     }
 
     items.push({
-      author: author.value,
+      author: getFieldValueAndUri(form, `msItemAuthor-${j}`),
       title: form.querySelector(`[name="msItemTitle-${j}"]`)?.value || '',
-      textLang: form.querySelector(`[name="msItemLang-${j}"]`)?.value || '',
+      textLang: getFieldValueAndUri(form, `msItemLang-${j}`),
       incipit: form.querySelector(`[name="msItemIncipit-${j}"]`)?.value || '',
       explicit: form.querySelector(`[name="msItemExplicit-${j}"]`)?.value || '',
       textFamily: form.querySelector(`[name="msItemFamily-${j}"]`)?.value || '',
@@ -742,7 +748,7 @@ function getFormData(formId) {
   }
   data.msItems = items;
 
-  // Provenance entries
+  //Provenance entries (only structured, no provName-0 duplication)
   const provenance = [];
   let p = 0;
   while (true) {
@@ -750,20 +756,19 @@ function getFormData(formId) {
     if (!name) break;
 
     provenance.push({
-      name: name.value,
+      name: getFieldValueAndUri(form, `provName-${p}`),
       type: form.querySelector(`[name="provType-${p}"]`)?.value || '',
       date: form.querySelector(`[name="provDate-${p}"]`)?.value || '',
       geo: form.querySelector(`[name="provGeo-${p}"]`)?.value || '',
-      settlement: form.querySelector(`[name="provSettlement-${p}"]`)?.value || '',
-      country: form.querySelector(`[name="provCountry-${p}"]`)?.value || ''
+      settlement: getFieldValueAndUri(form, `provSettlement-${p}`),
+      country: getFieldValueAndUri(form, `provCountry-${p}`)
     });
 
     p++;
   }
   data.provenance = provenance;
 
-
-  // Literature
+  //Literature
   const literature = [];
   let b = 0;
   while (true) {
@@ -808,6 +813,36 @@ function getFormData(formId) {
 }
 
 
+function restoreLODField(form, fieldName, fieldData) {
+  const input = form.querySelector(`[name="${fieldName}"]`);
+  if (!input) return;
+
+  if (fieldData && typeof fieldData === 'object' && 'value' in fieldData) {
+    input.value = fieldData.value;
+    if (fieldData.uri) {
+      input.dataset.lodUri = fieldData.uri;
+
+      // Show badge with link
+      let badge = input.parentNode.querySelector('.lod-link');
+      if (!badge) {
+        badge = document.createElement('small');
+        badge.className = 'lod-link text-muted d-block mt-1';
+        input.insertAdjacentElement('afterend', badge);
+      }
+      const sourceLabel = fieldData.uri.includes('wikidata.org') ? 'Wikidata' : 'LOD Source';
+      badge.innerHTML = `
+        <a href="${fieldData.uri}" target="_blank">See link in ${sourceLabel}</a>
+        <button type="button" class="btn btn-sm btn-link text-danger ms-2 lod-clear-btn">(Remove link)</button>
+      `;
+    }
+  } else if (typeof fieldData === 'string') {
+    // legacy
+    input.value = fieldData;
+  }
+}
+
+
+
 function escapeXml(str) {
   if (typeof str !== 'string') str = JSON.stringify(str);
   return str?.replace(/[<>&'"]/g, c => ({
@@ -828,6 +863,8 @@ function getFieldValueAndUri(form, name) {
   if (!field) return { value: '', uri: '' };
   return { value: field.value.trim(), uri: field.dataset.lodUri || '' };
 }
+
+
 
 function xmlWithRef(tag, fieldData) {
   if (!fieldData.value) return '';
@@ -860,9 +897,7 @@ function buildXML(data, formId) {
           <persName>
             <forename>${escapeXml(p.name)}</forename>
             <surname>${escapeXml(p.surname)}</surname>
-            <affiliation${p.affiliationUri ? ` ref="${escapeXml(p.affiliationUri)}"` : ''}>
-              ${escapeXml(p.affiliation)}
-            </affiliation>
+            <affiliation${p.affiliation.uri ? ` ref="${escapeXml(p.affiliation.uri)}"` : ''}>${escapeXml(p.affiliation.value)}</affiliation>
           </persName>
         </respStmt>`).join('\n')}
       </titleStmt>
@@ -941,7 +976,9 @@ function buildXML(data, formId) {
               const provCountryField = getFieldValueAndUri(form, `provCountry-${i}`);
               return `
             <provenance>
-              <name type="${escapeXml(prov.type)}">${escapeXml(prov.name)}</name>
+              ${prov.type 
+                ? `<name type="${escapeXml(prov.type)}"${prov.name?.uri ? ` ref="${escapeXml(prov.name.uri)}"` : ''}>${escapeXml(prov.name.value)}</name>`
+                : xmlWithRef('name', prov.name)}
               <date when="${escapeXml(prov.date)}"></date>
               <geo>${escapeXml(prov.geo)}</geo>
               ${xmlWithRef('settlement', provSettlementField)}
@@ -1029,16 +1066,31 @@ document.getElementById('downloadAllJSON').addEventListener('click', () => {
 
 document.getElementById('downloadAllCSV').addEventListener('click', () => {
   const all = [...document.querySelectorAll('.msForm')].map(f => getFormData(f.id));
-  const headers = Object.keys(all[0] || {});
+  const headers = [];
+  const firstRow = all[0] || {};
+
+  for (const key in firstRow) {
+    if (typeof firstRow[key] === 'object' && firstRow[key] !== null && 'value' in firstRow[key] && 'uri' in firstRow[key]) {
+      headers.push(`${key}_value`, `${key}_uri`);
+    } else {
+      headers.push(key);
+    }
+  }
+
   const csv = [headers.join(',')].concat(
     all.map(row =>
       headers.map(h => {
-        const val = row[h];
-        const str = typeof val === 'string' ? val : JSON.stringify(val);
-        return `"${(str || '').replace(/"/g, '""')}"`;
+        const baseKey = h.replace(/_(value|uri)$/, '');
+        const isUri = h.endsWith('_uri');
+        if (row[baseKey] && typeof row[baseKey] === 'object' && 'value' in row[baseKey]) {
+          return `"${(isUri ? row[baseKey].uri : row[baseKey].value).replace(/"/g, '""')}"`;
+        } else {
+          return `"${(row[h] || '').toString().replace(/"/g, '""')}"`;
+        }
       }).join(',')
     )
   ).join('\n');
+
   const fileBase = buildCombinedFileName(all);
   downloadFile(`${fileBase}.csv`, csv, 'text/csv');
 });
@@ -1049,7 +1101,11 @@ document.getElementById('downloadAllRDF').addEventListener('click', () => {
   all.forEach((row, i) => {
     rdf += `  <rdf:Description rdf:about="http://example.org/manuscript/${i + 1}">\n`;
     for (const key in row) {
-      rdf += `    <${key}>${escapeXml(row[key])}</${key}>\n`;
+      if (row[key] && typeof row[key] === 'object' && 'value' in row[key] && 'uri' in row[key]) {
+          rdf += `    <${key} rdf:resource="${escapeXml(row[key].uri)}">${escapeXml(row[key].value)}</${key}>\n`;
+        } else {
+          rdf += `    <${key}>${escapeXml(row[key])}</${key}>\n`;
+        }
     }
     rdf += `  </rdf:Description>\n`;
   });
@@ -1099,16 +1155,20 @@ document.getElementById('fileUpload').addEventListener('change', function (e) {
 
           // Fill base fields
             Object.entries(rec).forEach(([key, value]) => {
-            if (
+              // Check if it's a LOD field
+              if (value && typeof value === 'object' && 'value' in value && 'uri' in value) {
+                restoreLODField(form, key, value);
+              } else if (
                 typeof value !== 'object' &&
                 !key.startsWith('msItem') &&
                 !key.startsWith('respStmt') &&
                 !key.startsWith('bibl')
-            ) {
+              ) {
                 const input = form.querySelector(`[name="${key}"]`);
                 if (input) input.value = value;
-            }
+              }
             });
+
 
             
           // Restore responsible persons
@@ -1119,17 +1179,49 @@ document.getElementById('fileUpload').addEventListener('change', function (e) {
               const row = formElement.querySelector('.resp-container').children[index];
               row.querySelector(`[name="respStmtName-${index}"]`).value = p.name || '';
               row.querySelector(`[name="respStmtSurname-${index}"]`).value = p.surname || '';
-              row.querySelector(`[name="respStmtAffiliation-${index}"]`).value = p.affiliation || '';
+              restoreLODField(row, `respStmtAffiliation-${index}`, p.affiliation);
+              row.querySelector(`[name="respStmtRef-${index}"]`).value = p.ref || '';
             });
           }
 
           // Restore msItems
-            const itemButton = formElement.querySelector('button[onclick*="addMsItem"]');
+          const itemButton = formElement.querySelector('button[onclick*="addMsItem"]');
             if (rec.msItems) {
-            rec.msItems.forEach(item => {
+              rec.msItems.forEach((item, idx) => {
                 addMsItem(itemButton, item);
+
+                const msRow = formElement.querySelector('.msitem-container').children[idx];
+
+                //Restore author {value, uri}
+                restoreLODField(msRow, `msItemAuthor-${idx}`, item.author);
+
+                //Restore textLang {value, uri}
+                restoreLODField(msRow, `msItemLang-${idx}`, item.textLang);
+              });
+            }
+          
+          //Restore provenance items
+          const provButton = formElement.querySelector('.provenance-container + .d-flex button');
+          if (rec.provenance) {
+            rec.provenance.forEach((prov, i) => {
+              addProvenanceItem(provButton, prov);
+
+              const provRow = formElement.querySelector('.provenance-container').children[i];
+
+              //Name with { value, uri }
+              restoreLODField(provRow, `provName-${i}`, prov.name);
+
+              //Plain text fields
+              provRow.querySelector(`[name="provType-${i}"]`).value = prov.type || '';
+              provRow.querySelector(`[name="provDate-${i}"]`).value = prov.date || '';
+              provRow.querySelector(`[name="provGeo-${i}"]`).value = prov.geo || '';
+
+              //Settlement / Country with { value, uri }
+              restoreLODField(provRow, `provSettlement-${i}`, prov.settlement);
+              restoreLODField(provRow, `provCountry-${i}`, prov.country);
             });
-            }         
+          }
+
 
           //Restore literature items
           const litButton = formElement.querySelector('.literature-container + .d-flex button');
@@ -1235,6 +1327,7 @@ document.getElementById('fileUpload').addEventListener('change', function (e) {
           name: resp.querySelector("forename")?.textContent || '',
           surname: resp.querySelector("surname")?.textContent || '',
           affiliation: resp.querySelector("affiliation")?.textContent || ''
+         
         });
       });
 
@@ -1497,7 +1590,7 @@ function showDropdown(field, results, loading = false) {
       item.style.cursor = 'pointer';
 
       item.addEventListener('click', async () => {
-        // ✅ Always fill the selected label + URI
+        //  Always fill the selected label + URI
         field.value = r.label;
         field.dataset.lodUri = r.uri;
 
@@ -1506,10 +1599,10 @@ function showDropdown(field, results, loading = false) {
         const entity = await fetchWikidataEntityDetails(qid);
         const form = field.closest('form');
 
-        // ✅ Try to auto-fill geo info if available (works for places/orgs, skipped for persons)
+        //  Try to auto-fill geo info if available (works for places/orgs, skipped for persons)
         await tryAutofillGeo(entity, field, form);
 
-        // ✅ Badge with link
+        //  Badge with link
         let badge = field.parentNode.querySelector('.lod-link');
         if (!badge) {
           badge = document.createElement('small');
@@ -1522,7 +1615,7 @@ function showDropdown(field, results, loading = false) {
           <button type="button" class="btn btn-sm btn-link text-danger ms-2 lod-clear-btn">(Remove link)</button>
         `;
 
-        // ✅ Remove link clears field & any dependent geo fields
+        //  Remove link clears field & any dependent geo fields
         badge.querySelector('.lod-clear-btn').addEventListener('click', () => {
           delete field.dataset.lodUri;
           field.value = '';
@@ -1558,7 +1651,7 @@ function showDropdown(field, results, loading = false) {
 
   field.insertAdjacentElement('afterend', dropdown);
 
-  // ✅ Hide dropdown when clicking outside
+  //  Hide dropdown when clicking outside
   document.addEventListener('click', (ev) => {
     if (!dropdown.contains(ev.target) && ev.target !== field) dropdown.remove();
   }, { once: true });
@@ -1645,14 +1738,14 @@ function extractPlaceDetails(entity) {
     countryQID: ''
   };
 
-  // ✅ Coordinates (P625)
+  //  Coordinates (P625)
   if (entity.claims?.P625) {
     const coords = entity.claims.P625[0].mainsnak.datavalue.value;
     details.lat = coords.latitude;
     details.lon = coords.longitude;
   }
 
-  // ✅ Helper to safely get start time
+  //  Helper to safely get start time
   function getStartTime(claim) {
     const p580 = claim.qualifiers?.P580;
     if (p580 && p580.length > 0 && p580[0].datavalue?.value?.time) {
@@ -1662,7 +1755,7 @@ function extractPlaceDetails(entity) {
     return null; // no start time → current
   }
 
-  // ✅ Helper to sort current first, then most recent
+  //  Helper to sort current first, then most recent
   function sortByCurrentThenRecent(a, b) {
     if (!a.startTime && !b.startTime) return 0;
     if (!a.startTime) return -1; // a = current
@@ -1670,7 +1763,7 @@ function extractPlaceDetails(entity) {
     return b.startTime - a.startTime; // latest first
   }
 
-  // ✅ Settlement (P131) → rank-aware
+  //  Settlement (P131) → rank-aware
   if (entity.claims?.P131) {
     const settlements = entity.claims.P131
       .filter(claim => claim.rank !== "deprecated")
@@ -1691,7 +1784,7 @@ function extractPlaceDetails(entity) {
     details.settlementQID = sortedSettlements[0]?.qid || '';
   }
 
-  // ✅ Country (P17) → rank-aware
+  //  Country (P17) → rank-aware
   if (entity.claims?.P17) {
     const countries = entity.claims.P17
       .filter(claim => claim.rank !== "deprecated")
@@ -1758,12 +1851,12 @@ async function tryAutofillGeo(entity, field, form) {
 
   if (!geoField && !settlementField && !countryField) return;
 
-  // ✅ Coordinates
+  //  Coordinates
   if (geoField && details.lat && details.lon) {
     geoField.value = `${details.lat}, ${details.lon}`;
   }
 
-  // ✅ Settlement (if exists)
+  //  Settlement (if exists)
   if (settlementField && details.settlementQID) {
     const settlementEntity = await fetchWikidataEntityDetails(details.settlementQID);
     const settlementLabel = settlementEntity.labels?.en?.value || '';
@@ -1771,7 +1864,7 @@ async function tryAutofillGeo(entity, field, form) {
     settlementField.dataset.lodUri = `https://www.wikidata.org/entity/${details.settlementQID}`;
   }
 
-  // ✅ Country
+  //  Country
   if (countryField && details.countryQID) {
     const countryLabel = await fetchWikidataLabel(details.countryQID);
     countryField.value = countryLabel;
