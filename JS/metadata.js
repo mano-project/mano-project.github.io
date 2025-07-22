@@ -1271,14 +1271,50 @@ document.getElementById('fileUpload').addEventListener('change', function (e) {
       const get = sel => xmlDoc.querySelector(sel)?.textContent || '';
       const getAttr = (sel, attr) => xmlDoc.querySelector(sel)?.getAttribute(attr) || '';
 
+
+      // --- Library info
+      const repoEl = xmlDoc.querySelector("msIdentifier > repository");
+      const settlementEl = xmlDoc.querySelector("msIdentifier > settlement");
+      const countryEl = xmlDoc.querySelector("msIdentifier > country");
+
+      const repository = repoEl
+        ? { value: repoEl.textContent.trim(), uri: repoEl.getAttribute("ref") || "" }
+        : { value: "", uri: "" };
+
+      const settlementIdent = settlementEl
+        ? { value: settlementEl.textContent.trim(), uri: settlementEl.getAttribute("ref") || "" }
+        : { value: "", uri: "" };
+
+      const countryIdent = countryEl
+        ? { value: countryEl.textContent.trim(), uri: countryEl.getAttribute("ref") || "" }
+        : { value: "", uri: "" };
+
+      // Geo coordinates for repository
+      const geoRepository = xmlDoc.querySelector("msIdentifier > geo")?.textContent.trim() || "";
+
+
+      const scriptEl = xmlDoc.querySelector("scriptNote");
+      const script = scriptEl
+        ? { value: scriptEl.textContent.trim(), uri: scriptEl.getAttribute("ref") || "" }
+        : { value: "", uri: "" };
+
+
       const data = {
         // Accordion 1
         msTitle: get("title"),
         publicationStmt: get("publicationStmt p"),
-        repository: get("repository > name"),
+
+        /*repository: get("repository > name"),
         geoRepository: get("repository > geo"),
         settlementIdent: get("msIdentifier > settlement"),
-        countryIdent: get("msIdentifier > country"),
+        countryIdent: get("msIdentifier > country"),*/
+
+        repository,
+        geoRepository,
+        settlementIdent,
+        countryIdent,
+
+
         idno: get("idno[type='shelfmark']"),
         altIdentifier: get("altIdentifier idno"),
         msSigle: get("msName[type='sigle']"),
@@ -1297,12 +1333,13 @@ document.getElementById('fileUpload').addEventListener('change', function (e) {
         columns: getAttr("layout", "columns"),
         lines: getAttr("layout", "writtenLines"),
         hands: get("handDesc > summary"),
-        script: get("scriptNote"),
+        script,
+
 
         // Accordion 4 
         summaryProvenance: get("history > summary"),
-        origPlace: get("origin > origPlace > name"),
-        geoOrigin: get("origin > origPlace > geo"),
+        origPlace: get("origin > origPlace"),
+        geoOrigin: get("origin >  geo"),
         dateOriginNotBefore: getAttr("origin > origDate", "notBefore"),
         dateOriginNotAfter: getAttr("origin > origDate", "notAfter"),
         countryOrigin: get("origin > country"),
@@ -1357,7 +1394,7 @@ document.getElementById('fileUpload').addEventListener('change', function (e) {
           });
         });
 
-        data.msItems.push({
+        /*data.msItems.push({
           author: item.querySelector("author")?.textContent || '',
           title: item.querySelector("title")?.textContent || '',
           pageRanges: pageRanges,
@@ -1367,7 +1404,25 @@ document.getElementById('fileUpload').addEventListener('change', function (e) {
           textFamily: item.querySelector("note[type='textual-family']")?.textContent || '',
           textSubFamily: item.querySelector("note[type='textual-subfamily']")?.textContent || '',
           textGenre: item.querySelector("note[type='text-genre']")?.textContent || ''
+        });*/
+        data.msItems.push({
+          author: {
+            value: item.querySelector("author")?.textContent || '',
+            uri: item.querySelector("author")?.getAttribute("ref") || ''
+          },
+          title: item.querySelector("title")?.textContent || '',
+          pageRanges,
+          textLang: {
+            value: item.querySelector("textLang")?.textContent || '',
+            uri: item.querySelector("textLang")?.getAttribute("ref") || ''
+          },
+          incipit: item.querySelector("incipit")?.textContent || '',
+          explicit: item.querySelector("explicit")?.textContent || '',
+          textFamily: item.querySelector("note[type='textual-family']")?.textContent || '',
+          textSubFamily: item.querySelector("note[type='textual-subfamily']")?.textContent || '',
+          textGenre: item.querySelector("note[type='text-genre']")?.textContent || ''
         });
+
       });
 
       // Literature entries
@@ -1446,12 +1501,31 @@ document.getElementById('fileUpload').addEventListener('change', function (e) {
           row.querySelector(`[name="respStmtRef-${i}"]`).value = p.ref || '';
         });
 
+      //Library
+      restoreLODField(form, "repository", data.repository);
+      restoreLODField(form, "settlementIdent", data.settlementIdent);
+      restoreLODField(form, "countryIdent", data.countryIdent);
+      form.querySelector('[name="geoRepository"]').value = data.geoRepository;
+
 
       // msItems
-      const itemButton = formElement.querySelector('button[onclick*="addMsItem"]');
+      /*const itemButton = formElement.querySelector('button[onclick*="addMsItem"]');
       data.msItems.forEach(item => {
         addMsItem(itemButton, item);
+      });*/
+      const itemButton = formElement.querySelector('button[onclick*="addMsItem"]');
+      data.msItems.forEach((item, idx) => {
+        addMsItem(itemButton, item);
+
+        const msRow = formElement.querySelector('.msitem-container').children[idx];
+        restoreLODField(msRow, `msItemAuthor-${idx}`, item.author);
+        restoreLODField(msRow, `msItemLang-${idx}`, item.textLang);
       });
+
+      //Script
+      restoreLODField(form, "script", data.script);
+
+
 
       // Literature
       const litButton = formElement.querySelector('button[onclick*="addLiteratureItem"]');
