@@ -328,6 +328,12 @@ function addRespPerson(button) {
         <input type="text" class="form-control" name="respStmtSurname-${index}">
       </div>
       <div class="col-md">
+        <label class="form-label">External identifier (ORCID, GND, etc.)</label>
+        <input type="url" class="form-control" name="respStmtRef-${index}" placeholder="https://orcid.org/xxxx-xxxx-xxxx-xxxx">
+      </div>
+    </div>
+    <div class="row mb-2">
+      <div class="col-md">
         <label class="form-label">Affiliation</label>
         <input type="text" class="form-control lod-autocomplete" 
               data-lod="wikidata-place" 
@@ -335,10 +341,7 @@ function addRespPerson(button) {
               placeholder="e.g. University of Oxford">
       </div>
 
-      <div class="col-md">
-        <label class="form-label">External identifier (ORCID, GND, etc.)</label>
-        <input type="url" class="form-control" name="respStmtRef-${index}" placeholder="https://orcid.org/xxxx-xxxx-xxxx-xxxx">
-      </div>
+      
     </div>
 
     <div class="d-flex justify-content-end align-item-end mt-3">
@@ -826,14 +829,19 @@ function restoreLODField(form, fieldName, fieldData) {
       let badge = input.parentNode.querySelector('.lod-link');
       if (!badge) {
         badge = document.createElement('small');
-        badge.className = 'lod-link text-muted d-block mt-1';
+        badge.className = 'lod-link text-muted d-block';
         input.insertAdjacentElement('afterend', badge);
       }
       const sourceLabel = fieldData.uri.includes('wikidata.org') ? 'Wikidata' : 'LOD Source';
       badge.innerHTML = `
-        <a href="${fieldData.uri}" target="_blank">See link in ${sourceLabel}</a>
-        <button type="button" class="btn btn-sm btn-link text-danger ms-2 lod-clear-btn">(Remove link)</button>
+        <a href="${fieldData.uri}" target="_blank" title="Open corresponding ${sourceLabel} link" class="btn pt-0 pe-1" role="button" style="color: blue;">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        </a>
+        <button type="button" class="btn btn-lg btn-link text-danger lod-clear-btn ps-0 pt-0" title="Remove ${sourceLabel}">
+          <i class="fa-solid fa-square-xmark"></i>
+        </button>
       `;
+
     }
   } else if (typeof fieldData === 'string') {
     // legacy
@@ -1272,7 +1280,7 @@ document.getElementById('fileUpload').addEventListener('change', function (e) {
       const getAttr = (sel, attr) => xmlDoc.querySelector(sel)?.getAttribute(attr) || '';
 
 
-      // Library info
+      // Library
       const repoEl = xmlDoc.querySelector("msIdentifier > repository");
       const settlementEl = xmlDoc.querySelector("msIdentifier > settlement");
       const countryEl = xmlDoc.querySelector("msIdentifier > country");
@@ -1344,16 +1352,10 @@ document.getElementById('fileUpload').addEventListener('change', function (e) {
         msTitle: get("title"),
         publicationStmt: get("publicationStmt p"),
 
-        /*repository: get("repository > name"),
-        geoRepository: get("repository > geo"),
-        settlementIdent: get("msIdentifier > settlement"),
-        countryIdent: get("msIdentifier > country"),*/
-
         repository,
         geoRepository,
         settlementIdent,
         countryIdent,
-
 
         idno: get("idno[type='shelfmark']"),
         altIdentifier: get("altIdentifier idno"),
@@ -1378,20 +1380,13 @@ document.getElementById('fileUpload').addEventListener('change', function (e) {
 
         // Accordion 4 
         summaryProvenance: get("history > summary"),
-        /*origPlace: get("origin > origPlace"),
-        geoOrigin: get("origin >  geo"),
-        countryOrigin: get("origin > country"),*/
+
         origPlace,
         geoOrigin,
         countryOrigin,
         dateOriginNotBefore: getAttr("origin > origDate", "notBefore"),
         dateOriginNotAfter: getAttr("origin > origDate", "notAfter"),
         
-        /*prevOwner: get("provenance > name"),
-        geoProvenance: get("provenance > geo"),
-        settlementProvenance: get("provenance > settlement"),
-        countryProvenance: get("provenance > country"),*/
-
         provenance,
 
 
@@ -1406,15 +1401,6 @@ document.getElementById('fileUpload').addEventListener('change', function (e) {
       };
 
       // Responsible persons
-      /*xmlDoc.querySelectorAll("respStmt").forEach(resp => {
-        data.responsiblePersons.push({
-          name: resp.querySelector("forename")?.textContent || '',
-          surname: resp.querySelector("surname")?.textContent || '',
-          affiliation: resp.querySelector("affiliation")?.textContent || ''
-         
-        });
-      });*/
-
       xmlDoc.querySelectorAll("respStmt").forEach(resp => {
         const respRef = resp.getAttribute("ref") || ''; // external identifier URL
         const affilEl = resp.querySelector("affiliation");
@@ -1535,7 +1521,7 @@ document.getElementById('fileUpload').addEventListener('change', function (e) {
       form.querySelector('[name="geoRepository"]').value = data.geoRepository;
 
 
-      // msItems
+      //Restore msItems
       const itemButton = formElement.querySelector('button[onclick*="addMsItem"]');
       data.msItems.forEach((item, idx) => {
         addMsItem(itemButton, item);
@@ -1545,10 +1531,10 @@ document.getElementById('fileUpload').addEventListener('change', function (e) {
         restoreLODField(msRow, `msItemLang-${idx}`, item.textLang);
       });
 
-      //Script
+      //Restore script
       restoreLODField(form, "script", data.script);
 
-      //Place of origin
+      //Restore place of origin
       restoreLODField(form, "origPlace", data.origPlace);
       restoreLODField(form, "countryOrigin", data.countryOrigin);
       form.querySelector('[name="geoOrigin"]').value = data.geoOrigin;
@@ -1719,6 +1705,7 @@ async function searchGettyScripts(term) {
   }));
 }
 
+
 function showDropdown(field, results, loading = false) {
   // Remove old dropdown
   let old = field.parentNode.querySelector('.lod-dropdown');
@@ -1728,10 +1715,17 @@ function showDropdown(field, results, loading = false) {
   dropdown.className = 'lod-dropdown border bg-light';
   dropdown.style.position = 'absolute';
   dropdown.style.zIndex = 9999;
-  dropdown.style.width = field.offsetWidth + 'px';
   dropdown.style.maxHeight = '200px';
   dropdown.style.overflowY = 'auto';
 
+  //Position it directly below the input
+  const rect = field.getBoundingClientRect();
+  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  dropdown.style.width = rect.width + 'px';
+  dropdown.style.left = rect.left + 'px';
+  dropdown.style.top = (rect.bottom + scrollTop) + 'px';
+
+  // Populate dropdown...
   if (loading) {
     dropdown.innerHTML = `<div class="lod-item p-1 text-muted">Loading...</div>`;
   } else if (!results.length) {
@@ -1744,72 +1738,52 @@ function showDropdown(field, results, loading = false) {
       item.style.cursor = 'pointer';
 
       item.addEventListener('click', async () => {
-        //  Always fill the selected label + URI
+        // (existing click logic remains unchanged)
         field.value = r.label;
         field.dataset.lodUri = r.uri;
-
-        // Fetch full Wikidata entity
         const qid = r.uri.split('/').pop();
         const entity = await fetchWikidataEntityDetails(qid);
         const form = field.closest('form');
-
-        //  Try to auto-fill geo info if available (works for places/orgs, skipped for persons)
         await tryAutofillGeo(entity, field, form);
 
-        //  Badge with link
         let badge = field.parentNode.querySelector('.lod-link');
         if (!badge) {
           badge = document.createElement('small');
-          badge.className = 'lod-link text-muted d-block mt-1';
+          badge.className = 'lod-link text-muted d-block';
           field.insertAdjacentElement('afterend', badge);
         }
         const sourceLabel = getSourceLabel(r.uri);
         badge.innerHTML = `
-          <a href="${r.uri}" target="_blank">See link in ${sourceLabel}</a>
-          <button type="button" class="btn btn-sm btn-link text-danger ms-2 lod-clear-btn">(Remove link)</button>
+          <a href="${r.uri}" target="_blank" title="Open corresponding ${sourceLabel} link" class="btn pt-0 pe-1" role="button" style="color: blue;">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </a>
+          <button type="button" class="btn btn-lg btn-link text-danger lod-clear-btn ps-0 pt-0" title="Remove ${sourceLabel}">
+            <i class="fa-solid fa-square-xmark"></i>
+          </button>
         `;
 
-        //  Remove link clears field & any dependent geo fields
         badge.querySelector('.lod-clear-btn').addEventListener('click', () => {
           delete field.dataset.lodUri;
           field.value = '';
           badge.remove();
-
-          const form = field.closest('form');
-          if (field.name === 'repository') {
-            form.querySelector('[name="geoRepository"]').value = '';
-            form.querySelector('[name="settlementIdent"]').value = '';
-            form.querySelector('[name="countryIdent"]').value = '';
-          } else if (field.name === 'origPlace') {
-            form.querySelector('[name="geoOrigin"]').value = '';
-            form.querySelector('[name="countryOrigin"]').value = '';
-          } else if (field.name.startsWith('provName')) {
-            const provIndex = field.name.split('-')[1];
-            form.querySelector(`[name="provGeo-${provIndex}"]`).value = '';
-            form.querySelector(`[name="provSettlement-${provIndex}"]`).value = '';
-            form.querySelector(`[name="provCountry-${provIndex}"]`).value = '';
-          } else if (field.name.startsWith('provSettlement')) {
-            const provIndex = field.name.split('-')[1];
-            form.querySelector(`[name="provGeo-${provIndex}"]`).value = '';
-            form.querySelector(`[name="provSettlement-${provIndex}"]`).value = '';
-            form.querySelector(`[name="provCountry-${provIndex}"]`).value = '';
-          }
         });
 
-        dropdown.remove(); // Close dropdown after selection
+        dropdown.remove();
       });
 
       dropdown.appendChild(item);
     });
   }
 
-  field.insertAdjacentElement('afterend', dropdown);
+  //Append to BODY so it positions correctly in all layouts
+  document.body.appendChild(dropdown);
 
-  //  Hide dropdown when clicking outside
+  // Hide dropdown on outside click
   document.addEventListener('click', (ev) => {
     if (!dropdown.contains(ev.target) && ev.target !== field) dropdown.remove();
   }, { once: true });
 }
+
 
 
 
@@ -2014,16 +1988,51 @@ async function tryAutofillGeo(entity, field, form) {
   if (settlementField && details.settlementQID) {
     const settlementEntity = await fetchWikidataEntityDetails(details.settlementQID);
     const settlementLabel = settlementEntity.labels?.en?.value || '';
+    const settlementUri = `https://www.wikidata.org/entity/${details.settlementQID}`;
     settlementField.value = settlementLabel;
-    settlementField.dataset.lodUri = `https://www.wikidata.org/entity/${details.settlementQID}`;
+    settlementField.dataset.lodUri = settlementUri;
+
+    //Add badge
+    addBadgeForLODField(settlementField, settlementUri);
   }
 
   //  Country
   if (countryField && details.countryQID) {
     const countryLabel = await fetchWikidataLabel(details.countryQID);
+    const countryUri = `https://www.wikidata.org/entity/${details.countryQID}`;
     countryField.value = countryLabel;
-    countryField.dataset.lodUri = `https://www.wikidata.org/entity/${details.countryQID}`;
+    countryField.dataset.lodUri = countryUri;
+
+    //Add badge
+    addBadgeForLODField(countryField, countryUri);
   }
+}
+
+
+function addBadgeForLODField(input, uri) {
+  if (!uri) return;
+
+  let badge = input.parentNode.querySelector('.lod-link');
+  if (!badge) {
+    badge = document.createElement('small');
+    badge.className = 'lod-link text-muted d-block';
+    input.insertAdjacentElement('afterend', badge);
+  }
+  const sourceLabel = uri.includes('wikidata.org') ? 'Wikidata' : 'LOD Source';
+  badge.innerHTML = `
+    <a href="${uri}" target="_blank" title="Open corresponding ${sourceLabel} link" class="btn pt-0 pe-1" role="button" style="color: blue;">
+      <i class="fa-solid fa-arrow-up-right-from-square"></i>
+    </a>
+    <button type="button" class="btn btn-lg btn-link text-danger lod-clear-btn ps-0 pt-0" title="Remove ${sourceLabel}">
+      <i class="fa-solid fa-square-xmark"></i>
+    </button>
+  `;
+
+  badge.querySelector('.lod-clear-btn').addEventListener('click', () => {
+    delete input.dataset.lodUri;
+    input.value = '';
+    badge.remove();
+  });
 }
 
 
