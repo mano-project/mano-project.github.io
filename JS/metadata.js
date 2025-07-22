@@ -1313,6 +1313,31 @@ document.getElementById('fileUpload').addEventListener('change', function (e) {
       const geoOrigin = xmlDoc.querySelector("origin > geo")?.textContent.trim() || "";
 
 
+      //Provenance
+      const provenance = [];
+      xmlDoc.querySelectorAll("provenance").forEach(prov => {
+        const nameEl = prov.querySelector("name");
+        const settlementEl = prov.querySelector("settlement");
+        const countryEl = prov.querySelector("country");
+
+        provenance.push({
+          name: nameEl
+            ? { value: nameEl.textContent.trim(), uri: nameEl.getAttribute("ref") || "" }
+            : { value: "", uri: "" },
+          type: nameEl?.getAttribute("type") || "",
+          date: prov.querySelector("date")?.getAttribute("when") || "",
+          geo: prov.querySelector("geo")?.textContent.trim() || "",
+          settlement: settlementEl
+            ? { value: settlementEl.textContent.trim(), uri: settlementEl.getAttribute("ref") || "" }
+            : { value: "", uri: "" },
+          country: countryEl
+            ? { value: countryEl.textContent.trim(), uri: countryEl.getAttribute("ref") || "" }
+            : { value: "", uri: "" }
+        });
+      });
+
+
+
 
       const data = {
         // Accordion 1
@@ -1362,10 +1387,13 @@ document.getElementById('fileUpload').addEventListener('change', function (e) {
         dateOriginNotBefore: getAttr("origin > origDate", "notBefore"),
         dateOriginNotAfter: getAttr("origin > origDate", "notAfter"),
         
-        prevOwner: get("provenance > name"),
+        /*prevOwner: get("provenance > name"),
         geoProvenance: get("provenance > geo"),
         settlementProvenance: get("provenance > settlement"),
-        countryProvenance: get("provenance > country"),
+        countryProvenance: get("provenance > country"),*/
+
+        provenance,
+
 
         // Accordion 5 
         digi: get("bibl[type='digi'] ref"),
@@ -1413,17 +1441,7 @@ document.getElementById('fileUpload').addEventListener('change', function (e) {
           });
         });
 
-        /*data.msItems.push({
-          author: item.querySelector("author")?.textContent || '',
-          title: item.querySelector("title")?.textContent || '',
-          pageRanges: pageRanges,
-          textLang: item.querySelector("textLang")?.textContent || '',
-          incipit: item.querySelector("incipit")?.textContent || '',
-          explicit: item.querySelector("explicit")?.textContent || '',
-          textFamily: item.querySelector("note[type='textual-family']")?.textContent || '',
-          textSubFamily: item.querySelector("note[type='textual-subfamily']")?.textContent || '',
-          textGenre: item.querySelector("note[type='text-genre']")?.textContent || ''
-        });*/
+
         data.msItems.push({
           author: {
             value: item.querySelector("author")?.textContent || '',
@@ -1491,16 +1509,6 @@ document.getElementById('fileUpload').addEventListener('change', function (e) {
     );
 
       // Responsible persons
-      /*const respButton = formElement.querySelector('.resp-container + .d-flex button');
-      data.responsiblePersons.forEach((p, i) => {
-        addRespPerson(respButton);
-        const row = formElement.querySelector('.resp-container').children[i];
-        row.querySelector(`[name="respStmtName-${i}"]`).value = p.name;
-        row.querySelector(`[name="respStmtSurname-${i}"]`).value = p.surname;
-        row.querySelector(`[name="respStmtAffiliation-${i}"]`).value = p.affiliation;
-        row.querySelector(`[name="respStmtRef-${i}"]`).value = p.ref || '';
-      });*/
-
       const respButton = formElement.querySelector('.resp-container + .d-flex button');
         data.responsiblePersons.forEach((p, i) => {
           addRespPerson(respButton);
@@ -1544,6 +1552,21 @@ document.getElementById('fileUpload').addEventListener('change', function (e) {
       restoreLODField(form, "origPlace", data.origPlace);
       restoreLODField(form, "countryOrigin", data.countryOrigin);
       form.querySelector('[name="geoOrigin"]').value = data.geoOrigin;
+
+      // Restore provenance
+      const provButton = formElement.querySelector('.provenance-container + .d-flex button');
+      data.provenance.forEach((prov, i) => {
+        addProvenanceItem(provButton, prov);
+
+        const provRow = formElement.querySelector('.provenance-container').children[i];
+
+        restoreLODField(provRow, `provName-${i}`, prov.name);
+        provRow.querySelector(`[name="provType-${i}"]`).value = prov.type || '';
+        provRow.querySelector(`[name="provDate-${i}"]`).value = prov.date || '';
+        provRow.querySelector(`[name="provGeo-${i}"]`).value = prov.geo || '';
+        restoreLODField(provRow, `provSettlement-${i}`, prov.settlement);
+        restoreLODField(provRow, `provCountry-${i}`, prov.country);
+      });
 
 
 
