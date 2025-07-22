@@ -1322,14 +1322,30 @@ document.getElementById('fileUpload').addEventListener('change', function (e) {
       };
 
       // Responsible persons
-      xmlDoc.querySelectorAll("respStmt").forEach(resp => {
+      /*xmlDoc.querySelectorAll("respStmt").forEach(resp => {
         data.responsiblePersons.push({
           name: resp.querySelector("forename")?.textContent || '',
           surname: resp.querySelector("surname")?.textContent || '',
           affiliation: resp.querySelector("affiliation")?.textContent || ''
          
         });
+      });*/
+
+      xmlDoc.querySelectorAll("respStmt").forEach(resp => {
+        const respRef = resp.getAttribute("ref") || ''; // external identifier URL
+        const affilEl = resp.querySelector("affiliation");
+
+        data.responsiblePersons.push({
+          name: resp.querySelector("forename")?.textContent || '',
+          surname: resp.querySelector("surname")?.textContent || '',
+          affiliation: {
+            value: affilEl?.textContent || '',
+            uri: affilEl?.getAttribute("ref") || ''
+          },
+          ref: respRef // store external identifier URL
+        });
       });
+
 
       // msItems (Inhalt)
       xmlDoc.querySelectorAll("msItem").forEach(item => {
@@ -1401,14 +1417,35 @@ document.getElementById('fileUpload').addEventListener('change', function (e) {
     );
 
       // Responsible persons
-      const respButton = formElement.querySelector('.resp-container + .d-flex button');
+      /*const respButton = formElement.querySelector('.resp-container + .d-flex button');
       data.responsiblePersons.forEach((p, i) => {
         addRespPerson(respButton);
         const row = formElement.querySelector('.resp-container').children[i];
         row.querySelector(`[name="respStmtName-${i}"]`).value = p.name;
         row.querySelector(`[name="respStmtSurname-${i}"]`).value = p.surname;
         row.querySelector(`[name="respStmtAffiliation-${i}"]`).value = p.affiliation;
-      });
+        row.querySelector(`[name="respStmtRef-${i}"]`).value = p.ref || '';
+      });*/
+
+      const respButton = formElement.querySelector('.resp-container + .d-flex button');
+        data.responsiblePersons.forEach((p, i) => {
+          addRespPerson(respButton);
+          const row = formElement.querySelector('.resp-container').children[i];
+          row.querySelector(`[name="respStmtName-${i}"]`).value = p.name;
+          row.querySelector(`[name="respStmtSurname-${i}"]`).value = p.surname;
+
+          //restore affiliation label
+          row.querySelector(`[name="respStmtAffiliation-${i}"]`).value = p.affiliation.value || p.affiliation;
+
+          //restore affiliation URI badge
+          if (typeof p.affiliation === 'object') {
+            restoreLODField(row, `respStmtAffiliation-${i}`, p.affiliation);
+          }
+
+          //restore external identifier (ORCID/GND URL)
+          row.querySelector(`[name="respStmtRef-${i}"]`).value = p.ref || '';
+        });
+
 
       // msItems
       const itemButton = formElement.querySelector('button[onclick*="addMsItem"]');
