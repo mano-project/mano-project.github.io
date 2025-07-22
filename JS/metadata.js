@@ -1272,7 +1272,7 @@ document.getElementById('fileUpload').addEventListener('change', function (e) {
       const getAttr = (sel, attr) => xmlDoc.querySelector(sel)?.getAttribute(attr) || '';
 
 
-      // --- Library info
+      // Library info
       const repoEl = xmlDoc.querySelector("msIdentifier > repository");
       const settlementEl = xmlDoc.querySelector("msIdentifier > settlement");
       const countryEl = xmlDoc.querySelector("msIdentifier > country");
@@ -1289,14 +1289,29 @@ document.getElementById('fileUpload').addEventListener('change', function (e) {
         ? { value: countryEl.textContent.trim(), uri: countryEl.getAttribute("ref") || "" }
         : { value: "", uri: "" };
 
-      // Geo coordinates for repository
       const geoRepository = xmlDoc.querySelector("msIdentifier > geo")?.textContent.trim() || "";
 
-
+      //Script
       const scriptEl = xmlDoc.querySelector("scriptNote");
       const script = scriptEl
         ? { value: scriptEl.textContent.trim(), uri: scriptEl.getAttribute("ref") || "" }
         : { value: "", uri: "" };
+
+
+      //Place of origin
+      const origPlaceEl = xmlDoc.querySelector("origin > origPlace");
+      const countryOriginEl = xmlDoc.querySelector("origin > country");
+
+      const origPlace = origPlaceEl
+        ? { value: origPlaceEl.textContent.trim(), uri: origPlaceEl.getAttribute("ref") || "" }
+        : { value: "", uri: "" };
+
+      const countryOrigin = countryOriginEl
+        ? { value: countryOriginEl.textContent.trim(), uri: countryOriginEl.getAttribute("ref") || "" }
+        : { value: "", uri: "" };
+
+      const geoOrigin = xmlDoc.querySelector("origin > geo")?.textContent.trim() || "";
+
 
 
       const data = {
@@ -1338,11 +1353,15 @@ document.getElementById('fileUpload').addEventListener('change', function (e) {
 
         // Accordion 4 
         summaryProvenance: get("history > summary"),
-        origPlace: get("origin > origPlace"),
+        /*origPlace: get("origin > origPlace"),
         geoOrigin: get("origin >  geo"),
+        countryOrigin: get("origin > country"),*/
+        origPlace,
+        geoOrigin,
+        countryOrigin,
         dateOriginNotBefore: getAttr("origin > origDate", "notBefore"),
         dateOriginNotAfter: getAttr("origin > origDate", "notAfter"),
-        countryOrigin: get("origin > country"),
+        
         prevOwner: get("provenance > name"),
         geoProvenance: get("provenance > geo"),
         settlementProvenance: get("provenance > settlement"),
@@ -1509,10 +1528,6 @@ document.getElementById('fileUpload').addEventListener('change', function (e) {
 
 
       // msItems
-      /*const itemButton = formElement.querySelector('button[onclick*="addMsItem"]');
-      data.msItems.forEach(item => {
-        addMsItem(itemButton, item);
-      });*/
       const itemButton = formElement.querySelector('button[onclick*="addMsItem"]');
       data.msItems.forEach((item, idx) => {
         addMsItem(itemButton, item);
@@ -1524,6 +1539,11 @@ document.getElementById('fileUpload').addEventListener('change', function (e) {
 
       //Script
       restoreLODField(form, "script", data.script);
+
+      //Place of origin
+      restoreLODField(form, "origPlace", data.origPlace);
+      restoreLODField(form, "countryOrigin", data.countryOrigin);
+      form.querySelector('[name="geoOrigin"]').value = data.geoOrigin;
 
 
 
