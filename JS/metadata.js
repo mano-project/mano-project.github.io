@@ -842,6 +842,11 @@ function restoreLODField(form, fieldName, fieldData) {
         </button>
       `;
 
+      badge.querySelector('.lod-clear-btn').addEventListener('click', () => {
+        delete input.dataset.lodUri;   
+        input.value = '';              
+        badge.remove();                
+      });
     }
   } else if (typeof fieldData === 'string') {
     // legacy
