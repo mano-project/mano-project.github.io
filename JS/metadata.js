@@ -34,7 +34,7 @@ function addManuscriptForm(data = {}, shouldScroll = true) {
                                         <input type="text" class="form-control" name="msTitle" value="${data.msTitle || ''}">
                                     </div>
                                     
-                                    <div class="col-md-6">
+                                    <div class="col-md-3">
                                         <label class="form-label">License</label>
                                         <select class="form-select" name="publicationStmt">
                                             <option value="">Please select</option>
@@ -121,7 +121,7 @@ function addManuscriptForm(data = {}, shouldScroll = true) {
                             <fieldset class="p-3">
                                 <div class="mb-3">
                                     <label class="form-label">Summary</label>
-                                    <input type="text" class="form-control" name="summaryContents" placeholder="Enter a description of the manuscript content" value="${data.summaryContents || ''}">
+                                    <textarea class="form-control autosize" name="summaryContents" placeholder="Enter a description of the manuscript's content" value="${data.summaryContents || ''}"></textarea>
                                 </div>
                                 <div class="msitem-container"></div>
                                 <button type="button" class="btn btn-sm btn-outline-primary mt-2" onclick="addMsItem(this)">Add content</button>
@@ -138,47 +138,50 @@ function addManuscriptForm(data = {}, shouldScroll = true) {
                         <div class="accordion-body">
                             <fieldset class="p-3">
                               <div class="row mb-3">
-                                <div class="col-md-6">
+                                <div class="col-md">
                                     <label class="form-label">Condition</label>
-                                    <input type="text" class="form-control" name="condition" value="${data.condition || ''}">
+                                    <textarea class="form-control autosize" name="condition" value="${data.condition || ''}" placeholder="Enter a description of the manuscript's condition"></textarea>
+                                    
                                 </div>
+                              </div>
+                              <div class="row mb-3">
                                 <div class="col-md-2">
                                     <label class="form-label">Hands</label>
                                     <input type="number" class="form-control" name="hands" value="${data.hands || ''}" min="1" step="1">
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md">
                                     <label class="form-label">Font description</label>
                                     <input type="text" class="form-control lod-autocomplete" data-lod="getty-script" name="script" value="${data.script || ''}">
                                 </div>
+                                <div class="col-md">
+                                  <label class="form-label">Material</label>
+                                  <select class="form-select" name="material">
+                                    <option value="">Please select</option>
+                                    <option value="parchment" ${data.material === 'parchment' ? 'selected' : ''}>Parchment</option>
+                                    <option value="paper" ${data.material === 'paper' ? 'selected' : ''}>Paper</option>
+                                    <option value="papyrus" ${data.material === 'papyrus' ? 'selected' : ''}>Papyrus</option>
+                                  </select>
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="form-label">Leaves</label>
+                                    <input type="number" class="form-control" name="leaves" value="${data.leaves || ''}" min="1" step="1">
+                                </div>
                               </div>
                                 <div class="row mb-3">
-                                    <div class="col-md-2">
-                                      <label class="form-label">Material</label>
-                                      <select class="form-select" name="material">
-                                        <option value="">Please select</option>
-                                        <option value="parchment" ${data.material === 'parchment' ? 'selected' : ''}>Parchment</option>
-                                        <option value="paper" ${data.material === 'paper' ? 'selected' : ''}>Paper</option>
-                                        <option value="papyrus" ${data.material === 'papyrus' ? 'selected' : ''}>Papyrus</option>
-                                      </select>
-                                    </div>
-
-                                    <div class="col-md-2">
+                                    <div class="col-md">
                                         <label class="form-label">Height (cm)</label>
                                         <input type="number" class="form-control" name="height" value="${data.height || ''}" min="1">
                                     </div>
-                                    <div class="col-md-2">
+                                    <div class="col-md">
                                         <label class="form-label">Width (cm)</label>
                                         <input type="number" class="form-control" name="width" value="${data.width || ''}" min="1">
                                     </div>
-                                    <div class="col-md-2">
-                                        <label class="form-label">Leaves</label>
-                                        <input type="number" class="form-control" name="leaves" value="${data.leaves || ''}" min="1" step="1">
-                                    </div>
-                                    <div class="col-md-2">
+                                    
+                                    <div class="col-md">
                                         <label class="form-label">Columns</label>
                                         <input type="number" class="form-control" name="columns" value="${data.columns || ''}" min="0" step="1">
                                     </div>
-                                    <div class="col-md-2">
+                                    <div class="col-md">
                                         <label class="form-label">Lines</label>
                                         <input type="number" class="form-control" name="lines" value="${data.lines || ''}" min="1" step="1">
                                     </div>
@@ -198,7 +201,7 @@ function addManuscriptForm(data = {}, shouldScroll = true) {
                             <fieldset class="p-3">
                                 <div class="mb-3">
                                     <label class="form-label">Summary</label>
-                                    <input type="text" class="form-control" name="summaryProvenance" placeholder="Enter a description of the manuscript history" value="${data.summaryProvenance || ''}">
+                                    <textarea class="form-control autosize" name="summaryProvenance" placeholder="Enter a description of the manuscript's history" value="${data.summaryProvenance || ''}"></textarea>
                                 </div>
                             </fieldset>
                             <h6>Place of origin</h6>
@@ -389,13 +392,13 @@ function addMsItem(button, itemData = {}) {
     <div class="row mb-2">
       <div class="col-md">
         <label class="form-label">Incipit</label>
-        <input type="text" class="form-control" name="msItemIncipit-${index}" placeholder="Enter incipit" value="${itemData.incipit || ''}">
+        <textarea class="form-control autosize" name="msItemIncipit-${index}" placeholder="Enter incipit">${itemData.incipit || ''}</textarea>
       </div>
     </div>
     <div class="row mb-2">
       <div class="col-md">
         <label class="form-label">Explicit</label>
-        <input type="text" class="form-control" name="msItemExplicit-${index}" placeholder="Enter explicit" value="${itemData.explicit || ''}">
+        <textarea class="form-control autosize" name="msItemExplicit-${index}" placeholder="Enter explicit">${itemData.explicit || ''}</textarea>
       </div>
     </div>
     <div class="row mb-2">
@@ -1145,7 +1148,8 @@ document.getElementById('fileUpload').addEventListener('change', function (e) {
   }
   const reader = new FileReader();
   reader.onload = function (event) {
-    const content = event.target.result;
+    let rawContent = event.target.result;
+    let content = rawContent.replace(/\s+/g, ' ');
     
     if (file.name.endsWith('.json')) {
       try {
@@ -2042,4 +2046,10 @@ function addBadgeForLODField(input, uri) {
 
 
 
-
+//Text area sutosize
+document.addEventListener('input', function(e) {
+  if (e.target.matches('textarea.autosize')) {
+    e.target.style.height = 'auto'; // reset
+    e.target.style.height = e.target.scrollHeight + 'px'; // grow to fit content
+  }
+});

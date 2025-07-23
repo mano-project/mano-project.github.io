@@ -135,7 +135,7 @@
 
         <!-- Responsive Table -->
         <div class="table-responsive">
-          <table class="table table-striped" id="metadataTable">
+          <table class="table table-hover" id="metadataTable">
             <thead>
               <tr>
                 <th>Manuscript Title</th>
@@ -153,7 +153,7 @@
 
         <!-- Modal -->
         <div class="modal fade" id="recordModal" tabindex="-1" aria-labelledby="recordModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-lg modal-dialog-scrollable">
+          <div class="modal-dialog modal-xl modal-dialog-scrollable">
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title" id="recordModalLabel">Manuscript Record</h5>
@@ -162,6 +162,20 @@
               <div class="modal-body" id="recordModalBody">
                 <!-- JSON fields will be rendered here -->
               </div>
+              <div class="modal-footer">
+                <div class="dropdown">
+                  <button class="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                    Download
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#" onclick="downloadJSON(currentRecord)">Download JSON</a></li>
+                    <li><a class="dropdown-item" href="#" onclick="downloadXMLfromRecord(currentRecord)">Download XML</a></li>
+                  </ul>
+                </div>
+                <button type="button" class="btn btn-primary"  onclick="printRecordAsPDF()">Print PDF</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              </div>
+
             </div>
           </div>
         </div>
@@ -221,47 +235,199 @@
       return Math.floor((year - 1) / 100) + 1;
     }
 
+
+    function displayField(field) {
+      if (!field) return "";
+      if (typeof field === "object") {
+        return field.value || ""; // just show the value
+      }
+      return field; // plain string
+    }
+
+
     function createTableRow(entry) {
       const row = document.createElement("tr");
 
-      const location = `${entry.settlementIdent || ""}, ${entry.countryIdent || ""}`;
+      // Always just the value
+      const repoDisplay = displayField(entry.repository);
+      const settlementDisplay = displayField(entry.settlementIdent);
+      const countryDisplay = displayField(entry.countryIdent);
+      const location = [settlementDisplay, countryDisplay].filter(Boolean).join(", ");
+
       const digiLink = entry.digi ? `<a href="${entry.digi}" target="_blank">View</a>` : "";
 
       row.innerHTML = `
         <td>${entry.msTitle || ""}</td>
-        <td>${entry.repository || ""}</td>
+        <td>${repoDisplay}</td>
         <td>${location}</td>
         <td>${digiLink}</td>
         <td>
-          <div class="d-flex flex-wrap gap-2 text-nowrap">
-            <button class="btn btn-sm btn-primary me-2" onclick='showFullRecord(${JSON.stringify(entry).replace(/'/g, "&apos;")})'>
-              See complete record
+          <div class="dropdown d-inline-block me-2">
+            <button class="btn btn-sm btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown">
+              Download
             </button>
-            <button class="btn btn-sm btn-success" onclick='downloadJSON(${JSON.stringify(entry).replace(/'/g, "&apos;")})'>
-              Download JSON
-            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#" onclick='downloadJSON(${JSON.stringify(entry)})'>JSON</a></li>
+              <li><a class="dropdown-item" href="#" onclick='downloadXMLfromRecord(${JSON.stringify(entry)})'>XML</a></li>
+            </ul>
           </div>
+          <button class="btn btn-sm btn-secondary" onclick='showFullRecord(${JSON.stringify(entry).replace(/'/g, "&apos;")})'>See complete record</button>
         </td>
       `;
 
-      row.dataset.country = entry.countryIdent || "";
+      // Fix dataset values for filtering
+      row.dataset.country = entry.countryIdent?.value || entry.countryIdent || "";
       row.dataset.century = getCentury(entry.dateOrigin) || "";
       row.dataset.persons = (entry.responsiblePersons || [])
         .map(p => `${p.name} ${p.surname}`.toLowerCase())
         .join(";");
-      row.dataset.text = `${entry.msTitle || ""} ${entry.repository || ""}`.toLowerCase();
+      row.dataset.text = `${entry.msTitle || ""} ${repoDisplay}`.toLowerCase();
 
       return row;
     }
 
+
+
+    let currentRecord = null;
+
     function showFullRecord(entry) {
+      currentRecord = entry; 
       const modalBody = document.getElementById("recordModalBody");
       modalBody.innerHTML = ""; 
 
-      for (const [key, value] of Object.entries(entry)) {
-        const formattedValue = (typeof value === "object") ? JSON.stringify(value, null, 2) : value;
-        modalBody.innerHTML += `<p><strong>${key}:</strong> ${formattedValue}</p>`;
-      }
+      const addLink = (field) => {
+        if (!field) return "";
+        if (typeof field === "object" && field.value) {
+          return field.uri ? `<a href="${field.uri}" target="_blank">${field.value}</a>` : field.value;
+        }
+        return field;
+      };
+
+      const section = (title, content) => `
+        <div class="mb-4">
+          <h5 class="border-bottom pb-1">${title}</h5>
+          ${content || "<p><em>No data</em></p>"}
+        </div>
+      `;
+
+      //FILE DESCRIPTION
+      const fileDescription = `
+        <p><strong>Manuscript Title:</strong> ${entry.msTitle || ""}</p>
+        <p><strong>License:</strong> ${entry.publicationStmt || ""}</p>
+        ${
+          (entry.responsiblePersons && entry.responsiblePersons.length > 0)
+            ? `<p><strong>Responsible Persons:</strong><ul>` +
+              entry.responsiblePersons.map(p => `
+                <li>
+                  ${p.name || ""} ${p.surname || ""}
+                  ${p.affiliation?.value ? `, ${addLink(p.affiliation)}` : ""}
+                  ${p.ref ? ` (<a href="${p.ref}" target="_blank">External ID</a>)` : ""}
+                </li>
+              `).join("") +
+              `</ul></p>`
+            : ""
+        }
+      `;
+
+      //IDENTIFICATION
+      const identification = `
+        <p><strong>Library:</strong> ${addLink(entry.repository)}</p>
+        <p><strong>Settlement:</strong> ${addLink(entry.settlementIdent)}</p>
+        <p><strong>Country:</strong> ${addLink(entry.countryIdent)}</p>
+        <p><strong>Collection & Signature:</strong> ${entry.idno || ""}</p>
+        <p><strong>Sigle:</strong> ${entry.msSigle || ""}</p>
+        <p><strong>Alternative Identifier:</strong> ${entry.altIdentifier || ""}</p>
+        <p><strong>Full Name:</strong> ${entry.msName || ""}</p>
+      `;
+
+      //CONTENT
+      const contentSummary = `<p><strong>Summary:</strong> ${entry.summaryContents || ""}</p>`;
+      const contentItems = (entry.msItems && entry.msItems.length > 0)
+        ? entry.msItems.map((c, i) => `
+          <div class="border rounded p-2 mb-2">
+            <p><strong>Content ${i + 1}:</strong></p>
+            <ul>
+              <li><strong>Author:</strong> ${addLink(c.author)}</li>
+              <li><strong>Title:</strong> ${c.title || ""}</li>
+              <li><strong>Page Range(s):</strong> ${
+                (c.pageRanges && c.pageRanges.length > 0)
+                  ? c.pageRanges.map(r => `${r.from || ""}–${r.to || ""}`).join(", ")
+                  : ""
+              }</li>
+              <li><strong>Incipit:</strong> ${c.incipit || ""}</li>
+              <li><strong>Explicit:</strong> ${c.explicit || ""}</li>
+              <li><strong>Textual Family:</strong> ${c.textFamily || ""}</li>
+              <li><strong>Textual Subfamily:</strong> ${c.textSubFamily || ""}</li>
+              <li><strong>Text Language:</strong> ${addLink(c.textLang)}</li>
+              <li><strong>Text Genre:</strong> ${c.textGenre || ""}</li>
+            </ul>
+          </div>
+        `).join("")
+        : "";
+
+      //PHYSICAL DESCRIPTION
+      const physical = `
+        <p><strong>Condition:</strong> ${entry.condition || ""}</p>
+        <p><strong>Hands:</strong> ${entry.hands || ""}</p>
+        <p><strong>Font Description:</strong> ${addLink(entry.script)}</p>
+        <p><strong>Material:</strong> ${entry.material || ""}</p>
+        <p><strong>Height:</strong> ${entry.height ? entry.height + " cm" : ""}</p>
+        <p><strong>Width:</strong> ${entry.width ? entry.width + " cm" : ""}</p>
+        <p><strong>Leaves:</strong> ${entry.leaves || ""}</p>
+        <p><strong>Columns:</strong> ${entry.columns || ""}</p>
+        <p><strong>Lines:</strong> ${entry.lines || ""}</p>
+      `;
+
+      //HISTORY
+      const history = `
+        <p><strong>Summary:</strong> ${entry.summaryProvenance || ""}</p>
+        <p><strong>Place of Origin:</strong> ${addLink(entry.origPlace)} ${
+          entry.countryOrigin ? `(${addLink(entry.countryOrigin)})` : ""
+        }</p>
+        <p><strong>Earliest Possible Date:</strong> ${entry.dateOriginNotBefore || ""}</p>
+        <p><strong>Latest Possible Date:</strong> ${entry.dateOriginNotAfter || ""}</p>
+        ${
+          (entry.provenance && entry.provenance.length > 0)
+            ? `<p><strong>Provenance(s):</strong><ul>` +
+              entry.provenance.map(prov => `
+                <li>
+                  ${addLink(prov.name)} ${prov.type ? `(${prov.type})` : ""}
+                  ${prov.settlement?.value ? `, ${addLink(prov.settlement)}` : ""}
+                  ${prov.country?.value ? `, ${addLink(prov.country)}` : ""}
+                  ${prov.date ? ` — Period: ${prov.date}` : ""}
+                </li>
+              `).join("") +
+              `</ul></p>`
+            : ""
+        }
+      `;
+
+      //SURROGATES & LITERATURE
+      const surrogates = `
+        <p><strong>Digital Copy:</strong> ${entry.digi ? `<a href="${entry.digi}" target="_blank">View</a>` : ""}</p>
+        <p><strong>IIIF Manifest:</strong> ${entry.iiifManifest ? `<a href="${entry.iiifManifest}" target="_blank">View</a>` : ""}</p>
+        <p><strong>Catalogue Entry:</strong> ${entry.cat ? `<a href="${entry.cat}" target="_blank">View</a>` : ""}</p>
+      `;
+
+      const literature = (entry.literature && entry.literature.length > 0)
+        ? entry.literature.map(l => {
+            const authors = (l.authors || []).map(a => `${a.surname}, ${a.forename}`).join("; ");
+            const editors = (l.editors || []).length > 0 ? `ed. ${l.editors.join(", ")}` : "";
+            const pages = l.citedRange ? `pp. ${l.citedRange}` : "";
+            const pubDetails = [l.pubPlace, l.publisher, l.date].filter(Boolean).join(", ");
+            return `<li>${authors}. <i>${l.title}</i>. ${editors ? editors + ". " : ""}${pubDetails}${pages ? `, ${pages}` : ""}.</li>`;
+          }).join("")
+        : "";
+
+      //Assemble all sections
+      modalBody.innerHTML = `
+        ${section("File Description", fileDescription)}
+        ${section("Identification", identification)}
+        ${section("Content", contentSummary + contentItems)}
+        ${section("Physical Description", physical)}
+        ${section("History", history)}
+        ${section("Surrogates & Literature", surrogates + (literature ? `<ul>${literature}</ul>` : ""))}
+      `;
 
       const modal = new bootstrap.Modal(document.getElementById("recordModal"));
       modal.show();
@@ -361,5 +527,185 @@
 
     loadMetadata();
     </script>
+
+    <script>
+// Helper to escape XML
+function escapeXml(str) {
+  if (typeof str !== 'string') str = JSON.stringify(str);
+  return str?.replace(/[<>&'"]/g, c => ({
+    '<': '&lt;', '>': '&gt;', '&': '&amp;', '\'': '&apos;', '"': '&quot;'
+  }[c])) || '';
+}
+
+// Build TEI XML for a record
+function buildXML(entry) {
+  const xmlWithRef = (tag, field) => {
+    if (!field) return '';
+    if (typeof field === 'object' && field.value) {
+      return field.uri
+        ? `<${tag} ref="${escapeXml(field.uri)}">${escapeXml(field.value)}</${tag}>`
+        : `<${tag}>${escapeXml(field.value)}</${tag}>`;
+    }
+    if (typeof field === 'string') {
+      return field ? `<${tag}>${escapeXml(field)}</${tag}>` : '';
+    }
+    return '';
+  };
+
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title type="main">${escapeXml(entry.msTitle)}</title>
+        ${(entry.responsiblePersons || []).map(p => `
+        <respStmt${p.ref ? ` ref="${escapeXml(p.ref)}"` : ''}>
+          <persName>
+            <forename>${escapeXml(p.name)}</forename>
+            <surname>${escapeXml(p.surname)}</surname>
+            ${p.affiliation ? `<affiliation${p.affiliation.uri ? ` ref="${escapeXml(p.affiliation.uri)}"` : ''}>${escapeXml(p.affiliation.value || p.affiliation)}</affiliation>` : ''}
+          </persName>
+        </respStmt>`).join('')}
+      </titleStmt>
+      <publicationStmt>
+        <availability>
+          <p>${escapeXml(entry.publicationStmt)}</p>
+        </availability>
+      </publicationStmt>
+      <sourceDesc>
+        <msDesc>
+          <msIdentifier>
+            ${xmlWithRef('repository', entry.repository)}
+            ${entry.geoRepository ? `<geo>${escapeXml(entry.geoRepository)}</geo>` : ''}
+            ${xmlWithRef('settlement', entry.settlementIdent)}
+            ${xmlWithRef('country', entry.countryIdent)}
+            <collection><idno type="shelfmark">${escapeXml(entry.idno)}</idno></collection>
+            <msName type="sigle">${escapeXml(entry.msSigle)}</msName>
+            <altIdentifier><idno>${escapeXml(entry.altIdentifier)}</idno></altIdentifier>
+            <msName type="full">${escapeXml(entry.msName)}</msName>
+          </msIdentifier>
+          <msContents>
+            <summary>${escapeXml(entry.summaryContents)}</summary>
+            ${(entry.msItems || []).map(item => `
+            <msItem>
+              ${xmlWithRef('author', item.author)}
+              <title>${escapeXml(item.title)}</title>
+              <locusGrp>
+                ${(item.pageRanges || []).map(pr => `<locus from="${escapeXml(pr.from)}" to="${escapeXml(pr.to)}"/>`).join('\n')}
+              </locusGrp>
+              ${xmlWithRef('textLang', item.textLang)}
+              <incipit>${escapeXml(item.incipit)}</incipit>
+              <explicit>${escapeXml(item.explicit)}</explicit>
+              <note type="textual-family">${escapeXml(item.textFamily)}</note>
+              <note type="textual-subfamily">${escapeXml(item.textSubFamily)}</note>
+              <note type="text-genre">${escapeXml(item.textGenre)}</note>
+            </msItem>`).join('\n')}
+          </msContents>
+          <physDesc>
+            <objectDesc>
+              <supportDesc material="${escapeXml(entry.material)}">
+                <extent>
+                  <dimensions>
+                    <height quantity="${escapeXml(entry.height)}" unit="cm"/>
+                    <width quantity="${escapeXml(entry.width)}" unit="cm"/>
+                  </dimensions>
+                  <measure quantity="${escapeXml(entry.leaves)}"/>
+                </extent>
+                <condition>${escapeXml(entry.condition)}</condition>
+              </supportDesc>
+              <layoutDesc>
+                <layout columns="${escapeXml(entry.columns)}" writtenLines="${escapeXml(entry.lines)}"/>
+              </layoutDesc>
+            </objectDesc>
+            <handDesc>
+              <summary>${escapeXml(entry.hands)}</summary>
+            </handDesc>
+            <scriptDesc>
+              ${xmlWithRef('scriptNote', entry.script)}
+            </scriptDesc>
+          </physDesc>
+          <history>
+            <summary>${escapeXml(entry.summaryProvenance)}</summary>
+            <origin>
+              ${xmlWithRef('origPlace', entry.origPlace)}
+              ${entry.geoOrigin ? `<geo>${escapeXml(entry.geoOrigin)}</geo>` : ''}
+              ${xmlWithRef('country', entry.countryOrigin)}
+              <origDate notBefore="${escapeXml(entry.dateOriginNotBefore)}" notAfter="${escapeXml(entry.dateOriginNotAfter)}"></origDate>
+            </origin>
+            ${(entry.provenance || []).map(prov => `
+            <provenance>
+              ${prov.type
+                ? `<name type="${escapeXml(prov.type)}"${prov.name?.uri ? ` ref="${escapeXml(prov.name.uri)}"` : ''}>${escapeXml(prov.name.value || prov.name)}</name>`
+                : xmlWithRef('name', prov.name)}
+              <date when="${escapeXml(prov.date)}"></date>
+              ${prov.geo ? `<geo>${escapeXml(prov.geo)}</geo>` : ''}
+              ${xmlWithRef('settlement', prov.settlement)}
+              ${xmlWithRef('country', prov.country)}
+            </provenance>`).join('\n')}
+          </history>
+          <additional>
+            <surrogates>
+              ${entry.digi ? `<bibl type="digi"><title>Digital Copy</title><ref>${escapeXml(entry.digi)}</ref></bibl>` : ''}
+              ${entry.iiifManifest ? `<bibl type="iiif-manifest"><title>IIIF Manifest</title><ref>${escapeXml(entry.iiifManifest)}</ref></bibl>` : ''}
+              ${entry.cat ? `<bibl type="cat"><title>Catalogue Entry</title><ref>${escapeXml(entry.cat)}</ref></bibl>` : ''}
+            </surrogates>
+            ${(entry.literature || []).map(lit => `
+            <bibl type="${escapeXml(lit.type)}">
+              ${(lit.authors || []).map(a => `
+              <author>
+                <surname>${escapeXml(a.surname)}</surname>
+                <forename>${escapeXml(a.forename)}</forename>
+              </author>`).join('')}
+              ${(lit.editors || []).map(e => `<editor>${escapeXml(e)}</editor>`).join('')}
+              <title>${escapeXml(lit.title)}</title>
+              <pubPlace>${escapeXml(lit.pubPlace)}</pubPlace>
+              <publisher>${escapeXml(lit.publisher)}</publisher>
+              <series>${escapeXml(lit.series)}</series>
+              <date when="${escapeXml(lit.date)}"></date>
+              <citedRange>${escapeXml(lit.citedRange)}</citedRange>
+            </bibl>`).join('\n')}
+          </additional>
+        </msDesc>
+      </sourceDesc>
+    </fileDesc>
+  </teiHeader>
+  <text><body><p/></body></text>
+</TEI>`;
+}
+
+// Download XML
+function downloadXMLfromRecord(entry) {
+  const xml = buildXML(entry);
+  const blob = new Blob([xml], { type: "application/xml" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = `${entry.msTitle?.replace(/[\\/:*?"<>|]/g, "_") || "manuscript"}.xml`;
+  a.click();
+}
+
+// Print PDF (browser print dialog)
+function printRecordAsPDF() {
+  if (!currentRecord) {
+    alert("No record selected!");
+    return;
+  }
+  const modalBody = document.getElementById("recordModalBody").innerHTML;
+  const newWindow = window.open("", "_blank");
+  newWindow.document.write(`
+    <html>
+      <head>
+        <title>${currentRecord.msTitle || "Manuscript"}</title>
+        <style>body { font-family: serif; }</style>
+      </head>
+      <body>${modalBody}</body>
+    </html>
+  `);
+  newWindow.document.close();
+  newWindow.print();
+}
+
+</script>
+
+
   </body>
 </html>

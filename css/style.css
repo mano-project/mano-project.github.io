@@ -174,3 +174,22 @@ section h2 {
 .lod-item:hover {
   background: #e9ecef;
 }
+
+
+#metadataTable td:first-child,
+#metadataTable th:first-child {
+  width: 300px;           
+  max-width: 300px;
+  white-space: normal;     
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+#metadataTable td:nth-child(2),
+#metadataTable td:nth-child(3) {
+   width: 300px;           
+  max-width: 300px;
+  white-space: normal;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
