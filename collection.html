@@ -106,32 +106,39 @@
           </div>
         </div>
 
-        <!-- Filters
-        <div class="row mb-4 mt-5">
-          <div class="col-md-3">
-            <input id="searchInput" class="form-control" type="text" placeholder="Search title or repository..." oninput="filterTable()">
-          </div>
-          <div class="col-md-3">
-            <select id="countryFilter" class="form-select" onchange="filterTable()">
-              <option value="">All Countries</option>
-            </select>
-          </div>
-          <div class="col-md-3">
-            <select id="centuryFilter" class="form-select" onchange="filterTable()">
-              <option value="">All Centuries</option>
-            </select>
-          </div>
-          <div class="col-md-3">
-            <select id="personFilter" class="form-select" onchange="filterTable()">
-              <option value="">All Responsible Persons</option>
-            </select>
-          </div>
-        </div>-->
-        <div class="row mb-4 mt-5">
+        <!--<div class="row mb-4 mt-5">
           <div class="col-md-6">
             <input id="searchInput" class="form-control" type="text" placeholder="Search manuscripts..." oninput="filterTable()">
           </div>
+        </div>-->
+
+        <div class="row mb-4 mt-5 align-items-center">
+          <div class="col-md-6">
+            <input id="searchInput" class="form-control" type="text" placeholder="Search manuscripts..." oninput="applyFilters()">
+          </div>
+          <div class="col-md-6 text-end mt-2 mt-md-0">
+            <button class="btn btn-outline-primary" data-bs-toggle="offcanvas" data-bs-target="#filtersOffcanvas">
+              <i class="fas fa-filter"></i> Filters
+            </button>
+          </div>
         </div>
+
+        <!-- Bootstrap Offcanvas Filters -->
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="filtersOffcanvas">
+          <div class="offcanvas-header">
+            <h5>Filter Manuscripts</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+          </div>
+          <div class="offcanvas-body">
+            <div id="filterSections">
+              <!-- Dynamic filters will be injected here -->
+            </div>
+            <button id="resetFilters" class="btn btn-sm btn-secondary mt-3">Reset Filters</button>
+          </div>
+        </div>
+
+
+        
 
         <!-- Responsive Table -->
         <div class="table-responsive">
@@ -504,7 +511,7 @@
     }
 
 
-    async function loadMetadata() {
+    /*async function loadMetadata() {
       const tableBody = document.getElementById("tableBody");
       const fileList = await fetchFileList();
 
@@ -525,7 +532,7 @@
       populateFilters(allEntries);
     }
 
-    loadMetadata();
+    loadMetadata();*/
     </script>
 
     <script>
@@ -703,6 +710,252 @@ function printRecordAsPDF() {
   newWindow.document.close();
   newWindow.print();
 }
+
+
+
+
+// Categories for filtering
+const filterCategories = [
+  { key: 'responsible', label: 'Responsible Persons' },
+  { key: 'repository', label: 'Repositories' },
+  { key: 'authors', label: 'Content Authors' },
+  { key: 'languages', label: 'Text Languages' },
+  { key: 'script', label: 'Font Descriptions' },
+  { key: 'origin', label: 'Places of Origin' },
+  { key: 'provenance', label: 'Provenance' }
+];
+
+// Store available filter options as Maps
+let filterOptions = {
+  responsible: new Map(),  // key=externalID or name, value={label, uri}
+  repository: new Map(),
+  authors: new Map(),
+  languages: new Map(),
+  script: new Map(),
+  origin: new Map(),
+  provenance: new Map()
+};
+
+// Extend table rows with dataset fields for filtering
+function enrichRowDataset(row, entry) {
+  // Helper: combine label + URI (if exists)
+  const combo = (field) => {
+    if (!field) return '';
+    if (typeof field === 'object') {
+      const label = (field.value || '').toLowerCase();
+      const uri = (field.uri || '').toLowerCase();
+      return [label, uri].filter(Boolean).join(';');
+    }
+    return String(field).toLowerCase();
+  };
+
+  //Responsible persons: also include external ID
+  row.dataset.responsible = (entry.responsiblePersons || [])
+    .map(p => {
+      const name = `${p.surname || ''}, ${p.name || ''}`.toLowerCase();
+      const ref = (p.ref || '').toLowerCase();
+      const affil = p.affiliation?.value?.toLowerCase() || '';
+      return [name, ref, affil].filter(Boolean).join(';');
+    })
+    .join(';');
+
+  //Repository (label + URI)
+  row.dataset.repository = combo(entry.repository);
+
+  //Authors (each author label + URI)
+  row.dataset.authors = (entry.msItems || [])
+    .map(item => combo(item.author))
+    .filter(Boolean)
+    .join(';');
+
+  //Languages (label + URI)
+  row.dataset.languages = (entry.msItems || [])
+    .map(item => combo(item.textLang))
+    .filter(Boolean)
+    .join(';');
+
+  //Font/script (label + URI)
+  row.dataset.script = combo(entry.script);
+
+  //Origin (label + URI)
+  row.dataset.origin = combo(entry.origPlace);
+
+  //Provenance (each provenance name + URI)
+  row.dataset.provenance = (entry.provenance || [])
+    .map(prov => combo(prov.name))
+    .filter(Boolean)
+    .join(';');
+}
+
+
+// Wrap createTableRow to also enrich datasets
+const originalCreateTableRow = createTableRow;
+createTableRow = function(entry) {
+  const row = originalCreateTableRow(entry);
+  enrichRowDataset(row, entry);
+  return row;
+};
+
+// Add an item to a category Map (avoids duplicates by normalized key)
+function addFilterOption(map, label, uri = null) {
+  if (!label) return;
+  const key = (uri ? uri.trim().toLowerCase() : label.trim().toLowerCase());
+  if (!map.has(key)) {
+    map.set(key, { label: label.trim(), uri: uri?.trim() || null });
+  }
+}
+
+// After loading all entries, collect all unique filter values
+function buildFilterOptions(entries) {
+  entries.forEach(entry => {
+    //Responsible Persons → unique by external ID if exists
+    (entry.responsiblePersons || []).forEach(p => {
+      const label = `${p.surname || ''}, ${p.name || ''}`.trim();
+      const ref = p.ref || null;
+      addFilterOption(filterOptions.responsible, label, ref);
+    });
+
+    //Repository
+    if (entry.repository?.value) addFilterOption(filterOptions.repository, entry.repository.value, entry.repository.uri);
+    else if (typeof entry.repository === 'object' && entry.repository.value)
+      addFilterOption(filterOptions.repository, entry.repository.value, entry.repository.uri);
+    else if (typeof entry.repository === 'string')
+      addFilterOption(filterOptions.repository, entry.repository);
+
+    //Content authors & languages
+    (entry.msItems || []).forEach(item => {
+      if (item.author?.value) addFilterOption(filterOptions.authors, item.author.value, item.author.uri);
+      if (item.textLang?.value) addFilterOption(filterOptions.languages, item.textLang.value, item.textLang.uri);
+    });
+
+    //Script
+    if (entry.script?.value) addFilterOption(filterOptions.script, entry.script.value, entry.script.uri);
+
+    //Origin
+    if (entry.origPlace?.value) addFilterOption(filterOptions.origin, entry.origPlace.value, entry.origPlace.uri);
+
+    //Provenance
+    (entry.provenance || []).forEach(prov => {
+      if (prov.name?.value) addFilterOption(filterOptions.provenance, prov.name.value, prov.name.uri);
+    });
+  });
+}
+
+// Render filters in Offcanvas dynamically
+function renderFilterSidebar() {
+  const container = document.getElementById('filterSections');
+  container.innerHTML = '';
+
+  filterCategories.forEach(cat => {
+    const map = filterOptions[cat.key];
+    if (!map || map.size === 0) return;
+
+    // Sort alphabetically
+    const values = Array.from(map.values()).sort((a, b) => a.label.localeCompare(b.label));
+
+    const section = document.createElement('div');
+    section.classList.add('mb-3');
+    section.innerHTML = `<h6>${cat.label}</h6>`;
+
+    values.forEach(item => {
+      const safeVal = (item.uri ? item.uri.toLowerCase() : item.label.toLowerCase()).replace(/"/g, '&quot;');
+      const linkIcon = item.uri
+        ? `<a href="${item.uri}" target="_blank" class="ms-1 text-muted" data-bs-toggle="tooltip" title="Open link"><i class="fas fa-link"></i></a>`
+        : '';
+
+      section.innerHTML += `
+        <div class="form-check">
+          <input class="form-check-input filter-checkbox" type="checkbox"
+                 data-category="${cat.key}" value="${safeVal}">
+          <label class="form-check-label">
+            ${item.label} ${linkIcon}
+          </label>
+        </div>
+      `;
+    });
+
+    container.appendChild(section);
+  });
+
+  // Attach event listeners
+  document.querySelectorAll('.filter-checkbox').forEach(cb =>
+    cb.addEventListener('change', applyFilters)
+  );
+
+  //Activate Bootstrap tooltips for link icons
+  const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+  tooltipTriggerList.map(el => new bootstrap.Tooltip(el));
+}
+
+// Apply filters: search + checkboxes
+function applyFilters() {
+  const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+
+  // Collect active filters
+  const activeFilters = {};
+  filterCategories.forEach(cat => {
+    const selected = Array.from(
+      document.querySelectorAll(`.filter-checkbox[data-category="${cat.key}"]:checked`)
+    ).map(cb => cb.value);
+    if (selected.length > 0) activeFilters[cat.key] = selected;
+  });
+
+  document.querySelectorAll('#tableBody tr').forEach(row => {
+    const rowText = row.innerText.toLowerCase();
+    let visible = true;
+
+    // Text search
+    if (searchTerm && !rowText.includes(searchTerm)) visible = false;
+
+    // Each active category must match
+    for (const catKey in activeFilters) {
+      const rowVal = row.dataset[catKey] || '';
+      const selectedVals = activeFilters[catKey];
+      const match = selectedVals.some(val => rowVal.includes(val));
+      if (!match) {
+        visible = false;
+        break;
+      }
+    }
+
+    row.style.display = visible ? '' : 'none';
+  });
+}
+
+// Reset filters
+document.getElementById('resetFilters')?.addEventListener('click', () => {
+  document.querySelectorAll('.filter-checkbox').forEach(cb => cb.checked = false);
+  document.getElementById('searchInput').value = '';
+  applyFilters();
+});
+
+// After metadata loaded, build filters
+async function loadMetadataWithFilters() {
+  const tableBody = document.getElementById("tableBody");
+  const fileList = await fetchFileList();
+
+  for (const file of fileList) {
+    try {
+      const record = await fetchJSONFile(file.download_url);
+      const entries = Array.isArray(record) ? record : [record];
+      entries.forEach(entry => {
+        allEntries.push(entry);
+        const row = createTableRow(entry);
+        tableBody.appendChild(row);
+      });
+    } catch (err) {
+      console.error("Error loading file:", file.name, err);
+    }
+  }
+
+  // Build filter options from loaded data
+  buildFilterOptions(allEntries);
+  renderFilterSidebar();
+}
+
+//Replace original loadMetadata() call
+loadMetadataWithFilters();
+
 
 </script>
 

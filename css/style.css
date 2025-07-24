@@ -193,3 +193,8 @@ section h2 {
   word-wrap: break-word;
   overflow-wrap: break-word;
 }
+
+/*#filtersOffcanvas {
+  width: 450px !important;    default for larger screens 
+  max-width: 90vw;            prevent overflow on small screens 
+}*/
