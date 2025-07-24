@@ -1715,10 +1715,15 @@ async function searchGettyScripts(term) {
 }
 
 
+// Track the currently open dropdown globally
+let activeDropdown = null;
+
 function showDropdown(field, results, loading = false) {
-  // Remove old dropdown
-  let old = field.parentNode.querySelector('.lod-dropdown');
-  if (old) old.remove();
+  //Remove any previously active dropdown before creating a new one
+  if (activeDropdown) {
+    activeDropdown.remove();
+    activeDropdown = null;
+  }
 
   const dropdown = document.createElement('div');
   dropdown.className = 'lod-dropdown border bg-light';
@@ -1727,14 +1732,14 @@ function showDropdown(field, results, loading = false) {
   dropdown.style.maxHeight = '200px';
   dropdown.style.overflowY = 'auto';
 
-  //Position it directly below the input
+  //Position it directly below the input field
   const rect = field.getBoundingClientRect();
   const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
   dropdown.style.width = rect.width + 'px';
   dropdown.style.left = rect.left + 'px';
   dropdown.style.top = (rect.bottom + scrollTop) + 'px';
 
-  // Populate dropdown...
+  //Populate dropdown
   if (loading) {
     dropdown.innerHTML = `<div class="lod-item p-1 text-muted">Loading...</div>`;
   } else if (!results.length) {
@@ -1747,14 +1752,23 @@ function showDropdown(field, results, loading = false) {
       item.style.cursor = 'pointer';
 
       item.addEventListener('click', async () => {
-        // (existing click logic remains unchanged)
+        //Always fill the selected label + URI
         field.value = r.label;
         field.dataset.lodUri = r.uri;
-        const qid = r.uri.split('/').pop();
-        const entity = await fetchWikidataEntityDetails(qid);
-        const form = field.closest('form');
-        await tryAutofillGeo(entity, field, form);
 
+        const source = field.dataset.lod; // detect source
+        const form = field.closest('form');
+
+        if (source.startsWith('wikidata')) {
+          //Only Wikidata gets entity details + autofill
+          const qid = r.uri.split('/').pop();
+          const entity = await fetchWikidataEntityDetails(qid);
+          await tryAutofillGeo(entity, field, form);
+        }
+        //Getty vocab (font description) → no Wikidata autofill
+        // just set the label + URI, nothing else.
+
+        //Badge with correct icons
         let badge = field.parentNode.querySelector('.lod-link');
         if (!badge) {
           badge = document.createElement('small');
@@ -1777,21 +1791,32 @@ function showDropdown(field, results, loading = false) {
           badge.remove();
         });
 
+        //Close dropdown after selection
         dropdown.remove();
+        activeDropdown = null;
       });
 
       dropdown.appendChild(item);
     });
   }
 
-  //Append to BODY so it positions correctly in all layouts
+  //Append to BODY so it positions correctly
   document.body.appendChild(dropdown);
-
-  // Hide dropdown on outside click
-  document.addEventListener('click', (ev) => {
-    if (!dropdown.contains(ev.target) && ev.target !== field) dropdown.remove();
-  }, { once: true });
+  activeDropdown = dropdown;
 }
+
+//One global outside-click listener for all dropdowns
+document.addEventListener('click', (ev) => {
+  if (activeDropdown) {
+    // close if clicked outside BOTH dropdown and the triggering field
+    if (!activeDropdown.contains(ev.target) && !ev.target.classList.contains('lod-autocomplete')) {
+      activeDropdown.remove();
+      activeDropdown = null;
+    }
+  }
+});
+
+
 
 
 
