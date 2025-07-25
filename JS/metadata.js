@@ -1080,7 +1080,7 @@ document.getElementById('downloadAllJSON').addEventListener('click', () => {
   downloadFile(`${fileBase}.json`, JSON.stringify(all, null, 2), 'application/json');
 });
 
-document.getElementById('downloadAllCSV').addEventListener('click', () => {
+/*document.getElementById('downloadAllCSV').addEventListener('click', () => {
   const all = [...document.querySelectorAll('.msForm')].map(f => getFormData(f.id));
   const headers = [];
   const firstRow = all[0] || {};
@@ -1129,7 +1129,7 @@ document.getElementById('downloadAllRDF').addEventListener('click', () => {
   const fileBase = buildCombinedFileName(all);
   downloadFile(`${fileBase}.rdf`, rdf, 'application/rdf+xml');
 });
-
+*/
 
 function downloadFile(filename, content, type) {
   const blob = new Blob([content], { type });
