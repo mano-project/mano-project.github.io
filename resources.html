@@ -14,6 +14,7 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
                
         <link rel="stylesheet" type="text/css" href="css/style.css" media="screen"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
         
     </head>
@@ -49,7 +50,7 @@
                     <li class="nav-item"><a class="nav-link" href="editor.html">Metadata Editor</a></li>
                     <li class="nav-item"><a class="nav-link" href="collection.html">Metadata Collection</a></li>
                     <li class="nav-item"><a class="nav-link" href="viewer.html">Transcription Viewer</a></li>
-                    <!--<li class="nav-item"><a class="nav-link" href="contacts.html">Contacts</a></li>-->
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
                     </ul>
                 </div>
                 </div>
@@ -62,37 +63,302 @@
             </div>
             <h1 class="page-title">Resources</h1>
 
-            <div class="container pdf-container my-5">
-                <iframe src="data/Ontologien.pdf" width="100%" height="600px"></iframe>
-            </div>
+
+            <div class="row my-4 align-items-end">
+          <!-- Left column -->
+          <div class="col-12 col-md-6 d-flex justify-content-start mb-2 mb-md-0">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#infoResources">
+              About Resources
+            </button>
+          </div>
+
+          <!-- Right column -->
+          <div class="col-12 col-md-6 d-flex justify-content-start justify-content-md-end">
+            <a href="https://github.com/mano-project/mano-resources" 
+              class="btn btn-primary" 
+              target="_blank" 
+              rel="noopener noreferrer">
+              Contribute to the Resources <i class="fab fa-github fa-xl ms-2"></i>
+            </a>
+          </div>
         </div>
 
-        <footer class="footer bg-body-tertiary text-center py-4">
-            <div class="container">
 
-            <!-- Logo centered -->
-            <div class="mb-3">
-                <a class="navbar-brand" href="index.html">
-                <img src="images/MANO.png" alt="Logo" width="80">
-                </a>
+        <!-- About Resources -->
+        <div class="modal fade" id="infoResources" tabindex="-1" aria-labelledby="infoResourcesLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="infoResourcesLabel">About Resources</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <p>Resources is a shared collection of teaching materials for students and researchers in manuscript studies. Each teacher has a personal folder in the MANO GitHub repository where they can upload their PDFs, slides, and other teaching resources. The materials are freely available for students and published under the <a href="https://creativecommons.org/licenses/by-nc/4.0/deed.en" target="_blank">Creative Commons Attribution - NonCommercial (CC BY-NC)</a> license. Anyone can reuse them for educational purposes, but must always credit the author and cannot use them commercially.</p>
+                <p class="fw-bold">How can I contribute?</p>
+                <p>All teaching materials are stored in the <a href="https://github.com/mano-project/mano-resources" target="_blank">MANO GitHub repository</a>. To contribute, you need a free GitHub account. Once you have it:</p>
+                <p>
+                    <ol>
+                        <li>Create your personal folder in the MANO Resources repository</li>
+                        <li>Upload your teaching materials (PDFs, slides, etc.) into your folder</li>
+                        <li>Your files will be automatically displayed on this page</li>
+                    </ol>
+                </p>
+                <p>
+                For a step-by-step guide with detailed instructions, click the “Contribute to the Resources” button in this page. It will redirect you to the GitHub repository, where you will find the full documentation and the upload process.</p>
+                <p>Every contribution helps expand this shared teaching resource, and participation in enriching the MANO Resources collection is greatly appreciated.
+                </p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              </div>
             </div>
+          </div>
+        </div>
 
-            <!-- Links centered in one line -->
-            <div class="mb-3">
-                <a class="footer-link mx-2" href="index.html">Home</a>
-                <a class="footer-link mx-2" href="resources.html">Resources</a>
-                <a class="footer-link mx-2" href="editor.html">Metadata Editor</a>
-                <a class="footer-link mx-2" href="collection.html">Metadata Collection</a>
-                <a class="footer-link mx-2" href="viewer.html">Transcription Viewer</a>
-                <!--<a class="footer-link mx-2" href="contacts.html">Contacts</a>-->
-            </div>
 
-            <!-- Copyright centered -->
-            <div class="text-center mt-2">
-                <span>© 2025 <span class="mano">&lt;MANO&gt;</span></span>
-            </div>
 
-            </div>
-        </footer>
-    </body>
+            <!-- Search bar -->
+    <div class="row my-4">
+      <div class="col-md-6">
+        <input id="searchInput" class="form-control" type="text"
+          placeholder="Search..."
+          oninput="filterTable()">
+      </div>
+    </div>
+
+    <!-- Teacher Resources Table -->
+    <div class="table-responsive">
+      <table class="table table-hover" id="resourcesTable">
+        <thead>
+          <tr>
+            <th>Teacher</th>
+            <th>Identifier</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="resourcesTableBody">
+          <!-- Filled dynamically -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Modal for teaching materials -->
+  <div class="modal fade" id="materialsModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="materialsModalLabel">Teaching Materials</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body" id="materialsModalBody">
+          <!-- Materials list will appear here -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer bg-body-tertiary text-center py-4">
+    <div class="container">
+      <div class="mb-3">
+        <a class="navbar-brand" href="index.html">
+          <img src="images/MANO.png" alt="Logo" width="80">
+        </a>
+      </div>
+      <div class="mb-3">
+        <a class="footer-link mx-2" href="index.html">Home</a>
+        <a class="footer-link mx-2" href="resources.html">Resources</a>
+        <a class="footer-link mx-2" href="editor.html">Metadata Editor</a>
+        <a class="footer-link mx-2" href="collection.html">Metadata Collection</a>
+        <a class="footer-link mx-2" href="viewer.html">Transcription Viewer</a>
+        <a class="footer-link mx-2" href="about.html">About</a>
+      </div>
+      <div class="text-center mt-2">
+        <span>© 2025 <span class="mano">&lt;MANO&gt;</span></span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const repoOwner = "mano-project";
+    const repoName = "mano-resources";
+
+    //Detect ORCID/VIAF/GND
+    function detectIdentifier(folderName) {
+      const orcid = folderName.match(/\d{4}-\d{4}-\d{4}-\d{4}/);
+      if (orcid) return { type: "orcid", id: orcid[0] };
+
+      const viaf = folderName.match(/VIAF:?(\d+)/i);
+      if (viaf) return { type: "viaf", id: viaf[1] };
+
+      const gnd = folderName.match(/GND:?(\d+)/i);
+      if (gnd) return { type: "gnd", id: gnd[1] };
+
+      return { type: "none", id: null };
+    }
+
+    //ORCID API
+    async function fetchFromORCID(id) {
+      try {
+        const res = await fetch(`https://pub.orcid.org/v3.0/${id}/person`, {
+          headers: { "Accept": "application/json" }
+        });
+        if (!res.ok) return null;
+        const data = await res.json();
+        return {
+          name: `${data.name["family-name"]?.value || ""} ${data.name["given-names"]?.value || ""}`.trim(),
+          url: `https://orcid.org/${id}`
+        };
+      } catch (e) {
+        console.warn("ORCID fetch failed", e);
+        return null;
+      }
+    }
+
+    //VIAF API
+    async function fetchFromVIAF(id) {
+      try {
+        const res = await fetch(`https://viaf.org/viaf/${id}/viaf.json`);
+        if (!res.ok) return null;
+        const data = await res.json();
+        const label = data.mainHeadings?.data?.text || `VIAF ${id}`;
+        return { name: label, url: `https://viaf.org/viaf/${id}` };
+      } catch (e) {
+        console.warn("VIAF fetch failed", e);
+        return null;
+      }
+    }
+
+    //GND API
+    async function fetchFromGND(id) {
+      try {
+        const res = await fetch(`https://d-nb.info/gnd/${id}/about/lds.json`);
+        if (!res.ok) return null;
+        const data = await res.json();
+        const person = data["@graph"]?.find(x => x["preferredNameForThePerson"]);
+        return {
+          name: person?.preferredNameForThePerson || `GND ${id}`,
+          url: `https://d-nb.info/gnd/${id}`
+        };
+      } catch (e) {
+        console.warn("GND fetch failed", e);
+        return null;
+      }
+    }
+
+    //Fetch top-level folders
+    async function fetchTeacherFolders() {
+      const res = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents`);
+      if (!res.ok) {
+        console.error("GitHub API error");
+        return [];
+      }
+      const data = await res.json();
+      return data.filter(item => item.type === "dir");
+    }
+
+    //Fetch files inside a folder (recursive)
+    async function fetchFilesInFolder(path) {
+      const res = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents/${path}`);
+      if (!res.ok) return [];
+      const data = await res.json();
+      let files = [];
+      for (const item of data) {
+        if (item.type === "file" && item.name.toLowerCase().endsWith(".pdf")) {
+          files.push(item);
+        } else if (item.type === "dir") {
+          const subFiles = await fetchFilesInFolder(`${path}/${item.name}`);
+          files = files.concat(subFiles);
+        }
+      }
+      return files;
+    }
+
+    //Build teacher row with modal button
+    function addTeacherRow(folderPath, teacher, identifier) {
+      const tableBody = document.getElementById("resourcesTableBody");
+      const row = document.createElement("tr");
+
+      const idLabel = identifier.id ? `${identifier.type.toUpperCase()} ${identifier.id}` : "—";
+      const idLink = identifier.id && teacher.url ? `<a href="${teacher.url}" target="_blank">${idLabel}</a>` : idLabel;
+
+      row.innerHTML = `
+        <td>${teacher.name}</td>
+        <td>${idLink}</td>
+        <td>
+          <button class="btn btn-sm btn-secondary" onclick="showMaterials('${folderPath}', '${teacher.name.replace(/'/g,"")}')">
+            Teaching Materials
+          </button>
+        </td>
+      `;
+      tableBody.appendChild(row);
+    }
+
+    //Show materials modal
+    async function showMaterials(folderPath, teacherName) {
+      const modalTitle = document.getElementById("materialsModalLabel");
+      const modalBody = document.getElementById("materialsModalBody");
+
+      modalTitle.textContent = `${teacherName}`;
+      modalBody.innerHTML = "<p>Loading materials...</p>";
+
+      const files = await fetchFilesInFolder(folderPath);
+
+      if (!files.length) {
+        modalBody.innerHTML = "<p><em>No teaching materials found.</em></p>";
+      } else {
+        modalBody.innerHTML = `
+          <ul>
+            ${files.map(f => {
+            const rawUrl = `https://raw.githubusercontent.com/${repoOwner}/${repoName}/main/${f.path}`;
+            return `<li><a href="${rawUrl}" target="_blank">${f.name}</a></li>`;
+            }).join("")}
+        </ul>
+        `;
+      }
+
+      const modal = new bootstrap.Modal(document.getElementById("materialsModal"));
+      modal.show();
+    }
+
+    //Main load function
+    async function loadResources() {
+      const folders = await fetchTeacherFolders();
+
+      for (const folder of folders) {
+        const folderName = folder.name;
+        const identifier = detectIdentifier(folderName);
+
+        let teacher = { name: folderName, url: "#" };
+
+        if (identifier.type === "orcid") {
+          const info = await fetchFromORCID(identifier.id);
+          if (info) teacher = info;
+        } else if (identifier.type === "viaf") {
+          const info = await fetchFromVIAF(identifier.id);
+          if (info) teacher = info;
+        } else if (identifier.type === "gnd") {
+          const info = await fetchFromGND(identifier.id);
+          if (info) teacher = info;
+        }
+
+        addTeacherRow(folder.name, teacher, identifier);
+      }
+    }
+
+    //Search filter
+    function filterTable() {
+      const term = document.getElementById("searchInput").value.toLowerCase();
+      document.querySelectorAll("#resourcesTableBody tr").forEach(row => {
+        row.style.display = row.innerText.toLowerCase().includes(term) ? "" : "none";
+      });
+    }
+
+    // Load resources
+    loadResources();
+  </script>
+</body>
 </html>
