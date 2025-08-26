@@ -51,7 +51,7 @@
         <!-- Centered logo -->
         <div class="position-absolute start-50 translate-middle-x text-center">
         <a class="navbar-brand" href="index.html">
-            <img src="images/MANO.png" alt="Logo" width="80" class="d-inline-block align-text-top">
+            <img src="images/MANO.png" alt="Logo" width="65" class="d-inline-block align-text-top">
         </a>
         </div>
 
@@ -99,9 +99,9 @@
 
     <!-- Convert button -->
     <div class="text-center mt-3">
-      <button id="convertBtn" class="btn btn-success" disabled>Convert to TEI</button>
-      <a id="downloadBtn" class="btn btn-primary d-none" download="combined-transcription.xml">Download TEI</a>
-      <a href="viewer.html" class="btn btn-outline-secondary d-none" id="viewBtn">Open in Viewer</a>
+      <button id="convertBtn" class="btn btn-success" disabled>Convert</button>
+      <a id="downloadBtn" class="btn btn-primary d-none" download="combined-transcription.xml">Download</a>
+      <a href="viewer.html" class="btn btn-outline-secondary d-none" id="viewBtn">Go to Transcription Viewer</a>
     </div>
   </div>
 
@@ -111,7 +111,7 @@
             <!-- Logo centered -->
             <div class="mb-3">
                 <a class="navbar-brand" href="index.html">
-                <img src="images/MANO.png" alt="Logo" width="80">
+                <img src="images/MANO.png" alt="Logo" width="50">
                 </a>
             </div>
 
@@ -197,6 +197,9 @@
       downloadBtn.href = url;
       downloadBtn.classList.remove('d-none');
       viewBtn.classList.remove('d-none');
+      
+      // hide the convert button after conversion
+      convertBtn.classList.add('d-none');
     });
 
     // Converter function
