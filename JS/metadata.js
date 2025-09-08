@@ -22,7 +22,7 @@ function addManuscriptForm(data = {}, shouldScroll = true) {
             <form id="${formId}" class="msForm">
                 <div class="accordion-item">  
                     <h2 class="accordion-header" id="heading0-${id}">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse0-${id}" aria-expanded="true" aria-controls="collapse0-${id}">Description of the file</button>
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse0-${id}" aria-expanded="true" aria-controls="collapse0-${id}">Description of the file <a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-fileDesc.html" target="_blank" class="ms-2 text-decoration-none"><i class="bi bi-box-arrow-up-right"></i></a></button>
                     </h2>
                     <div id="collapse0-${id}" class="accordion-collapse collapse show" aria-labelledby="heading0-${id}">
                         <div class="accordion-body">
@@ -60,7 +60,7 @@ function addManuscriptForm(data = {}, shouldScroll = true) {
 
                 <div class="accordion-item">  
                     <h2 class="accordion-header" id="heading1-${id}">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1-${id}" aria-expanded="false" aria-controls="collapse1-${id}">1. Identification</button>
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1-${id}" aria-expanded="false" aria-controls="collapse1-${id}">1. Identification <a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-msIdentifier.html" target="_blank" class="ms-2 text-decoration-none"><i class="bi bi-box-arrow-up-right"></i></a></button>
                     </h2>
                     <div id="collapse1-${id}" class="accordion-collapse collapse" aria-labelledby="heading1-${id}">
                         <div class="accordion-body">
@@ -114,7 +114,7 @@ function addManuscriptForm(data = {}, shouldScroll = true) {
                         
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="heading2-${id}">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2-${id}" aria-expanded="false" aria-controls="collapse2-${id}">2. Content</button>
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2-${id}" aria-expanded="false" aria-controls="collapse2-${id}">2. Content <a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-msContents.html" target="_blank" class="ms-2 text-decoration-none"><i class="bi bi-box-arrow-up-right"></i></a></button>
                     </h2>
                     <div id="collapse2-${id}" class="accordion-collapse collapse" aria-labelledby="heading2-${id}">
                         <div class="accordion-body">
@@ -132,7 +132,7 @@ function addManuscriptForm(data = {}, shouldScroll = true) {
                 
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="heading3-${id}">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3-${id}" aria-expanded="false" aria-controls="collapse3-${id}">3. Physical description</button>
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3-${id}" aria-expanded="false" aria-controls="collapse3-${id}">3. Physical description <a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-physDesc.html" target="_blank" class="ms-2 text-decoration-none"><i class="bi bi-box-arrow-up-right"></i></a></button>
                     </h2>
                     <div id="collapse3-${id}" class="accordion-collapse collapse" aria-labelledby="heading3-${id}">
                         <div class="accordion-body">
@@ -194,7 +194,7 @@ function addManuscriptForm(data = {}, shouldScroll = true) {
 
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="heading4-${id}">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4-${id}" aria-expanded="false" aria-controls="collapse4-${id}">4. History</button>
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4-${id}" aria-expanded="false" aria-controls="collapse4-${id}">4. History <a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-history.html" target="_blank" class="ms-2 text-decoration-none"><i class="bi bi-box-arrow-up-right"></i></a></button>
                     </h2>
                     <div id="collapse4-${id}" class="accordion-collapse collapse" aria-labelledby="heading4-${id}">
                         <div class="accordion-body">
@@ -249,7 +249,7 @@ function addManuscriptForm(data = {}, shouldScroll = true) {
                         
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="heading5-${id}">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5-${id}" aria-expanded="false" aria-controls="collapse5-${id}">5. Surrogates and literature</button>
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5-${id}" aria-expanded="false" aria-controls="collapse5-${id}">5. Surrogates and literature <a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-additional.html" target="_blank" class="ms-2 text-decoration-none"><i class="bi bi-box-arrow-up-right"></i></a></button>
                     </h2>
                     <div id="collapse5-${id}" class="accordion-collapse collapse" aria-labelledby="heading5-${id}">
                         <div class="accordion-body">
