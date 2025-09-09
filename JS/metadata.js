@@ -35,7 +35,7 @@ function addManuscriptForm(data = {}, shouldScroll = true) {
                                     </div>
                                     
                                     <div class="col-md-3">
-                                        <label class="form-label">License</label>
+                                        <label class="form-label">License <a href="https://creativecommons.org/share-your-work/cclicenses/" target="_blank" class="ms-2 text-decoration-none"><i class="bi bi-box-arrow-up-right"></i></a></label>
                                         <select class="form-select" name="publicationStmt">
                                             <option value="">Please select</option>
                                             ${['CC BY','CC BY-SA','CC BY-ND','CC BY-NC','CC BY-NC-SA','CC BY-NC-ND','CC0']
