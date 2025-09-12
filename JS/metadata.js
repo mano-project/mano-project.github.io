@@ -146,15 +146,15 @@ function addManuscriptForm(data = {}, shouldScroll = true) {
                               </div>
                               <div class="row mb-3">
                                 <div class="col-md-2">
-                                    <label class="form-label">Hands</label>
+                                    <label class="form-label">Hands<a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-handDesc.html#tei_att.hands" target="_blank" class="ms-2 text-decoration-none"><i class="bi bi-box-arrow-up-right"></i></a></label>
                                     <input type="number" class="form-control" name="hands" value="${data.hands || ''}" min="1" step="1">
                                 </div>
                                 <div class="col-md">
-                                    <label class="form-label">Font description</label>
+                                    <label class="form-label">Font description<a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-scriptNote.html" target="_blank" class="ms-2 text-decoration-none"><i class="bi bi-box-arrow-up-right"></i></a></label>
                                     <input type="text" class="form-control lod-autocomplete" data-lod="getty-script" name="script" value="${data.script || ''}">
                                 </div>
                                 <div class="col-md">
-                                  <label class="form-label">Material</label>
+                                  <label class="form-label">Material<a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-material.html" target="_blank" class="ms-2 text-decoration-none"><i class="bi bi-box-arrow-up-right"></i></a></label>
                                   <select class="form-select" name="material">
                                     <option value="">Please select</option>
                                     <option value="parchment" ${data.material === 'parchment' ? 'selected' : ''}>Parchment</option>
@@ -178,12 +178,16 @@ function addManuscriptForm(data = {}, shouldScroll = true) {
                                     </div>
                                     
                                     <div class="col-md">
-                                        <label class="form-label">Columns</label>
-                                        <input type="number" class="form-control" name="columns" value="${data.columns || ''}" min="0" step="1">
+                                        <label class="form-label">Columns<a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-layout.html#tei_att.columns" target="_blank" class="ms-2 text-decoration-none"><i class="bi bi-box-arrow-up-right"></i></a>
+                                        </label>
+                                        <input type="number" class="form-control" name="columns" value="${data.columns || ''}" min="0" max="4" step="1" placeholder="N. of layout columns per page">
                                     </div>
                                     <div class="col-md">
-                                        <label class="form-label">Lines</label>
-                                        <input type="number" class="form-control" name="lines" value="${data.lines || ''}" min="1" step="1">
+                                        <label class="form-label">Written lines<a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-layout.html#tei_att.writtenLines" target="_blank" class="ms-2 text-decoration-none">
+      <i class="bi bi-box-arrow-up-right"></i>
+    </a>
+                                        </label>
+                                        <input type="number" class="form-control" name="lines" value="${data.lines || ''}" min="1" step="1" placeholder="N. of lines per column">
                                     </div>
                                 </div>
                                 
@@ -204,7 +208,8 @@ function addManuscriptForm(data = {}, shouldScroll = true) {
                                     <textarea class="form-control autosize" name="summaryProvenance" placeholder="Enter a description of the manuscript's history" value="${data.summaryProvenance || ''}"></textarea>
                                 </div>
                             </fieldset>
-                            <h6>Place of origin</h6>
+                            <h6>Origin<a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-origin.html" target="_blank" class="ms-2 text-decoration-none"><i class="bi bi-box-arrow-up-right"></i></a></h6>
+                            
                             <fieldset class="p-3">
                                 <div class="row mb-3">
                                     <div class="col-md">
@@ -236,11 +241,12 @@ function addManuscriptForm(data = {}, shouldScroll = true) {
                                 </div>
                             </fieldset>
                             
-                            <h6>Provenance</h6>
+                            <h6>Provenance<a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-provenance.html" target="_blank" class="ms-2 text-decoration-none"><i class="bi bi-box-arrow-up-right"></i></a></h6>
+                            <small>History of ownership</small>
                             <fieldset class="p-3">
                               <div class="provenance-container"></div>
                               <div class="d-flex justify-content-start">
-                                <button type="button" class="btn btn-sm btn-outline-primary" onclick="addProvenanceItem(this)">Add Provenance</button>
+                                <button type="button" class="btn btn-sm btn-outline-primary" onclick="addProvenanceItem(this)">Add provenance</button>
                               </div>
                             </fieldset>
                         </div>
@@ -391,13 +397,13 @@ function addMsItem(button, itemData = {}) {
     
     <div class="row mb-2">
       <div class="col-md">
-        <label class="form-label">Incipit</label>
+        <label class="form-label">Incipit<a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-incipit.html" target="_blank" class="ms-2 text-decoration-none"><i class="bi bi-box-arrow-up-right"></i></a></label>
         <textarea class="form-control autosize" name="msItemIncipit-${index}" placeholder="Enter incipit">${itemData.incipit || ''}</textarea>
       </div>
     </div>
     <div class="row mb-2">
       <div class="col-md">
-        <label class="form-label">Explicit</label>
+        <label class="form-label">Explicit<a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-explicit.html" target="_blank" class="ms-2 text-decoration-none"><i class="bi bi-box-arrow-up-right"></i></a></label>
         <textarea class="form-control autosize" name="msItemExplicit-${index}" placeholder="Enter explicit">${itemData.explicit || ''}</textarea>
       </div>
     </div>
@@ -413,7 +419,7 @@ function addMsItem(button, itemData = {}) {
     </div>
     <div class="row mb-2">
       <div class="col-md-6">
-        <label class="form-label">Text languge</label>
+        <label class="form-label">Text languge<a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-textLang.html" target="_blank" class="ms-2 text-decoration-none"><i class="bi bi-box-arrow-up-right"></i></a></label>
         <input type="text" class="form-control lod-autocomplete" data-lod="wikidata-lang" name="msItemLang-${index}" placeholder="Enter text language" value="${itemData.textLang || ''}">
       </div>
       <div class="col-md-6">
