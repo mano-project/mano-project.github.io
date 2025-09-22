@@ -33,9 +33,22 @@ function addManuscriptForm(data = {}, shouldScroll = true) {
                                         <label class="form-label">Manuscript title</label>
                                         <input type="text" class="form-control" name="msTitle" value="${data.msTitle || ''}">
                                     </div>
+
+                                    <div class="col-md-3">
+                                      <label class="form-label">Language of data entry</label>
+                                      <select class="form-select" name="xmlLang">
+                                        <option value="">Please select</option>
+                                        <option value="en" ${data.xmlLang === 'en' ? 'selected' : ''}>English</option>
+                                        <option value="de" ${data.xmlLang === 'de' ? 'selected' : ''}>German</option>
+                                        <option value="it" ${data.xmlLang === 'it' ? 'selected' : ''}>Italian</option>
+                                        <option value="fr" ${data.xmlLang === 'fr' ? 'selected' : ''}>French</option>
+                                        <option value="es" ${data.xmlLang === 'es' ? 'selected' : ''}>Spanish</option>
+                                      </select>
+                                    </div>
+
                                     
                                     <div class="col-md-3">
-                                        <label class="form-label">License <a href="https://creativecommons.org/share-your-work/cclicenses/" target="_blank" class="ms-2 text-decoration-none"><i class="bi bi-box-arrow-up-right"></i></a></label>
+                                        <label class="form-label">License<a href="https://creativecommons.org/share-your-work/cclicenses/" target="_blank" class="ms-2 text-decoration-none"><i class="bi bi-box-arrow-up-right"></i></a></label>
                                         <select class="form-select" name="publicationStmt">
                                             <option value="">Please select</option>
                                             ${['CC BY','CC BY-SA','CC BY-ND','CC BY-NC','CC BY-NC-SA','CC BY-NC-ND','CC0']
@@ -45,7 +58,7 @@ function addManuscriptForm(data = {}, shouldScroll = true) {
                                 </div>
                             </fieldset>
 
-                            <h6>Person responsible for data entry</h6>
+                            <h6>Persons responsible for data entry<a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-respStmt.html" target="_blank" class="ms-2 text-decoration-none"><i class="bi bi-box-arrow-up-right"></i></a></h6>
                             <fieldset class="p-3">
                                 <div class="row mb-3">
                                     <div class="resp-container"></div>
@@ -67,44 +80,44 @@ function addManuscriptForm(data = {}, shouldScroll = true) {
                             <fieldset class="p-3">
                                 <div class="row mb-3">
                                     <div class="col-md">
-                                        <label class="form-label">Library</label>
-                                        <input type="text" class="form-control lod-autocomplete" data-lod="wikidata-place" name="repository" value="${data.repository || ''}">
+                                        <label class="form-label">Library<a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-repository.html" target="_blank" class="ms-2 text-decoration-none"><i class="bi bi-box-arrow-up-right"></i></a></label>
+                                        <input type="text" class="form-control lod-autocomplete" placeholder="Enter the name of the library in which the manuscript is stored" data-lod="wikidata-place" name="repository" value="${data.repository || ''}">
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <div class="col-md">
-                                        <label class="form-label">Geographical coordinates</label>
+                                        <label class="form-label">Geographical coordinates<a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-geo.html" target="_blank" class="ms-2 text-decoration-none"><i class="bi bi-box-arrow-up-right"></i></a></label>
                                         <input type="text" class="form-control geo-coord" name="geoRepository"
                                         placeholder="Library's geo coordinates"
                                         data-error="Please enter in the format: 49.890972, 10.894102" value="${data.geoRepository || ''}">
                                     </div>
                                     <div class="col-md">
-                                        <label class="form-label">Settlement</label>
-                                        <input type="text" class="form-control" name="settlementIdent" value="${data.settlementIdent || ''}">
+                                        <label class="form-label">Settlement<a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-settlement.html" target="_blank" class="ms-2 text-decoration-none"><i class="bi bi-box-arrow-up-right"></i></a></label>
+                                        <input type="text" class="form-control" placeholder="Library settlement" name="settlementIdent" value="${data.settlementIdent || ''}">
                                     </div>
                                     <div class="col-md">
-                                        <label class="form-label">Country</label>
-                                        <input type="text" class="form-control" name="countryIdent" value="${data.countryIdent || ''}">
+                                        <label class="form-label">Country<a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-country.html" target="_blank" class="ms-2 text-decoration-none"><i class="bi bi-box-arrow-up-right"></i></a></label>
+                                        <input type="text" class="form-control" placeholder="Library country" name="countryIdent" value="${data.countryIdent || ''}">
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <div class="col-md">
-                                        <label class="form-label">Collection and signature</label>
-                                        <input type="text" class="form-control" name="idno" value="${data.idno || ''}">
+                                        <label class="form-label">Collection and signature<a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-collection.html" target="_blank" class="ms-2 text-decoration-none"><i class="bi bi-box-arrow-up-right"></i></a></label>
+                                        <input type="text" class="form-control" placeholder="Manuscript collection and signature" name="idno" value="${data.idno || ''}">
                                         </div>
                                     <div class="col-md">
-                                        <label class="form-label">Sigle</label>
-                                        <input type="text" class="form-control" name="msSigle" value="${data.msSigle || ''}">
+                                        <label class="form-label">Sigle<a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-msName.html" target="_blank" class="ms-2 text-decoration-none"><i class="bi bi-box-arrow-up-right"></i></a></label>
+                                        <input type="text" class="form-control" placeholder="Manuscript sigle" name="msSigle" value="${data.msSigle || ''}">
                                         </div>
                                     <div class="col-md">
-                                        <label class="form-label">Alternative identifier</label>
-                                        <input type="text" class="form-control" name="altIdentifier" value="${data.altIdentifier || ''}">
+                                        <label class="form-label">Alternative identifier<a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-altIdentifier.html" target="_blank" class="ms-2 text-decoration-none"><i class="bi bi-box-arrow-up-right"></i></a></label>
+                                        <input type="text" class="form-control" placeholder="Manuscript alternative identifier" name="altIdentifier" value="${data.altIdentifier || ''}">
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <div class="col-md">
                                         <label class="form-label">Full name</label>
-                                        <input type="text" class="form-control" name="msName" value="${data.msName || ''}">
+                                        <input type="text" class="form-control" placeholder="Manuscript full name" name="msName" value="${data.msName || ''}">
                                     </div>
                                 </div>
                             </fieldset>
@@ -214,7 +227,7 @@ function addManuscriptForm(data = {}, shouldScroll = true) {
                                 <div class="row mb-3">
                                     <div class="col-md">
                                         <label class="form-label">Place of origin</label>
-                                        <input type="text" class="form-control lod-autocomplete" data-lod="wikidata-place" name="origPlace" value="${data.origPlace || ''}">
+                                        <input type="text" class="form-control lod-autocomplete" data-lod="wikidata-place" name="origPlace" value="${data.origPlace || ''}" placeholder="Manuscript place of origin">
                                     </div>
                                     <div class="col-md">
                                         <label class="form-label">Geographical coordinates</label>
@@ -224,19 +237,23 @@ function addManuscriptForm(data = {}, shouldScroll = true) {
                                     </div>  
                                     <div class="col-md">
                                         <label class="form-label">Country</label>
-                                        <input type="text" class="form-control" name="countryOrigin" value="${data.countryOrigin || ''}">
+                                        <input type="text" class="form-control" name="countryOrigin" value="${data.countryOrigin || ''}" placeholder="Origin place country">
                                     </div>
                                     
                                        
                                 </div>
-                                <div class="row mb-3">                                                                     
-                                    <div class="col-md">
-                                      <label class="form-label">Earliest possible date of origin</label>
-                                      <input type="text" class="form-control" name="dateOriginNotBefore" value="${data.dateOriginNotBefore || ''}">
+                                <div class="row mb-3">   
+                                    <div class="col-md-6">
+                                      <label class="form-label">Human-readable date of origin<a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-origDate.html" target="_blank" class="ms-2 text-decoration-none"><i class="bi bi-box-arrow-up-right"></i></a></label>
+                                      <input type="text" class="form-control" name="dateOriginText" value="${data.dateOriginText || ''}" placeholder="e.g. 10th century">
+                                    </div>                                                                  
+                                    <div class="col-md-3">
+                                      <label class="form-label">Earliest possible date of origin<a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-att.datable.w3c.html#tei_att.notBefore" target="_blank" class="ms-2 text-decoration-none"><i class="bi bi-box-arrow-up-right"></i></a></label>
+                                      <input type="number" class="form-control" name="dateOriginNotBefore" value="${data.dateOriginNotBefore || ''}" placeholder="e.g. 1000">
                                     </div>
-                                    <div class="col-md">
-                                      <label class="form-label">Latest possible date of origin</label>
-                                      <input type="text" class="form-control" name="dateOriginNotAfter" value="${data.dateOriginNotAfter || ''}">
+                                    <div class="col-md-3">
+                                      <label class="form-label">Latest possible date of origin<a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-att.datable.w3c.html#tei_att.notAfter" target="_blank" class="ms-2 text-decoration-none"><i class="bi bi-box-arrow-up-right"></i></a></label>
+                                      <input type="number" class="form-control" name="dateOriginNotAfter" value="${data.dateOriginNotAfter || ''}" placeholder="e.g. 1010">
                                     </div>
                                 </div>
                             </fieldset>
@@ -515,7 +532,7 @@ function addProvenanceItem(button, itemData = {}) {
 
     <div class="row mb-2">
       <div class="col-md">
-        <label class="form-label">Previous owner</label>
+        <label class="form-label">Previous owner<a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-name.html" target="_blank" class="ms-2 text-decoration-none"><i class="bi bi-box-arrow-up-right"></i></a></label>
         <div class="input-group">
           <input type="text" 
                  class="form-control lod-autocomplete col-md-8" 
@@ -535,10 +552,6 @@ function addProvenanceItem(button, itemData = {}) {
 
     <div class="row mb-2">
       <div class="col-md">
-        <label class="form-label">Period of ownership</label>
-        <input type="text" class="form-control" name="provDate-${index}" value="${itemData.date || ''}">
-      </div>
-      <div class="col-md">
         <label class="form-label">Geographical coordinates</label>
         <input type="text" class="form-control geo-coord" name="provGeo-${index}" value="${itemData.geo || ''}">
       </div>
@@ -549,6 +562,34 @@ function addProvenanceItem(button, itemData = {}) {
       <div class="col-md">
         <label class="form-label">Country</label>
         <input type="text" class="form-control" name="provCountry-${index}" value="${itemData.country || ''}">
+      </div>
+      
+    </div>
+
+    <div class="row mb-2">
+      <div class="col-md-4">
+        <label class="form-label">Human-readable period of ownership 
+          <a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-date.html" target="_blank" class="ms-2 text-decoration-none">
+            <i class="bi bi-box-arrow-up-right"></i>
+          </a>
+        </label>
+        <input type="text" class="form-control" name="provDate-${index}" value="${itemData.date || ''}" placeholder="e.g. 13th-14th century">
+      </div>
+      <div class="col-md-4">
+        <label class="form-label">Earliest possible date of ownership
+          <a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-att.datable.w3c.html#tei_att.notBefore" target="_blank" class="ms-2 text-decoration-none">
+            <i class="bi bi-box-arrow-up-right"></i>
+          </a>
+        </label>
+        <input type="number" class="form-control" name="provNotBefore-${index}" value="${itemData.notBefore || ''}" placeholder="e.g. 1200">
+      </div>
+      <div class="col-md-4">
+        <label class="form-label">Latest possible date of ownership
+          <a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-att.datable.w3c.html#tei_att.notAfter" target="_blank" class="ms-2 text-decoration-none">
+            <i class="bi bi-box-arrow-up-right"></i>
+          </a>
+        </label>
+        <input type="number" class="form-control" name="provNotAfter-${index}" value="${itemData.notAfter || ''}" placeholder="e.g. 1300">
       </div>
     </div>
   `;
@@ -771,6 +812,8 @@ function getFormData(formId) {
       name: getFieldValueAndUri(form, `provName-${p}`),
       type: form.querySelector(`[name="provType-${p}"]`)?.value || '',
       date: form.querySelector(`[name="provDate-${p}"]`)?.value || '',
+      notBefore: form.querySelector(`[name="provNotBefore-${p}"]`)?.value || '',
+      notAfter: form.querySelector(`[name="provNotAfter-${p}"]`)?.value || '',
       geo: form.querySelector(`[name="provGeo-${p}"]`)?.value || '',
       settlement: getFieldValueAndUri(form, `provSettlement-${p}`),
       country: getFieldValueAndUri(form, `provCountry-${p}`)
@@ -909,7 +952,7 @@ function buildXML(data, formId) {
 
   
   return `<?xml version="1.0" encoding="UTF-8"?>
-<TEI xmlns="http://www.tei-c.org/ns/1.0">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" ${data.xmlLang ? `xml:lang="${escapeXml(data.xmlLang)}"` : ''}>
   <teiHeader>
     <fileDesc>
       <titleStmt>
@@ -990,7 +1033,7 @@ function buildXML(data, formId) {
               ${xmlWithRef('origPlace', origPlace)}
               <geo>${escapeXml(data.geoOrigin)}</geo>
               ${xmlWithRef('country', countryOriginField)}
-              <origDate notBefore="${escapeXml(data.dateOriginNotBefore)}" notAfter="${escapeXml(data.dateOriginNotAfter)}"></origDate>
+              <origDate notBefore="${escapeXml(data.dateOriginNotBefore)}" notAfter="${escapeXml(data.dateOriginNotAfter)}">${escapeXml(data.dateOriginText)}</origDate>
             </origin>
             
             ${(data.provenance || []).map((prov, i) => {
@@ -1001,7 +1044,7 @@ function buildXML(data, formId) {
               ${prov.type 
                 ? `<name type="${escapeXml(prov.type)}"${prov.name?.uri ? ` ref="${escapeXml(prov.name.uri)}"` : ''}>${escapeXml(prov.name.value)}</name>`
                 : xmlWithRef('name', prov.name)}
-              <date when="${escapeXml(prov.date)}"></date>
+              <date ${prov.notBefore ? `notBefore="${escapeXml(prov.notBefore)}"` : ''} ${prov.notAfter ? `notAfter="${escapeXml(prov.notAfter)}"` : ''}>${escapeXml(prov.date)}</date>
               <geo>${escapeXml(prov.geo)}</geo>
               ${xmlWithRef('settlement', provSettlementField)}
               ${xmlWithRef('country', provCountryField)}
@@ -1011,15 +1054,15 @@ function buildXML(data, formId) {
           <additional>
             <surrogates> 
               <bibl type="digi"> 
-                <title xml:lang="ger">Digitalisat</title>
+                <title xml:lang="en">Digital copy</title>
                 <ref>${escapeXml(data.digi)}</ref>
               </bibl> 
               <bibl type="iiif-manifest"> 
-                <title xml:lang="ger">iiif-Manifest</title>
+                <title xml:lang="en">iiif-Manifest</title>
                 <ref>${escapeXml(data.iiifManifest)}</ref>
               </bibl> 
               <bibl type="cat"> 
-                <title xml:lang="ger">Katalogisat</title>
+                <title xml:lang="en">Catalogue entry</title>
                 <ref>${escapeXml(data.cat)}</ref>
               </bibl>
             </surrogates>
@@ -1290,6 +1333,7 @@ document.getElementById('fileUpload').addEventListener('change', function (e) {
     else if (file.name.endsWith('.xml')) {
       const parser = new DOMParser();
       const xmlDoc = parser.parseFromString(content, "application/xml");
+      const xmlLang = xmlDoc.querySelector("TEI")?.getAttribute("xml:lang") || "";
 
       const get = sel => xmlDoc.querySelector(sel)?.textContent || '';
       const getAttr = (sel, attr) => xmlDoc.querySelector(sel)?.getAttribute(attr) || '';
@@ -1342,13 +1386,16 @@ document.getElementById('fileUpload').addEventListener('change', function (e) {
         const nameEl = prov.querySelector("name");
         const settlementEl = prov.querySelector("settlement");
         const countryEl = prov.querySelector("country");
+        const dateEl = prov.querySelector("date");
 
         provenance.push({
           name: nameEl
             ? { value: nameEl.textContent.trim(), uri: nameEl.getAttribute("ref") || "" }
             : { value: "", uri: "" },
           type: nameEl?.getAttribute("type") || "",
-          date: prov.querySelector("date")?.getAttribute("when") || "",
+          date: dateEl?.textContent.trim() || "",
+          notBefore: dateEl?.getAttribute("notBefore") || "",
+          notAfter: dateEl?.getAttribute("notAfter") || "",
           geo: prov.querySelector("geo")?.textContent.trim() || "",
           settlement: settlementEl
             ? { value: settlementEl.textContent.trim(), uri: settlementEl.getAttribute("ref") || "" }
@@ -1366,6 +1413,7 @@ document.getElementById('fileUpload').addEventListener('change', function (e) {
         // Accordion 1
         msTitle: get("title"),
         publicationStmt: get("publicationStmt p"),
+        xmlLang,
 
         repository,
         geoRepository,
@@ -1401,6 +1449,7 @@ document.getElementById('fileUpload').addEventListener('change', function (e) {
         countryOrigin,
         dateOriginNotBefore: getAttr("origin > origDate", "notBefore"),
         dateOriginNotAfter: getAttr("origin > origDate", "notAfter"),
+        dateOriginText: get("origin > origDate"),
         
         provenance,
 
