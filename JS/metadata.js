@@ -22,7 +22,7 @@ function addManuscriptForm(data = {}, shouldScroll = true) {
             <form id="${formId}" class="msForm">
                 <div class="accordion-item">  
                     <h2 class="accordion-header" id="heading0-${id}">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse0-${id}" aria-expanded="true" aria-controls="collapse0-${id}">Description of the file <a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-fileDesc.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="Visit link"><i class="bi bi-box-arrow-up-right"></i></a></button>
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse0-${id}" aria-expanded="true" aria-controls="collapse0-${id}">Description of the file <a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-fileDesc.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></button>
                     </h2>
                     <div id="collapse0-${id}" class="accordion-collapse collapse show" aria-labelledby="heading0-${id}">
                         <div class="accordion-body">
@@ -58,7 +58,7 @@ function addManuscriptForm(data = {}, shouldScroll = true) {
                                 </div>
                             </fieldset>
 
-                            <h6>Persons responsible for data entry<a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-respStmt.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="Visit link"><i class="bi bi-box-arrow-up-right"></i></a></h6>
+                            <h6>Persons responsible for data entry<a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-respStmt.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></h6>
                             <fieldset class="p-3">
                                 <div class="row mb-3">
                                     <div class="resp-container"></div>
@@ -73,44 +73,44 @@ function addManuscriptForm(data = {}, shouldScroll = true) {
 
                 <div class="accordion-item">  
                     <h2 class="accordion-header" id="heading1-${id}">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1-${id}" aria-expanded="false" aria-controls="collapse1-${id}">1. Identification <a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-msIdentifier.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="Visit link"><i class="bi bi-box-arrow-up-right"></i></a></button>
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1-${id}" aria-expanded="false" aria-controls="collapse1-${id}">1. Identification <a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-msIdentifier.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></button>
                     </h2>
                     <div id="collapse1-${id}" class="accordion-collapse collapse" aria-labelledby="heading1-${id}">
                         <div class="accordion-body">
                             <fieldset class="p-3">
                                 <div class="row mb-3">
                                     <div class="col-md">
-                                        <label class="form-label">Library <span class="required-star" data-bs-toggle="tooltip" title="Required field">*</span> <a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-repository.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="Visit link"><i class="bi bi-box-arrow-up-right"></i></a></label>
+                                        <label class="form-label">Library <span class="required-star" data-bs-toggle="tooltip" title="Required field">*</span> <a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-repository.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></label>
                                         <input type="text" class="form-control lod-autocomplete" placeholder="Enter the name of the library in which the manuscript is stored" data-lod="wikidata-place" name="repository" value="${data.repository || ''}">
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <div class="col-md">
-                                        <label class="form-label">Geographical coordinates<a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-geo.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="Visit link"><i class="bi bi-box-arrow-up-right"></i></a></label>
+                                        <label class="form-label">Geographical coordinates<a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-geo.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></label>
                                         <input type="text" class="form-control geo-coord" name="geoRepository"
                                         placeholder="Library's geo coordinates"
                                         data-error="Please enter in the format: 49.890972, 10.894102" value="${data.geoRepository || ''}">
                                     </div>
                                     <div class="col-md">
-                                        <label class="form-label">Settlement<a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-settlement.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="Visit link"><i class="bi bi-box-arrow-up-right"></i></a></label>
+                                        <label class="form-label">Settlement<a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-settlement.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></label>
                                         <input type="text" class="form-control" placeholder="Library settlement" name="settlementIdent" value="${data.settlementIdent || ''}">
                                     </div>
                                     <div class="col-md">
-                                        <label class="form-label">Country<a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-country.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="Visit link"><i class="bi bi-box-arrow-up-right"></i></a></label>
+                                        <label class="form-label">Country<a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-country.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></label>
                                         <input type="text" class="form-control" placeholder="Library country" name="countryIdent" value="${data.countryIdent || ''}">
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <div class="col-md">
-                                        <label class="form-label">Collection and signature<a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-collection.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="Visit link"><i class="bi bi-box-arrow-up-right"></i></a></label>
+                                        <label class="form-label">Collection and signature<a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-collection.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></label>
                                         <input type="text" class="form-control" placeholder="Manuscript collection and signature" name="idno" value="${data.idno || ''}">
                                         </div>
                                     <div class="col-md">
-                                        <label class="form-label">Sigle<a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-msName.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="Visit link"><i class="bi bi-box-arrow-up-right"></i></a></label>
+                                        <label class="form-label">Sigle<a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-msName.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></label>
                                         <input type="text" class="form-control" placeholder="Manuscript sigle" name="msSigle" value="${data.msSigle || ''}">
                                         </div>
                                     <div class="col-md">
-                                        <label class="form-label">Alternative identifier<a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-altIdentifier.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="Visit link"><i class="bi bi-box-arrow-up-right"></i></a></label>
+                                        <label class="form-label">Alternative identifier<a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-altIdentifier.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></label>
                                         <input type="text" class="form-control" placeholder="Manuscript alternative identifier" name="altIdentifier" value="${data.altIdentifier || ''}">
                                     </div>
                                 </div>
@@ -127,7 +127,7 @@ function addManuscriptForm(data = {}, shouldScroll = true) {
                         
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="heading2-${id}">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2-${id}" aria-expanded="false" aria-controls="collapse2-${id}">2. Content <a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-msContents.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="Visit link"><i class="bi bi-box-arrow-up-right"></i></a></button>
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2-${id}" aria-expanded="false" aria-controls="collapse2-${id}">2. Content <a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-msContents.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></button>
                     </h2>
                     <div id="collapse2-${id}" class="accordion-collapse collapse" aria-labelledby="heading2-${id}">
                         <div class="accordion-body">
@@ -145,7 +145,7 @@ function addManuscriptForm(data = {}, shouldScroll = true) {
                 
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="heading3-${id}">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3-${id}" aria-expanded="false" aria-controls="collapse3-${id}">3. Physical description <a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-physDesc.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="Visit link"><i class="bi bi-box-arrow-up-right"></i></a></button>
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3-${id}" aria-expanded="false" aria-controls="collapse3-${id}">3. Physical description <a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-physDesc.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></button>
                     </h2>
                     <div id="collapse3-${id}" class="accordion-collapse collapse" aria-labelledby="heading3-${id}">
                         <div class="accordion-body">
@@ -159,15 +159,15 @@ function addManuscriptForm(data = {}, shouldScroll = true) {
                               </div>
                               <div class="row mb-3">
                                 <div class="col-md-2">
-                                    <label class="form-label">Hands<a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-handDesc.html#tei_att.hands" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="Visit link"><i class="bi bi-box-arrow-up-right"></i></a></label>
+                                    <label class="form-label">Hands<a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-handDesc.html#tei_att.hands" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></label>
                                     <input type="number" class="form-control" name="hands" value="${data.hands || ''}" min="1" step="1">
                                 </div>
                                 <div class="col-md">
-                                    <label class="form-label">Font description<a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-scriptNote.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="Visit link"><i class="bi bi-box-arrow-up-right"></i></a></label>
+                                    <label class="form-label">Font description<a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-scriptNote.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></label>
                                     <input type="text" class="form-control lod-autocomplete" data-lod="getty-script" name="script" value="${data.script || ''}">
                                 </div>
                                 <div class="col-md">
-                                  <label class="form-label">Material<a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-supportDesc.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="Visit link"><i class="bi bi-box-arrow-up-right"></i></a></label>
+                                  <label class="form-label">Material<a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-supportDesc.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></label>
                                   <select class="form-select" name="material">
                                     <option value="">Please select</option>
                                     <option value="parchment" ${data.material === 'parchment' ? 'selected' : ''}>Parchment</option>
@@ -191,12 +191,12 @@ function addManuscriptForm(data = {}, shouldScroll = true) {
                                     </div>
                                     
                                     <div class="col-md">
-                                        <label class="form-label">Columns<a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-layout.html#tei_att.columns" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="Visit link"><i class="bi bi-box-arrow-up-right"></i></a>
+                                        <label class="form-label">Columns<a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-layout.html#tei_att.columns" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a>
                                         </label>
                                         <input type="number" class="form-control" name="columns" value="${data.columns || ''}" min="0" max="4" step="1" placeholder="N. of layout columns per page">
                                     </div>
                                     <div class="col-md">
-                                        <label class="form-label">Written lines<a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-layout.html#tei_att.writtenLines" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="Visit link">
+                                        <label class="form-label">Written lines<a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-layout.html#tei_att.writtenLines" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation">
       <i class="bi bi-box-arrow-up-right"></i>
     </a>
                                         </label>
@@ -211,7 +211,7 @@ function addManuscriptForm(data = {}, shouldScroll = true) {
 
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="heading4-${id}">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4-${id}" aria-expanded="false" aria-controls="collapse4-${id}">4. History <a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-history.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="Visit link"><i class="bi bi-box-arrow-up-right"></i></a></button>
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4-${id}" aria-expanded="false" aria-controls="collapse4-${id}">4. History <a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-history.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></button>
                     </h2>
                     <div id="collapse4-${id}" class="accordion-collapse collapse" aria-labelledby="heading4-${id}">
                         <div class="accordion-body">
@@ -221,7 +221,7 @@ function addManuscriptForm(data = {}, shouldScroll = true) {
                                     <textarea class="form-control autosize" name="summaryProvenance" placeholder="Enter a description of the manuscript's history" value="${data.summaryProvenance || ''}"></textarea>
                                 </div>
                             </fieldset>
-                            <h6>Origin<a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-origin.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="Visit link"><i class="bi bi-box-arrow-up-right"></i></a></h6>
+                            <h6>Origin<a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-origin.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></h6>
                             
                             <fieldset class="p-3">
                                 <div class="row mb-3">
@@ -244,21 +244,21 @@ function addManuscriptForm(data = {}, shouldScroll = true) {
                                 </div>
                                 <div class="row mb-3">   
                                     <div class="col-md-6">
-                                      <label class="form-label">Human-readable date of origin<a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-origDate.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="Visit link"><i class="bi bi-box-arrow-up-right"></i></a></label>
+                                      <label class="form-label">Human-readable date of origin<a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-origDate.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></label>
                                       <input type="text" class="form-control" name="dateOriginText" value="${data.dateOriginText || ''}" placeholder="e.g. 10th century">
                                     </div>                                                                  
                                     <div class="col-md-3">
-                                      <label class="form-label">Earliest possible date of origin<a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-att.datable.w3c.html#tei_att.notBefore" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="Visit link"><i class="bi bi-box-arrow-up-right"></i></a></label>
+                                      <label class="form-label">Earliest possible date of origin<a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-att.datable.w3c.html#tei_att.notBefore" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></label>
                                       <input type="number" class="form-control" name="dateOriginNotBefore" value="${data.dateOriginNotBefore || ''}" placeholder="e.g. 1000">
                                     </div>
                                     <div class="col-md-3">
-                                      <label class="form-label">Latest possible date of origin<a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-att.datable.w3c.html#tei_att.notAfter" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="Visit link"><i class="bi bi-box-arrow-up-right"></i></a></label>
+                                      <label class="form-label">Latest possible date of origin<a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-att.datable.w3c.html#tei_att.notAfter" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></label>
                                       <input type="number" class="form-control" name="dateOriginNotAfter" value="${data.dateOriginNotAfter || ''}" placeholder="e.g. 1010">
                                     </div>
                                 </div>
                             </fieldset>
                             
-                            <h6>Provenance<a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-provenance.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="Visit link"><i class="bi bi-box-arrow-up-right"></i></a></h6>
+                            <h6>Provenance<a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-provenance.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></h6>
                             <small>History of ownership</small>
                             <fieldset class="p-3">
                               <div class="provenance-container"></div>
@@ -272,7 +272,7 @@ function addManuscriptForm(data = {}, shouldScroll = true) {
                         
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="heading5-${id}">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5-${id}" aria-expanded="false" aria-controls="collapse5-${id}">5. Surrogates and literature <a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-additional.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="Visit link"><i class="bi bi-box-arrow-up-right"></i></a></button>
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5-${id}" aria-expanded="false" aria-controls="collapse5-${id}">5. Surrogates and literature <a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-additional.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></button>
                     </h2>
                     <div id="collapse5-${id}" class="accordion-collapse collapse" aria-labelledby="heading5-${id}">
                         <div class="accordion-body">
@@ -375,7 +375,12 @@ function addRespPerson(button) {
     </div>
     `;
   container.appendChild(row);
+
+  row.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(el => {
+    new bootstrap.Tooltip(el);
+  });
 }
+
 
 function addMsItem(button, itemData = {}) {
   const container = button.closest('fieldset').querySelector('.msitem-container');
@@ -414,13 +419,13 @@ function addMsItem(button, itemData = {}) {
     
     <div class="row mb-2">
       <div class="col-md">
-        <label class="form-label">Incipit<a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-incipit.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="Visit link"><i class="bi bi-box-arrow-up-right"></i></a></label>
+        <label class="form-label">Incipit<a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-incipit.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></label>
         <textarea class="form-control autosize" name="msItemIncipit-${index}" placeholder="Enter incipit">${itemData.incipit || ''}</textarea>
       </div>
     </div>
     <div class="row mb-2">
       <div class="col-md">
-        <label class="form-label">Explicit<a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-explicit.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="Visit link"><i class="bi bi-box-arrow-up-right"></i></a></label>
+        <label class="form-label">Explicit<a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-explicit.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></label>
         <textarea class="form-control autosize" name="msItemExplicit-${index}" placeholder="Enter explicit">${itemData.explicit || ''}</textarea>
       </div>
     </div>
@@ -436,7 +441,7 @@ function addMsItem(button, itemData = {}) {
     </div>
     <div class="row mb-2">
       <div class="col-md-6">
-        <label class="form-label">Text languge<a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-textLang.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="Visit link"><i class="bi bi-box-arrow-up-right"></i></a></label>
+        <label class="form-label">Text languge<a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-textLang.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></label>
         <input type="text" class="form-control lod-autocomplete" data-lod="wikidata-lang" name="msItemLang-${index}" placeholder="Enter text language" value="${itemData.textLang || ''}">
       </div>
       <div class="col-md-6">
@@ -447,6 +452,10 @@ function addMsItem(button, itemData = {}) {
   `;
   
   container.appendChild(block);
+
+  block.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(el => {
+    new bootstrap.Tooltip(el);
+  });
 
   // Add toggle behavior
   const authorInput = block.querySelector(`[name="msItemAuthor-${index}"]`);
@@ -532,7 +541,7 @@ function addProvenanceItem(button, itemData = {}) {
 
     <div class="row mb-2">
       <div class="col-md">
-        <label class="form-label">Previous owner<a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-name.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="Visit link"><i class="bi bi-box-arrow-up-right"></i></a></label>
+        <label class="form-label">Previous owner<a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-name.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></label>
         <div class="input-group">
           <input type="text" 
                  class="form-control lod-autocomplete col-md-8" 
@@ -569,7 +578,7 @@ function addProvenanceItem(button, itemData = {}) {
     <div class="row mb-2">
       <div class="col-md-4">
         <label class="form-label">Human-readable period of ownership 
-          <a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-date.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="Visit link">
+          <a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-date.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation">
             <i class="bi bi-box-arrow-up-right"></i>
           </a>
         </label>
@@ -577,7 +586,7 @@ function addProvenanceItem(button, itemData = {}) {
       </div>
       <div class="col-md-4">
         <label class="form-label">Earliest possible date of ownership
-          <a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-att.datable.w3c.html#tei_att.notBefore" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="Visit link">
+          <a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-att.datable.w3c.html#tei_att.notBefore" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation">
             <i class="bi bi-box-arrow-up-right"></i>
           </a>
         </label>
@@ -585,7 +594,7 @@ function addProvenanceItem(button, itemData = {}) {
       </div>
       <div class="col-md-4">
         <label class="form-label">Latest possible date of ownership
-          <a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-att.datable.w3c.html#tei_att.notAfter" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="Visit link">
+          <a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-att.datable.w3c.html#tei_att.notAfter" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation">
             <i class="bi bi-box-arrow-up-right"></i>
           </a>
         </label>
@@ -595,6 +604,10 @@ function addProvenanceItem(button, itemData = {}) {
   `;
 
   container.appendChild(row);
+
+  row.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(el => {
+    new bootstrap.Tooltip(el);
+  });
 }
 
 
@@ -677,6 +690,10 @@ function addLiteratureItem(button) {
     </div>
   `;
   container.appendChild(block);
+
+  block.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(el => {
+    new bootstrap.Tooltip(el);
+  });
 }
 
 function addBiblAuthor(button, biblIndex) {
@@ -886,15 +903,29 @@ function restoreLODField(form, fieldName, fieldData) {
       }
       const sourceLabel = fieldData.uri.includes('wikidata.org') ? 'Wikidata' : 'LOD Source';
       badge.innerHTML = `
-        <a href="${fieldData.uri}" target="_blank" title="Open corresponding ${sourceLabel} link" class="btn pt-0 pe-1" role="button" style="color: blue;">
-          <i class="fa-solid fa-arrow-up-right-from-square"></i>
-        </a>
-        <button type="button" class="btn btn-lg btn-link text-danger lod-clear-btn ps-0 pt-0" title="Remove ${sourceLabel}">
-          <i class="fa-solid fa-square-xmark"></i>
-        </button>
+      <a href="${fieldData.uri}" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="Visit ${sourceLabel} link">
+        <i class="bi bi-box-arrow-up-right"></i>
+      </a>
+                
+        
+
+        <button type="button" class="btn btn-link text-danger lod-clear-btn ps-0 pt-0" 
+          data-bs-toggle="tooltip" title="Remove ${sourceLabel} link">
+    <i class="bi bi-x-square-fill"></i>
+  </button>
       `;
 
+      new bootstrap.Tooltip(badge.querySelector('[data-bs-toggle="tooltip"]'));
+      new bootstrap.Tooltip(badge.querySelector('.lod-clear-btn'));
+
       badge.querySelector('.lod-clear-btn').addEventListener('click', () => {
+        // dispose tooltip if active
+        const tooltipInstance = bootstrap.Tooltip.getInstance(badge.querySelector('.lod-clear-btn'));
+        if (tooltipInstance) tooltipInstance.dispose();
+
+        const linkTooltip = bootstrap.Tooltip.getInstance(badge.querySelector('[data-bs-toggle="tooltip"]'));
+        if (linkTooltip) linkTooltip.dispose();
+
         delete input.dataset.lodUri;   
         input.value = '';              
         badge.remove();                
@@ -1843,15 +1874,27 @@ function showDropdown(field, results, loading = false) {
         }
         const sourceLabel = getSourceLabel(r.uri);
         badge.innerHTML = `
-          <a href="${r.uri}" target="_blank" title="Open corresponding ${sourceLabel} link" class="btn pt-0 pe-1" role="button" style="color: blue;">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-          </a>
-          <button type="button" class="btn btn-lg btn-link text-danger lod-clear-btn ps-0 pt-0" title="Remove ${sourceLabel}">
-            <i class="fa-solid fa-square-xmark"></i>
-          </button>
+        <a href="${r.uri}" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="Visit ${sourceLabel} link">
+          <i class="bi bi-box-arrow-up-right"></i>
+        </a>
+
+          <button type="button" class="btn btn-link text-danger lod-clear-btn ps-0 pt-0" 
+          data-bs-toggle="tooltip" title="Remove ${sourceLabel} link">
+    <i class="bi bi-x-square-fill"></i>
+  </button>
         `;
 
+        new bootstrap.Tooltip(badge.querySelector('[data-bs-toggle="tooltip"]'));
+        new bootstrap.Tooltip(badge.querySelector('.lod-clear-btn'));
+
         badge.querySelector('.lod-clear-btn').addEventListener('click', () => {
+          // dispose tooltip if active
+          const tooltipInstance = bootstrap.Tooltip.getInstance(badge.querySelector('.lod-clear-btn'));
+          if (tooltipInstance) tooltipInstance.dispose();
+
+          const linkTooltip = bootstrap.Tooltip.getInstance(badge.querySelector('[data-bs-toggle="tooltip"]'));
+          if (linkTooltip) linkTooltip.dispose();
+          
           delete field.dataset.lodUri;
           field.value = '';
           badge.remove();
@@ -2120,15 +2163,27 @@ function addBadgeForLODField(input, uri) {
   }
   const sourceLabel = uri.includes('wikidata.org') ? 'Wikidata' : 'LOD Source';
   badge.innerHTML = `
-    <a href="${uri}" target="_blank" title="Open corresponding ${sourceLabel} link" class="btn pt-0 pe-1" role="button" style="color: blue;">
-      <i class="fa-solid fa-arrow-up-right-from-square"></i>
-    </a>
-    <button type="button" class="btn btn-lg btn-link text-danger lod-clear-btn ps-0 pt-0" title="Remove ${sourceLabel}">
-      <i class="fa-solid fa-square-xmark"></i>
-    </button>
+  <a href="${uri}" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="Visit ${sourceLabel} link">
+    <i class="bi bi-box-arrow-up-right"></i>
+  </a>
+
+    <button type="button" class="btn btn-link text-danger lod-clear-btn ps-0 pt-0" 
+        data-bs-toggle="tooltip"  title="Remove ${sourceLabel} link">
+    <i class="bi bi-x-square-fill"></i>
+  </button>
   `;
 
+  new bootstrap.Tooltip(badge.querySelector('[data-bs-toggle="tooltip"]'));
+  new bootstrap.Tooltip(badge.querySelector('.lod-clear-btn'));
+
   badge.querySelector('.lod-clear-btn').addEventListener('click', () => {
+    // dispose tooltip if active
+    const tooltipInstance = bootstrap.Tooltip.getInstance(badge.querySelector('.lod-clear-btn'));
+    if (tooltipInstance) tooltipInstance.dispose();
+
+    const linkTooltip = bootstrap.Tooltip.getInstance(badge.querySelector('[data-bs-toggle="tooltip"]'));
+    if (linkTooltip) linkTooltip.dispose();
+    
     delete input.dataset.lodUri;
     input.value = '';
     badge.remove();
@@ -2145,10 +2200,12 @@ document.addEventListener('input', function(e) {
   }
 });
 
-//Mandatory fields tooltip
+//Tooltip
 document.addEventListener('DOMContentLoaded', function () {
   const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
   tooltipTriggerList.map(function (tooltipTriggerEl) {
     return new bootstrap.Tooltip(tooltipTriggerEl);
   });
 });
+
+
