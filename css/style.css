@@ -165,6 +165,9 @@ section h2 {
   .accordion-body h6 {
     padding-left:8px;
   }
+  .back-btn{
+    display: none;
+  }
 }
 
 

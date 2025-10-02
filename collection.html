@@ -58,10 +58,9 @@
     
     
       <div class="container mt-4 mb-5">
-          
-        <div class="container">
-          <button onclick="history.back()" class="btn btn-sm btn-outline-secondary">&larr; Back</button>
-        </div>
+         
+        <button onclick="history.back()" class="btn back-btn btn-sm btn-outline-secondary">Back</button>
+        
         <h1 class="page-title">Metadata Collection</h1>
 
         <div class="row my-4 align-items-end">
@@ -249,6 +248,8 @@
 
     function createTableRow(entry) {
       const row = document.createElement("tr");
+      row.id = "ms-" + (entry.idno || entry.msTitle).replace(/\s+/g, "_");
+
 
       // Always just the value
       const repoDisplay = displayField(entry.repository);
@@ -276,7 +277,7 @@
           <button class="btn btn-sm btn-secondary" onclick='showFullRecord(${JSON.stringify(entry).replace(/'/g, "&apos;")})'>See complete record</button>
         </td>
       `;
-
+      
       // Fix dataset values for filtering
       row.dataset.country = entry.countryIdent?.value || entry.countryIdent || "";
       row.dataset.century = getCentury(entry.dateOrigin) || "";
@@ -948,7 +949,6 @@ async function loadMetadataWithFilters() {
   renderFilterSidebar();
 }
 
-//Replace original loadMetadata() call
 loadMetadataWithFilters();
 
 
