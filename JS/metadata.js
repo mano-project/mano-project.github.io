@@ -245,7 +245,7 @@ function addManuscriptForm(data = {}, shouldScroll = true) {
                                 <div class="row mb-3">   
                                     <div class="col-md-6">
                                       <label class="form-label">Human-readable date of origin<a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-origDate.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></label>
-                                      <input type="text" class="form-control" name="dateOriginText" value="${data.dateOriginText || ''}" placeholder="e.g. 10th century">
+                                      <input type="text" class="form-control" name="dateOriginText" value="${data.dateOriginText || ''}" placeholder="e.g. 11th century">
                                     </div>                                                                  
                                     <div class="col-md-3">
                                       <label class="form-label">Earliest possible date of origin<a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-att.datable.w3c.html#tei_att.notBefore" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></label>
