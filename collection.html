@@ -15,6 +15,23 @@
               
       <link rel="stylesheet" type="text/css" href="css/style.css" media="screen"/>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+      <style>
+        .table-container {
+          max-height: 60vh;        
+          overflow-y: auto;   
+          border: 1px solid #dee2e6;
+          border-radius: 0.5rem;      
+        }
+
+        .table-container thead th {
+          position: sticky;
+          top: 0;
+          background-color: #f8f9fa;
+          z-index: 10;
+        }
+      </style>
+
   </head>
   <body>
     <nav class="navbar bg-body-tertiary ">
@@ -55,8 +72,6 @@
         </div>
     </nav>
 
-    
-    
       <div class="container mt-4 mb-5">
          
         <button onclick="history.back()" class="btn back-btn btn-sm btn-outline-secondary">Back</button>
@@ -83,7 +98,7 @@
         </div>
 
 
-        <!-- About Metadata Editor Modal -->
+        <!-- About Metadata Collection Modal -->
         <div class="modal fade" id="infoMetadataCollection" tabindex="-1" aria-labelledby="infoMetadataCollectionLabel" aria-hidden="true">
           <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -105,13 +120,18 @@
           </div>
         </div>
 
-
+        <!--Filters-->
         <div class="row mb-4 mt-5 align-items-center">
-          <div class="col-md-6">
+          <div class="col-12 col-md-5">
             <input id="searchInput" class="form-control" type="text" placeholder="Search..." oninput="applyFilters()">
           </div>
-          <div class="col-md-6 text-end mt-2 mt-md-0">
-            <button class="btn btn-outline-primary" data-bs-toggle="offcanvas" data-bs-target="#filtersOffcanvas">
+          <div class="col-12 col-md-4 mt-2 mt-md-0 d-flex justify-content-center justify-content-md-start">
+            <a href="maps.html" class="btn btn-outline-success w-100 w-md-auto disabled">
+              <i class="fas fa-map"></i> View Manuscript Maps
+            </a>
+          </div>
+          <div class="col-12 col-md-3 text-end mt-2 mt-md-0">
+            <button class="btn btn-outline-primary w-100 w-md-auto" data-bs-toggle="offcanvas" data-bs-target="#filtersOffcanvas">
               <i class="fas fa-filter"></i> Filters
             </button>
           </div>
@@ -132,24 +152,24 @@
         </div>
 
 
-        
-
-        <!-- Responsive Table -->
-        <div class="table-responsive">
-          <table class="table table-hover" id="metadataTable">
-            <thead>
-              <tr>
-                <th>Manuscript Title</th>
-                <th>Repository</th>
-                <th>Location</th>
-                <th>Digital Copy</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody id="tableBody">
-              <!-- Rows populated dynamically -->
-            </tbody>
-          </table>
+        <!-- Scrollable Manuscript Table -->
+        <div class="table-container">
+          <div class="table-responsive">
+            <table class="table table-hover" id="metadataTable">
+              <thead>
+                <tr>
+                  <th>Manuscript Title</th>
+                  <th>Repository</th>
+                  <th>Location</th>
+                  <th>Digital Copy</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="tableBody">
+                <!-- Rows populated dynamically -->
+              </tbody>
+            </table>
+          </div>
         </div>
 
         <!-- Modal -->
@@ -180,8 +200,9 @@
             </div>
           </div>
         </div>
+        
       </div>
-    
+   
 
       <footer class="footer bg-body-tertiary text-center py-4">
         <div class="container">
@@ -274,7 +295,7 @@
               <li><a class="dropdown-item" href="#" onclick='downloadXMLfromRecord(${JSON.stringify(entry)})'>XML</a></li>
             </ul>
           </div>
-          <button class="btn btn-sm btn-secondary" onclick='showFullRecord(${JSON.stringify(entry).replace(/'/g, "&apos;")})'>See complete record</button>
+          <button class="btn btn-sm btn-secondary" onclick='showFullRecord(${JSON.stringify(entry).replace(/'/g, "&apos;")})'>See more</button>
         </td>
       `;
       
