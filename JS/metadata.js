@@ -2209,3 +2209,21 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
+// --- EXIT WARNING ---
+/*window.addEventListener('beforeunload', (event) => {
+  event.preventDefault();
+});*/
+
+// --- EXIT WARNING (only if there is data) ---
+window.addEventListener('beforeunload', (event) => {
+  // Check if any input, select, or textarea has a non-empty value
+  const hasData = Array.from(document.querySelectorAll('input, select, textarea'))
+    .some(el => el.value && el.value.trim() !== '');
+
+  if (!hasData) return; // allow leaving silently
+
+  // Trigger browser's generic leave warning
+  event.preventDefault();
+  event.returnValue = 'You are about to leave the Metadata Editor. Have you downloaded your data? Unsaved changes may be lost.'; // required for some browsers
+});
+
