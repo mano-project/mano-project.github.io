@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" translate="no" class="notranslate">
+    <head>
+        <title>MANO - Maps</title>
+        <meta name="keywords" content="MANO, Manuscripts Online, About">
+        <meta name="description" content="">
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0 shrink-to-fit=no"/>
+        <meta name="google" content="notranslate"/>
+        <link rel="canonical" href="https://mano-project.github.io/about.html"/>
+        <link rel="icon" type="image/png" href="images/MANO.png"> 
+        
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+               
+        <link rel="stylesheet" type="text/css" href="css/style.css" media="screen"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+        <!-- Leaflet -->
+        <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+        <style>
+            #mapCurrent, #mapOrigin {
+                height: 500px;
+                margin-top: 1rem;
+                width: 100%;
+                border: 1px solid #dee2e6;
+                border-radius: 0.5rem;  
+            }
+        </style>
+        
+    </head>
+    <body>
+        <nav class="navbar bg-body-tertiary ">
+            <div class="container-fluid d-flex justify-content-between align-items-center position-relative py-2">
+
+                <!-- Invisible spacer to balance layout -->
+                <div style="width: 80px;"></div>
+
+                <!-- Centered logo -->
+                <div class="position-absolute start-50 translate-middle-x text-center">
+                <a class="navbar-brand" href="index.html">
+                    <img src="images/MANO.png" alt="Logo" width="65" class="d-inline-block align-text-top">
+                </a>
+                </div>
+
+                <!-- Offcanvas toggle aligned right -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+                aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">&lt;MANO&gt;</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="resources.html">Resources</a></li>
+                    <li class="nav-item"><a class="nav-link" href="editor.html">Metadata Editor</a></li>
+                    <li class="nav-item"><a class="nav-link" href="collection.html">Metadata Collection</a></li>
+                    <li class="nav-item"><a class="nav-link" href="viewer.html">Transcription Viewer</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="about.html">About</a></li>
+                    </ul>
+                </div>
+                </div>
+            </div>
+        </nav>
+
+    <div class="container mt-4">
+            
+        <button onclick="history.back()" class="btn back-btn btn-sm btn-outline-secondary">Back</button>
+            
+        <h1 class="page-title">Manuscript Maps</h1>
+
+        <div class="row my-4 align-items-end">
+          <!-- Left column -->
+          <div class="col-12 col-md-6 d-flex justify-content-start mb-2 mb-md-0">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#infoMaps">
+              About Manuscript Maps
+            </button>
+          </div>
+        </div>
+
+        <!-- About Maps Modal -->
+        <div class="modal fade" id="infoMaps" tabindex="-1" aria-labelledby="infoMapsLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="infoMapsLabel">About Manuscript Maps</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <p>
+                </p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="container mb-5">
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <h4 style="color:#eeba2b;" class="text-center">Place of Storage (Current Library)</h4>
+                    <div id="mapCurrent"></div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <h4 style="color:#eeba2b;" class="text-center">Places of Origin</h4>
+                    <div id="mapOrigin"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+        <footer class="footer bg-body-tertiary text-center py-4">
+            <div class="container">
+
+            <!-- Logo centered -->
+            <div class="mb-3">
+                <a class="navbar-brand" href="index.html">
+                <img src="images/MANO.png" alt="Logo" width="50">
+                </a>
+            </div>
+
+            <!-- Links centered in one line -->
+            <div class="mb-3">
+                <a class="footer-link mx-2" href="index.html">Home</a>
+                <a class="footer-link mx-2" href="resources.html">Resources</a>
+                <a class="footer-link mx-2" href="editor.html">Metadata Editor</a>
+                <a class="footer-link mx-2" href="collection.html">Metadata Collection</a>
+                <a class="footer-link mx-2" href="viewer.html">Transcription Viewer</a>
+                <a class="footer-link mx-2" href="about.html">About</a>
+            </div>
+
+            <!-- Copyright centered -->
+            <div class="text-center mt-2">
+                <span>© 2025 <span class="mano">&lt;MANO&gt;</span></span>
+            </div>
+
+            </div>
+        </footer>
+
+        <script>
+            const repoOwner = "mano-project";
+            const repoName = "mano-metadata";
+            const folderPath = "data";
+
+            let manuscripts = [];
+
+            // Fetch file list from GitHub
+            async function fetchFileList() {
+            const apiUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/${folderPath}`;
+            const res = await fetch(apiUrl);
+            const files = await res.json();
+            return files.filter(f => f.name.endsWith(".json"));
+            }
+
+            async function fetchJSONFile(url) {
+            const res = await fetch(url);
+            return res.json();
+            }
+
+            // Initialize maps
+            const europeCenter = [44.855656, 9.4841947,5]; //central Europe
+            const zoomLevel = 4; // zoomed to Europe
+
+            const mapCurrent = L.map('mapCurrent').setView(europeCenter, zoomLevel);
+            const mapOrigin = L.map('mapOrigin').setView(europeCenter, zoomLevel);
+
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
+            }).addTo(mapCurrent);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
+            }).addTo(mapOrigin);
+
+            const currentMarkers = L.layerGroup().addTo(mapCurrent);
+            const originMarkers = L.layerGroup().addTo(mapOrigin);
+
+            // Group manuscripts by coordinates
+            function groupByCoords(entries, fieldGeo, fieldLabel, fieldCountry) {
+            const groups = {};
+            entries.forEach(entry => {
+                const geo = entry[fieldGeo];
+                if (!geo) return;
+                if (!groups[geo]) {
+                groups[geo] = {
+                    label: entry[fieldLabel]?.value || entry[fieldLabel] || "Unknown",
+                    country: entry[fieldCountry]?.value || entry[fieldCountry] || "",
+                    manuscripts: []
+                };
+                }
+                //groups[geo].manuscripts.push(entry.msTitle || "Untitled manuscript");
+                groups[geo].manuscripts.push({
+                title: entry.msTitle || "Untitled manuscript",
+                id: entry.idno || entry.msTitle
+                });
+            });
+            return groups;
+            }
+
+            // Plot grouped markers
+            function plotMarkers() {
+            currentMarkers.clearLayers();
+            originMarkers.clearLayers();
+
+            // Current Repositories
+            const repoGroups = groupByCoords(manuscripts, "geoRepository", "repository", "countryIdent");
+            for (const geo in repoGroups) {
+                const [lat, lon] = geo.split(",").map(Number);
+                const g = repoGroups[geo];
+                const popupHtml = `
+                    <b>${g.label}</b><br>${g.country}<br>
+                    <ul>
+                        ${g.manuscripts.map(m => 
+                        `<li><a href="collection.html#ms-${m.id.replace(/\s+/g,"_")}" target="_blank">${m.title}</a></li>`
+                        ).join("")}
+                    </ul>
+                    `;
+
+                L.marker([lat, lon]).addTo(currentMarkers).bindPopup(popupHtml);
+            }
+
+            // Places of Origin
+            const originGroups = groupByCoords(manuscripts, "geoOrigin", "origPlace", "countryOrigin");
+            for (const geo in originGroups) {
+                const [lat, lon] = geo.split(",").map(Number);
+                const g = originGroups[geo];
+                const popupHtml = `
+                <b>${g.label}</b><br>${g.country}<br>
+                <ul>
+                    ${g.manuscripts.map(m => 
+                    `<li><a href="collection.html#ms-${m.id.replace(/\s+/g,"_")}" target="_blank">${m.title}</a></li>`
+                    ).join("")}
+                </ul>
+                `;
+                L.marker([lat, lon]).addTo(originMarkers).bindPopup(popupHtml);
+            }
+
+            // Fit maps
+            if (currentMarkers.getLayers().length > 0) {
+                mapCurrent.fitBounds(currentMarkers.getBounds());
+            }
+            if (originMarkers.getLayers().length > 0) {
+                mapOrigin.fitBounds(originMarkers.getBounds());
+            }
+            }
+
+            // Load all data
+            async function loadData() {
+            const fileList = await fetchFileList();
+            for (const f of fileList) {
+                try {
+                const rec = await fetchJSONFile(f.download_url);
+                const entries = Array.isArray(rec) ? rec : [rec];
+                manuscripts.push(...entries);
+                } catch (err) {
+                console.error("Error loading", f.name, err);
+                }
+            }
+            plotMarkers();
+            }
+
+            loadData();
+            </script>
+
+    </body>
+</html>
+    
+        
+
