@@ -30,6 +30,13 @@
           background-color: #f8f9fa;
           z-index: 10;
         }
+        .highlighted-row {
+          outline: 2px solid #eeba2b;
+        }
+        .highlighted-row td {
+          background-color: #fefbf6 !important;
+          transition: background-color 0.8s ease;
+        }
       </style>
 
   </head>
@@ -126,7 +133,7 @@
             <input id="searchInput" class="form-control" type="text" placeholder="Search..." oninput="applyFilters()">
           </div>
           <div class="col-12 col-md-4 mt-2 mt-md-0 d-flex justify-content-center justify-content-md-start">
-            <a href="maps.html" class="btn btn-outline-success w-100 w-md-auto disabled">
+            <a href="maps.html" class="btn btn-outline-success w-100 w-md-auto">
               <i class="fas fa-map"></i> View Manuscript Maps
             </a>
           </div>
@@ -502,21 +509,7 @@
       addOptions("personFilter", persons);
     }
 
-    /*function filterTable() {
-      const textFilter = document.getElementById("searchInput").value.toLowerCase();
-      const country = document.getElementById("countryFilter").value;
-      const century = document.getElementById("centuryFilter").value.replace("C.", "");
-      const person = document.getElementById("personFilter").value.toLowerCase();
-
-      document.querySelectorAll("#tableBody tr").forEach(row => {
-        const matchesText = row.dataset.text.includes(textFilter);
-        const matchesCountry = !country || row.dataset.country === country;
-        const matchesCentury = !century || row.dataset.century === century;
-        const matchesPerson = !person || row.dataset.persons.includes(person);
-
-        row.style.display = matchesText && matchesCountry && matchesCentury && matchesPerson ? "" : "none";
-      });
-    }*/
+    
    /*Simple filter*/
    function filterTable() {
       const searchTerm = document.getElementById("searchInput").value.toLowerCase();
@@ -527,29 +520,6 @@
       });
     }
 
-
-    /*async function loadMetadata() {
-      const tableBody = document.getElementById("tableBody");
-      const fileList = await fetchFileList();
-
-      for (const file of fileList) {
-        try {
-          const record = await fetchJSONFile(file.download_url);
-          const entries = Array.isArray(record) ? record : [record];
-          entries.forEach(entry => {
-            allEntries.push(entry);
-            const row = createTableRow(entry);
-            tableBody.appendChild(row);
-          });
-        } catch (err) {
-          console.error("Error loading file:", file.name, err);
-        }
-      }
-
-      populateFilters(allEntries);
-    }
-
-    loadMetadata();*/
     </script>
 
     <script>
@@ -992,10 +962,46 @@ async function loadMetadataWithFilters() {
 }
 
 loadMetadataWithFilters();
-
-
 </script>
 
+<!--Scroll down to ms row-->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const targetId = location.hash?.substring(1);
+  if (!targetId) return;
 
-  </body>
+  const tableBody = document.getElementById("tableBody");
+  const container = document.querySelector(".table-container");
+
+  function scrollAndHighlight(row) {
+    // First scroll the page so the table is visible
+    container.scrollIntoView({ behavior: "smooth", block: "start" });
+
+    // Then scroll inside the container to center the row
+    const offset = row.offsetTop - container.clientHeight / 2 + row.clientHeight / 2;
+    setTimeout(() => {
+      container.scrollTo({ top: offset, behavior: "smooth" });
+      row.classList.add("highlighted-row");
+    }, 500); // wait a bit for outer scroll to finish
+  }
+
+  function tryScroll() {
+    const row = document.getElementById(targetId);
+    if (row) {
+      scrollAndHighlight(row);
+      return true;
+    }
+    return false;
+  }
+
+  if (tryScroll()) return;
+
+  const observer = new MutationObserver(() => {
+    if (tryScroll()) observer.disconnect();
+  });
+  observer.observe(tableBody, { childList: true, subtree: true });
+});
+</script>
+
+</body>
 </html>
