@@ -734,6 +734,7 @@ function printRecordAsPDF() {
 // Categories for filtering
 const filterCategories = [
   { key: 'responsible', label: 'Responsible Persons' },
+  { key: 'dataLang', label: 'Language of Data Entry' },
   { key: 'repository', label: 'Repositories' },
   { key: 'authors', label: 'Content Authors' },
   { key: 'languages', label: 'Text Languages' },
@@ -745,6 +746,7 @@ const filterCategories = [
 // Store available filter options as Maps
 let filterOptions = {
   responsible: new Map(),  // key=externalID or name, value={label, uri}
+  dataLang: new Map(),
   repository: new Map(),
   authors: new Map(),
   languages: new Map(),
@@ -775,6 +777,9 @@ function enrichRowDataset(row, entry) {
       return [name, ref, affil].filter(Boolean).join(';');
     })
     .join(';');
+
+  //Data Entry Language
+   row.dataset.dataLang = (entry.xmlLang || '').toLowerCase();
 
   //Repository (label + URI)
   row.dataset.repository = combo(entry.repository);
@@ -822,6 +827,15 @@ function addFilterOption(map, label, uri = null) {
   }
 }
 
+// Map xml:lang codes to human-readable names
+const langLabels = {
+  de: "German",
+  en: "English",
+  it: "Italian",
+  fr: "French",
+  es: "Spanish"
+};
+
 // After loading all entries, collect all unique filter values
 function buildFilterOptions(entries) {
   entries.forEach(entry => {
@@ -831,6 +845,12 @@ function buildFilterOptions(entries) {
       const ref = p.ref || null;
       addFilterOption(filterOptions.responsible, label, ref);
     });
+
+    //Data entry languge
+    if (entry.xmlLang) {
+      const label = langLabels[entry.xmlLang.toLowerCase()] || entry.xmlLang;
+      addFilterOption(filterOptions.dataLang, label, entry.xmlLang.toLowerCase());
+    }
 
     //Repository
     if (entry.repository?.value) addFilterOption(filterOptions.repository, entry.repository.value, entry.repository.uri);
@@ -876,9 +896,10 @@ function renderFilterSidebar() {
 
     values.forEach(item => {
       const safeVal = (item.uri ? item.uri.toLowerCase() : item.label.toLowerCase()).replace(/"/g, '&quot;');
-      const linkIcon = item.uri
-        ? `<a href="${item.uri}" target="_blank" class="ms-1 text-muted" data-bs-toggle="tooltip" title="Open link"><i class="fas fa-link"></i></a>`
-        : '';
+      const linkIcon =
+        (cat.key !== 'dataLang' && item.uri)
+          ? `<a href="${item.uri}" target="_blank" class="ms-1 text-muted" data-bs-toggle="tooltip" title="Open link"><i class="fas fa-link"></i></a>`
+          : '';
 
       section.innerHTML += `
         <div class="form-check">
