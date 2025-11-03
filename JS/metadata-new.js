@@ -22,7 +22,7 @@ function addManuscriptForm(data = {}, shouldScroll = true) {
             <form id="${formId}" class="msForm">
                 <div class="accordion-item">  
                     <h2 class="accordion-header" id="heading0-${id}">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse0-${id}" aria-expanded="true" aria-controls="collapse0-${id}">Description of the file <a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-fileDesc.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></button>
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse0-${id}" aria-expanded="true" aria-controls="collapse0-${id}" aria-label="File description">File description <a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-fileDesc.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></button>
                     </h2>
                     <div id="collapse0-${id}" class="accordion-collapse collapse show" aria-labelledby="heading0-${id}">
                         <div class="accordion-body">
@@ -47,7 +47,7 @@ function addManuscriptForm(data = {}, shouldScroll = true) {
                                     </div>
 
                                     
-                                    <div class="col-md-3">
+                                    <div class="col-md-2">
                                         <label class="form-label">License <span class="required-star" data-bs-toggle="tooltip" title="Required field">*</span> <a href="https://creativecommons.org/share-your-work/cclicenses/" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="Visit link"><i class="bi bi-box-arrow-up-right"></i></a></label>
                                         <select class="form-select" name="publicationStmt">
                                             <option value="">Please select</option>
@@ -63,7 +63,7 @@ function addManuscriptForm(data = {}, shouldScroll = true) {
                                 <div class="row mb-3">
                                     <div class="resp-container"></div>
                                     <div class="d-flex justify-content-start">
-                                        <button type="button" class="btn btn-sm btn-outline-primary" onclick="addRespPerson(this)">Add responsible person</button>
+                                        <button type="button" class="btn btn-sm btn-outline-primary" onclick="addRespPerson(this)" aria-label="Add responsible person">Add responsible person</button>
                                     </div>
                                 </div>
                             </fieldset>
@@ -73,11 +73,31 @@ function addManuscriptForm(data = {}, shouldScroll = true) {
 
                 <div class="accordion-item">  
                     <h2 class="accordion-header" id="heading1-${id}">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1-${id}" aria-expanded="false" aria-controls="collapse1-${id}">Identification <a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-msIdentifier.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></button>
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1-${id}" aria-expanded="false" aria-controls="collapse1-${id}" aria-label="Identification">Identification <a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-msIdentifier.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></button>
                     </h2>
                     <div id="collapse1-${id}" class="accordion-collapse collapse" aria-labelledby="heading1-${id}">
                         <div class="accordion-body">
                             <fieldset class="p-3">
+                                <div class="row mb-3">
+                                    <div class="col-md">
+                                        <label class="form-label">Manuscript name <span class="required-star" data-bs-toggle="tooltip" title="Required field">*</span> <a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-msName.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></label>
+                                        <input type="text" class="form-control" placeholder="Manuscript name" name="msName" value="${data.msName || ''}">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-md">
+                                        <label class="form-label">Collection<a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-collection.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></label>
+                                        <input type="text" class="form-control" placeholder="Manuscript collection" name="collection" value="${data.collection || ''}">
+                                        </div>
+                                    <div class="col-md">
+                                        <label class="form-label">Sigle<a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-msName.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></label>
+                                        <input type="text" class="form-control" placeholder="Manuscript sigle" name="msSigle" value="${data.msSigle || ''}">
+                                        </div>
+                                    <div class="col-md">
+                                        <label class="form-label">Alternative identifier<a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-altIdentifier.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></label>
+                                        <input type="text" class="form-control" placeholder="Manuscript alternative identifier" name="altIdentifier" value="${data.altIdentifier || ''}">
+                                    </div>
+                                </div>            
                                 <div class="row mb-3">
                                     <div class="col-md">
                                         <label class="form-label">Library <span class="required-star" data-bs-toggle="tooltip" title="Required field">*</span> <a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-repository.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></label>
@@ -89,7 +109,7 @@ function addManuscriptForm(data = {}, shouldScroll = true) {
                                         <label class="form-label">Geographical coordinates<a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-geo.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></label>
                                         <input type="text" class="form-control geo-coord" name="geoRepository"
                                         placeholder="Library's geo coordinates"
-                                        data-error="Please enter in the format: 49.890972, 10.894102" value="${data.geoRepository || ''}">
+                                        data-error="Use format: latitude, longitude (e.g. 41.9047761,12.450084)" value="${data.geoRepository || ''}">
                                     </div>
                                     <div class="col-md">
                                         <label class="form-label">Settlement<a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-settlement.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></label>
@@ -100,26 +120,6 @@ function addManuscriptForm(data = {}, shouldScroll = true) {
                                         <input type="text" class="form-control" placeholder="Library country" name="countryIdent" value="${data.countryIdent || ''}">
                                     </div>
                                 </div>
-                                <div class="row mb-3">
-                                    <div class="col-md">
-                                        <label class="form-label">Collection and signature<a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-collection.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></label>
-                                        <input type="text" class="form-control" placeholder="Manuscript collection and signature" name="idno" value="${data.idno || ''}">
-                                        </div>
-                                    <div class="col-md">
-                                        <label class="form-label">Sigle<a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-msName.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></label>
-                                        <input type="text" class="form-control" placeholder="Manuscript sigle" name="msSigle" value="${data.msSigle || ''}">
-                                        </div>
-                                    <div class="col-md">
-                                        <label class="form-label">Alternative identifier<a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-altIdentifier.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></label>
-                                        <input type="text" class="form-control" placeholder="Manuscript alternative identifier" name="altIdentifier" value="${data.altIdentifier || ''}">
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <div class="col-md">
-                                        <label class="form-label">Full name</label>
-                                        <input type="text" class="form-control" placeholder="Manuscript full name" name="msName" value="${data.msName || ''}">
-                                    </div>
-                                </div>
                             </fieldset>
                         </div>
                     </div>
@@ -127,7 +127,7 @@ function addManuscriptForm(data = {}, shouldScroll = true) {
                         
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="heading2-${id}">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2-${id}" aria-expanded="false" aria-controls="collapse2-${id}">Content <a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-msContents.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></button>
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2-${id}" aria-expanded="false" aria-controls="collapse2-${id}" aria-label="Content">Content <a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-msContents.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></button>
                     </h2>
                     <div id="collapse2-${id}" class="accordion-collapse collapse" aria-labelledby="heading2-${id}">
                         <div class="accordion-body">
@@ -137,7 +137,7 @@ function addManuscriptForm(data = {}, shouldScroll = true) {
                                     <textarea class="form-control autosize" name="summaryContents" placeholder="Enter a description of the manuscript's content" value="${data.summaryContents || ''}"></textarea>
                                 </div>
                                 <div class="msitem-container"></div>
-                                <button type="button" class="btn btn-sm btn-outline-primary mt-2" onclick="addMsItem(this)">Add content</button>
+                                <button type="button" class="btn btn-sm btn-outline-primary mt-2" onclick="addMsItem(this)" aria-label="Add content">Add content</button>
                             </fieldset>
                         </div>
                     </div>
@@ -145,7 +145,7 @@ function addManuscriptForm(data = {}, shouldScroll = true) {
                 
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="heading3-${id}">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3-${id}" aria-expanded="false" aria-controls="collapse3-${id}">Physical description <a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-physDesc.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></button>
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3-${id}" aria-expanded="false" aria-controls="collapse3-${id}" aria-label="Physical description">Physical description <a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-physDesc.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></button>
                     </h2>
                     <div id="collapse3-${id}" class="accordion-collapse collapse" aria-labelledby="heading3-${id}">
                         <div class="accordion-body">
@@ -154,56 +154,97 @@ function addManuscriptForm(data = {}, shouldScroll = true) {
                                 <div class="col-md">
                                     <label class="form-label">Condition</label>
                                     <textarea class="form-control autosize" name="condition" value="${data.condition || ''}" placeholder="Enter a description of the manuscript's condition"></textarea>
-                                    
                                 </div>
                               </div>
                               <div class="row mb-3">
                                 <div class="col-md-2">
-                                    <label class="form-label">Hands<a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-handDesc.html#tei_att.hands" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></label>
-                                    <input type="number" class="form-control" name="hands" value="${data.hands || ''}" min="1" step="1">
-                                </div>
-                                <div class="col-md">
-                                    <label class="form-label">Font description<a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-scriptNote.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></label>
-                                    <input type="text" class="form-control lod-autocomplete" data-lod="getty-script" name="script" value="${data.script || ''}">
-                                </div>
-                                <div class="col-md">
-                                  <label class="form-label">Material<a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-supportDesc.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></label>
-                                  <select class="form-select" name="material">
-                                    <option value="">Please select</option>
-                                    <option value="parchment" ${data.material === 'parchment' ? 'selected' : ''}>Parchment</option>
-                                    <option value="paper" ${data.material === 'paper' ? 'selected' : ''}>Paper</option>
-                                    <option value="papyrus" ${data.material === 'papyrus' ? 'selected' : ''}>Papyrus</option>
-                                  </select>
+                                    <label class="form-label">Material<a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-supportDesc.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></label>
+                                    <select class="form-select" name="material">
+                                      <option value="">Please select</option>
+                                      <option value="parchment" ${data.material === 'parchment' ? 'selected' : ''}>Parchment</option>
+                                      <option value="paper" ${data.material === 'paper' ? 'selected' : ''}>Paper</option>
+                                      <option value="papyrus" ${data.material === 'papyrus' ? 'selected' : ''}>Papyrus</option>
+                                    </select>
                                 </div>
                                 <div class="col-md-2">
-                                    <label class="form-label">Leaves</label>
-                                    <input type="number" class="form-control" name="leaves" value="${data.leaves || ''}" min="1" step="1">
+                                    <label class="form-label">Height (cm)</label>
+                                    <input type="number" class="form-control" name="height" value="${data.height || ''}" min="1" placeholder="Enter height">
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="form-label">Width (cm)</label>
+                                    <input type="number" class="form-control" name="width" value="${data.width || ''}" min="1" placeholder="Enter width">
                                 </div>
                               </div>
-                                <div class="row mb-3">
-                                    <div class="col-md">
-                                        <label class="form-label">Height (cm)</label>
-                                        <input type="number" class="form-control" name="height" value="${data.height || ''}" min="1">
-                                    </div>
-                                    <div class="col-md">
-                                        <label class="form-label">Width (cm)</label>
-                                        <input type="number" class="form-control" name="width" value="${data.width || ''}" min="1">
-                                    </div>
-                                    
-                                    <div class="col-md">
-                                        <label class="form-label">Columns<a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-layout.html#tei_att.columns" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a>
-                                        </label>
-                                        <input type="number" class="form-control" name="columns" value="${data.columns || ''}" min="0" max="4" step="1" placeholder="N. of layout columns per page">
-                                    </div>
-                                    <div class="col-md">
-                                        <label class="form-label">Written lines<a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-layout.html#tei_att.writtenLines" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation">
-      <i class="bi bi-box-arrow-up-right"></i>
-    </a>
-                                        </label>
-                                        <input type="number" class="form-control" name="lines" value="${data.lines || ''}" min="1" step="1" placeholder="N. of lines per column">
-                                    </div>
+
+                              <div class="row mb-3">
+                                <div class="col-md-2">
+                                    <label class="form-label">Leaves</label>
+                                    <input type="number" class="form-control" name="leaves" value="${data.leaves || ''}" min="1" step="1" placeholder="N. of leaves">
                                 </div>
+                                <div class="col-md-2">
+                                    <label class="form-label">Columns<a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-layout.html#tei_att.columns" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a>
+                                    </label>
+                                    <input type="number" class="form-control" name="columns" value="${data.columns || ''}" min="0" max="4" step="1" placeholder="N. of layout columns per page">
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="form-label">Written lines<a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-layout.html#tei_att.writtenLines" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation">
+                                      <i class="bi bi-box-arrow-up-right"></i>
+                                    </a>
+                                    </label>
+                                    <input type="number" class="form-control" name="lines" value="${data.lines || ''}" min="1" step="1" placeholder="N. of lines per column">
+                                </div>
+                              </div>
+                              
+                              <div class="row mb-3">
+                                <div class="col-md-2">
+                                  <label class="form-label">Number of hands</label>
+                                  <input type="number" class="form-control" name="hands" value="${data.hands || ''}" min="1" step="1" placeholder="N. of hands">
+                                </div>
+                                <div class="col-md">
+                                  <label class="form-label">Description of hands<a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-handDesc.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></label>
+                                  <input type="text" class="form-control" name="handsDesc" value="${data.handsDesc || ''}"
+                                        placeholder="Describe hands characteristics">
+                                </div>
+                              </div>
                                 
+                                
+                                <div class="mb-3">
+                                  <label class="form-label">Script descriptions<a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-scriptNote.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></label>
+                                  <div class="scriptDesc-container"></div>
+                                  <button type="button" class="btn btn-sm btn-outline-primary mt-2" onclick="addScriptNote(this)" aria-label="Add script">Add script</button>
+                                </div>
+
+                                <div class="mb-3">
+                                  <label class="form-label">Decoration<a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-decoDesc.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></label>
+                                  <textarea class="form-control autosize" name="decoDesc" placeholder="Describe decoration">${data.decoDesc || ''}</textarea>
+                                </div>
+
+                                <div class="mb-3">
+                                  <label class="form-label">Music notation<a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-musicNotation.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></label>
+                                  <textarea class="form-control autosize" name="musicNotation" placeholder="Describe musical notation">${data.musicNotation || ''}</textarea>
+                                </div>
+
+                                <div class="mb-3">
+                                  <label class="form-label">Additions<a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-additions.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></label>
+                                  <textarea class="form-control autosize" name="additions" placeholder="Describe additions (any significant additions found within a manuscript, such as marginalia or other annotations)">${data.additions || ''}</textarea>
+                                </div>
+
+                                <div class="mb-3">
+                                  <label class="form-label">Accompanying material<a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-accMat.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></label>
+                                  <textarea class="form-control autosize" name="accMat" placeholder="Describe accompanying material (any significant additional material which may be closely associated with the manuscript being described, such as non-contemporaneous documents or fragments bound in with it at some earlier historical period)">${data.accMat || ''}</textarea>
+                                </div>
+
+                                <div class="mb-3">
+                                  <label class="form-label">Binding<a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-bindingDesc.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></label>
+                                  <textarea class="form-control autosize" name="bindingDesc" placeholder="Describe the binding">${data.bindingDesc || ''}</textarea>
+                                </div>
+
+                                <div class="mb-3">
+                                  <label class="form-label">Seals<a href="https://www.tei-c.org/release/doc/tei-p5-doc/it/html/ref-sealDesc.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></label>
+                                  <div class="sealDesc-container"></div>
+                                  <button type="button" class="btn btn-sm btn-outline-primary mt-2" onclick="addSeal(this)" aria-label="Add seal">Add seal</button>
+                                </div>
+
                             </fieldset>
                         </div>
                     </div>
@@ -211,7 +252,7 @@ function addManuscriptForm(data = {}, shouldScroll = true) {
 
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="heading4-${id}">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4-${id}" aria-expanded="false" aria-controls="collapse4-${id}">History <a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-history.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></button>
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4-${id}" aria-expanded="false" aria-controls="collapse4-${id}" aria-label="History">History <a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-history.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></button>
                     </h2>
                     <div id="collapse4-${id}" class="accordion-collapse collapse" aria-labelledby="heading4-${id}">
                         <div class="accordion-body">
@@ -233,7 +274,7 @@ function addManuscriptForm(data = {}, shouldScroll = true) {
                                         <label class="form-label">Geographical coordinates</label>
                                         <input type="text" class="form-control geo-coord" name="geoOrigin"
                                         placeholder="Origin place's geo coordinates"
-                                        data-error="Please enter in the format: 49.890972, 10.894102" value="${data.geoOrigin || ''}">
+                                        data-error="Use format: latitude, longitude (e.g. 41.9047761,12.450084)" value="${data.geoOrigin || ''}">
                                     </div>  
                                     <div class="col-md">
                                         <label class="form-label">Country</label>
@@ -249,11 +290,11 @@ function addManuscriptForm(data = {}, shouldScroll = true) {
                                     </div>                                                                  
                                     <div class="col-md-3">
                                       <label class="form-label">Earliest possible date of origin<a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-att.datable.w3c.html#tei_att.notBefore" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></label>
-                                      <input type="number" class="form-control" name="dateOriginNotBefore" value="${data.dateOriginNotBefore || ''}" placeholder="e.g. 1000">
+                                      <input type="number" class="form-control" name="dateOriginNotBefore" value="${data.dateOriginNotBefore || ''}" placeholder="e.g. 1000" max="9999" step="1" oninput="limitYearLength(this)">
                                     </div>
                                     <div class="col-md-3">
                                       <label class="form-label">Latest possible date of origin<a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-att.datable.w3c.html#tei_att.notAfter" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></label>
-                                      <input type="number" class="form-control" name="dateOriginNotAfter" value="${data.dateOriginNotAfter || ''}" placeholder="e.g. 1010">
+                                      <input type="number" class="form-control" name="dateOriginNotAfter" value="${data.dateOriginNotAfter || ''}" placeholder="e.g. 1010" max="9999" step="1" oninput="limitYearLength(this)">
                                     </div>
                                 </div>
                             </fieldset>
@@ -263,7 +304,7 @@ function addManuscriptForm(data = {}, shouldScroll = true) {
                             <fieldset class="p-3">
                               <div class="provenance-container"></div>
                               <div class="d-flex justify-content-start">
-                                <button type="button" class="btn btn-sm btn-outline-primary" onclick="addProvenanceItem(this)">Add provenance</button>
+                                <button type="button" class="btn btn-sm btn-outline-primary" onclick="addProvenanceItem(this)" aria-label="Add provenance">Add provenance</button>
                               </div>
                             </fieldset>
                         </div>
@@ -272,7 +313,7 @@ function addManuscriptForm(data = {}, shouldScroll = true) {
                         
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="heading5-${id}">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5-${id}" aria-expanded="false" aria-controls="collapse5-${id}">Surrogates and literature <a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-additional.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></button>
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5-${id}" aria-expanded="false" aria-controls="collapse5-${id}" aria-label="Surrogates and literature">Surrogates and literature <a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-additional.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></button>
                     </h2>
                     <div id="collapse5-${id}" class="accordion-collapse collapse" aria-labelledby="heading5-${id}">
                         <div class="accordion-body">
@@ -306,10 +347,25 @@ function addManuscriptForm(data = {}, shouldScroll = true) {
 
                             <h6>Literature references</h6>
                             <fieldset class="p-3">  
-                                <div class="literature-container"></div>
-                                <div class="d-flex justify-content-start">
-                                    <button type="button" class="btn btn-sm btn-outline-primary" onclick="addLiteratureItem(this)">Add literature reference</button>
-                                </div>
+
+                              <!-- Search bar -->
+                              <div class="input-group mb-3">
+                                <input type="text" class="form-control lit-search-input" placeholder="Search...">
+                                <button class="btn btn-outline-primary lit-search-btn" type="button" aria-label="Search">Search</button>
+                              </div>
+                              <div class="lit-search-results mb-3"></div>
+
+                              <!-- Literature list -->
+                              <div class="literature-list border rounded p-2 mb-3 bg-light"></div>
+
+                              <!-- Manual add button -->
+                              <div class="d-flex justify-content-start">
+                                <button type="button" class="btn btn-sm btn-outline-primary lit-add-manual-btn" aria-label="Add literature reference manually">Add literature reference manually</button>
+                              </div>
+
+                              <!-- Manual form (hidden by default) -->
+                              <div class="literature-form border rounded p-3 mt-3 bg-white" style="display:none;"></div>
+
                             </fieldset>
                         </div>
                     </div>
@@ -317,16 +373,41 @@ function addManuscriptForm(data = {}, shouldScroll = true) {
             </form>
         </div>
 
-        <div class="mt-3 d-flex justify-content-between">
-            <button type="button" class="btn btn-danger" onclick="deleteManuscriptForm(this)">Delete</button>
-            <div>
-                <button type="button" class="btn btn-outline-primary me-2" onclick="generateXML('${formId}')">XML preview</button>
-                <button type="button" class="btn btn-success" onclick="downloadXML('${formId}')">Download XML</button>
+        
+
+        <div class="mt-3 manuscript-footer">
+          <div class="d-flex flex-column flex-md-row justify-content-md-between align-items-stretch gap-2">
+
+            <div class="d-flex justify-content-center justify-content-md-start">
+              <button type="button" class="btn btn-danger w-100 w-md-auto" onclick="deleteManuscriptForm(this)" aria-label="Delete">
+                <i class="bi bi-trash3"></i> Delete
+              </button>
             </div>
+
+            <div class="d-flex flex-column flex-md-row justify-content-center justify-content-md-end gap-2">
+              <button type="button" class="btn btn-primary w-100 w-md-auto" onclick="generateXML('${formId}')" aria-label="Preview">
+                <i class="bi bi-file-earmark-code"></i> Preview
+              </button>
+
+              <button type="button" class="btn btn-warning w-100 w-md-auto validate-btn" aria-label="Validate">
+                <i class="bi bi-check2-square"></i> Validate
+              </button>
+
+              <button type="button" class="btn btn-success w-100 w-md-auto" onclick="downloadXML('${formId}')" aria-label="Download XML">
+                <i class="bi bi-file-earmark-arrow-down"></i> Download XML
+              </button>
+            </div>
+
+          </div>
         </div>
+
+
+
+
     </div>
     `;
   container.appendChild(form);
+  renderLiteratureList(form.querySelector('.msForm'));
   
   //  Scroll only if explicitly requested
   if (shouldScroll) {
@@ -347,13 +428,23 @@ function addRespPerson(button) {
     <div class="row mb-2">
       <div class="col-md">
         <label class="form-label">Name <span class="required-star" data-bs-toggle="tooltip" title="Required field">*</span></label>
-        <input type="text" class="form-control" name="respStmtName-${index}">
+        <input type="text" class="form-control" name="respStmtName-${index}" placeholder="Enter name of responsible person">
       </div>
       <div class="col-md">
         <label class="form-label">Surname <span class="required-star" data-bs-toggle="tooltip" title="Required field">*</span></label>
-        <input type="text" class="form-control" name="respStmtSurname-${index}">
+        <input type="text" class="form-control" name="respStmtSurname-${index}" placeholder="Enter surname of responsible person">
       </div>
-      <div class="col-md">
+      <div class="col-md-3">
+        <label class="form-label">Responsibility</label>
+        <select class="form-select" name="respStmtResp-${index}">
+          <option value="">Please select</option>
+          <option value="com">Compiler</option>
+          <option value="edt">Editor</option>
+        </select>
+      </div>
+    </div>
+    <div class="row mb-2">
+    <div class="col-md">
         <label class="form-label">External identifier (ORCID, GND, etc.)</label>
         <input type="url" class="form-control" name="respStmtRef-${index}" placeholder="https://orcid.org/xxxx-xxxx-xxxx-xxxx">
       </div>
@@ -366,12 +457,10 @@ function addRespPerson(button) {
               name="respStmtAffiliation-${index}" 
               placeholder="e.g. University of Oxford">
       </div>
-
-      
     </div>
 
     <div class="d-flex justify-content-end align-item-end mt-3">
-      <button type="button" class="btn btn-sm btn-danger" onclick="this.closest('.border').remove()">Delete</button>
+      <button type="button" class="btn btn-sm btn-danger" onclick="this.closest('.border').remove()" aria-label="Delete">Delete</button>
     </div>
     `;
   container.appendChild(row);
@@ -391,7 +480,7 @@ function addMsItem(button, itemData = {}) {
   block.innerHTML = `
     <div class="d-flex justify-content-between align-items-center mb-2">
       <strong>Content ${index + 1}</strong>
-      <button type="button" class="btn btn-sm btn-danger" onclick="this.closest('.border').remove()">Delete</button>
+      <button type="button" class="btn btn-sm btn-danger" onclick="this.closest('.border').remove()" aria-label="Delete">Delete</button>
     </div>
 
     <div class="row mb-2">
@@ -414,7 +503,7 @@ function addMsItem(button, itemData = {}) {
     <div class="mb-2">
       <label class="form-label">Page range</label>
       <div class="page-range-container"></div>
-      <button type="button" class="btn btn-sm btn-outline-primary mt-2" onclick="addPageRange(this, ${index})">Add page range</button>
+      <button type="button" class="btn btn-sm btn-outline-primary mt-2" onclick="addPageRange(this, ${index})" aria-label="Add page range">Add page range</button>
     </div>
     
     <div class="row mb-2">
@@ -491,7 +580,7 @@ if (itemData.pageRanges && itemData.pageRanges.length > 0) {
         <input type="text" class="form-control" name="msItemPageTo-${index}-${rIndex}" value="${range.to}" placeholder="To">
       </div>
       <div class="col-md-2">
-        <button type="button" class="btn btn-sm btn-outline-danger" onclick="this.closest('.row').remove()">Delete page range</button>
+        <button type="button" class="btn btn-sm btn-outline-danger" onclick="this.closest('.row').remove()" aria-label="Delete page range">Delete page range</button>
       </div>
     `;
     rangeContainer.appendChild(div);
@@ -520,7 +609,7 @@ function addPageRange(button, msItemIndex, preset = []) {
       <input type="text" class="form-control" name="msItemPageTo-${msItemIndex}-${currentIndex}" value="${toValue}" placeholder="To">
     </div>
     <div class="col-md-2">
-      <button type="button" class="btn btn-sm btn-outline-danger" onclick="this.closest('.row').remove()">Delete page range</button>
+      <button type="button" class="btn btn-sm btn-outline-danger" onclick="this.closest('.row').remove()" aria-label="Delete page range">Delete page range</button>
     </div>
   `;
   container.appendChild(div);
@@ -536,7 +625,7 @@ function addProvenanceItem(button, itemData = {}) {
   row.innerHTML = `
     <div class="d-flex justify-content-between align-items-center mb-2">
       <strong>Provenance ${index + 1}</strong>
-      <button type="button" class="btn btn-sm btn-danger" onclick="this.closest('.border').remove()">Delete</button>
+      <button type="button" class="btn btn-sm btn-danger" onclick="this.closest('.border').remove()" aria-label="Delete">Delete</button>
     </div>
 
     <div class="row mb-2">
@@ -590,7 +679,7 @@ function addProvenanceItem(button, itemData = {}) {
             <i class="bi bi-box-arrow-up-right"></i>
           </a>
         </label>
-        <input type="number" class="form-control" name="provNotBefore-${index}" value="${itemData.notBefore || ''}" placeholder="e.g. 1200">
+        <input type="number" class="form-control" name="provNotBefore-${index}" value="${itemData.notBefore || ''}" placeholder="e.g. 1200" max="9999" step="1" oninput="limitYearLength(this)">
       </div>
       <div class="col-md-4">
         <label class="form-label">Latest possible date of ownership
@@ -598,7 +687,7 @@ function addProvenanceItem(button, itemData = {}) {
             <i class="bi bi-box-arrow-up-right"></i>
           </a>
         </label>
-        <input type="number" class="form-control" name="provNotAfter-${index}" value="${itemData.notAfter || ''}" placeholder="e.g. 1300">
+        <input type="number" class="form-control" name="provNotAfter-${index}" value="${itemData.notAfter || ''}" placeholder="e.g. 1300" max="9999" step="1" oninput="limitYearLength(this)">
       </div>
     </div>
   `;
@@ -621,7 +710,7 @@ function addLiteratureItem(button) {
   block.innerHTML = `
     <div class="d-flex justify-content-between align-items-center mb-2">
       <strong>Literature ${index + 1}</strong>
-      <button type="button" class="btn btn-sm btn-danger" onclick="this.closest('.border').remove()">Delete</button>
+      <button type="button" class="btn btn-sm btn-danger" onclick="this.closest('.border').remove()" aria-label="Delete">Delete</button>
     </div>
     <div class="row mb-2">
         <div class="col-md-3">
@@ -659,7 +748,7 @@ function addLiteratureItem(button) {
         </div>
     </div>
     <div class="d-flex justify-content-start mb-3">
-        <button type="button" class="btn btn-sm btn-outline-primary" onclick="addBiblAuthor(this, ${index})">Add author</button>
+        <button type="button" class="btn btn-sm btn-outline-primary" onclick="addBiblAuthor(this, ${index})" aria-label="Add author">Add author</button>
     </div>
     <div class="bibl-editor-container-${index}">
         <div class="row mb-2">
@@ -670,7 +759,7 @@ function addLiteratureItem(button) {
         </div>
     </div>
     <div class="d-flex justify-content-start mb-3">
-        <button type="button" class="btn btn-sm btn-outline-primary" onclick="addBiblEditor(this, ${index})">Add editor</button>
+        <button type="button" class="btn btn-sm btn-outline-primary" onclick="addBiblEditor(this, ${index})" aria-label="Add editor">Add editor</button>
     </div>
     <div class="row mb-2">
         <div class="col-md-6">
@@ -710,7 +799,7 @@ function addBiblAuthor(button, biblIndex) {
         <input type="text" class="form-control" name="biblAuthorSurname-${biblIndex}-${count}" placeholder="Surname">
     </div>
     <div class="col-md-2">
-        <button type="button" class="btn btn-sm btn-outline-danger" onclick="this.closest('.row').remove()">Delete</button>
+        <button type="button" class="btn btn-sm btn-outline-danger" onclick="this.closest('.row').remove()" aria-label="Delete">Delete</button>
     </div>
   `;
   container.appendChild(newRow);
@@ -727,7 +816,7 @@ function addBiblEditor(button, biblIndex) {
         <input type="text" class="form-control" name="biblEditor-${biblIndex}-${count}" placeholder="Editor">
     </div>
     <div class="col-md-2">
-        <button type="button" class="btn btn-sm btn-outline-danger" onclick="this.closest('.row').remove()">Delete</button>
+        <button type="button" class="btn btn-sm btn-outline-danger" onclick="this.closest('.row').remove()" aria-label="Delete">Delete</button>
     </div>
   `;
   container.appendChild(newRow);
@@ -758,87 +847,142 @@ function getFormData(formId) {
   data.countryOrigin   = getFieldValueAndUri(form, 'countryOrigin');
   data.script          = getFieldValueAndUri(form, 'script');
 
-  //Responsible persons (standardized affiliation)
+  
+  // Responsible persons (safe iteration — deletion-proof)
   const persons = [];
-  let i = 0;
-  while (true) {
-    const name = form.querySelector(`[name="respStmtName-${i}"]`);
-    const surname = form.querySelector(`[name="respStmtSurname-${i}"]`);
-    const affilField = form.querySelector(`[name="respStmtAffiliation-${i}"]`);
+  const respBlocks = form.querySelectorAll('.resp-container > .border');
 
-    if (!name || !surname || !affilField) break;
+  respBlocks.forEach((block) => {
+    const nameField = block.querySelector(`[name^="respStmtName-"]`);
+    const surnameField = block.querySelector(`[name^="respStmtSurname-"]`);
+    const respField = block.querySelector(`[name^="respStmtResp-"]`);
+    const refField = block.querySelector(`[name^="respStmtRef-"]`);
+    const affilField = block.querySelector(`[name^="respStmtAffiliation-"]`);
 
-    const refField = form.querySelector(`[name="respStmtRef-${i}"]`);
-    const ref = refField ? refField.value : '';
+    if (!nameField || !surnameField) return; // skip incomplete
 
-    //Standardize affiliation as { value, uri }
-    const affiliation = getFieldValueAndUri(form, `respStmtAffiliation-${i}`);
+    const affiliation = getFieldValueAndUri(form, affilField?.name || '');
 
     persons.push({
-      name: name.value,
-      surname: surname.value,
-      affiliation: affiliation, // now { value, uri }
-      ref: ref
+      name: nameField.value.trim(),
+      surname: surnameField.value.trim(),
+      affiliation,
+      ref: refField ? refField.value.trim() : '',
+      resp: respField ? respField.value.trim() : ''
     });
+  });
 
-    i++;
-  }
   data.responsiblePersons = persons;
 
+
   //msItems with pageRanges
+  // msItems with pageRanges (safe even after deletions)
   const items = [];
-  let j = 0;
-  while (true) {
-    const author = form.querySelector(`[name="msItemAuthor-${j}"]`);
-    if (!author) break;
+  const msItemBlocks = form.querySelectorAll('.msitem-container > .border');
+  msItemBlocks.forEach((block, idx) => {
+    const authorField = block.querySelector(`[name^="msItemAuthor-"]`);
+    const langField = block.querySelector(`[name^="msItemLang-"]`);
 
     const pageRanges = [];
-    let r = 0;
-    while (true) {
-      const fromInput = form.querySelector(`[name="msItemPageFrom-${j}-${r}"]`);
-      const toInput = form.querySelector(`[name="msItemPageTo-${j}-${r}"]`);
-      if (!fromInput || !toInput) break;
-      pageRanges.push({ from: fromInput.value.trim(), to: toInput.value.trim() });
-      r++;
-    }
+    block.querySelectorAll('.page-range-container .row').forEach(row => {
+      const fromInput = row.querySelector('[name^="msItemPageFrom-"]');
+      const toInput = row.querySelector('[name^="msItemPageTo-"]');
+      pageRanges.push({
+        from: fromInput?.value.trim() || '',
+        to: toInput?.value.trim() || ''
+      });
+    });
 
     items.push({
-      author: getFieldValueAndUri(form, `msItemAuthor-${j}`),
-      title: form.querySelector(`[name="msItemTitle-${j}"]`)?.value || '',
-      textLang: getFieldValueAndUri(form, `msItemLang-${j}`),
-      incipit: form.querySelector(`[name="msItemIncipit-${j}"]`)?.value || '',
-      explicit: form.querySelector(`[name="msItemExplicit-${j}"]`)?.value || '',
-      textFamily: form.querySelector(`[name="msItemFamily-${j}"]`)?.value || '',
-      textSubFamily: form.querySelector(`[name="msItemSubFamily-${j}"]`)?.value || '',
-      textGenre: form.querySelector(`[name="msItemGenre-${j}"]`)?.value || '',
-      pageRanges: pageRanges
+      author: getFieldValueAndUri(form, authorField.name),
+      title: block.querySelector(`[name^="msItemTitle-"]`)?.value || '',
+      textLang: getFieldValueAndUri(form, langField?.name || ''),
+      incipit: block.querySelector(`[name^="msItemIncipit-"]`)?.value || '',
+      explicit: block.querySelector(`[name^="msItemExplicit-"]`)?.value || '',
+      textFamily: block.querySelector(`[name^="msItemFamily-"]`)?.value || '',
+      textSubFamily: block.querySelector(`[name^="msItemSubFamily-"]`)?.value || '',
+      textGenre: block.querySelector(`[name^="msItemGenre-"]`)?.value || '',
+      pageRanges
     });
-
-    j++;
-  }
+  });
   data.msItems = items;
 
-  //Provenance entries (only structured, no provName-0 duplication)
-  const provenance = [];
-  let p = 0;
-  while (true) {
-    const name = form.querySelector(`[name="provName-${p}"]`);
-    if (!name) break;
 
-    provenance.push({
-      name: getFieldValueAndUri(form, `provName-${p}`),
-      type: form.querySelector(`[name="provType-${p}"]`)?.value || '',
-      date: form.querySelector(`[name="provDate-${p}"]`)?.value || '',
-      notBefore: form.querySelector(`[name="provNotBefore-${p}"]`)?.value || '',
-      notAfter: form.querySelector(`[name="provNotAfter-${p}"]`)?.value || '',
-      geo: form.querySelector(`[name="provGeo-${p}"]`)?.value || '',
-      settlement: getFieldValueAndUri(form, `provSettlement-${p}`),
-      country: getFieldValueAndUri(form, `provCountry-${p}`)
+  // Structured hand description
+  data.handDesc = {
+    hands: data.hands || "",
+    desc: data.handsDesc || ""
+  };
+
+  // Script notes (safe iteration — deletion-proof)
+  const scriptNotes = [];
+  const scriptBlocks = form.querySelectorAll('.scriptDesc-container > .border');
+
+  scriptBlocks.forEach((block) => {
+    const field = block.querySelector(`[name^="scriptNote-"]`);
+    if (!field) return;
+
+    scriptNotes.push({
+      value: field.value.trim(),
+      uri: field.dataset.lodUri || ""
+    });
+  });
+
+  data.scriptNotes = scriptNotes;
+
+
+
+  // Collect seals (multiple)
+  // Seals (safe iteration — deletion-proof)
+  const seals = [];
+  const sealBlocks = form.querySelectorAll('.sealDesc-container > .border');
+
+  sealBlocks.forEach((block) => {
+    const field = block.querySelector(`[name^="seal-"]`);
+    if (!field) return;
+    seals.push(field.value.trim());
+  });
+
+  data.seals = seals;
+
+
+  data.accMat = form.querySelector('[name="accMat"]')?.value.trim() || "";
+  data.additions = form.querySelector('[name="additions"]')?.value.trim() || "";
+  data.bindingDesc = form.querySelector('[name="bindingDesc"]')?.value.trim() || "";
+  data.decoDesc = form.querySelector('[name="decoDesc"]')?.value.trim() || "";
+  data.musicNotation = form.querySelector('[name="musicNotation"]')?.value.trim() || "";
+  data.seals = seals;
+
+  //Provenance entries (only structured, no provName-0 duplication)
+    // Provenance (safe iteration — deletion-proof)
+    const provenance = [];
+    const provBlocks = form.querySelectorAll('.provenance-container > .border');
+
+    provBlocks.forEach((block, idx) => {
+      const nameField = block.querySelector(`[name^="provName-"]`);
+      const typeField = block.querySelector(`[name^="provType-"]`);
+      const geoField  = block.querySelector(`[name^="provGeo-"]`);
+      const dateField = block.querySelector(`[name^="provDate-"]`);
+      const notBeforeField = block.querySelector(`[name^="provNotBefore-"]`);
+      const notAfterField  = block.querySelector(`[name^="provNotAfter-"]`);
+      const settlementField = block.querySelector(`[name^="provSettlement-"]`);
+      const countryField    = block.querySelector(`[name^="provCountry-"]`);
+
+      provenance.push({
+        name: getFieldValueAndUri(form, nameField?.name || ""),
+        type: typeField?.value.trim() || "",
+        geo: getFieldValueAndUri(form, geoField?.name || ""),
+        date: dateField?.value.trim() || "",
+        notBefore: notBeforeField?.value.trim() || "",
+        notAfter: notAfterField?.value.trim() || "",
+        settlement: getFieldValueAndUri(form, settlementField?.name || ""),
+        country: getFieldValueAndUri(form, countryField?.name || "")
+      });
     });
 
-    p++;
-  }
-  data.provenance = provenance;
+    data.provenance = provenance;
+
+
 
   //Literature
   const literature = [];
@@ -848,7 +992,7 @@ function getFormData(formId) {
     if (!type) break;
 
     const bibl = {
-      type: type.value,
+      //type: type.value,
       title: form.querySelector(`[name="biblTitle-${b}"]`)?.value || '',
       date: form.querySelector(`[name="biblDate-${b}"]`)?.value || '',
       citedRange: form.querySelector(`[name="biblCited-${b}"]`)?.value || '',
@@ -881,6 +1025,24 @@ function getFormData(formId) {
   }
   data.literature = literature;
 
+  // Include in-memory literature (from OpenLibrary + manual)
+  if (form.literature && form.literature.length > 0) {
+    data.literature = form.literature;
+  }
+
+  // Add structured publication metadata
+  data.publicationStructured = {
+    publisher: {
+      name: "MANO - Manuscripts Online",
+      ref: "https://mano-project.github.io/"
+    },
+    licence: {
+      name: data.publicationStmt,
+      target: buildLicenseUrl(data.publicationStmt)
+    },
+    date: getTodayISO()
+  };
+
   return data;
 }
 
@@ -910,7 +1072,7 @@ function restoreLODField(form, fieldName, fieldData) {
         
 
         <button type="button" class="btn btn-link text-danger lod-clear-btn ps-0 pt-0" 
-          data-bs-toggle="tooltip" title="Remove ${sourceLabel} link">
+          data-bs-toggle="tooltip" title="Remove ${sourceLabel} link" aria-label="Remove link">
     <i class="bi bi-x-square-fill"></i>
   </button>
       `;
@@ -968,6 +1130,73 @@ function xmlWithRef(tag, fieldData) {
   return `<${tag}>${escapeXml(fieldData.value)}</${tag}>`;
 }
 
+
+function buildLicenseUrl(license) {
+  if (!license) return "https://creativecommons.org/licenses/";
+  const map = {
+    "CC BY": "licenses/by/4.0/",
+    "CC BY-SA": "licenses/by-sa/4.0/",
+    "CC BY-ND": "licenses/by-nd/4.0/",
+    "CC BY-NC": "licenses/by-nc/4.0/",
+    "CC BY-NC-SA": "licenses/by-nc-sa/4.0/",
+    "CC BY-NC-ND": "licenses/by-nc-nd/4.0/",
+    "CC0": "publicdomain/zero/1.0/"
+  };
+  return `https://creativecommons.org/${map[license] || "licenses/"}`;
+}
+
+function getTodayISO() {
+  const d = new Date();
+  return d.toISOString().split('T')[0]; // yyyy-mm-dd
+}
+
+// PHYSICAL DESCRIPTION
+// Add script note
+function addScriptNote(button, scriptData = { value: "", uri: "" }) {
+  const container = button.closest('fieldset').querySelector('.scriptDesc-container');
+  const index = container.children.length;
+
+  const block = document.createElement('div');
+  block.className = 'border rounded p-2 mb-2 bg-light';
+  block.innerHTML = `
+    <div class="d-flex justify-content-between align-items-center mb-2">
+      <strong>Script</strong>
+      <button type="button" class="btn btn-sm btn-outline-danger" aria-label="Delete">Delete</button>
+    </div>
+    <input type="text"
+           class="form-control lod-autocomplete"
+           placeholder="Search script (Getty Vocabulary)"
+           data-lod="getty-script"
+           name="scriptNote-${index}"
+           value="${scriptData.value || ''}"
+           data-lod-uri="${scriptData.uri || ''}">
+  `;
+
+  block.querySelector('button').onclick = () => block.remove();
+  container.appendChild(block);
+}
+
+
+// Add seal
+function addSeal(button, text = "") {
+  const container = button.closest('fieldset').querySelector('.sealDesc-container');
+  const index = container.children.length;
+
+  const block = document.createElement('div');
+  block.className = 'border rounded p-2 mb-2 bg-light';
+  block.innerHTML = `
+    <div class="d-flex justify-content-between align-items-center mb-1">
+      <strong>Seal</strong>
+      <button type="button" class="btn btn-sm btn-outline-danger" aria-label="Delete">Delete</button>
+    </div>
+    <textarea class="form-control autosize" name="seal-${index}" placeholder="Describe seal">${text}</textarea>
+  `;
+  block.querySelector('button').onclick = () => block.remove();
+  container.appendChild(block);
+}
+
+
+
 function buildXML(data, formId) {
   const form = document.getElementById(formId);
   
@@ -987,9 +1216,11 @@ function buildXML(data, formId) {
   <teiHeader>
     <fileDesc>
       <titleStmt>
-        <title type="main">${escapeXml(data.msTitle)}</title>
-        ${data.responsiblePersons.map(p => `
-        <respStmt${p.ref ? ` ref="${escapeXml(p.ref)}"` : ''}>
+        <title type="main">${escapeXml(data.msTitle)}</title> ${data.responsiblePersons.map(p => `
+          <respStmt${p.ref ? ` ref="${escapeXml(p.ref)}"` : ''}> 
+          ${p.resp ? `<resp ref="${p.resp === 'com' 
+          ? 'http://id.loc.gov/vocabulary/relators/com.html' 
+          : 'http://id.loc.gov/vocabulary/relators/edt.html'}">${p.resp === 'com' ? 'compiler' : 'editor'}</resp>` : ''}
           <persName>
             <forename>${escapeXml(p.name)}</forename>
             <surname>${escapeXml(p.surname)}</surname>
@@ -998,22 +1229,25 @@ function buildXML(data, formId) {
         </respStmt>`).join('\n')}
       </titleStmt>
       <publicationStmt>
+        <publisher ref="https://mano-project.github.io/">MANO - Manuscripts Online</publisher>
         <availability>
-          <p>${escapeXml(data.publicationStmt)}</p>
+          <licence target="${buildLicenseUrl(data.publicationStmt)}">
+            <p>${escapeXml(data.publicationStmt)}</p>
+          </licence>
         </availability>
+        <date when="${getTodayISO()}"/>
       </publicationStmt>
       <sourceDesc>
         <msDesc>
           <msIdentifier>
-            ${xmlWithRef('repository', repo)}
-            <geo>${escapeXml(data.geoRepository)}</geo>
-            ${xmlWithRef('settlement', settlementIdentField)}
             ${xmlWithRef('country', countryIdentField)}
-
-            <collection><idno type="shelfmark">${escapeXml(data.idno)}</idno></collection>
-            <msName type="sigle">${escapeXml(data.msSigle)}</msName>
+            ${xmlWithRef('settlement', settlementIdentField)}
+            <geogName><geo>${escapeXml(data.geoRepository)}</geo></geogName>
+            ${xmlWithRef('repository', repo)}
+            <collection>${escapeXml(data.collection)}</collection>
+            <idno type="sigle">${escapeXml(data.msSigle)}</idno>
+            <msName>${escapeXml(data.msName)}</msName>
             <altIdentifier><idno>${escapeXml(data.altIdentifier)}</idno></altIdentifier>
-            <msName type="full">${escapeXml(data.msName)}</msName>
           </msIdentifier>
           <msContents>
             <summary>${escapeXml(data.summaryContents)}</summary>
@@ -1021,13 +1255,14 @@ function buildXML(data, formId) {
               const authorField = getFieldValueAndUri(form, `msItemAuthor-${idx}`);
               const langField = getFieldValueAndUri(form, `msItemLang-${idx}`);
               return `
-            <msItem>
-              ${xmlWithRef('author', authorField)}
+            <msItem n="${idx + 1}"> 
+            <locusGrp>${(item.pageRanges || []).map(pr => `<locus from="${escapeXml(pr.from)}" to="${escapeXml(pr.to)}"/>`).join('\n')}</locusGrp>
+            ${xmlWithRef('author', authorField)}
               <title>${escapeXml(item.title)}</title>
-              <locusGrp>
-                ${(item.pageRanges || []).map(pr => `<locus from="${escapeXml(pr.from)}" to="${escapeXml(pr.to)}"/>`).join('\n')}
-              </locusGrp>
-              ${xmlWithRef('textLang', langField)}
+              ${langField.value
+                ? `<textLang${langField.uri ? ` source="${escapeXml(langField.uri)}"` : ''}>${escapeXml(langField.value)}</textLang>`
+                : ''
+              }
               <incipit>${escapeXml(item.incipit)}</incipit>
               <explicit>${escapeXml(item.explicit)}</explicit>
               <note type="textual-family">${escapeXml(item.textFamily)}</note>
@@ -1051,23 +1286,30 @@ function buildXML(data, formId) {
                 <layout columns="${escapeXml(data.columns)}" writtenLines="${escapeXml(data.lines)}"/>
               </layoutDesc>
             </objectDesc>
-            <handDesc>
-              <summary>${escapeXml(data.hands)}</summary>
+            <handDesc hands="${escapeXml(data.hands)}">
+              <p>${escapeXml(data.handsDesc)}</p>
             </handDesc>
-            <scriptDesc>
-              ${xmlWithRef('scriptNote', scriptField)}
+            <scriptDesc>${(data.scriptNotes || []).map(sn => `
+              <scriptNote${sn.uri ? ` source="${escapeXml(sn.uri)}"` : ''}>
+                <p>${escapeXml(sn.value)}</p>
+              </scriptNote>`).join('\n')}
             </scriptDesc>
+            <musicNotation><p>${escapeXml(data.musicNotation)}</p></musicNotation>
+            <decoDesc><p>${escapeXml(data.decoDesc)}</p></decoDesc>
+            <additions><p>${escapeXml(data.additions)}</p></additions>
+            <bindingDesc><p>${escapeXml(data.bindingDesc)}</p></bindingDesc>
+            <sealDesc>${(data.seals || []).map(s => `
+                <seal><p>${escapeXml(s)}</p></seal>`).join('\n')}
+            </sealDesc>
+            <accMat><p>${escapeXml(data.accMat)}</p></accMat>
           </physDesc>
           <history>
             <summary>${escapeXml(data.summaryProvenance)}</summary>
-            <origin>
-              ${xmlWithRef('origPlace', origPlace)}
+            <origin>${xmlWithRef('origPlace', origPlace)}
               <geo>${escapeXml(data.geoOrigin)}</geo>
               ${xmlWithRef('country', countryOriginField)}
               <origDate notBefore="${escapeXml(data.dateOriginNotBefore)}" notAfter="${escapeXml(data.dateOriginNotAfter)}">${escapeXml(data.dateOriginText)}</origDate>
-            </origin>
-            
-            ${(data.provenance || []).map((prov, i) => {
+            </origin> ${(data.provenance || []).map((prov, i) => {
               const provSettlementField = getFieldValueAndUri(form, `provSettlement-${i}`);
               const provCountryField = getFieldValueAndUri(form, `provCountry-${i}`);
               return `
@@ -1076,7 +1318,7 @@ function buildXML(data, formId) {
                 ? `<name type="${escapeXml(prov.type)}"${prov.name?.uri ? ` ref="${escapeXml(prov.name.uri)}"` : ''}>${escapeXml(prov.name.value)}</name>`
                 : xmlWithRef('name', prov.name)}
               <date ${prov.notBefore ? `notBefore="${escapeXml(prov.notBefore)}"` : ''} ${prov.notAfter ? `notAfter="${escapeXml(prov.notAfter)}"` : ''}>${escapeXml(prov.date)}</date>
-              <geo>${escapeXml(prov.geo)}</geo>
+              <geo${prov.geo?.uri ? ` ref="${escapeXml(prov.geo.uri)}"` : ''}>${escapeXml(prov.geo?.value || '')}</geo>
               ${xmlWithRef('settlement', provSettlementField)}
               ${xmlWithRef('country', provCountryField)}
             </provenance>`;
@@ -1096,22 +1338,22 @@ function buildXML(data, formId) {
                 <title xml:lang="en">Catalogue entry</title>
                 <ref>${escapeXml(data.cat)}</ref>
               </bibl>
-            </surrogates>
-            ${(data.literature || []).map(lit => `
-            <bibl type="${escapeXml(lit.type)}">
-              ${(lit.authors || []).map(a => `
-              <author>
-                <surname>${escapeXml(a.surname)}</surname>
-                <forename>${escapeXml(a.forename)}</forename>
-              </author>`).join('')}
-              ${(lit.editors || []).map(e => `<editor>${escapeXml(e)}</editor>`).join('')}
-              <title>${escapeXml(lit.title)}</title>
-              <pubPlace>${escapeXml(lit.pubPlace)}</pubPlace>
-              <publisher>${escapeXml(lit.publisher)}</publisher>
-              <series>${escapeXml(lit.series)}</series>
-              <date when="${escapeXml(lit.date)}"></date>
-              <citedRange>${escapeXml(lit.citedRange)}</citedRange>
-            </bibl>`).join('\n')}
+            </surrogates> 
+            <listBibl>${(data.literature || []).map(lit => `
+              <bibl ${lit.ref ? `ref="${escapeXml(lit.ref)}"` : ''}> ${(lit.authors || []).map(a => `
+                <author>
+                  <surname>${escapeXml(a.surname)}</surname>
+                  <forename>${escapeXml(a.forename)}</forename>
+                </author>`).join('')} ${(lit.editors || []).map(e => `<editor>${escapeXml(e)}</editor>`).join('')}
+                <title>${escapeXml(lit.title)}</title>
+                <pubPlace>${escapeXml(lit.pubPlace)}</pubPlace>
+                <publisher>${escapeXml(lit.publisher)}</publisher>
+                <series>${escapeXml(lit.series)}</series>
+                <idno type="isbn">${escapeXml(lit.isbn)}</idno>
+                <date when="${escapeXml(lit.date)}">${escapeXml(lit.date)}</date>
+                <citedRange>${escapeXml(lit.citedRange)}</citedRange>
+              </bibl>`).join('\n')}
+            </listBibl>
           </additional>
         </msDesc>
       </sourceDesc>
@@ -1133,22 +1375,8 @@ function generateXML(formId) {
   return xml;
 }
 
-/*function downloadXML(formId) {
-  const data = getFormData(formId);
-  const xmlContent = buildXML(data, formId);
-  const blob = new Blob([xmlContent], { type: 'application/xml' });
-
-  const form = document.getElementById(formId);
-  const titleInput = form.querySelector('[name="msTitle"]');
-  const filename = (titleInput?.value?.trim() || 'manuscript').replace(/[\\/:*?"<>|]/g, '_');
-
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = `${filename}.xml`;
-  a.click();
-}*/
 function downloadXML(formId) {
-  if (!validateMandatoryFields(formId)) return; //stop if invalid
+  //if (!validateMandatoryFields(formId)) return; //stop if invalid
 
   const data = getFormData(formId);
   const xmlContent = buildXML(data, formId);
@@ -1162,6 +1390,19 @@ function downloadXML(formId) {
   a.href = URL.createObjectURL(blob);
   a.download = `${filename}.xml`;
   a.click();
+
+  // Show success modal
+  const modal = new bootstrap.Modal(document.getElementById('xmlDownloadSuccessModal'));
+  modal.show();
+
+  // Re-enable JSON download inside modal
+  const btn = document.getElementById('downloadJSONfromModal');
+  if (btn) {
+    btn.onclick = () => {
+      modal.hide();
+      document.getElementById('downloadAllJSON').click();
+    };
+  }
 }
 
 
@@ -1171,22 +1412,21 @@ function buildCombinedFileName(all) {
   return titles.join('_').replace(/[\\/:*?"<>|]/g, '_');
 }
 
-/*document.getElementById('downloadAllJSON').addEventListener('click', () => {
-  const all = [...document.querySelectorAll('.msForm')].map(f => getFormData(f.id));
-  const fileBase = buildCombinedFileName(all);
-  downloadFile(`${fileBase}.json`, JSON.stringify(all, null, 2), 'application/json');
-});*/
+
 
 document.getElementById('downloadAllJSON').addEventListener('click', () => {
+  if (!validateAllBeforeDownload()) return;
+
   const forms = [...document.querySelectorAll('.msForm')];
-  // check all forms
-  for (const f of forms) {
-    if (!validateMandatoryFields(f.id)) return; // stop all downloads if any invalid
-  }
   const all = forms.map(f => getFormData(f.id));
   const fileBase = buildCombinedFileName(all);
   downloadFile(`${fileBase}.json`, JSON.stringify(all, null, 2), 'application/json');
+
+  //Show success modal
+  const modal = new bootstrap.Modal(document.getElementById('jsonDownloadSuccessModal'));
+  modal.show();
 });
+
 
 
 
@@ -1245,6 +1485,15 @@ document.getElementById('fileUpload').addEventListener('change', function (e) {
               }
             });
 
+            // Restore publication data
+            if (rec.publicationStructured) {
+              const pub = rec.publicationStructured;
+              const licenseSelect = form.querySelector('[name="publicationStmt"]');
+              if (licenseSelect && pub.licence?.name) {
+                licenseSelect.value = pub.licence.name;
+              }
+            }
+
 
             
           // Restore responsible persons
@@ -1253,6 +1502,8 @@ document.getElementById('fileUpload').addEventListener('change', function (e) {
             rec.responsiblePersons.forEach((p, index) => {
               addRespPerson(respButton);
               const row = formElement.querySelector('.resp-container').children[index];
+              row.querySelector(`[name="respStmtResp-${index}"]`).value = p.resp || '';
+
               row.querySelector(`[name="respStmtName-${index}"]`).value = p.name || '';
               row.querySelector(`[name="respStmtSurname-${index}"]`).value = p.surname || '';
               restoreLODField(row, `respStmtAffiliation-${index}`, p.affiliation);
@@ -1273,7 +1524,45 @@ document.getElementById('fileUpload').addEventListener('change', function (e) {
 
                 //Restore textLang {value, uri}
                 restoreLODField(msRow, `msItemLang-${idx}`, item.textLang);
+
+                //Re-check the Unknown Author box if needed
+                const authorInput = msRow.querySelector(`[name="msItemAuthor-${idx}"]`);
+                const unknownCheckbox = msRow.querySelector(`#unknownAuthor-${idx}`);
+                if (
+                  authorInput?.value?.trim().toLowerCase() === 'unknown or anonymous' ||
+                  authorInput?.dataset.lodUri === 'https://www.wikidata.org/wiki/Q4233718'
+                ) {
+                  unknownCheckbox.checked = true;
+                }
               });
+            }
+
+            // Restore script notes
+            const scriptBtn = formElement.querySelector('button[onclick*="addScriptNote"]');
+            if (rec.scriptNotes) {
+              rec.scriptNotes.forEach((sn, idx) => {
+                addScriptNote(scriptBtn, sn);
+                const scriptRow = formElement.querySelector('.scriptDesc-container').children[idx];
+                const input = scriptRow.querySelector(`[name="scriptNote-${idx}"]`);
+
+                // Recreate LOD link badge (link icon + delete icon)
+                if (sn.uri) {
+                  input.dataset.lodUri = sn.uri;
+                  addBadgeForLODField(input, sn.uri);
+                }
+
+                // Enable Bootstrap tooltips
+                scriptRow.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(el => {
+                  new bootstrap.Tooltip(el);
+                });
+              });
+            }
+
+
+            // Restore seals
+            const sealBtn = formElement.querySelector('button[onclick*="addSeal"]');
+            if (rec.seals) {
+              rec.seals.forEach(text => addSeal(sealBtn, text));
             }
           
           //Restore provenance items
@@ -1290,48 +1579,18 @@ document.getElementById('fileUpload').addEventListener('change', function (e) {
               //Plain text fields
               provRow.querySelector(`[name="provType-${i}"]`).value = prov.type || '';
               provRow.querySelector(`[name="provDate-${i}"]`).value = prov.date || '';
-              provRow.querySelector(`[name="provGeo-${i}"]`).value = prov.geo || '';
-
+              //provRow.querySelector(`[name="provGeo-${i}"]`).value = prov.geo || '';
+              provRow.querySelector(`[name="provGeo-${i}"]`).value = typeof prov.geo === 'object' ? (prov.geo.value || '') : (prov.geo || '');
               //Settlement / Country with { value, uri }
               restoreLODField(provRow, `provSettlement-${i}`, prov.settlement);
               restoreLODField(provRow, `provCountry-${i}`, prov.country);
             });
           }
 
+            // Restore literature list (modern system)
+            form.literature = rec.literature || [];
+            renderLiteratureList(form);
 
-          //Restore literature items
-          const litButton = formElement.querySelector('.literature-container + .d-flex button');
-          if (rec.literature) {
-            rec.literature.forEach((bibl, bIndex) => {
-              addLiteratureItem(litButton);
-              const litContainer = formElement.querySelector(`.literature-container`).children[bIndex];
-
-              litContainer.querySelector(`[name="biblType-${bIndex}"]`).value = bibl.type || '';
-              litContainer.querySelector(`[name="biblTitle-${bIndex}"]`).value = bibl.title || '';
-              litContainer.querySelector(`[name="biblDate-${bIndex}"]`).value = bibl.date || '';
-              litContainer.querySelector(`[name="biblCited-${bIndex}"]`).value = bibl.citedRange || '';
-              litContainer.querySelector(`[name="biblPlace-${bIndex}"]`).value = bibl.pubPlace || '';
-              litContainer.querySelector(`[name="biblPublisher-${bIndex}"]`).value = bibl.publisher || '';
-              litContainer.querySelector(`[name="biblSeries-${bIndex}"]`).value = bibl.series || '';
-
-              // Restore authors
-              const authorContainer = litContainer.querySelector(`.bibl-author-container-${bIndex}`);
-              (bibl.authors || []).forEach((a, i) => {
-                if (i > 0) addBiblAuthor(litContainer.querySelector(`[onclick*="addBiblAuthor"]`), bIndex);
-                const authorRow = authorContainer.children[i];
-                authorRow.querySelector(`[name="biblAuthorForename-${bIndex}-${i}"]`).value = a.forename || '';
-                authorRow.querySelector(`[name="biblAuthorSurname-${bIndex}-${i}"]`).value = a.surname || '';
-              });
-
-              // Restore editors
-              const editorContainer = litContainer.querySelector(`.bibl-editor-container-${bIndex}`);
-              (bibl.editors || []).forEach((e, i) => {
-                if (i > 0) addBiblEditor(litContainer.querySelector(`[onclick*="addBiblEditor"]`), bIndex);
-                const editorRow = editorContainer.children[i];
-                editorRow.querySelector(`[name="biblEditor-${bIndex}-${i}"]`).value = e || '';
-              });
-            });
-          }
 
         });
       } catch (err) {
@@ -1366,7 +1625,7 @@ document.getElementById('fileUpload').addEventListener('change', function (e) {
         ? { value: countryEl.textContent.trim(), uri: countryEl.getAttribute("ref") || "" }
         : { value: "", uri: "" };
 
-      const geoRepository = xmlDoc.querySelector("msIdentifier > geo")?.textContent.trim() || "";
+      const geoRepository = xmlDoc.querySelector("msIdentifier > geogName > geo")?.textContent.trim() || "";
 
       //Script
       const scriptEl = xmlDoc.querySelector("scriptNote");
@@ -1390,50 +1649,37 @@ document.getElementById('fileUpload').addEventListener('change', function (e) {
       const geoOrigin = xmlDoc.querySelector("origin > geo")?.textContent.trim() || "";
 
 
-      //Provenance
-      const provenance = [];
-      xmlDoc.querySelectorAll("provenance").forEach(prov => {
-        const nameEl = prov.querySelector("name");
-        const settlementEl = prov.querySelector("settlement");
-        const countryEl = prov.querySelector("country");
-        const dateEl = prov.querySelector("date");
-
-        provenance.push({
-          name: nameEl
-            ? { value: nameEl.textContent.trim(), uri: nameEl.getAttribute("ref") || "" }
-            : { value: "", uri: "" },
-          type: nameEl?.getAttribute("type") || "",
-          date: dateEl?.textContent.trim() || "",
-          notBefore: dateEl?.getAttribute("notBefore") || "",
-          notAfter: dateEl?.getAttribute("notAfter") || "",
-          geo: prov.querySelector("geo")?.textContent.trim() || "",
-          settlement: settlementEl
-            ? { value: settlementEl.textContent.trim(), uri: settlementEl.getAttribute("ref") || "" }
-            : { value: "", uri: "" },
-          country: countryEl
-            ? { value: countryEl.textContent.trim(), uri: countryEl.getAttribute("ref") || "" }
-            : { value: "", uri: "" }
-        });
-      });
-
-
-
-
       const data = {
         // Accordion 1
         msTitle: get("title"),
-        publicationStmt: get("publicationStmt p"),
         xmlLang,
+
+        // Publication structure
+        publicationStructured: {
+          publisher: {
+            name: get("publicationStmt > publisher"),
+            ref: getAttr("publicationStmt > publisher", "ref")
+          },
+          licence: {
+            name: get("publicationStmt > availability > licence > p"),
+            target: getAttr("publicationStmt > availability > licence", "target")
+          },
+          date: getAttr("publicationStmt > date", "when")
+        },
+
+        // Keep compatibility
+        publicationStmt: get("publicationStmt > availability > licence > p"),
 
         repository,
         geoRepository,
         settlementIdent,
         countryIdent,
 
-        idno: get("idno[type='shelfmark']"),
-        altIdentifier: get("altIdentifier idno"),
-        msSigle: get("msName[type='sigle']"),
-        msName: get("msName[type='full']"),
+        // updated msIdentifier fields
+        msName: get("msIdentifier > msName"),
+        collection: get("msIdentifier > collection"),
+        msSigle: get("msIdentifier > idno[type='sigle']"),
+        altIdentifier: get("msIdentifier > altIdentifier > idno"),
 
         // Accordion 2 
         summaryContents: get("msContents > summary"),
@@ -1447,8 +1693,21 @@ document.getElementById('fileUpload').addEventListener('change', function (e) {
         condition: get("condition"),
         columns: getAttr("layout", "columns"),
         lines: getAttr("layout", "writtenLines"),
-        hands: get("handDesc > summary"),
+        hands: getAttr("handDesc", "hands"),
+        handsDesc: get("handDesc > p"),
+        scriptNotes: [...xmlDoc.querySelectorAll("scriptNote")].map(sn => ({
+          value: sn.querySelector("p")?.textContent.trim() || "",
+          uri: sn.getAttribute("source") || ""
+        })),
         script,
+        // Newly added physDesc elements
+        accMat: get("physDesc > accMat > p"),
+        additions: get("physDesc > additions > p"),
+        bindingDesc: get("physDesc > bindingDesc > p"),
+        decoDesc: get("physDesc > decoDesc > p"),
+        musicNotation: get("physDesc > musicNotation > p"),
+        seals: [...xmlDoc.querySelectorAll("sealDesc > seal > p")].map(p => p.textContent.trim()),
+
 
 
         // Accordion 4 
@@ -1461,9 +1720,7 @@ document.getElementById('fileUpload').addEventListener('change', function (e) {
         dateOriginNotAfter: getAttr("origin > origDate", "notAfter"),
         dateOriginText: get("origin > origDate"),
         
-        provenance,
-
-
+        
         // Accordion 5 
         digi: get("bibl[type='digi'] ref"),
         iiifManifest: get("bibl[type='iiif-manifest'] ref"),
@@ -1478,6 +1735,9 @@ document.getElementById('fileUpload').addEventListener('change', function (e) {
       xmlDoc.querySelectorAll("respStmt").forEach(resp => {
         const respRef = resp.getAttribute("ref") || ''; // external identifier URL
         const affilEl = resp.querySelector("affiliation");
+        const respEl = resp.querySelector("resp");
+        const respType = respEl?.getAttribute("ref")?.includes("com") ? "com" :
+                        respEl?.getAttribute("ref")?.includes("edt") ? "edt" : "";
 
         data.responsiblePersons.push({
           name: resp.querySelector("forename")?.textContent || '',
@@ -1486,9 +1746,39 @@ document.getElementById('fileUpload').addEventListener('change', function (e) {
             value: affilEl?.textContent || '',
             uri: affilEl?.getAttribute("ref") || ''
           },
-          ref: respRef // store external identifier URL
+          ref: respRef,
+          resp: respType
         });
       });
+
+       //provenance
+      const provenance = [];
+      xmlDoc.querySelectorAll("provenance").forEach(provEl => {
+        provenance.push({
+          name: {
+            value: provEl.querySelector("name")?.textContent || "",
+            uri: provEl.querySelector("name")?.getAttribute("ref") || ""
+          },
+          type: provEl.querySelector("name")?.getAttribute("type") || "",
+          date: provEl.querySelector("date")?.textContent || "",
+          notBefore: provEl.querySelector("date")?.getAttribute("notBefore") || "",
+          notAfter: provEl.querySelector("date")?.getAttribute("notAfter") || "",
+          geo: {
+            value: provEl.querySelector("geo")?.textContent || "",
+            uri: provEl.querySelector("geo")?.getAttribute("ref") || ""
+          },
+          settlement: {
+            value: provEl.querySelector("settlement")?.textContent || "",
+            uri: provEl.querySelector("settlement")?.getAttribute("ref") || ""
+          },
+          country: {
+            value: provEl.querySelector("country")?.textContent || "",
+            uri: provEl.querySelector("country")?.getAttribute("ref") || ""
+          }
+        });
+      });
+      data.provenance = provenance;
+
 
 
       // msItems (Inhalt)
@@ -1511,7 +1801,7 @@ document.getElementById('fileUpload').addEventListener('change', function (e) {
           pageRanges,
           textLang: {
             value: item.querySelector("textLang")?.textContent || '',
-            uri: item.querySelector("textLang")?.getAttribute("ref") || ''
+            uri: item.querySelector("textLang")?.getAttribute("source") || ''
           },
           incipit: item.querySelector("incipit")?.textContent || '',
           explicit: item.querySelector("explicit")?.textContent || '',
@@ -1523,10 +1813,10 @@ document.getElementById('fileUpload').addEventListener('change', function (e) {
       });
 
       // Literature entries
-      xmlDoc.querySelectorAll("bibl").forEach(bibl => {
+      // Literature entries now inside <listBibl>
+      xmlDoc.querySelectorAll("listBibl > bibl").forEach(bibl => {
         const type = bibl.getAttribute("type") || '';
-        if (["digi", "iiif-manifest", "cat"].includes(type)) return;
-
+        const ref = bibl.getAttribute("ref") || '';
         const authors = [...bibl.querySelectorAll("author")].map(a => ({
           forename: a.querySelector("forename")?.textContent || '',
           surname: a.querySelector("surname")?.textContent || ''
@@ -1536,16 +1826,19 @@ document.getElementById('fileUpload').addEventListener('change', function (e) {
 
         data.literature.push({
           type,
+          ref,
           title: bibl.querySelector("title")?.textContent || '',
           date: bibl.querySelector("date")?.getAttribute("when") || '',
           citedRange: bibl.querySelector("citedRange")?.textContent || '',
           pubPlace: bibl.querySelector("pubPlace")?.textContent || '',
           publisher: bibl.querySelector("publisher")?.textContent || '',
           series: bibl.querySelector("series")?.textContent || '',
+          isbn: bibl.querySelector("idno[type='isbn']")?.textContent || '',
           authors,
           editors
         });
       });
+
 
       // Inject into form
       const formElement = container.children[0];
@@ -1554,28 +1847,43 @@ document.getElementById('fileUpload').addEventListener('change', function (e) {
       form.reset();
       form.querySelector('.resp-container').innerHTML = '';
       form.querySelector('.msitem-container').innerHTML = '';
-      form.querySelector('.literature-container').innerHTML = '';
+      // Reset modern literature UI elements
+      const litList = form.querySelector('.literature-list');
+      const litForm = form.querySelector('.literature-form');
+      if (litList) litList.innerHTML = '';
+      if (litForm) {
+        litForm.style.display = 'none';
+        litForm.innerHTML = '';
+      }
+      // Also reset in-memory store
+      form.literature = [];
+      renderLiteratureList(form);
+
 
       const title = data.msTitle?.trim() || 'Manuscript';
-    formElement.querySelector('h4').textContent = title;
+      formElement.querySelector('h4').textContent = title;
 
       Object.entries(data).forEach(([key, value]) => {
         if (typeof value !== 'object') {
           const input = form.querySelector(`[name="${key}"]`);
           if (input) input.value = value;
         }
-      }
-    
-    );
+      });
+
+    // Restore Literature references (new system)
+    form.literature = data.literature || [];
+    renderLiteratureList(form);
+
 
       // Responsible persons
       const respButton = formElement.querySelector('.resp-container + .d-flex button');
         data.responsiblePersons.forEach((p, i) => {
           addRespPerson(respButton);
           const row = formElement.querySelector('.resp-container').children[i];
+          
           row.querySelector(`[name="respStmtName-${i}"]`).value = p.name;
           row.querySelector(`[name="respStmtSurname-${i}"]`).value = p.surname;
-
+          row.querySelector(`[name="respStmtResp-${i}"]`).value = p.resp || '';
           //restore affiliation label
           row.querySelector(`[name="respStmtAffiliation-${i}"]`).value = p.affiliation.value || p.affiliation;
 
@@ -1603,10 +1911,42 @@ document.getElementById('fileUpload').addEventListener('change', function (e) {
         const msRow = formElement.querySelector('.msitem-container').children[idx];
         restoreLODField(msRow, `msItemAuthor-${idx}`, item.author);
         restoreLODField(msRow, `msItemLang-${idx}`, item.textLang);
+
+        //Re-check the Unknown Author box if needed
+        const authorInput = msRow.querySelector(`[name="msItemAuthor-${idx}"]`);
+        const unknownCheckbox = msRow.querySelector(`#unknownAuthor-${idx}`);
+        if (
+          authorInput?.value?.trim().toLowerCase() === 'unknown or anonymous' ||
+          authorInput?.dataset.lodUri === 'https://www.wikidata.org/wiki/Q4233718'
+        ) {
+          unknownCheckbox.checked = true;
+        }
       });
 
       //Restore script
       restoreLODField(form, "script", data.script);
+      //Restore script notes (multiple, each LOD-enabled)
+      const scriptBtn = formElement.querySelector('button[onclick*="addScriptNote"]');
+      data.scriptNotes.forEach((sn, idx) => {
+        addScriptNote(scriptBtn, sn);
+        const scriptRow = formElement.querySelector(`.scriptDesc-container`).children[idx];
+        const input = scriptRow.querySelector(`[name="scriptNote-${idx}"]`);
+        if (input) restoreLODField(scriptRow, input.name, sn);
+      });
+      // Restore handDesc
+      form.querySelector('[name="hands"]').value = data.hands || '';
+      form.querySelector('[name="handsDesc"]').value = data.handsDesc || '';
+      // Restore Physical Description
+      form.querySelector('[name="accMat"]').value = data.accMat || '';
+      form.querySelector('[name="additions"]').value = data.additions || '';
+      form.querySelector('[name="bindingDesc"]').value = data.bindingDesc || '';
+      form.querySelector('[name="decoDesc"]').value = data.decoDesc || '';
+      form.querySelector('[name="musicNotation"]').value = data.musicNotation || '';
+      // Restore seals (multiple)
+      const sealBtn = formElement.querySelector('button[onclick*="addSeal"]');
+      data.seals.forEach(text => addSeal(sealBtn, text));
+
+      
 
       //Restore place of origin
       restoreLODField(form, "origPlace", data.origPlace);
@@ -1623,7 +1963,8 @@ document.getElementById('fileUpload').addEventListener('change', function (e) {
         restoreLODField(provRow, `provName-${i}`, prov.name);
         provRow.querySelector(`[name="provType-${i}"]`).value = prov.type || '';
         provRow.querySelector(`[name="provDate-${i}"]`).value = prov.date || '';
-        provRow.querySelector(`[name="provGeo-${i}"]`).value = prov.geo || '';
+        //provRow.querySelector(`[name="provGeo-${i}"]`).value = prov.geo || '';
+        provRow.querySelector(`[name="provGeo-${i}"]`).value = typeof prov.geo === 'object' ? (prov.geo.value || '') : (prov.geo || '');
         restoreLODField(provRow, `provSettlement-${i}`, prov.settlement);
         restoreLODField(provRow, `provCountry-${i}`, prov.country);
       });
@@ -1701,37 +2042,6 @@ function validateField(field, regex) {
     field.classList.remove('is-invalid');
   }
 }
-
-//Mandatory Fields
-function validateMandatoryFields(formId) {
-  const form = document.getElementById(formId);
-  const errors = [];
-
-  const title = form.querySelector('[name="msTitle"]').value.trim();
-  const lang = form.querySelector('[name="xmlLang"]').value.trim();
-  const license = form.querySelector('[name="publicationStmt"]').value.trim();
-  const library = form.querySelector('[name="repository"]').value.trim();
-
-  // Responsible person → at least one name + surname
-  const firstPersonName = form.querySelector('[name^="respStmtName-"]');
-  const firstPersonSurname = form.querySelector('[name^="respStmtSurname-"]');
-  const hasResp = firstPersonName && firstPersonSurname &&
-                  firstPersonName.value.trim() !== '' &&
-                  firstPersonSurname.value.trim() !== '';
-
-  if (!title) errors.push("File name is required.");
-  if (!lang) errors.push("Language of data entry is required.");
-  if (!license) errors.push("License is required.");
-  if (!hasResp) errors.push("At least one responsible person (name and surname) is required.");
-  if (!library) errors.push("Library is required.");
-
-  if (errors.length > 0) {
-    alert("Please complete the mandatory fields:\n- " + errors.join("\n- "));
-    return false;
-  }
-  return true;
-}
-
 
 
 //LOD
@@ -1879,7 +2189,7 @@ function showDropdown(field, results, loading = false) {
         </a>
 
           <button type="button" class="btn btn-link text-danger lod-clear-btn ps-0 pt-0" 
-          data-bs-toggle="tooltip" title="Remove ${sourceLabel} link">
+          data-bs-toggle="tooltip" title="Remove ${sourceLabel} link" aria-label="Remove link">
     <i class="bi bi-x-square-fill"></i>
   </button>
         `;
@@ -1969,37 +2279,6 @@ async function fetchWikidataEntityDetails(qid) {
 }
 
 // Extract lat/lon, settlement label, and country QID
-/*function extractPlaceDetails(entity) {
-  const details = {
-    lat: '',
-    lon: '',
-    settlementQID: '', // city QID
-    settlementLabel: entity.labels?.en?.value || '',
-    countryQID: ''
-  };
-
-  // Coordinates (P625)
-  if (entity.claims?.P625) {
-    const coords = entity.claims.P625[0].mainsnak.datavalue.value;
-    details.lat = coords.latitude;
-    details.lon = coords.longitude;
-  }
-
-  // Settlement (P131)
-  if (entity.claims?.P131) {
-    details.settlementQID = entity.claims.P131[0].mainsnak.datavalue.value.id;
-  }
-
-  // Country (P17)
-  if (entity.claims?.P17) {
-    details.countryQID = entity.claims.P17[0].mainsnak.datavalue.value.id;
-  }
-
-  return details;
-}*/
-
-
-
 function extractPlaceDetails(entity) {
   const details = {
     lat: '',
@@ -2168,7 +2447,7 @@ function addBadgeForLODField(input, uri) {
   </a>
 
     <button type="button" class="btn btn-link text-danger lod-clear-btn ps-0 pt-0" 
-        data-bs-toggle="tooltip"  title="Remove ${sourceLabel} link">
+        data-bs-toggle="tooltip"  title="Remove ${sourceLabel} link" aria-label="Remove link">
     <i class="bi bi-x-square-fill"></i>
   </button>
   `;
@@ -2226,4 +2505,528 @@ window.addEventListener('beforeunload', (event) => {
   event.preventDefault();
   event.returnValue = 'You are about to leave the Metadata Editor. Have you downloaded your data? Unsaved changes may be lost.'; // required for some browsers
 });
+
+
+
+
+// ========== Literature References ==========
+
+// Internal store per manuscript form
+function getLitStore(form) {
+  if (!form.literature) form.literature = [];
+  return form.literature;
+}
+
+// Render the literature list
+function renderLiteratureList(form) {
+  const list = form.querySelector('.literature-list');
+  list.innerHTML = "";
+  const items = getLitStore(form);
+
+  if (items.length === 0) {
+    list.innerHTML = `<div class="text-muted">
+      No literature references added yet. 
+      Start by <strong>searching the database</strong> above, or 
+      <strong>enter a reference manually</strong> if it isn't available.
+    </div>`;
+    return;
+  }
+
+  items.forEach((lit, i) => {
+    const div = document.createElement('div');
+    div.className = "border-bottom py-2";
+
+    // Authors formatted as "Surname, Forename"
+    const authorText = lit.authors?.length
+      ? lit.authors.map(a => `${a.surname}${a.forename ? ', ' + a.forename : ''}`).join('; ')
+      : '';
+
+    // Main info block (with all enriched metadata)
+    const info = `
+      <div class="d-flex justify-content-between align-items-start">
+        <div>
+          ${authorText ? `<strong>${authorText}</strong> – ` : ''}
+          <em>${lit.title || '(No title)'}</em>${lit.date ? ` (${lit.date})` : ''}
+          ${lit.ref ? `
+            <a href="${lit.ref}" target="_blank" class="text-primary ms-1 align-middle"
+              data-bs-toggle="tooltip" title="Open reference">
+              <i class="bi bi-link-45deg"></i>
+            </a>` : ''}
+          ${lit.publisher || lit.pubPlace ? `<br><span class="small text-muted">${[lit.publisher, lit.pubPlace].filter(Boolean).join(', ')}</span>` : ''}
+          ${lit.series ? `<br><span class="small text-muted">Series: ${lit.series}</span>` : ''}
+          ${lit.isbn ? `<br><span class="small text-muted">ISBN: ${lit.isbn}</span>` : ''}
+        </div>
+        <div class="ms-2 text-nowrap">
+          ${lit.source === "manual" ? `
+            <button class="btn btn-sm btn-outline-secondary me-2" aria-label="Modify">Modify</button>
+          ` : ''}
+          <button class="btn btn-sm btn-outline-danger" aria-label="Delete">Delete</button>
+        </div>
+      </div>
+
+      <!-- Cited range input -->
+      <div class="mt-2">
+        <label class="form-label small mb-1 text-muted">Cited pages / range:</label>
+        <input type="text" class="form-control form-control-sm cited-range-input" 
+          placeholder="e.g. pp. 23–45" value="${lit.citedRange || ''}">
+      </div>
+    `;
+
+    div.innerHTML = info;
+
+    // Handle Modify button (manual items)
+    const editBtn = div.querySelector('.btn-outline-secondary');
+    if (editBtn) {
+      editBtn.type = 'button';   
+      editBtn.onclick = () => showLiteratureForm(form, lit, i);
+    }
+
+    // Handle Delete button
+    const delBtn = div.querySelector('.btn-outline-danger');
+    delBtn.type = 'button';
+    delBtn.onclick = () => {
+      items.splice(i, 1);
+      renderLiteratureList(form);
+    };
+
+    // Handle citedRange live updates
+    const citedInput = div.querySelector('.cited-range-input');
+    citedInput.addEventListener('input', e => {
+      lit.citedRange = e.target.value.trim();
+    });
+
+    list.appendChild(div);
+  });
+
+  // Enable Bootstrap tooltips
+  const tooltipTriggerList = [].slice.call(list.querySelectorAll('[data-bs-toggle="tooltip"]'));
+  tooltipTriggerList.map(el => new bootstrap.Tooltip(el));
+}
+
+
+// Show manual form (add or edit)
+function showLiteratureForm(form, lit = {}, index = null) {
+  const container = form.querySelector('.literature-form');
+  container.style.display = "block";
+
+  container.innerHTML = `
+    <h6>${index === null ? "Add new reference" : "Modify reference"}</h6>
+
+    <div class="row mb-2">
+      <div class="col-md-9">
+        <label class="form-label">Title <span class="required-star" data-bs-toggle="tooltip" title="Required field">*</span></label>
+        <input type="text" class="form-control lit-title" value="${lit.title || ''}">
+      </div>
+      <div class="col-md-3">
+        <label class="form-label">Year</label>
+        <input type="number" min="1" step="1" class="form-control lit-date" value="${lit.date || ''}">
+      </div>
+    </div>
+
+    <div class="mb-2">
+      <label class="form-label">Author(s) <span class="required-star" data-bs-toggle="tooltip" title="Required field">*</span></label>
+      <div class="lit-authors"></div>
+      <button type="button" class="btn btn-sm btn-outline-primary lit-add-author" aria-label="Add author">Add author</button>
+    </div>
+
+    <div class="row mb-2">
+      <div class="col-md-6">
+        <label class="form-label">Publisher</label>
+        <input type="text" class="form-control lit-publisher" value="${lit.publisher || ''}">
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Publishing place</label>
+        <input type="text" class="form-control lit-place" value="${lit.pubPlace || ''}">
+      </div>
+    </div>
+
+    <div class="row mb-2">
+      <div class="col-md-6">
+        <label class="form-label">Series</label>
+        <input type="text" class="form-control lit-series" value="${lit.series || ''}">
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">ISBN / ISSN</label>
+        <input type="text" class="form-control lit-isbn" value="${lit.isbn || ''}">
+      </div>
+    </div>
+
+    <div class="row mb-2">
+      <div class="col-md-12">
+        <label class="form-label">Cited pages / range</label>
+        <input type="text" class="form-control lit-cited" placeholder="e.g. pp. 23–45" value="${lit.citedRange || ''}">
+      </div>
+    </div>
+
+    <div class="d-flex gap-2 mt-2">
+      <button type="button" class="btn btn-success lit-save-btn" aria-label="Add to literature list">
+        ${index === null ? "Add to literature list" : "Update literature reference"}
+      </button>
+      <button type="button" class="btn btn-outline-secondary lit-cancel-btn" aria-label="Cancel">Cancel</button>
+    </div>
+  `;
+
+  //Re-initialize Bootstrap tooltips inside the form (for required-star tooltips)
+  container.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(el => {
+    new bootstrap.Tooltip(el);
+  });
+
+  // ---- authors UI ----
+  const authorsWrap = container.querySelector('.lit-authors');
+
+  function addAuthorRow(a = { forename: '', surname: '' }) {
+    const row = document.createElement('div');
+    row.className = 'row g-2 align-items-end mb-2 lit-author-row';
+    row.innerHTML = `
+      <div class="col-md-5">
+        <input type="text" class="form-control lit-author-forename" placeholder="Forename" value="${a.forename || ''}">
+      </div>
+      <div class="col-md-5">
+        <input type="text" class="form-control lit-author-surname" placeholder="Surname" value="${a.surname || ''}">
+      </div>
+      <div class="col-md-2">
+        <button type="button" class="btn btn-sm btn-outline-danger lit-author-del" aria-label="Delete">Delete</button>
+      </div>
+    `;
+    row.querySelector('.lit-author-del').onclick = () => row.remove();
+    authorsWrap.appendChild(row);
+  }
+
+  if (lit.authors && lit.authors.length) {
+    lit.authors.forEach(addAuthorRow);
+  } else {
+    addAuthorRow(); // one empty row by default
+  }
+
+  container.querySelector('.lit-add-author').onclick = () => addAuthorRow();
+
+  // ---- save ----
+  /*container.querySelector('.lit-save-btn').onclick = () => {
+    const authors = [...container.querySelectorAll('.lit-author-row')].map(r => ({
+      forename: r.querySelector('.lit-author-forename').value.trim(),
+      surname:  r.querySelector('.lit-author-surname').value.trim()
+    })).filter(a => a.forename || a.surname);
+
+    const entry = {
+      // no "type" (removed)
+      title:      container.querySelector('.lit-title').value.trim(),
+      date:       container.querySelector('.lit-date').value.trim(), // numeric input; remains a string in JS
+      publisher:  container.querySelector('.lit-publisher').value.trim(),
+      pubPlace:   container.querySelector('.lit-place').value.trim(),
+      series:     container.querySelector('.lit-series').value.trim(),
+      isbn:       container.querySelector('.lit-isbn').value.trim(),
+      citedRange: container.querySelector('.lit-cited').value.trim(),
+      authors,
+      editors:    lit.editors || [],
+      ref:        lit.ref || "",
+      source:     "manual"
+    };
+
+    const store = getLitStore(form);
+    if (index === null) store.push(entry);
+    else store[index] = entry;
+
+    container.style.display = "none";
+    renderLiteratureList(form);
+  };*/
+
+  container.querySelector('.lit-save-btn').onclick = () => {
+    const titleInput = container.querySelector('.lit-title');
+    const authors = [...container.querySelectorAll('.lit-author-row')].map(r => ({
+      forename: r.querySelector('.lit-author-forename').value.trim(),
+      surname:  r.querySelector('.lit-author-surname').value.trim()
+    })).filter(a => a.forename || a.surname);
+
+    // --- Validation: Title and at least one author are required ---
+    if (titleInput.value.trim() === '' || authors.length === 0) {
+      alert('Please enter at least a Title and one Author before adding the reference.');
+      return;
+    }
+
+    const entry = {
+      title: titleInput.value.trim(),
+      date: container.querySelector('.lit-date').value.trim(),
+      publisher: container.querySelector('.lit-publisher').value.trim(),
+      pubPlace: container.querySelector('.lit-place').value.trim(),
+      series: container.querySelector('.lit-series').value.trim(),
+      isbn: container.querySelector('.lit-isbn').value.trim(),
+      citedRange: container.querySelector('.lit-cited').value.trim(),
+      authors,
+      editors: lit.editors || [],
+      ref: lit.ref || "",
+      source: "manual"
+    };
+
+    const store = getLitStore(form);
+    if (index === null) store.push(entry);
+    else store[index] = entry;
+
+    container.style.display = "none";
+    renderLiteratureList(form);
+  };
+
+
+  container.querySelector('.lit-cancel-btn').onclick = () => {
+    container.style.display = "none";
+    container.innerHTML = "";
+  };
+}
+
+
+// Search in OpenLibrary
+/*async function searchOpenLibrary(term) {
+  const url = `https://openlibrary.org/search.json?q=${encodeURIComponent(term)}`;
+  const res = await fetch(url);
+  const data = await res.json();
+
+  return (data.docs || []).slice(0, 10).map(d => ({
+    type: "book",
+    title: d.title || "",
+    date: d.first_publish_year || "",
+    publisher: d.publisher ? d.publisher[0] : "",
+    pubPlace: d.publish_place ? d.publish_place[0] : "",
+    authors: (d.author_name || []).map(n => {
+      // Try to split nicely into forename / surname
+      const parts = n.split(' ');
+      return {
+        forename: parts.slice(0, -1).join(' '),
+        surname: parts.slice(-1)[0]
+      };
+    }),
+    isbn: d.isbn ? d.isbn[0] : "",
+    edition: d.edition_key ? d.edition_key[0] : "",
+    source: "openlibrary",
+    ref: d.key ? `https://openlibrary.org${d.key}` : ""
+  }));
+}*/
+
+async function searchOpenLibrary(term) {
+  term = term.trim();
+
+  // Case 1: ISBN (10 or 13 digits)
+  if (/^\d{9,13}X?$/.test(term)) {
+    const res = await fetch(`https://openlibrary.org/isbn/${term}.json`);
+    if (res.ok) {
+      const ed = await res.json();
+      return [mapOpenLibraryEdition(ed)];
+    }
+  }
+
+  // Case 2: OpenLibrary ID
+  if (/^OL\d+[MW]$/i.test(term)) {
+    const endpoint = term.endsWith("M") ? "books" : "works";
+    const res = await fetch(`https://openlibrary.org/${endpoint}/${term}.json`);
+    if (res.ok) {
+      const ed = await res.json();
+      return [mapOpenLibraryEdition(ed)];
+    }
+  }
+
+  // Case 3: Default search (title or general keyword)
+  const url = `https://openlibrary.org/search.json?q=${encodeURIComponent(term)}`;
+  const res = await fetch(url);
+  const data = await res.json();
+  return (data.docs || []).slice(0, 10).map(mapOpenLibrarySearchDoc);
+}
+
+// Helper: normalize a single OpenLibrary edition or work record
+// Used for exact lookups via /isbn/{isbn}.json or /books/{OLID}.json
+function mapOpenLibraryEdition(ed) {
+  return {
+    //type: "book",
+    title: ed.title || "",
+    date: ed.publish_date || "",
+    publisher: ed.publishers?.[0] || "",
+    pubPlace: ed.publish_places?.[0] || "",
+    authors: (ed.authors || []).map(a => ({ forename: "", surname: a.name || "" })),
+    isbn: ed.isbn_13?.[0] || ed.isbn_10?.[0] || "",
+    ref: `https://openlibrary.org${ed.key}`,
+    source: "openlibrary"
+  };
+}
+
+// Helper: normalize a search result document from /search.json
+// Used when user searches by title or keyword (multiple results)
+function mapOpenLibrarySearchDoc(d) {
+  return {
+    //type: "book",
+    title: d.title || "",
+    date: d.first_publish_year || "",
+    publisher: d.publisher ? d.publisher[0] : "",
+    pubPlace: d.publish_place ? d.publish_place[0] : "",
+    authors: (d.author_name || []).map(n => {
+      const parts = n.split(" ");
+      return { forename: parts.slice(0, -1).join(" "), surname: parts.slice(-1)[0] };
+    }),
+    isbn: d.isbn ? d.isbn[0] : "",
+    ref: d.key ? `https://openlibrary.org${d.key}` : "",
+    source: "openlibrary"
+  };
+}
+
+
+
+// Hook up events when forms are created
+// Live autocomplete for literature search
+document.addEventListener('input', async (e) => {
+  const input = e.target.closest('.lit-search-input');
+  if (!input) return;
+
+  const form = input.closest('.msForm');
+  const resultsBox = form.querySelector('.lit-search-results');
+
+  const term = input.value.trim();
+  if (term.length < 3) {
+    resultsBox.innerHTML = "";
+    return;
+  }
+
+  resultsBox.innerHTML = `<div class="text-muted">Searching...</div>`;
+
+  try {
+    const results = await searchOpenLibrary(term);
+
+    resultsBox.innerHTML = "";
+    if (!results.length) {
+      resultsBox.innerHTML = `<div class="text-muted">No results found</div>`;
+      return;
+    }
+
+    results.forEach(r => {
+      const div = document.createElement('div');
+      div.className = "lit-result border rounded p-2 mb-2 bg-white";
+      div.style.cursor = "pointer";
+
+      // Build human-readable authors string
+      const authorText = r.authors.map(a =>
+        `${a.forename ? a.forename + ' ' : ''}${a.surname}`
+      ).join(', ');
+
+      // Info rows: publisher, place, series, ISBN
+      const extraInfo = [
+        r.publisher && r.pubPlace ? `${r.publisher}, ${r.pubPlace}` :
+          (r.publisher || r.pubPlace || ''),
+        r.language ? `Language: ${r.language}` : '',
+        r.series ? `Series: ${r.series}` : '',
+        r.isbn ? `ISBN: ${r.isbn}` : ''
+      ].filter(Boolean).join(' — ');
+
+      // Build the card HTML
+      div.innerHTML = `
+      <div>
+        <strong>${r.title}</strong> ${r.date ? '(' + r.date + ')' : ''}
+        ${r.ref ? `
+          <a href="${r.ref}" target="_blank" class="text-primary ms-1 align-middle"
+            data-bs-toggle="tooltip" title="Open reference">
+            <i class="bi bi-link-45deg"></i>
+          </a>` : ''}
+        <div class="small text-muted">${r.authors.map(a => `${a.forename ? a.forename + ' ' : ''}${a.surname}`).join(', ') || ''}</div>
+      </div>
+    `;
+
+
+      div.onclick = async (ev) => {
+        // avoid triggering selection when clicking the link icon
+        if (ev.target.closest('a')) return;
+
+        const workKey = r.ref ? r.ref.replace('https://openlibrary.org', '') : '';
+
+        // Enrich with edition metadata
+        if (workKey) {
+          try {
+            const eds = await fetchOpenLibraryWorkEditions(workKey);
+            const best = pickBestEdition(eds, r.date);
+            if (best) {
+              r.publisher = best.publishers?.[0] || r.publisher || '';
+              r.pubPlace = Array.isArray(best.publish_places)
+                ? best.publish_places[0]
+                : best.publish_places || r.pubPlace || '';
+              r.series = safeGetSeries(best) || r.series || '';
+              r.isbn = best.isbn_13?.[0] || best.isbn_10?.[0] || r.isbn || '';
+              r.language = best.languages?.[0]?.key?.split('/').pop() || r.language || '';
+              if (!r.date) r.date = extractYear(best.publish_date) || r.date;
+            }
+          } catch (e) {
+            console.warn('OpenLibrary enrichment failed:', e);
+          }
+        }
+
+        getLitStore(form).push(r);
+        resultsBox.innerHTML = "";
+        renderLiteratureList(form);
+        input.value = "";
+      };
+
+      resultsBox.appendChild(div);
+    });
+
+    // Activate Bootstrap tooltips for the link icons
+    const tooltipTriggerList = [].slice.call(resultsBox.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    tooltipTriggerList.map(el => new bootstrap.Tooltip(el));
+
+
+  } catch (err) {
+    console.error("OpenLibrary fetch failed:", err);
+    resultsBox.innerHTML = `<div class="text-danger">Error fetching results</div>`;
+  }
+});
+
+// Handle "Add literature reference manually" button
+document.addEventListener('click', (e) => {
+  if (e.target.classList.contains('lit-add-manual-btn')) {
+    const form = e.target.closest('.msForm');
+    showLiteratureForm(form);
+  }
+});
+
+async function fetchOpenLibraryWorkEditions(workKey) {
+  // e.g. workKey = "/works/OL10015449W"
+  const url = `https://openlibrary.org${workKey}/editions.json?limit=50`;
+  const res = await fetch(url);
+  if (!res.ok) throw new Error(`editions fetch ${res.status}`);
+  return res.json(); // { entries: [...] }
+}
+
+function extractYear(str) {
+  const m = String(str || '').match(/\b(\d{4})\b/);
+  return m ? m[1] : '';
+}
+
+function pickBestEdition(editions, preferYear = '') {
+  const arr = editions?.entries || editions || [];
+  if (!arr.length) return null;
+
+  // Score editions by richness of metadata
+  const scored = arr.map(ed => {
+    let score = 0;
+    if (ed.publishers?.length) score += 2;
+    if (ed.publish_places?.length) score += 2;
+    if (ed.series && (Array.isArray(ed.series) ? ed.series.length : 1)) score += 1;
+    if (ed.isbn_13?.length || ed.isbn_10?.length) score += 3;
+
+    const edYear = extractYear(ed.publish_date);
+    if (preferYear && edYear === String(preferYear)) score += 1;
+
+    return { ed, score };
+  });
+
+  scored.sort((a, b) => b.score - a.score);
+  return scored[0].ed;
+}
+
+function safeGetSeries(ed) {
+  if (!ed || !ed.series) return '';
+  if (Array.isArray(ed.series)) return ed.series[0] || '';
+  if (typeof ed.series === 'string') return ed.series;
+  if (ed.series[0]?.name) return ed.series[0].name;
+  return '';
+}
+
+// Limit year inputs to max 4 digits
+function limitYearLength(el) {
+  if (el.value.length > 4) {
+    el.value = el.value.slice(0, 4);
+  }
+}
+
 

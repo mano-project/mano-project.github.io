@@ -1,17 +1,43 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" translate="no" class="notranslate">
+<html xmlns="http://www.w3.org/1999/xhtml" translate="no" class="notranslate" lang="en">
     <head>
-        <title>MANO - Transcription Viewer</title>
-        <meta name="keywords" content="MANO, Manuscripts Online, Transcription Viewer">
-        <meta name="description" content="">
+        <title>MANO - Transcription Viewer | TEI-XML Manuscript Visualization</title>
+        <meta name="keywords" content="transcription viewer, TEI-XML, manuscripts, digital humanities, editor, facsimile, MANO">
+        <meta name="description" content="View and edit TEI-XML manuscript transcriptions with synchronized text, code, and facsimile image panels.">
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0 shrink-to-fit=no"/>
         <meta name="google" content="notranslate"/>
         <link rel="canonical" href="https://mano-project.github.io/viewer.html"/>
         <link rel="icon" type="image/png" href="images/MANO.png"> 
+        <link rel="alternate" hreflang="en" href="URL">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="MANO – Transcription Viewer">
+        <meta property="og:description" content="An interactive viewer for exploring TEI-XML manuscript transcriptions with text and facsimile alignment.">
+        <meta property="og:image" content="https://mano-project.github.io/images/MANO.png">
+        <meta property="og:url" content="https://mano-project.github.io/viewer.html">
+
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "WebApplication",
+          "name": "MANO – Transcription Viewer",
+          "url": "https://mano-project.github.io/viewer.html",
+          "applicationCategory": "Digital Humanities Tool",
+          "description": "A browser-based viewer for exploring TEI-XML transcriptions alongside facsimile images with live preview and editing capabilities.",
+          "creator": {
+            "@type": "Person",
+            "name": "Michela Parma",
+            "affiliation": "University of Mainz"
+          }
+          "inLanguage": "en"
+        }
+        </script>
+
         
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
                
         <link rel="stylesheet" type="text/css" href="css/style.css" media="screen"/>
         <link rel="stylesheet" type="text/css" href="css/transcription-style.css" media="screen"/>
@@ -50,7 +76,7 @@
                 <!-- Centered logo -->
                 <div class="position-absolute start-50 translate-middle-x text-center">
                 <a class="navbar-brand" href="index.html">
-                    <img src="images/MANO.png" alt="Logo" width="65" class="d-inline-block align-text-top">
+                    <img src="images/MANO.png" alt="MANO project logo" width="65" class="d-inline-block align-text-top">
                 </a>
                 </div>
 
@@ -80,15 +106,15 @@
         </nav>
 
         <div class="container mt-4 mb-3">
-          <button onclick="history.back()" class="btn back-btn btn-sm btn-outline-secondary">Back</button>
+          <button onclick="history.back()" class="btn back-btn btn-sm btn-outline-secondary" aria-label="Go back">Back</button>
           
           <h1 class="page-title">Transcription Viewer</h1>
 
           <div class="row align-items-end my-4">
             <!-- Button column -->
             <div class="col-md-auto mb-3 mb-md-0">
-              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#infoTranscriptionViewer">
-                About Transcription Viewer
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#infoTranscriptionViewer" aria-label="Open About Transcription Viewer">
+                <i class="bi bi-info-circle"></i> About Transcription Viewer
               </button>
             </div>
 
@@ -100,7 +126,7 @@
 
             <div class="col-md-auto mb-3 mb-md-0">
               <button type="button" class="btn btn-outline-secondary"
-                onclick="window.location.href='converter.html'">
+                onclick="window.location.href='converter.html'" aria-label="Go to Convert PAGE-XML into TEI-XML">
                 Convert PAGE-XML into TEI-XML
               </button>
             </div>
@@ -122,7 +148,7 @@
                   </span>
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close">Close</button>
                 </div>
               </div>
             </div>
@@ -130,19 +156,19 @@
 
 
                 <div id="pageNav" class="text-center mb-3">
-                  <button class="btn btn-outline-primary btn-sm" onclick="previousPage()">Previous Page</button>
+                  <button class="btn btn-outline-primary btn-sm" onclick="previousPage()" aria-label="Previous page">Previous page</button>
                                     
                   <select id="pageSelector" class="form-select form-select-sm d-inline-block w-auto mx-2" onchange="goToSelectedPage()">
                     <option></option>
                   </select>
-                  <button class="btn btn-outline-primary btn-sm" onclick="nextPage()">Next Page</button>
+                  <button class="btn btn-outline-primary btn-sm" onclick="nextPage()" aria-label="Next page">Next page</button>
                 </div>
                 <div class="row mb-4">
                     <div id="xmlColumn" class="col-md-4">
                       <label for="xmlEditor" class="form-label">XML</label>
                       <textarea id="xmlEditor"></textarea>
-                      <button class="btn btn-primary btn-sm mt-2" onclick="renderXML()">Update Preview</button>
-                      <button class="btn btn-primary btn-sm mt-2" onclick="downloadXML()">Download Updated XML</button>
+                      <button class="btn btn-primary btn-sm mt-2" onclick="renderXML()" aria-label="Update preview">Update preview</button>
+                      <button class="btn btn-primary btn-sm mt-2" onclick="downloadXML()" aria-label="Download updated XML">Download updated XML</button>
                     </div>
 
                     <div id="visualColumn" class="col-md-4">
@@ -155,8 +181,8 @@
                         <img id="pageImage" src="" style="transform: scale(1); transform-origin: top left; display: block;">
                       </div>
                       <div class="mt-2 text-center">
-                        <button class="btn btn-sm btn-outline-secondary" onclick="zoomImage(-0.1)">−</button>
-                        <button class="btn btn-sm btn-outline-secondary" onclick="zoomImage(0.1)">+</button>
+                        <button class="btn btn-sm btn-outline-secondary" onclick="zoomImage(-0.1)" aria-label="Zoom out">−</button>
+                        <button class="btn btn-sm btn-outline-secondary" onclick="zoomImage(0.1)" aria-label="Zoom in">+</button>
                       </div>
 
                     </div>
@@ -173,7 +199,7 @@
             <!-- Logo centered -->
             <div class="mb-3">
                 <a class="navbar-brand" href="index.html">
-                <img src="images/MANO.png" alt="Logo" width="50">
+                <img src="images/MANO.png" alt="MANO project logo" width="50">
                 </a>
             </div>
 

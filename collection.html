@@ -1,17 +1,51 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" translate="no" class="notranslate">
+<html xmlns="http://www.w3.org/1999/xhtml" translate="no" class="notranslate" lang="en">
   <head>
-      <title>MANO - Metadata Collection</title>
-      <meta name="keywords" content="MANO, Manuscripts Online, Metadata Collection">
-      <meta name="description" content="">
+      <title>MANO – Metadata Collection | Open Manuscript Descriptions</title>
+      <meta name="keywords" content="metadata collection, TEI-XML, manuscripts, digital humanities, dataset, open data, MANO">
+      <meta name="description" content="Browse and download open manuscript metadata contributed by users of the MANO project, available in TEI-XML and JSON formats.">
       <meta charset="UTF-8"/>
       <meta name="viewport" content="width=device-width, initial-scale=1.0 shrink-to-fit=no"/>
       <meta name="google" content="notranslate"/>
       <link rel="canonical" href="https://mano-project.github.io/collection.html"/>
       <link rel="icon" type="image/png" href="images/MANO.png"> 
+      <link rel="alternate" hreflang="en" href="URL">
+      <meta property="og:type" content="dataset">
+      <meta property="og:title" content="MANO – Metadata Collection">
+      <meta property="og:description" content="A collaborative open dataset of manuscript metadata available in TEI-XML and JSON.">
+      <meta property="og:image" content="https://mano-project.github.io/images/MANO.png">
+      <meta property="og:url" content="https://mano-project.github.io/collection.html">
+
+      <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Dataset",
+        "name": "MANO – Metadata Collection",
+        "url": "https://mano-project.github.io/collection.html",
+        "description": "A community-contributed collection of manuscript metadata available as open JSON and TEI-XML records.",
+        "license": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+        "creator": {
+          "@type": "EducationalOrganization",
+          "name": "MANO – Manuscripts Online"
+        },
+        "maintainer": {
+          "@type": "Person",
+          "name": "Michela Parma",
+          "affiliation": "University of Mainz"
+        },
+        "distribution": {
+          "@type": "DataDownload",
+          "encodingFormat": "application/json",
+          "contentUrl": "https://github.com/mano-project/mano-metadata"
+        }
+        "inLanguage": "en"
+      }
+      </script>
       
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
               
       <link rel="stylesheet" type="text/css" href="css/style.css" media="screen"/>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -50,7 +84,7 @@
             <!-- Centered logo -->
             <div class="position-absolute start-50 translate-middle-x text-center">
             <a class="navbar-brand" href="index.html">
-                <img src="images/MANO.png" alt="Logo" width="65" class="d-inline-block align-text-top">
+                <img src="images/MANO.png" alt="MANO project logo" width="65" class="d-inline-block align-text-top">
             </a>
             </div>
 
@@ -81,15 +115,15 @@
 
       <div class="container mt-4 mb-5">
          
-        <button onclick="history.back()" class="btn back-btn btn-sm btn-outline-secondary">Back</button>
+        <button onclick="history.back()" class="btn back-btn btn-sm btn-outline-secondary" aria-label="Go back">Back</button>
         
         <h1 class="page-title">Metadata Collection</h1>
 
         <div class="row my-4 align-items-end">
           <!-- Left column -->
           <div class="col-12 col-md-6 d-flex justify-content-start mb-2 mb-md-0">
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#infoMetadataCollection">
-              About Metadata Collection
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#infoMetadataCollection" aria-label="Open About Metadata Collection">
+              <i class="bi bi-info-circle"></i> About Metadata Collection
             </button>
           </div>
 
@@ -121,7 +155,7 @@
                 </p>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close">Close</button>
               </div>
             </div>
           </div>
@@ -133,12 +167,12 @@
             <input id="searchInput" class="form-control" type="text" placeholder="Search..." oninput="applyFilters()">
           </div>
           <div class="col-12 col-md-4 mt-2 mt-md-0 d-flex justify-content-center justify-content-md-start">
-            <a href="maps.html" class="btn btn-outline-success w-100 w-md-auto">
+            <a href="maps.html" class="btn btn-outline-success w-100 w-md-auto" aria-label="Go to Manuscript Maps">
               <i class="fas fa-map"></i> Manuscript Maps
             </a>
           </div>
           <div class="col-12 col-md-3 text-end mt-2 mt-md-0">
-            <button class="btn btn-outline-primary w-100 w-md-auto" data-bs-toggle="offcanvas" data-bs-target="#filtersOffcanvas">
+            <button class="btn btn-outline-primary w-100 w-md-auto" data-bs-toggle="offcanvas" data-bs-target="#filtersOffcanvas" aria-label="Open filters">
               <i class="fas fa-filter"></i> Filters
             </button>
           </div>
@@ -147,14 +181,14 @@
         <!-- Bootstrap Offcanvas Filters -->
         <div class="offcanvas offcanvas-end" tabindex="-1" id="filtersOffcanvas">
           <div class="offcanvas-header">
-            <h5>Filter Manuscripts</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+            <h5>Filter manuscripts</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
           </div>
           <div class="offcanvas-body">
             <div id="filterSections">
               <!-- Dynamic filters will be injected here -->
             </div>
-            <button id="resetFilters" class="btn btn-sm btn-secondary mt-3">Reset Filters</button>
+            <button id="resetFilters" class="btn btn-sm btn-secondary mt-3" aria-label="Reset filters">Reset filters</button>
           </div>
         </div>
 
@@ -165,7 +199,7 @@
             <table class="table table-hover" id="metadataTable">
               <thead>
                 <tr>
-                  <th>Manuscript Title</th>
+                  <th>Manuscript</th>
                   <th>Repository</th>
                   <th>Location</th>
                   <th>Digital Copy</th>
@@ -192,7 +226,7 @@
               </div>
               <div class="modal-footer">
                 <div class="dropdown">
-                  <button class="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                  <button class="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-label="Open download options">
                     Download
                   </button>
                   <ul class="dropdown-menu">
@@ -200,8 +234,8 @@
                     <li><a class="dropdown-item" href="#" onclick="downloadXMLfromRecord(currentRecord)">Download XML</a></li>
                   </ul>
                 </div>
-                <button type="button" class="btn btn-primary"  onclick="printRecordAsPDF()">Print PDF</button>
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary"  onclick="printRecordAsPDF()" aria-label="Print PDF">Print PDF</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close">Close</button>
               </div>
 
             </div>
@@ -217,7 +251,7 @@
         <!-- Logo centered -->
         <div class="mb-3">
             <a class="navbar-brand" href="index.html">
-            <img src="images/MANO.png" alt="Logo" width="50">
+            <img src="images/MANO.png" alt="MANO project logo" width="50">
             </a>
         </div>
 
@@ -289,7 +323,8 @@
 
     function createTableRow(entry) {
       const row = document.createElement("tr");
-      row.id = "ms-" + (entry.idno || entry.msTitle).replace(/\s+/g, "_");
+      row.id = "ms-" + (entry.idno || entry.msName || entry.msTitle).replace(/\s+/g, "_");
+      //TODO:modificare idno in collection, poi modificare in mappa
 
 
       // Always just the value
@@ -298,16 +333,20 @@
       const countryDisplay = displayField(entry.countryIdent);
       const location = [settlementDisplay, countryDisplay].filter(Boolean).join(", ");
 
-      const digiLink = entry.digi ? `<a href="${entry.digi}" target="_blank">View</a>` : "";
+      //const digiLink = entry.digi ? `<a href="${entry.digi}" target="_blank">View</a>` : "";
+      const digiLink = entry.digi 
+      ? `<a href="${entry.digi}" target="_blank" class="btn btn-sm btn-outline-primary">View</a>` 
+      : "";
 
       row.innerHTML = `
-        <td>${entry.msTitle || ""}</td>
+        <td>${entry.msName || entry.msTitle || ""}</td>
         <td>${repoDisplay}</td>
         <td>${location}</td>
         <td>${digiLink}</td>
         <td>
+          <button class="btn btn-sm btn-primary" aria-label="Open full record" onclick='showFullRecord(${JSON.stringify(entry).replace(/'/g, "&apos;")})'>Full record</button>
           <div class="dropdown d-inline-block me-2">
-            <button class="btn btn-sm btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown">
+            <button class="btn btn-sm btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-label="Open download options">
               Download
             </button>
             <ul class="dropdown-menu">
@@ -315,7 +354,7 @@
               <li><a class="dropdown-item" href="#" onclick='downloadXMLfromRecord(${JSON.stringify(entry)})'>XML</a></li>
             </ul>
           </div>
-          <button class="btn btn-sm btn-secondary" onclick='showFullRecord(${JSON.stringify(entry).replace(/'/g, "&apos;")})'>See more</button>
+          
         </td>
       `;
       
@@ -335,6 +374,9 @@
     let currentRecord = null;
 
     function showFullRecord(entry) {
+
+      document.getElementById("recordModalLabel").textContent = entry.msName || entry.msTitle || "Manuscript Record";
+
       currentRecord = entry; 
       const modalBody = document.getElementById("recordModalBody");
       modalBody.innerHTML = ""; 
@@ -356,32 +398,35 @@
 
       //FILE DESCRIPTION
       const fileDescription = `
-        <p><strong>Manuscript Title:</strong> ${entry.msTitle || ""}</p>
         <p><strong>License:</strong> ${entry.publicationStmt || ""}</p>
         ${
           (entry.responsiblePersons && entry.responsiblePersons.length > 0)
-            ? `<p><strong>Responsible Persons:</strong><ul>` +
-              entry.responsiblePersons.map(p => `
-                <li>
-                  ${p.name || ""} ${p.surname || ""}
-                  ${p.affiliation?.value ? `, ${addLink(p.affiliation)}` : ""}
-                  ${p.ref ? ` (<a href="${p.ref}" target="_blank">External ID</a>)` : ""}
-                </li>
-              `).join("") +
+            ? `<p><strong>Responsible person(s):</strong><ul>` +
+              entry.responsiblePersons.map(p => {
+                const fullName = `${p.name || ""} ${p.surname || ""}`.trim();
+                const nameWithLink = p.ref
+                  ? `<a href="${p.ref}" target="_blank">${fullName}</a>`
+                  : fullName;
+
+                const affiliationPart = p.affiliation?.value
+                  ? `, ${addLink(p.affiliation)}`
+                  : "";
+
+                return `<li>${nameWithLink}${affiliationPart}</li>`;
+              }).join("") +
               `</ul></p>`
             : ""
         }
       `;
 
+
       //IDENTIFICATION
       const identification = `
-        <p><strong>Library:</strong> ${addLink(entry.repository)}</p>
-        <p><strong>Settlement:</strong> ${addLink(entry.settlementIdent)}</p>
-        <p><strong>Country:</strong> ${addLink(entry.countryIdent)}</p>
-        <p><strong>Collection & Signature:</strong> ${entry.idno || ""}</p>
-        <p><strong>Sigle:</strong> ${entry.msSigle || ""}</p>
-        <p><strong>Alternative Identifier:</strong> ${entry.altIdentifier || ""}</p>
-        <p><strong>Full Name:</strong> ${entry.msName || ""}</p>
+        <p><strong>Manuscript name:</strong> ${entry.msName || ""}</p> 
+        <p><strong>Collection:</strong> ${entry.collection || ""}</p>
+        <p><strong>Sigle:</strong> ${entry.msSigle || ""}</p>       
+        <p><strong>Alternative identifier:</strong> ${entry.altIdentifier || ""}</p>
+        <p><strong>Library:</strong> ${addLink(entry.repository)}, ${addLink(entry.settlementIdent)}, ${addLink(entry.countryIdent)}</p>
       `;
 
       //CONTENT
@@ -393,17 +438,17 @@
             <ul>
               <li><strong>Author:</strong> ${addLink(c.author)}</li>
               <li><strong>Title:</strong> ${c.title || ""}</li>
-              <li><strong>Page Range(s):</strong> ${
+              <li><strong>Page range(s):</strong> ${
                 (c.pageRanges && c.pageRanges.length > 0)
                   ? c.pageRanges.map(r => `${r.from || ""}–${r.to || ""}`).join(", ")
                   : ""
               }</li>
               <li><strong>Incipit:</strong> ${c.incipit || ""}</li>
               <li><strong>Explicit:</strong> ${c.explicit || ""}</li>
-              <li><strong>Textual Family:</strong> ${c.textFamily || ""}</li>
-              <li><strong>Textual Subfamily:</strong> ${c.textSubFamily || ""}</li>
-              <li><strong>Text Language:</strong> ${addLink(c.textLang)}</li>
-              <li><strong>Text Genre:</strong> ${c.textGenre || ""}</li>
+              <li><strong>Textual family:</strong> ${c.textFamily || ""}</li>
+              <li><strong>Textual subfamily:</strong> ${c.textSubFamily || ""}</li>
+              <li><strong>Text language:</strong> ${addLink(c.textLang)}</li>
+              <li><strong>Text genre:</strong> ${c.textGenre || ""}</li>
             </ul>
           </div>
         `).join("")
@@ -412,24 +457,52 @@
       //PHYSICAL DESCRIPTION
       const physical = `
         <p><strong>Condition:</strong> ${entry.condition || ""}</p>
-        <p><strong>Hands:</strong> ${entry.hands || ""}</p>
-        <p><strong>Font Description:</strong> ${addLink(entry.script)}</p>
         <p><strong>Material:</strong> ${entry.material || ""}</p>
         <p><strong>Height:</strong> ${entry.height ? entry.height + " cm" : ""}</p>
         <p><strong>Width:</strong> ${entry.width ? entry.width + " cm" : ""}</p>
         <p><strong>Leaves:</strong> ${entry.leaves || ""}</p>
         <p><strong>Columns:</strong> ${entry.columns || ""}</p>
-        <p><strong>Lines:</strong> ${entry.lines || ""}</p>
+        <p><strong>Written lines:</strong> ${entry.lines || ""}</p>
+        <p><strong>Hands:</strong> ${entry.hands || ""}</p>
+        <p><strong>Hands description:</strong> ${entry.handsDesc || ""}</p>
+        ${entry.scriptNotes && entry.scriptNotes.length > 0
+            ? `<p><strong>Script description(s):</strong></p>
+              <ul>
+                ${entry.scriptNotes
+                  .map(sn =>
+                    sn.uri
+                      ? `<li><a href="${sn.uri}" target="_blank">${sn.value}</a></li>`
+                      : `<li>${sn.value}</li>`
+                  )
+                  .join("")}
+              </ul>`
+            : ""
+        }
+        <p><strong>Decoration:</strong> ${entry.decoDesc || ""}</p>
+        <p><strong>Music notation:</strong> ${entry.musicNotation || ""}</p>
+        <p><strong>Additions:</strong> ${entry.additions || ""}</p>
+        <p><strong>Accompanying materials:</strong> ${entry.accMat || ""}</p>
+        <p><strong>Binding:</strong> ${entry.bindingDesc || ""}</p>
+        ${entry.seals && entry.seals.length > 0
+            ? `<p><strong>Seal(s):</strong></p>
+              <ul>
+                ${entry.seals.map(s => `<li>${s}</li>`).join("")}
+              </ul>`
+            : ""
+        }
       `;
+
+    
+
 
       //HISTORY
       const history = `
         <p><strong>Summary:</strong> ${entry.summaryProvenance || ""}</p>
-        <p><strong>Place of Origin:</strong> ${addLink(entry.origPlace)} ${
-          entry.countryOrigin ? `(${addLink(entry.countryOrigin)})` : ""
+        <p><strong>Place of origin:</strong> ${addLink(entry.origPlace)}, ${
+          entry.countryOrigin ? `${addLink(entry.countryOrigin)}` : ""
         }</p>
-        <p><strong>Earliest Possible Date:</strong> ${entry.dateOriginNotBefore || ""}</p>
-        <p><strong>Latest Possible Date:</strong> ${entry.dateOriginNotAfter || ""}</p>
+        <p><strong>Date of origin:</strong> ${entry.dateOriginText || ""} (${entry.dateOriginNotBefore || ""}-${entry.dateOriginNotAfter || ""})</p>
+       
         ${
           (entry.provenance && entry.provenance.length > 0)
             ? `<p><strong>Provenance(s):</strong><ul>` +
@@ -438,7 +511,8 @@
                   ${addLink(prov.name)} ${prov.type ? `(${prov.type})` : ""}
                   ${prov.settlement?.value ? `, ${addLink(prov.settlement)}` : ""}
                   ${prov.country?.value ? `, ${addLink(prov.country)}` : ""}
-                  ${prov.date ? ` — Period: ${prov.date}` : ""}
+                  ${prov.date ? ` — Period of ownership: ${prov.date}` : ""}
+                  ${prov.notBefore ? `(${prov.notBefore}-` : ""}${prov.notAfter ? `${prov.notAfter})` : ""}
                 </li>
               `).join("") +
               `</ul></p>`
@@ -448,29 +522,64 @@
 
       //SURROGATES & LITERATURE
       const surrogates = `
-        <p><strong>Digital Copy:</strong> ${entry.digi ? `<a href="${entry.digi}" target="_blank">View</a>` : ""}</p>
+        <p><strong>Digital copy:</strong> ${entry.digi ? `<a href="${entry.digi}" target="_blank">View</a>` : ""}</p>
         <p><strong>IIIF Manifest:</strong> ${entry.iiifManifest ? `<a href="${entry.iiifManifest}" target="_blank">View</a>` : ""}</p>
-        <p><strong>Catalogue Entry:</strong> ${entry.cat ? `<a href="${entry.cat}" target="_blank">View</a>` : ""}</p>
+        <p><strong>Catalogue entry:</strong> ${entry.cat ? `<a href="${entry.cat}" target="_blank">View</a>` : ""}</p>
+         <p><strong>Literature item(s):</strong>
       `;
 
+       
       const literature = (entry.literature && entry.literature.length > 0)
-        ? entry.literature.map(l => {
-            const authors = (l.authors || []).map(a => `${a.surname}, ${a.forename}`).join("; ");
-            const editors = (l.editors || []).length > 0 ? `ed. ${l.editors.join(", ")}` : "";
-            const pages = l.citedRange ? `pp. ${l.citedRange}` : "";
-            const pubDetails = [l.pubPlace, l.publisher, l.date].filter(Boolean).join(", ");
-            return `<li>${authors}. <i>${l.title}</i>. ${editors ? editors + ". " : ""}${pubDetails}${pages ? `, ${pages}` : ""}.</li>`;
-          }).join("")
-        : "";
+  ? entry.literature
+      // Sort alphabetically by first author surname (case-insensitive)
+      .slice()
+      .sort((a, b) => {
+        const surnameA = (a.authors?.[0]?.surname || "").toLowerCase();
+        const surnameB = (b.authors?.[0]?.surname || "").toLowerCase();
+        return surnameA.localeCompare(surnameB);
+      })
+      // Then map to HTML
+      .map(l => {
+        const authors = (l.authors || []).map(a => `${a.surname}, ${a.forename}`).join("; ");
+        const editors = (l.editors || []).length > 0 ? `ed. ${l.editors.join(", ")}` : "";
+        const pages = l.citedRange ? `pp. ${l.citedRange}` : "";
+        const pubDetails = [l.pubPlace, l.publisher, l.date].filter(Boolean).join(", ");
+        const isbn = l.isbn ? `ISBN: ${l.isbn}` : "";
+        const series = l.series ? `Series: ${l.series}` : "";
+
+        // Bootstrap link icon for the external reference (OpenLibrary, etc.)
+        const refLink = l.ref
+          ? `<a href="${l.ref}" target="_blank" class="ms-2" data-bs-toggle="tooltip" title="Open reference">
+               <i class="fas fa-link"></i>
+             </a>`
+          : "";
+
+        return `
+          <li>
+            ${authors ? authors + ". " : ""}
+            <i>${l.title || ""}</i>.
+            ${editors ? editors + ". " : ""}
+            ${pubDetails ? pubDetails + ". " : ""}
+            ${pages ? pages + ". " : ""}
+            ${series ? series + ". " : ""}
+            ${isbn ? isbn + ". " : ""}
+            ${refLink}
+          </li>
+        `;
+      })
+      .join("")
+  : "";
+
+
 
       //Assemble all sections
       modalBody.innerHTML = `
-        ${section("File Description", fileDescription)}
+        ${section("File description", fileDescription)}
         ${section("Identification", identification)}
         ${section("Content", contentSummary + contentItems)}
-        ${section("Physical Description", physical)}
+        ${section("Physical description", physical)}
         ${section("History", history)}
-        ${section("Surrogates & Literature", surrogates + (literature ? `<ul>${literature}</ul>` : ""))}
+        ${section("Surrogates and literature", surrogates + (literature ? `<ul>${literature}</ul>` : ""))}
       `;
 
       const modal = new bootstrap.Modal(document.getElementById("recordModal"));
@@ -483,12 +592,13 @@
 
       const link = document.createElement("a");
       link.href = url;
-      link.download = `${entry.msTitle?.replace(/[\\/:*?"<>|]/g, "_") || "manuscript"}.json`;
+      link.download = `${entry.msName?.replace(/[\\/:*?"<>|]/g, "_") || "manuscript"}.json`;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
 
       URL.revokeObjectURL(url);
+      showDownloadToast(); // show success toast
     }
 
 
@@ -536,15 +646,21 @@
     </script>
 
     <script>
-// Helper to escape XML
+
+
+// Helper to escape XML safely
 function escapeXml(str) {
   if (typeof str !== 'string') str = JSON.stringify(str);
   return str?.replace(/[<>&'"]/g, c => ({
-    '<': '&lt;', '>': '&gt;', '&': '&amp;', '\'': '&apos;', '"': '&quot;'
+    '<': '&lt;',
+    '>': '&gt;',
+    '&': '&amp;',
+    '\'': '&apos;',
+    '"': '&quot;'
   }[c])) || '';
 }
 
-// Build TEI XML for a record
+// Build TEI XML for a record (aligned with metadata-new.js)
 function buildXML(entry) {
   const xmlWithRef = (tag, field) => {
     if (!field) return '';
@@ -553,132 +669,187 @@ function buildXML(entry) {
         ? `<${tag} ref="${escapeXml(field.uri)}">${escapeXml(field.value)}</${tag}>`
         : `<${tag}>${escapeXml(field.value)}</${tag}>`;
     }
-    if (typeof field === 'string') {
-      return field ? `<${tag}>${escapeXml(field)}</${tag}>` : '';
+    if (typeof field === 'string' && field.trim() !== '') {
+      return `<${tag}>${escapeXml(field)}</${tag}>`;
     }
     return '';
   };
 
   return `<?xml version="1.0" encoding="UTF-8"?>
-<TEI xmlns="http://www.tei-c.org/ns/1.0">
-  <teiHeader>
-    <fileDesc>
-      <titleStmt>
-        <title type="main">${escapeXml(entry.msTitle)}</title>
-        ${(entry.responsiblePersons || []).map(p => `
-        <respStmt${p.ref ? ` ref="${escapeXml(p.ref)}"` : ''}>
-          <persName>
-            <forename>${escapeXml(p.name)}</forename>
-            <surname>${escapeXml(p.surname)}</surname>
-            ${p.affiliation ? `<affiliation${p.affiliation.uri ? ` ref="${escapeXml(p.affiliation.uri)}"` : ''}>${escapeXml(p.affiliation.value || p.affiliation)}</affiliation>` : ''}
-          </persName>
-        </respStmt>`).join('')}
-      </titleStmt>
-      <publicationStmt>
-        <availability>
-          <p>${escapeXml(entry.publicationStmt)}</p>
-        </availability>
-      </publicationStmt>
-      <sourceDesc>
-        <msDesc>
-          <msIdentifier>
-            ${xmlWithRef('repository', entry.repository)}
-            ${entry.geoRepository ? `<geo>${escapeXml(entry.geoRepository)}</geo>` : ''}
-            ${xmlWithRef('settlement', entry.settlementIdent)}
-            ${xmlWithRef('country', entry.countryIdent)}
-            <collection><idno type="shelfmark">${escapeXml(entry.idno)}</idno></collection>
-            <msName type="sigle">${escapeXml(entry.msSigle)}</msName>
-            <altIdentifier><idno>${escapeXml(entry.altIdentifier)}</idno></altIdentifier>
-            <msName type="full">${escapeXml(entry.msName)}</msName>
-          </msIdentifier>
-          <msContents>
-            <summary>${escapeXml(entry.summaryContents)}</summary>
-            ${(entry.msItems || []).map(item => `
-            <msItem>
-              ${xmlWithRef('author', item.author)}
-              <title>${escapeXml(item.title)}</title>
-              <locusGrp>
-                ${(item.pageRanges || []).map(pr => `<locus from="${escapeXml(pr.from)}" to="${escapeXml(pr.to)}"/>`).join('\n')}
-              </locusGrp>
-              ${xmlWithRef('textLang', item.textLang)}
-              <incipit>${escapeXml(item.incipit)}</incipit>
-              <explicit>${escapeXml(item.explicit)}</explicit>
-              <note type="textual-family">${escapeXml(item.textFamily)}</note>
-              <note type="textual-subfamily">${escapeXml(item.textSubFamily)}</note>
-              <note type="text-genre">${escapeXml(item.textGenre)}</note>
-            </msItem>`).join('\n')}
-          </msContents>
-          <physDesc>
-            <objectDesc>
-              <supportDesc material="${escapeXml(entry.material)}">
-                <extent>
-                  <dimensions>
-                    <height quantity="${escapeXml(entry.height)}" unit="cm"/>
-                    <width quantity="${escapeXml(entry.width)}" unit="cm"/>
-                  </dimensions>
-                  <measure quantity="${escapeXml(entry.leaves)}"/>
-                </extent>
-                <condition>${escapeXml(entry.condition)}</condition>
-              </supportDesc>
-              <layoutDesc>
-                <layout columns="${escapeXml(entry.columns)}" writtenLines="${escapeXml(entry.lines)}"/>
-              </layoutDesc>
-            </objectDesc>
-            <handDesc>
-              <summary>${escapeXml(entry.hands)}</summary>
-            </handDesc>
-            <scriptDesc>
-              ${xmlWithRef('scriptNote', entry.script)}
-            </scriptDesc>
-          </physDesc>
-          <history>
-            <summary>${escapeXml(entry.summaryProvenance)}</summary>
-            <origin>
-              ${xmlWithRef('origPlace', entry.origPlace)}
-              ${entry.geoOrigin ? `<geo>${escapeXml(entry.geoOrigin)}</geo>` : ''}
-              ${xmlWithRef('country', entry.countryOrigin)}
-              <origDate notBefore="${escapeXml(entry.dateOriginNotBefore)}" notAfter="${escapeXml(entry.dateOriginNotAfter)}"></origDate>
-            </origin>
-            ${(entry.provenance || []).map(prov => `
-            <provenance>
-              ${prov.type
-                ? `<name type="${escapeXml(prov.type)}"${prov.name?.uri ? ` ref="${escapeXml(prov.name.uri)}"` : ''}>${escapeXml(prov.name.value || prov.name)}</name>`
-                : xmlWithRef('name', prov.name)}
-              <date when="${escapeXml(prov.date)}"></date>
-              ${prov.geo ? `<geo>${escapeXml(prov.geo)}</geo>` : ''}
-              ${xmlWithRef('settlement', prov.settlement)}
-              ${xmlWithRef('country', prov.country)}
-            </provenance>`).join('\n')}
-          </history>
-          <additional>
-            <surrogates>
-              ${entry.digi ? `<bibl type="digi"><title>Digital Copy</title><ref>${escapeXml(entry.digi)}</ref></bibl>` : ''}
-              ${entry.iiifManifest ? `<bibl type="iiif-manifest"><title>IIIF Manifest</title><ref>${escapeXml(entry.iiifManifest)}</ref></bibl>` : ''}
-              ${entry.cat ? `<bibl type="cat"><title>Catalogue Entry</title><ref>${escapeXml(entry.cat)}</ref></bibl>` : ''}
-            </surrogates>
-            ${(entry.literature || []).map(lit => `
-            <bibl type="${escapeXml(lit.type)}">
-              ${(lit.authors || []).map(a => `
-              <author>
-                <surname>${escapeXml(a.surname)}</surname>
-                <forename>${escapeXml(a.forename)}</forename>
-              </author>`).join('')}
-              ${(lit.editors || []).map(e => `<editor>${escapeXml(e)}</editor>`).join('')}
-              <title>${escapeXml(lit.title)}</title>
-              <pubPlace>${escapeXml(lit.pubPlace)}</pubPlace>
-              <publisher>${escapeXml(lit.publisher)}</publisher>
-              <series>${escapeXml(lit.series)}</series>
-              <date when="${escapeXml(lit.date)}"></date>
-              <citedRange>${escapeXml(lit.citedRange)}</citedRange>
-            </bibl>`).join('\n')}
-          </additional>
-        </msDesc>
-      </sourceDesc>
-    </fileDesc>
-  </teiHeader>
-  <text><body><p/></body></text>
-</TEI>`;
-}
+  <TEI xmlns="http://www.tei-c.org/ns/1.0" xml:lang="${escapeXml(entry.xmlLang || 'en')}">
+    <teiHeader>
+      <fileDesc>
+        <titleStmt>
+          <title type="main">${escapeXml(entry.msTitle || '')}</title>
+          ${(entry.responsiblePersons || []).map(p => `
+          <respStmt${p.ref ? ` ref="${escapeXml(p.ref)}"` : ''}>
+            <resp ref="${
+              p.resp === 'com'
+                ? 'http://id.loc.gov/vocabulary/relators/com.html'
+                : 'http://id.loc.gov/vocabulary/relators/edt.html'
+            }">${p.resp === 'com' ? 'compiler' : 'editor'}</resp>
+            <persName>
+              <forename>${escapeXml(p.name || '')}</forename>
+              <surname>${escapeXml(p.surname || '')}</surname>
+              ${p.affiliation
+                ? `<affiliation${p.affiliation.uri ? ` ref="${escapeXml(p.affiliation.uri)}"` : ''}>${escapeXml(p.affiliation.value || p.affiliation)}</affiliation>`
+                : ''}
+            </persName>
+          </respStmt>`).join('')}
+        </titleStmt>
+        <publicationStmt>
+          ${
+            entry.publicationStructured?.publisher
+              ? `<publisher ref="${escapeXml(entry.publicationStructured.publisher.ref || '')}">` +
+                `${escapeXml(entry.publicationStructured.publisher.name || '')}</publisher>`
+              : `<publisher ref="https://mano-project.github.io/">MANO - Manuscripts Online</publisher>`
+          }
+          <availability>
+            <licence target="${
+              escapeXml(entry.publicationStructured?.licence?.target || '')
+            }">
+              <p>${escapeXml(entry.publicationStructured?.licence?.name || entry.publicationStmt || '')}</p>
+            </licence>
+          </availability>
+          <date when="${
+            escapeXml(entry.publicationStructured?.date || '')
+          }"/>
+        </publicationStmt>
+        <sourceDesc>
+          <msDesc>
+            <msIdentifier>
+              ${xmlWithRef('country', entry.countryIdent)}
+              ${xmlWithRef('settlement', entry.settlementIdent)}
+              ${entry.geoRepository ? `<geogName><geo>${escapeXml(entry.geoRepository)}</geo></geogName>` : ''}
+              ${xmlWithRef('repository', entry.repository)}
+              <collection>${escapeXml(entry.collection || '')}</collection>
+              <idno type="sigle">${escapeXml(entry.msSigle || '')}</idno>
+              <msName>${escapeXml(entry.msName || '')}</msName>
+              <altIdentifier><idno>${escapeXml(entry.altIdentifier || '')}</idno></altIdentifier>
+            </msIdentifier>
+            <msContents>
+              <summary>${escapeXml(entry.summaryContents || '')}</summary>
+              ${(entry.msItems || []).map((item, i) => `
+              <msItem n="${i + 1}">
+                <locusGrp>
+                  ${(item.pageRanges || []).map(pr => `<locus from="${escapeXml(pr.from || '')}" to="${escapeXml(pr.to || '')}"/>`).join('')}
+                </locusGrp>
+                ${xmlWithRef('author', item.author)}
+                <title>${escapeXml(item.title || '')}</title>
+                ${
+                  (item.textLang && item.textLang.value)
+                    ? (item.textLang.uri
+                        ? `<textLang source="${escapeXml(item.textLang.uri)}">${escapeXml(item.textLang.value)}</textLang>`
+                        : `<textLang>${escapeXml(item.textLang.value)}</textLang>`
+                      )
+                    : ''
+                }
+                <incipit>${escapeXml(item.incipit || '')}</incipit>
+                <explicit>${escapeXml(item.explicit || '')}</explicit>
+                <note type="textual-family">${escapeXml(item.textFamily || '')}</note>
+                <note type="textual-subfamily">${escapeXml(item.textSubFamily || '')}</note>
+                <note type="text-genre">${escapeXml(item.textGenre || '')}</note>
+              </msItem>`).join('')}
+            </msContents>
+            <physDesc>
+              <objectDesc>
+                <supportDesc material="${escapeXml(entry.material || '')}">
+                  <extent>
+                    <dimensions>
+                      <height quantity="${escapeXml(entry.height || '')}" unit="cm"/>
+                      <width quantity="${escapeXml(entry.width || '')}" unit="cm"/>
+                    </dimensions>
+                    ${entry.leaves ? `<measure quantity="${escapeXml(entry.leaves)}"/>` : ''}
+                  </extent>
+                  <condition>${escapeXml(entry.condition || '')}</condition>
+                </supportDesc>
+                <layoutDesc>
+                  <layout columns="${escapeXml(entry.columns || '')}" writtenLines="${escapeXml(entry.lines || '')}"/>
+                </layoutDesc>
+              </objectDesc>
+              <handDesc hands="${escapeXml(entry.hands || '')}">
+                ${entry.handsDesc ? `<p>${escapeXml(entry.handsDesc)}</p>` : ''}
+              </handDesc>
+              <scriptDesc>
+                ${(entry.scriptNotes || []).map(sn =>
+                  sn.uri
+                    ? `<scriptNote source="${escapeXml(sn.uri)}"><p>${escapeXml(sn.value)}</p></scriptNote>`
+                    : `<scriptNote><p>${escapeXml(sn.value)}</p></scriptNote>`
+                ).join('')}
+              </scriptDesc>
+              ${entry.musicNotation ? `<musicNotation><p>${escapeXml(entry.musicNotation)}</p></musicNotation>` : ''}
+              ${entry.decoDesc ? `<decoDesc><p>${escapeXml(entry.decoDesc)}</p></decoDesc>` : ''}
+              ${entry.additions ? `<additions><p>${escapeXml(entry.additions)}</p></additions>` : ''}
+              ${entry.bindingDesc ? `<bindingDesc><p>${escapeXml(entry.bindingDesc)}</p></bindingDesc>` : ''}
+              ${(entry.seals || []).length > 0
+                ? `<sealDesc>${entry.seals.map(s => `<seal><p>${escapeXml(s)}</p></seal>`).join('')}</sealDesc>`
+                : ''}
+              ${entry.accMat ? `<accMat><p>${escapeXml(entry.accMat)}</p></accMat>` : ''}
+            </physDesc>
+            <history>
+              <summary>${escapeXml(entry.summaryProvenance || '')}</summary>
+              <origin>
+                ${xmlWithRef('origPlace', entry.origPlace)}
+                ${entry.geoOrigin ? `<geo>${escapeXml(entry.geoOrigin)}</geo>` : ''}
+                ${xmlWithRef('country', entry.countryOrigin)}
+                <origDate notBefore="${escapeXml(entry.dateOriginNotBefore || '')}" notAfter="${escapeXml(entry.dateOriginNotAfter || '')}">
+                  ${escapeXml(entry.dateOriginText || '')}
+                </origDate>
+              </origin>
+              ${(entry.provenance || []).map(prov => `
+              <provenance>
+                ${prov.name
+                  ? (prov.type
+                    ? `<name type="${escapeXml(prov.type)}"${prov.name.uri ? ` ref="${escapeXml(prov.name.uri)}"` : ''}>${escapeXml(prov.name.value || prov.name)}</name>`
+                    : xmlWithRef('name', prov.name))
+                  : ''}
+                ${prov.date ? `<date notBefore="${escapeXml(prov.notBefore || '')}" notAfter="${escapeXml(prov.notAfter || '')}">${escapeXml(prov.date)}</date>` : ''}
+                ${prov.geo && (typeof prov.geo === 'object')
+                    ? `<geo>${escapeXml(prov.geo.value || '')}</geo>`
+                    : (prov.geo
+                        ? `<geogName><geo>${escapeXml(prov.geo)}</geo></geogName>`
+                        : ''
+                      )
+                }
+                ${xmlWithRef('settlement', prov.settlement)}
+                ${xmlWithRef('country', prov.country)}
+              </provenance>`).join('')}
+            </history>
+            <additional>
+              <surrogates>
+                ${entry.digi ? `<bibl type="digi"><title xml:lang="en">Digital Copy</title><ref>${escapeXml(entry.digi)}</ref></bibl>` : ''}
+                ${entry.iiifManifest ? `<bibl type="iiif-manifest"><title xml:lang="en">IIIF Manifest</title><ref>${escapeXml(entry.iiifManifest)}</ref></bibl>` : ''}
+                ${entry.cat ? `<bibl type="cat"><title xml:lang="en">Catalogue Entry</title><ref>${escapeXml(entry.cat)}</ref></bibl>` : ''}
+              </surrogates>
+              ${(entry.literature || []).length > 0
+                ? `<listBibl>
+                    ${(entry.literature || []).map(lit => `
+                    <bibl${lit.ref ? ` ref="${escapeXml(lit.ref)}"` : ''}>
+                      ${(lit.authors || []).map(a => `
+                      <author>
+                        <surname>${escapeXml(a.surname || '')}</surname>
+                        <forename>${escapeXml(a.forename || '')}</forename>
+                      </author>`).join('')}
+                      ${(lit.editors || []).map(e => `<editor>${escapeXml(e)}</editor>`).join('')}
+                      <title>${escapeXml(lit.title || '')}</title>
+                      <pubPlace>${escapeXml(lit.pubPlace || '')}</pubPlace>
+                      <publisher>${escapeXml(lit.publisher || '')}</publisher>
+                      <series>${escapeXml(lit.series || '')}</series>
+                      ${lit.isbn ? `<idno type="isbn">${escapeXml(lit.isbn)}</idno>` : ''}
+                      <date when="${escapeXml(lit.date || '')}">${escapeXml(lit.date || '')}</date>
+                      <citedRange>${escapeXml(lit.citedRange || '')}</citedRange>
+                    </bibl>`).join('')}
+                  </listBibl>`
+                : ''}
+            </additional>
+          </msDesc>
+        </sourceDesc>
+      </fileDesc>
+    </teiHeader>
+    <text><body><p/></body></text>
+  </TEI>`;
+  }
+
 
 // Download XML
 function downloadXMLfromRecord(entry) {
@@ -686,8 +857,9 @@ function downloadXMLfromRecord(entry) {
   const blob = new Blob([xml], { type: "application/xml" });
   const a = document.createElement("a");
   a.href = URL.createObjectURL(blob);
-  a.download = `${entry.msTitle?.replace(/[\\/:*?"<>|]/g, "_") || "manuscript"}.xml`;
+  a.download = `${entry.msName?.replace(/[\\/:*?"<>|]/g, "_") || "manuscript"}.xml`;
   a.click();
+  showDownloadToast(); // show success toast
 }
 
 // Print PDF (browser print dialog)
@@ -696,17 +868,76 @@ function printRecordAsPDF() {
     alert("No record selected!");
     return;
   }
+
+  // Build the manuscript-specific link (based on row ID)
+  const msId = (currentRecord.idno || currentRecord.msName || currentRecord.msTitle || "ms")
+    .replace(/\s+/g, "_")
+    .replace(/[^\w\-]/g, "");
+  const recordLink = `https://mano-project.github.io/collection.html#ms-${msId}`;
+
   const modalBody = document.getElementById("recordModalBody").innerHTML;
   const newWindow = window.open("", "_blank");
   newWindow.document.write(`
     <html>
       <head>
-        <title>${currentRecord.msTitle || "Manuscript"}</title>
-        <style>body { font-family: serif; }</style>
+        <title>&lt;MANO&gt; – Manuscripts Online (https://mano-project.github.io/)</title>
+        <style>
+          body {
+            font-family: "Times New Roman", serif;
+            margin: 2em;
+            color: #000;
+          }
+
+          h2.ms-name {
+            font-size: 1.8em;
+            color: black;
+            text-align: center;
+          }
+
+          h5 {
+            font-size: 1.5em;
+            color: black;
+            margin-top: 1.2em;
+            margin-bottom: 0.6em;
+            border-bottom: 2px solid black;
+            padding-bottom: 0.2em;
+          }
+
+          strong {
+            color: #333;
+            font-weight: 600;
+          }
+
+          ul {
+            margin-top: 0.3em;
+            margin-bottom: 0.8em;
+          }
+
+          li {
+            margin-bottom: 0.2em;
+          }
+            
+          a {
+            color: #0056b3;
+            text-decoration: none;
+          }
+
+          a:hover {
+            text-decoration: underline;
+          }
+
+          
+        </style>
       </head>
-      <body>${modalBody}</body>
+      <body>
+        <h2 class="ms-name">${currentRecord.msName || currentRecord.msTitle || "Manuscript"}</h2>
+        <p style="text-align:center; font-size:0.95em;">
+          <a href="${recordLink}" target="_blank">(${recordLink})</a>
+        </p>
+        ${modalBody}</body>
     </html>
   `);
+
   newWindow.document.close();
   newWindow.print();
 }
@@ -716,13 +947,13 @@ function printRecordAsPDF() {
 
 // Categories for filtering
 const filterCategories = [
-  { key: 'responsible', label: 'Responsible Persons' },
-  { key: 'dataLang', label: 'Language of Data Entry' },
+  { key: 'responsible', label: 'Responsible persons' },
+  { key: 'dataLang', label: 'Language of data entry' },
   { key: 'repository', label: 'Repositories' },
-  { key: 'authors', label: 'Content Authors' },
-  { key: 'languages', label: 'Text Languages' },
-  { key: 'script', label: 'Font Descriptions' },
-  { key: 'origin', label: 'Places of Origin' },
+  { key: 'authors', label: 'Content authors' },
+  { key: 'languages', label: 'Text languages' },
+  { key: 'script', label: 'Font descriptions' },
+  { key: 'origin', label: 'Places of origin' },
   { key: 'provenance', label: 'Provenance' }
 ];
 
@@ -955,23 +1186,33 @@ async function loadMetadataWithFilters() {
   const tableBody = document.getElementById("tableBody");
   const fileList = await fetchFileList();
 
-  for (const file of fileList) {
-    try {
-      const record = await fetchJSONFile(file.download_url);
-      const entries = Array.isArray(record) ? record : [record];
-      entries.forEach(entry => {
-        allEntries.push(entry);
-        const row = createTableRow(entry);
-        tableBody.appendChild(row);
-      });
-    } catch (err) {
-      console.error("Error loading file:", file.name, err);
+    for (const file of fileList) {
+      try {
+        const record = await fetchJSONFile(file.download_url);
+        const entries = Array.isArray(record) ? record : [record];
+        entries.forEach(entry => allEntries.push(entry));
+      } catch (err) {
+        console.error("Error loading file:", file.name, err);
+      }
     }
-  }
 
-  // Build filter options from loaded data
-  buildFilterOptions(allEntries);
-  renderFilterSidebar();
+    //Sort entries alphabetically by msName (fallback to msTitle)
+    allEntries.sort((a, b) => {
+      const nameA = (a.msName || a.msTitle || "").toLowerCase();
+      const nameB = (b.msName || b.msTitle || "").toLowerCase();
+      return nameA.localeCompare(nameB);
+    });
+
+    // Now populate the table in sorted order
+    allEntries.forEach(entry => {
+      const row = createTableRow(entry);
+      tableBody.appendChild(row);
+    });
+
+    // Build filters after table is ready
+    buildFilterOptions(allEntries);
+    renderFilterSidebar();
+
 }
 
 loadMetadataWithFilters();
@@ -1014,7 +1255,28 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   observer.observe(tableBody, { childList: true, subtree: true });
 });
+
+function showDownloadToast() {
+  const toastEl = document.getElementById("downloadToast");
+  const toast = new bootstrap.Toast(toastEl);
+  toast.show();
+}
 </script>
+
+<!--MANO Toast Notification -->
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div id="downloadToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <img src="images/MANO.png" class="rounded me-2" alt="MANO project logo" width="25" height="25">
+      <strong class="me-auto">&lt;MANO&gt; – Metadata Collection</strong>
+      <button type="button" class="btn-close ms-2 mb-1" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+      File downloaded successfully!
+    </div>
+  </div>
+</div>
+
 
 </body>
 </html>

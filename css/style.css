@@ -142,6 +142,55 @@ section h2 {
 }
 
 
+.manuscript-footer button {
+  white-space: nowrap;        /* keep icon + text together */
+}
+
+
+.toast {
+  background-color: #fff !important;
+  opacity: 1 !important;       /* disables Bootstrap’s transparency */
+  border-radius: 0.75rem;
+  box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
+}
+
+.toast-header {
+  background-color: #f7f3ec !important; 
+  color: #000 !important;
+  border-bottom: none;
+}
+
+.toast-body {
+  background-color: #fff !important;
+  color: #000 !important;
+}
+.toast-header strong{
+  color:#eeba2b;
+  font-family: monospace;
+}
+
+
+
+/* --- MANO Download Modals  --- */
+
+/* Modal headers */
+#xmlDownloadSuccessModal .modal-header,
+#jsonDownloadSuccessModal .modal-header {
+  background-color: #f7f3ec !important;
+  border-bottom: none;
+  font-family: monospace;
+}
+
+/* Title text inside header */
+#xmlDownloadSuccessModal .modal-header .modal-title,
+#jsonDownloadSuccessModal .modal-header .modal-title {
+  color: #eeba2b;
+  font-family: monospace;
+  font-weight: 600;
+}
+
+
+
 
 @media (max-width: 576px) {
   .typewriter h1 {

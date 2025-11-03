@@ -1,17 +1,46 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" translate="no" class="notranslate">
+<html xmlns="http://www.w3.org/1999/xhtml" translate="no" class="notranslate" lang="en">
     <head>
-        <title>MANO - Maps</title>
-        <meta name="keywords" content="MANO, Manuscripts Online, About">
-        <meta name="description" content="">
+        <title>MANO - Maps | Visualizing Libraries and Origin Places</title>
+        <meta name="keywords" content="manuscript maps, provenance, origin, digital humanities, data visualization, GIS, MANO">
+        <meta name="description" content="Explore interactive maps visualizing the geographic origins and current locations of manuscripts in the MANO Metadata Collection.">
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0 shrink-to-fit=no"/>
         <meta name="google" content="notranslate"/>
-        <link rel="canonical" href="https://mano-project.github.io/about.html"/>
+        <link rel="canonical" href="https://mano-project.github.io/maps.html">
         <link rel="icon" type="image/png" href="images/MANO.png"> 
+        <link rel="alternate" hreflang="en" href="URL">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="MANO – Maps">
+        <meta property="og:description" content="Interactive visualization of manuscript origins and repositories from the MANO Metadata Collection.">
+        <meta property="og:image" content="https://mano-project.github.io/images/MANO.png">
+        <meta property="og:url" content="https://mano-project.github.io/maps.html">
+
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "MANO – Maps",
+            "url": "https://mano-project.github.io/maps.html",
+            "description": "Interactive maps visualizing the current storage and origin place of manuscripts described in the MANO Metadata Collection.",
+            "isPartOf": {
+                "@type": "Dataset",
+                "name": "MANO Metadata Collection"
+            },
+            "creator": {
+                "@type": "Person",
+                "name": "Michela Parma",
+                "affiliation": "University of Mainz"
+            }
+            "inLanguage": "en"
+        }
+        </script>
+
         
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
                
         <link rel="stylesheet" type="text/css" href="css/style.css" media="screen"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -41,7 +70,7 @@
                 <!-- Centered logo -->
                 <div class="position-absolute start-50 translate-middle-x text-center">
                 <a class="navbar-brand" href="index.html">
-                    <img src="images/MANO.png" alt="Logo" width="65" class="d-inline-block align-text-top">
+                    <img src="images/MANO.png" alt="MANO project logo" width="65" class="d-inline-block align-text-top">
                 </a>
                 </div>
 
@@ -72,15 +101,15 @@
 
     <div class="container mt-4">
             
-        <button onclick="history.back()" class="btn back-btn btn-sm btn-outline-secondary">Back</button>
+        <button onclick="history.back()" class="btn back-btn btn-sm btn-outline-secondary" aria-label="Go back">Back</button>
             
         <h1 class="page-title">Manuscript Maps</h1>
 
         <div class="row my-4 align-items-end">
           <!-- Left column -->
           <div class="col-12 col-md-6 d-flex justify-content-start mb-2 mb-md-0">
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#infoMaps">
-              About Manuscript Maps
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#infoMaps" aria-label="Open About Manuscript Maps">
+              <i class="bi bi-info-circle"></i> About Manuscript Maps
             </button>
           </div>
         </div>
@@ -104,7 +133,7 @@
                     </p>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close">Close</button>
               </div>
             </div>
           </div>
@@ -131,7 +160,7 @@
             <!-- Logo centered -->
             <div class="mb-3">
                 <a class="navbar-brand" href="index.html">
-                <img src="images/MANO.png" alt="Logo" width="50">
+                <img src="images/MANO.png" alt="MANO project logo" width="50">
                 </a>
             </div>
 
@@ -217,10 +246,10 @@
                     manuscripts: []
                 };
                 }
-                //groups[geo].manuscripts.push(entry.msTitle || "Untitled manuscript");
+                //groups[geo].manuscripts.push(entry.msName  || "Untitled manuscript");
                 groups[geo].manuscripts.push({
-                title: entry.msTitle || "Untitled manuscript",
-                id: entry.idno || entry.msTitle
+                title: entry.msName  || "Untitled manuscript",
+                id: entry.idno || entry.msName 
                 });
             });
             return groups;

@@ -1,14 +1,38 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" translate="no" class="notranslate">
+<html xmlns="http://www.w3.org/1999/xhtml" translate="no" class="notranslate" lang="en">
     <head>
-        <title>MANO - Metadata Editor</title>
-        <meta name="keywords" content="MANO, Manuscripts Online, Metadata Editor">
-        <meta name="description" content="">
+        <title>MANO – Metadata Editor | Create TEI-XML Manuscript Descriptions</title>
+        <meta name="keywords" content="metadata editor, TEI-XML, manuscript metadata, digital humanities tool, open data">
+        <meta name="description" content="Use the MANO Metadata Editor to create, validate, and export manuscript descriptions in TEI-XML and JSON formats according to TEI P5 standards.">
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0 shrink-to-fit=no"/>
         <meta name="google" content="notranslate"/>
         <link rel="canonical" href="https://mano-project.github.io/editor.html"/>
         <link rel="icon" type="image/png" href="images/MANO.png"> 
+        <link rel="alternate" hreflang="en" href="URL">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="MANO – Metadata Editor">
+        <meta property="og:description" content="Create, validate and export manuscript descriptions in TEI-XML format with MANO’s Metadata Editor.">
+        <meta property="og:image" content="https://mano-project.github.io/images/MANO.png">
+        <meta property="og:url" content="https://mano-project.github.io/editor.html">
+
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "WebApplication",
+          "name": "MANO – Metadata Editor",
+          "url": "https://mano-project.github.io/editor.html",
+          "applicationCategory": "Digital Humanities Tool",
+          "description": "An online metadata editor for creating and exporting manuscript descriptions in TEI-XML and JSON format according to TEI P5 guidelines.",
+          "creator": {
+            "@type": "Person",
+            "name": "Michela Parma",
+            "affiliation": "University of Mainz"
+          }
+          "inLanguage": "en"
+        }
+        </script>
+
         
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -28,7 +52,7 @@
                 <!-- Centered logo -->
                 <div class="position-absolute start-50 translate-middle-x text-center">
                 <a class="navbar-brand" href="index.html">
-                    <img src="images/MANO.png" alt="Logo" width="65" class="d-inline-block align-text-top">
+                    <img src="images/MANO.png" alt="MANO project logo" width="65" class="d-inline-block align-text-top">
                 </a>
                 </div>
 
@@ -58,7 +82,7 @@
         </nav>
 
         <div class="container container-page mt-4 mb-5">
-          <button onclick="history.back()" class="btn back-btn btn-sm btn-outline-secondary">Back</button>
+          <button onclick="history.back()" class="btn back-btn btn-sm btn-outline-secondary" aria-label="Go back">Back</button>
           
           <h1 class="page-title">Metadata Editor</h1>
                     
@@ -66,8 +90,8 @@
             <div class="row my-4 align-items-end">
               <!-- Left column -->
               <div class="col-12 col-md-4 d-flex justify-content-start mb-2 mb-md-0">
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#infoMetadataEditor">
-                  About Metadata Editor
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#infoMetadataEditor" aria-label="Open About Metadata Editor">
+                  <i class="bi bi-info-circle"></i> About Metadata Editor
                 </button>
               </div>
 
@@ -79,23 +103,13 @@
 
               <!-- Right column -->
               <div class="col-12 col-md-4 d-flex justify-content-start justify-content-md-end">
-                <button id="addManuscriptBtn" class="btn btn-primary">Add manuscript</button>
+                <button id="addManuscriptBtn" class="btn btn-primary" aria-label="Add manuscript description"><i class="bi bi-plus-circle"></i> Add ms description</button>
               </div>
             </div>
 
             <div id="manuscriptFormsContainer"></div>
             <div class="text-center mt-5">
-              <button type="button" class="btn btn-success" id="downloadAllJSON">Download JSON</button>
-              <!--<div class="dropdown">
-                <button class="btn btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Download Metadata
-                </button>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" id="downloadAllJSON">JSON</a></li>
-                  <li><a class="dropdown-item" id="downloadAllCSV">CSV</a></li>
-                  <li><a class="dropdown-item" id="downloadAllRDF">RDF</a></li>
-                </ul>
-              </div>-->
+              <button type="button" class="btn btn-success" id="downloadAllJSON" aria-label="Download JSON"><i class="bi bi-file-earmark-arrow-down"></i> Download JSON</button>
             </div>
           </div>
         </div>
@@ -116,17 +130,63 @@
                   </p>
                   <p>
                     JSON metadata files can be uploaded to the 
-                    <a href="https://github.com/mano-project/mano-metadata/tree/main/data" target="_blank">MANO GitHub repository</a>. Once accepted, these 
-                    records will enrich the publicly accessible 
+                    <a href="https://github.com/mano-project/mano-metadata/tree/main/data" target="_blank">MANO GitHub repository</a>. The 
+                    records will be publicly accessible in the
                     <a href="collection.html">MANO Metadata Collection</a>, enriching the shared digital resource for manuscript research.
                   </p>
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close">Close</button>
                 </div>
               </div>
             </div>
           </div>
+
+          
+          <!-- XML Download Success Modal -->
+          <div class="modal fade" id="xmlDownloadSuccessModal" tabindex="-1" aria-labelledby="xmlDownloadSuccessLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="xmlDownloadSuccessLabel"><img src="images/MANO.png" alt="MANO project logo" width="35" height="40" class="me-2">Well done!</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <p>You have downloaded your manuscript description in <strong>XML</strong>.</p>
+                  <p>If you would like to contribute to the <strong>Metadata Collection</strong> of this platform, please also download it in JSON and then go to the <a href="https://github.com/mano-project/mano-metadata" target="_blank">GitHub Repository</a> of the project. There you will find instructions to upload your file. Once done, your data will be visible in the Collection to other users.</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-success" id="downloadJSONfromModal" aria-label="Dowload JSON">
+                    <i class="bi bi-file-earmark-arrow-down"></i> Download JSON
+                  </button>
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Cancel">Cancel</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- JSON Download Success Modal -->
+          <div class="modal fade" id="jsonDownloadSuccessModal" tabindex="-1" aria-labelledby="jsonDownloadSuccessLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="jsonDownloadSuccessLabel"><img src="images/MANO.png" alt="MANO project logo" width="35" height="40" class="me-2">Well done!</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <p>You have downloaded your manuscript description(s) in <strong>JSON</strong>.</p>
+                  <p>Now you can contribute to the <strong>Metadata Collection</strong> of this platform. Go to the <a href="https://github.com/mano-project/mano-metadata" target="_blank">GitHub Repository</a> and follow the instructions there to upload your file. Once done, your data will be visible in the Collection to other users.</p>
+                </div>
+                <div class="modal-footer">
+                  <a href="https://github.com/mano-project/mano-metadata" target="_blank" class="btn btn-primary" aria-label="Contribute to the Collection">
+                    Contribute to the Collection <i class="fab fa-github fa-xl ms-2"></i>
+                  </a>
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Cancel">Cancel</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
 
 
         <!-- Modal for XML display -->
@@ -150,7 +210,7 @@
             <!-- Logo centered -->
             <div class="mb-3">
                 <a class="navbar-brand" href="index.html">
-                <img src="images/MANO.png" alt="Logo" width="50">
+                <img src="images/MANO.png" alt="MANO project logo" width="50">
                 </a>
             </div>
 
@@ -186,7 +246,8 @@
         </div>
 
 
-        <script src="JS/metadata.js"></script>
+        <script src="JS/metadata-new.js"></script>
+        <script src="JS/validation.js"></script>
 
     </body>
 
