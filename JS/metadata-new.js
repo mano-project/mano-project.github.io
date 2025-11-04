@@ -400,6 +400,7 @@ function addManuscriptForm(data = {}, shouldScroll = true) {
 
           </div>
         </div>
+        
 
 
 
@@ -408,7 +409,18 @@ function addManuscriptForm(data = {}, shouldScroll = true) {
     `;
   container.appendChild(form);
   renderLiteratureList(form.querySelector('.msForm'));
-  
+
+
+  // --- Attach validation to this specific manuscript form ---
+  const validateBtn = form.querySelector('.validate-btn');
+  const msForm = form.querySelector('.msForm');
+
+  if (validateBtn && msForm) {
+    validateBtn.addEventListener('click', () => {
+      validateCurrentForm(msForm); // pass the form reference (not ID)
+    });
+  }
+
   //  Scroll only if explicitly requested
   if (shouldScroll) {
     form.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -1108,12 +1120,24 @@ function escapeXml(str) {
   }[c])) || '';
 }
 
+
 function deleteManuscriptForm(button) {
   const accordion = button.closest('.accordion');
-  if (accordion) {
+  if (!accordion) return;
+
+  const title = accordion.querySelector('h4')?.textContent.trim() || 'this manuscript description';
+
+  const confirmed = confirm(
+    `⚠️ You are about to permanently delete ${title}.\n\n` +
+    `This action cannot be undone, and all entered data will be lost.\n\n` +
+    `Do you really want to proceed?`
+  );
+
+  if (confirmed) {
     accordion.remove();
   }
 }
+
 
 
 function getFieldValueAndUri(form, name) {
@@ -1835,7 +1859,8 @@ document.getElementById('fileUpload').addEventListener('change', function (e) {
           series: bibl.querySelector("series")?.textContent || '',
           isbn: bibl.querySelector("idno[type='isbn']")?.textContent || '',
           authors,
-          editors
+          editors,
+          source: ref && ref.includes("openlibrary.org") ? "openLibrary" : "manual"
         });
       });
 
@@ -2558,7 +2583,7 @@ function renderLiteratureList(form) {
         </div>
         <div class="ms-2 text-nowrap">
           ${lit.source === "manual" ? `
-            <button class="btn btn-sm btn-outline-secondary me-2" aria-label="Modify">Modify</button>
+            <button class="btn btn-sm btn-outline-secondary me-2" aria-label="Edit">Edit</button>
           ` : ''}
           <button class="btn btn-sm btn-outline-danger" aria-label="Delete">Delete</button>
         </div>
@@ -2574,7 +2599,7 @@ function renderLiteratureList(form) {
 
     div.innerHTML = info;
 
-    // Handle Modify button (manual items)
+    // Handle Edit button (manual items)
     const editBtn = div.querySelector('.btn-outline-secondary');
     if (editBtn) {
       editBtn.type = 'button';   
@@ -2610,7 +2635,7 @@ function showLiteratureForm(form, lit = {}, index = null) {
   container.style.display = "block";
 
   container.innerHTML = `
-    <h6>${index === null ? "Add new reference" : "Modify reference"}</h6>
+    <h6>${index === null ? "Add new reference" : "Edit reference"}</h6>
 
     <div class="row mb-2">
       <div class="col-md-9">
@@ -2700,35 +2725,6 @@ function showLiteratureForm(form, lit = {}, index = null) {
 
   container.querySelector('.lit-add-author').onclick = () => addAuthorRow();
 
-  // ---- save ----
-  /*container.querySelector('.lit-save-btn').onclick = () => {
-    const authors = [...container.querySelectorAll('.lit-author-row')].map(r => ({
-      forename: r.querySelector('.lit-author-forename').value.trim(),
-      surname:  r.querySelector('.lit-author-surname').value.trim()
-    })).filter(a => a.forename || a.surname);
-
-    const entry = {
-      // no "type" (removed)
-      title:      container.querySelector('.lit-title').value.trim(),
-      date:       container.querySelector('.lit-date').value.trim(), // numeric input; remains a string in JS
-      publisher:  container.querySelector('.lit-publisher').value.trim(),
-      pubPlace:   container.querySelector('.lit-place').value.trim(),
-      series:     container.querySelector('.lit-series').value.trim(),
-      isbn:       container.querySelector('.lit-isbn').value.trim(),
-      citedRange: container.querySelector('.lit-cited').value.trim(),
-      authors,
-      editors:    lit.editors || [],
-      ref:        lit.ref || "",
-      source:     "manual"
-    };
-
-    const store = getLitStore(form);
-    if (index === null) store.push(entry);
-    else store[index] = entry;
-
-    container.style.display = "none";
-    renderLiteratureList(form);
-  };*/
 
   container.querySelector('.lit-save-btn').onclick = () => {
     const titleInput = container.querySelector('.lit-title');
@@ -2773,32 +2769,6 @@ function showLiteratureForm(form, lit = {}, index = null) {
 }
 
 
-// Search in OpenLibrary
-/*async function searchOpenLibrary(term) {
-  const url = `https://openlibrary.org/search.json?q=${encodeURIComponent(term)}`;
-  const res = await fetch(url);
-  const data = await res.json();
-
-  return (data.docs || []).slice(0, 10).map(d => ({
-    type: "book",
-    title: d.title || "",
-    date: d.first_publish_year || "",
-    publisher: d.publisher ? d.publisher[0] : "",
-    pubPlace: d.publish_place ? d.publish_place[0] : "",
-    authors: (d.author_name || []).map(n => {
-      // Try to split nicely into forename / surname
-      const parts = n.split(' ');
-      return {
-        forename: parts.slice(0, -1).join(' '),
-        surname: parts.slice(-1)[0]
-      };
-    }),
-    isbn: d.isbn ? d.isbn[0] : "",
-    edition: d.edition_key ? d.edition_key[0] : "",
-    source: "openlibrary",
-    ref: d.key ? `https://openlibrary.org${d.key}` : ""
-  }));
-}*/
 
 async function searchOpenLibrary(term) {
   term = term.trim();
@@ -2950,7 +2920,7 @@ document.addEventListener('input', async (e) => {
             console.warn('OpenLibrary enrichment failed:', e);
           }
         }
-
+        r.source = "openLibrary";
         getLitStore(form).push(r);
         resultsBox.innerHTML = "";
         renderLiteratureList(form);

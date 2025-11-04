@@ -384,33 +384,34 @@ const validationRules = [
   },
   // R5g — Origin / Provenance: human-readable vs machine-readable date consistency
   {
-    id: "R5g",
-    context: "History - Origin and Provenance Dates",
-    severity: "optional",
-    test: (d) => {
-      // Origin check
-      const hasReadableOrigin = !!(d.dateOriginHuman && d.dateOriginHuman.trim() !== "");
-      const hasMachineOrigin = !!(d.dateOriginNotBefore || d.dateOriginNotAfter);
-      const originOK = !(hasReadableOrigin ^ hasMachineOrigin); // XOR — both or neither
+  id: "R5g",
+  context: "History - Origin and Provenance Dates",
+  severity: "optional",
+  test: (d) => {
+    // Origin check
+    const hasReadableOrigin = !!(d.dateOriginText && d.dateOriginText.trim() !== "");
+    const hasMachineOrigin = !!(d.dateOriginNotBefore || d.dateOriginNotAfter);
+    const originOK = !(hasReadableOrigin ^ hasMachineOrigin); // XOR — both or neither
 
-      // Provenance check
-      if (!Array.isArray(d.provenance) || d.provenance.length === 0) return originOK;
-      const provenanceOK = d.provenance.every((p) => {
-        const hasReadable = !!(p.humanDate && p.humanDate.trim() !== "");
-        const hasMachine = !!(p.notBefore || p.notAfter);
-        return !(hasReadable ^ hasMachine);
-      });
+    // Provenance check
+    if (!Array.isArray(d.provenance) || d.provenance.length === 0) return originOK;
+    const provenanceOK = d.provenance.every((p) => {
+      const hasReadable = !!(p.date && p.date.trim() !== "");
+      const hasMachine = !!(p.notBefore || p.notAfter);
+      return !(hasReadable ^ hasMachine);
+    });
 
-      return originOK && provenanceOK;
-    },
-    message:
-      "You entered a human-readable date but no values for 'Earliest possible date'/'Latest possible date' (or vice versa). Consider filling both for clarity."
+    return originOK && provenanceOK;
   },
+  message:
+    "You entered a human-readable date but no values for 'Earliest possible date'/'Latest possible date' (or vice versa). Consider filling both for clarity."
+},
+
 
 
 
 //-------------- GENERAL RULES 
-  // R5h — Initial lowercase detection in key textual fields
+  // RGa — Initial lowercase detection in key textual fields
   {
     id: "GRa",
     context: "General text capitalization",
@@ -516,12 +517,19 @@ function runSchematronValidation(formId) {
 
 // ------------- 3. Display Validation Report -----------------
 
-function showValidationReport(issues) {
-  const old = document.querySelector("#validation-report");
-  if (old) old.remove();
+// --- Create or update validation report for a specific manuscript ---
+function showValidationReport(issues, formElement) {
+  // Get parent container of the manuscript
+  const container = formElement.closest(".manuscript-container");
+  if (!container) return;
 
+  // Remove any existing report in this specific manuscript container
+  let existing = container.querySelector(".validation-report");
+  if (existing) existing.remove();
+
+  // Create new report div
   const report = document.createElement("div");
-  report.id = "validation-report";
+  report.className = "validation-report mt-3";
   report.style.maxHeight = "400px";
   report.style.overflowY = "auto";
 
@@ -529,20 +537,17 @@ function showValidationReport(issues) {
   const optional = issues.filter((i) => i.severity === "optional");
 
   if (issues.length === 0) {
-    report.className = "alert alert-success mt-4";
+    report.classList.add("alert", "alert-success");
     report.innerHTML =
       "<strong>No issues found.</strong> The manuscript metadata appears consistent.";
   } else {
-    report.className = "alert alert-warning mt-4";
+    report.classList.add("alert", "alert-warning");
     let html = `<h5><i class="bi bi-exclamation-triangle"></i> Validation Report</h5>`;
 
     if (mandatory.length) {
       html += `<h6 class="mt-3 text-danger">Mandatory issues</h6><ul>`;
       html += mandatory
-        .map(
-          (i) =>
-            `<li><strong>${i.context}</strong>: ${i.message}</li>`
-        )
+        .map((i) => `<li><strong>${i.context}</strong>: ${i.message}</li>`)
         .join("");
       html += `</ul>`;
     }
@@ -550,10 +555,7 @@ function showValidationReport(issues) {
     if (optional.length) {
       html += `<h6 class="mt-3 text-warning">Optional checks</h6><ul>`;
       html += optional
-        .map(
-          (i) =>
-            `<li><strong>${i.context}</strong>: ${i.message}</li>`
-        )
+        .map((i) => `<li><strong>${i.context}</strong>: ${i.message}</li>`)
         .join("");
       html += `</ul>`;
     }
@@ -561,21 +563,29 @@ function showValidationReport(issues) {
     report.innerHTML = html;
   }
 
-  const container = document.querySelector("#manuscriptFormsContainer");
-  container.prepend(report);
+  // Append report just below the form
+  formElement.parentElement.appendChild(report);
 
-  // Smooth scroll to the validation report
+  // Scroll to it smoothly
   report.scrollIntoView({ behavior: "smooth", block: "start" });
 }
+
 
 // ------------- 4. Integration with Download -----------------
 
 function validateBeforeDownload(formId) {
+  const formElement = document.getElementById(formId);
   const issues = runSchematronValidation(formId);
   const mandatory = issues.filter((i) => i.severity === "mandatory");
   const optional = issues.filter((i) => i.severity === "optional");
 
-  showValidationReport(issues);
+  // Show report for this specific manuscript
+  if (formElement) {
+    showValidationReport(issues, formElement);
+  } else {
+    // fallback (e.g., if form not found)
+    showValidationReport(issues, document.querySelector(".msForm"));
+  }
 
   if (mandatory.length > 0) {
     alert("Please correct all mandatory issues before downloading.");
@@ -595,51 +605,39 @@ function validateBeforeDownload(formId) {
 }
 
 
+
 // ------------- 4b. Validation before Download All JSON -----------------
 
 function validateAllBeforeDownload() {
   const forms = [...document.querySelectorAll(".msForm")];
-  let allIssues = [];
   let anyMandatory = false;
   let anyOptional = false;
 
+  // Clear all previous validation reports first
+  document.querySelectorAll(".validation-report").forEach(r => r.remove());
+
   forms.forEach((form, idx) => {
-    const formId = form.id;
-    const issues = runSchematronValidation(formId);
+    const issues = runSchematronValidation(form.id);
     if (issues.length > 0) {
-      allIssues.push({
-        manuscript: form.querySelector('[name="msTitle"]')?.value?.trim() || `Manuscript ${idx + 1}`,
-        issues,
-      });
+      showValidationReport(issues, form);
+
       if (issues.some((i) => i.severity === "mandatory")) anyMandatory = true;
       if (issues.some((i) => i.severity === "optional")) anyOptional = true;
     }
   });
 
-  if (allIssues.length > 0) {
-    // Flatten all issues for a combined report
-    const flatIssues = allIssues.flatMap((m) =>
-      m.issues.map((i) => ({
-        ...i,
-        context: `${m.manuscript} → ${i.context}`,
-      }))
+  if (anyMandatory) {
+    alert("Some manuscripts contain mandatory issues. Please correct them before downloading.");
+    return false;
+  }
+
+  if (anyOptional) {
+    const proceed = confirm(
+      "There are some optional issues that you might want to review before downloading.\n\nDo you still want to download anyway?"
     );
-
-    showValidationReport(flatIssues);
-
-    if (anyMandatory) {
-      alert("Some manuscripts contain mandatory issues. Please correct them before downloading.");
-      return false;
-    }
-
-    if (anyOptional) {
-      const proceed = confirm(
-        "There are some optional issues that you might want to review before downloading.\n\nDo you still want to download anyway?"
-      );
-      if (!proceed) return false;
-      // Allow UI to refresh before triggering the download
+    if (!proceed) return false;
+    // Allow UI to refresh before triggering the download
     setTimeout(() => {}, 0);
-    }
   }
 
   return true; // Safe to proceed
@@ -647,41 +645,28 @@ function validateAllBeforeDownload() {
 
 
 
+
 // ------------- 5. Trigger Validation ------------------------
 
-function validateCurrentForm(formId) {
+function validateCurrentForm(formElement) {
+  const formId = formElement.id;
   const issues = runSchematronValidation(formId);
-  showValidationReport(issues);
+  showValidationReport(issues, formElement);
 }
+
 
 
 // ------------- 6. Attach “Validate” button handlers ----------------------
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Attach validation handlers to existing buttons with .validate-btn
   document.querySelectorAll(".validate-btn").forEach((btn) => {
     const form = btn.closest(".manuscript-container")?.querySelector(".msForm");
     if (form) {
-      btn.addEventListener("click", () => validateCurrentForm(form.id));
+      btn.addEventListener("click", () => validateCurrentForm(form));
     }
   });
 });
 
-
-// Add validation check before global JSON download
-/*const downloadAllBtn = document.getElementById("downloadAllJSON");
-if (downloadAllBtn) {
-  const originalClick = downloadAllBtn.onclick;
-  downloadAllBtn.addEventListener("click", (event) => {
-    if (!validateAllBeforeDownload()) {
-      event.stopImmediatePropagation();
-      event.preventDefault();
-      return;
-    }
-    // continue if original handler exists
-    if (originalClick) originalClick();
-  });
-}*/
 
 
 // ------------- 7. Hook into downloadXML() -------------------
@@ -692,4 +677,3 @@ window.downloadXML = function (formId) {
   originalDownloadXML(formId);
 };
 
-console.log("Validation system loaded: Mandatory/Optional rules active.");
