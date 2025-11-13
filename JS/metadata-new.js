@@ -3000,3 +3000,41 @@ function limitYearLength(el) {
 }
 
 
+
+// --- Load Sample Button (XML version) ---
+document.getElementById("loadSampleBtn")?.addEventListener("click", async () => {
+  try {
+    const response = await fetch("test/test-metadata/Bamberg, Staatsbibliothek, Can. 6.xml");
+    if (!response.ok) throw new Error("Failed to load XML sample");
+
+    const xmlText = await response.text();
+
+    // Create a synthetic File object and trigger the same upload logic
+    const sampleFile = new File([xmlText], "Bamberg.xml", { type: "application/xml" });
+    const fileInput = document.getElementById("fileUpload");
+
+    // Reset and trigger the same code that handles uploads
+    const dataTransfer = new DataTransfer();
+    dataTransfer.items.add(sampleFile);
+    fileInput.files = dataTransfer.files;
+
+    // Manually trigger the change event to reuse existing upload logic
+    fileInput.dispatchEvent(new Event("change", { bubbles: true }));
+
+  } catch (error) {
+    alert("Could not load sample XML: " + error.message);
+  }
+});
+
+
+
+
+// --- Clear All Button ---
+document.getElementById("clearAllBtn")?.addEventListener("click", () => {
+  const confirmed = confirm("This will clear all entered data. Proceed?");
+  if (confirmed) {
+    document.getElementById("manuscriptFormsContainer").innerHTML = "";
+    manuscriptCounter = 0;
+  }
+});
+

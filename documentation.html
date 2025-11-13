@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" translate="no" class="notranslate" lang="en">
+<head>
+  <title>MANO – Documentation</title>
+  <meta name="description" content="Authoritative documentation of the MANO platform: scope, workflow, data model, validation, tools, and deployment.">
+  <meta name="keywords" content="MANO documentation, manuscripts online, TEI-XML, metadata, validation, digital humanities, Leaflet, CodeMirror, GitHub Pages">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0 shrink-to-fit=no"/>
+  <meta name="google" content="notranslate"/>
+  <link rel="canonical" href="https://mano-project.github.io/documentation.html"/>
+  <link rel="icon" type="image/png" href="images/MANO.png"> 
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="MANO – Documentation">
+  <meta property="og:description" content="Scholarly documentation of MANO: scope, workflow, data model, validation rules, and tools.">
+  <meta property="og:image" content="https://mano-project.github.io/images/MANO.png">
+  <meta property="og:url" content="https://mano-project.github.io/documentation.html">
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "MANO – Documentation",
+    "about": ["Digital Humanities", "Manuscript Studies", "TEI-XML", "Open Data"],
+    "author": {
+      "@type": "Person",
+      "name": "Michela Parma",
+      "affiliation": "University of Mainz"
+    },
+    "publisher": {
+      "@type": "EducationalOrganization",
+      "name": "MANO – Manuscripts Online"
+    },
+    "inLanguage": "en"
+  }
+  </script>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
+  <link rel="stylesheet" type="text/css" href="css/style.css" media="screen"/>
+
+  <style>
+    .doc-intro { max-width: 900px; margin: 0 auto; }
+
+    .callout {
+      border-left: 4px solid #eeba2b; background: #fff8e6; padding: .75rem 1rem; border-radius: .25rem; font-size: .95rem;
+    }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+    .toc a { text-decoration: none; }
+    .accordion-button:focus { box-shadow: none; }
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar bg-body-tertiary ">
+    <div class="container-fluid d-flex justify-content-between align-items-center position-relative py-2">
+      <div style="width: 80px;"></div>
+      <div class="position-absolute start-50 translate-middle-x text-center">
+        <a class="navbar-brand" href="index.html">
+          <img src="images/MANO.png" alt="MANO project logo" width="65" class="d-inline-block align-text-top">
+        </a>
+      </div>
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+        aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasNavbarLabel">&lt;MANO&gt;</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="resources.html">Resources</a></li>
+            <li class="nav-item"><a class="nav-link" href="editor.html">Metadata Editor</a></li>
+            <li class="nav-item"><a class="nav-link" href="collection.html">Metadata Collection</a></li>
+            <li class="nav-item"><a class="nav-link" href="viewer.html">Transcription Viewer</a></li>
+            <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+            <li class="nav-item"><a class="nav-link active" href="documentation.html">Documentation</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container mt-4 mb-5">
+    <button onclick="history.back()" class="btn back-btn btn-sm btn-outline-secondary">Back</button>
+
+    <h1 class="page-title">Documentation</h1>
+
+    <!-- Intro block -->
+    <div class="doc-intro">
+      
+      <p style="text-align: justify;">
+        <span class="mano">&lt;MANO&gt;</span> is a lightweight, open digital platform for manuscript studies. It combines a structured metadata editor, a public collection interface, a transcription viewer for TEI-XML, a PAGE-XML → TEI-XML converter, geospatial visualizations, and a curated repository of learning materials. This documentation presents the platform’s goals, data model, validation logic, and technical architecture to support reproducible research, teaching, and responsible data reuse.
+      </p>
+      <div class="callout mb-4">
+        <strong>How to cite&nbsp;&lt;MANO&gt;.</strong> Cite the platform as: <em>MANO – Manuscripts Online</em>, version of this documentation page, URL: <span class="mono">https://mano-project.github.io/documentation.html</span> (accessed on [insert date]).
+      </div>
+    </div>
+
+    <!-- Table of contents (quick links to open sections) -->
+    <div class="toc row g-2 mb-4">
+      <div class="col-12 col-md-auto"><a class="btn btn-outline-primary btn-sm" href="#sec1" onclick="toggleSection('sec1')">1. Introduction</a></div>
+      <div class="col-12 col-md-auto"><a class="btn btn-outline-primary btn-sm" href="#sec2" onclick="toggleSection('sec2')">2. Getting Started</a></div>
+      <div class="col-12 col-md-auto"><a class="btn btn-outline-primary btn-sm" href="#sec3" onclick="toggleSection('sec3')">3. Data Model</a></div>
+      <div class="col-12 col-md-auto"><a class="btn btn-outline-primary btn-sm" href="#sec4" onclick="toggleSection('sec4')">4. Validation</a></div>
+      <div class="col-12 col-md-auto"><a class="btn btn-outline-primary btn-sm" href="#sec5" onclick="toggleSection('sec5')">5. Metadata Editor</a></div>
+      <div class="col-12 col-md-auto"><a class="btn btn-outline-primary btn-sm" href="#sec6" onclick="toggleSection('sec6')">6. Collection</a></div>
+      <div class="col-12 col-md-auto"><a class="btn btn-outline-primary btn-sm" href="#sec7" onclick="toggleSection('sec7')">7. Transcription & Converter</a></div>
+      <div class="col-12 col-md-auto"><a class="btn btn-outline-primary btn-sm" href="#sec8" onclick="toggleSection('sec8')">8. Maps</a></div>
+      <div class="col-12 col-md-auto"><a class="btn btn-outline-primary btn-sm" href="#sec9" onclick="toggleSection('sec9')">9. Architecture</a></div>
+      <div class="col-12 col-md-auto"><a class="btn btn-outline-primary btn-sm" href="#sec10" onclick="toggleSection('sec10')">10. Governance & License</a></div>
+    </div>
+
+    <!-- ACCORDION -->
+    <div class="accordion" id="docAccordion">
+
+      <!-- 1. Introduction -->
+      <div class="accordion-item" id="sec1">
+        <h2 class="accordion-header" id="heading1">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+            1. Introduction
+          </button>
+        </h2>
+        <div id="collapse1" class="accordion-collapse collapse show" aria-labelledby="heading1" data-bs-parent="#docAccordion">
+          <div class="accordion-body">
+            <p style="text-align: justify;">
+              <span class="mano">&lt;MANO&gt;</span> is conceived as an academic yet accessible infrastructure for creating and disseminating manuscript descriptions and transcriptions. It adheres to established community standards—most prominently the <a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/MS.html" target="_blank" rel="noopener noreferrer">TEI P5 Manuscript Description</a>—while privileging transparency and reuse. The platform is intentionally lightweight: it runs on GitHub Pages, minimizes server complexity, and exposes human-readable files (JSON, TEI-XML) suitable for long-term preservation and scholarly exchange.
+            </p>
+            <p style="text-align: justify;">
+              Core design principles include: (i) <em>openness</em> (data and code repositories are public); (ii) <em>parsimony</em> (limited but robust feature set); (iii) <em>interoperability</em> (structured exports and references to external authorities); and (iv) <em>pedagogical value</em> (clarity of interface and documentation to support teaching).
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Getting Started -->
+      <div class="accordion-item" id="sec2">
+        <h2 class="accordion-header" id="heading2">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+            2. Getting Started
+          </button>
+        </h2>
+        <div id="collapse2" class="accordion-collapse collapse" aria-labelledby="heading2" data-bs-parent="#docAccordion">
+          <div class="accordion-body">
+            <ol>
+              <li><strong>Metadata creation</strong> in the <a href="editor.html">Metadata Editor</a>.</li>
+              <li><strong>Validation</strong> using built-in checks; revise until no blocking errors remain.</li>
+              <li><strong>Export</strong> JSON (primary) and TEI-XML (for interchange); retain local copies.</li>
+              <li><strong>Contribution</strong> of JSON records to the public repository (see <a href="collection.html">Metadata Collection</a>).</li>
+              <li><strong>Discovery and reuse</strong> via the Collection interface, Maps, and the Transcription Viewer.</li>
+            </ol>
+            <p class="mb-0"><em>Prerequisites:</em> no server access is required. A GitHub account is recommended for contributing records or resources.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Data Model -->
+      <div class="accordion-item" id="sec3">
+        <h2 class="accordion-header" id="heading3">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+            3. Data Model (JSON & TEI-XML)
+          </button>
+        </h2>
+        <div id="collapse3" class="accordion-collapse collapse" aria-labelledby="heading3" data-bs-parent="#docAccordion">
+          <div class="accordion-body">
+            <p style="text-align: justify;">MANO maintains a pragmatic JSON schema that maps cleanly to TEI-XML for interchange. Records are organized into the following domains:</p>
+            <ul>
+              <li><strong>File Description</strong> — file name, language, license, responsible persons (with optional identifiers and affiliations).</li>
+              <li><strong>Identification</strong> — manuscript name, repository, settlement, country, shelfmark/sigle, identifiers.</li>
+              <li><strong>Content</strong> — items (<span class="mono">msItems</span>) with author, title, foliation/page ranges, incipit/explicit, genre, language, and textual family.</li>
+              <li><strong>Physical Description</strong> — material, dimensions, leaves/columns/lines, number and description of hands, scripts, decoration, bindings, seals.</li>
+              <li><strong>History</strong> — origin (human-readable and machine-readable dates), provenance events with owners, places, and date ranges.</li>
+              <li><strong>Surrogates & Literature</strong> — digital copy, IIIF manifest, catalogue links; bibliography with authors/editors and references.</li>
+            </ul>
+            <p class="mb-2"><strong>Identifiers and external references.</strong> Where possible, fields accept both a display value and a URI (e.g., VIAF, GND, Wikidata, ORCID) to encourage authority control.</p>
+            <p class="mb-2"><strong>TEI export.</strong> The editor generates a TEI P5-compliant manuscript description with conservative encoding of the above domains, facilitating reuse in scholarly pipelines and catalogues.</p>
+            <div class="callout">
+              <strong>Normative reference.</strong> See TEI P5, chapter “Manuscript Description”: <a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/MS.html" target="_blank" rel="noopener noreferrer">https://tei-c.org/.../MS.html</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. Validation -->
+      <div class="accordion-item" id="sec4">
+        <h2 class="accordion-header" id="heading4">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+            4. Validation & Quality Assurance
+          </button>
+        </h2>
+        <div id="collapse4" class="accordion-collapse collapse" aria-labelledby="heading4" data-bs-parent="#docAccordion">
+          <div class="accordion-body">
+            <p style="text-align: justify;">Validation combines mandatory checks (blocking) and optional heuristics (advisory). Examples include:</p>
+            <ul>
+              <li><strong>Mandatory</strong> — presence of core fields (file/language/license/responsible persons; manuscript name; repository), consistent page-range entries, and chronological coherence of origin and provenance ranges.</li>
+              <li><strong>Optional</strong> — realistic dimensions; potential conflation of responsible persons with content authors; matching or suspiciously identical dates between origin and ownership; human-readable vs machine-readable date parity.</li>
+            </ul>
+            <p class="mb-2">Validation is reported within the editor; downloads can be blocked until mandatory errors are resolved. Optional notices promote best practice without preventing export.</p>
+            <p class="mb-0"><em>Rationale:</em> clarity for students and contributors; defensible, auditable records for scholarly reuse.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. Metadata Editor -->
+      <div class="accordion-item" id="sec5">
+        <h2 class="accordion-header" id="heading5">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
+            5. Metadata Editor
+          </button>
+        </h2>
+        <div id="collapse5" class="accordion-collapse collapse" aria-labelledby="heading5" data-bs-parent="#docAccordion">
+          <div class="accordion-body">
+            <p><strong>Purpose.</strong> Create structured manuscript descriptions with immediate feedback.</p>
+            <p class="mb-1"><strong>Key features.</strong></p>
+            <ul>
+              <li>Multi-manuscript sessions with add/remove; resume work by re-loading JSON/TEI when compatible with the MANO schema.</li>
+              <li>Contextual validation (mandatory/optional), and download of JSON (canonical) and TEI-XML (interchange).</li>
+              <li>Authority-friendly fields (value + URI) and structured literature entries.</li>
+            </ul>
+            <p class="mb-1"><strong>Export recommendations.</strong></p>
+            <ul>
+              <li>Retain both JSON and TEI-XML for provenance and citation; include the license and responsible persons.</li>
+              <li>When contributing to the Collection, ensure that human-readable and machine-readable dates are both present where applicable.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. Metadata Collection -->
+      <div class="accordion-item" id="sec6">
+        <h2 class="accordion-header" id="heading6">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse6" aria-expanded="false" aria-controls="collapse6">
+            6. Metadata Collection (Public Dataset)
+          </button>
+        </h2>
+        <div id="collapse6" class="accordion-collapse collapse" aria-labelledby="heading6" data-bs-parent="#docAccordion">
+          <div class="accordion-body">
+            <p style="text-align: justify;">The Collection aggregates contributed JSON records and exposes them for browsing, filtering, and download. Each row represents a manuscript; a modal provides a structured view of the record, including links to digital surrogates and catalogue entries where present.</p>
+            <p class="mb-1"><strong>Contribution workflow.</strong></p>
+            <ol>
+              <li>Export JSON from the Editor.</li>
+              <li>Submit the file to the public repository via pull request or email to the project maintainer.</li>
+              <li>Upon acceptance, the record appears automatically in the Collection.</li>
+            </ol>
+            <p class="mb-0"><strong>Licensing.</strong> Contributors must ensure that records are released under the platform’s stated Creative Commons license and observe rights of referenced resources.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7. Transcription Viewer & Converter -->
+      <div class="accordion-item" id="sec7">
+        <h2 class="accordion-header" id="heading7">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse7" aria-expanded="false" aria-controls="collapse7">
+            7. Transcription Viewer and PAGE→TEI Converter
+          </button>
+        </h2>
+        <div id="collapse7" class="accordion-collapse collapse" aria-labelledby="heading7" data-bs-parent="#docAccordion">
+          <div class="accordion-body">
+            <p><strong>Transcription Viewer.</strong> Visualizes TEI-XML transcriptions in parallel: code, rendered text, and—when available—digitized facsimiles. The view is synchronized and can be refreshed after in-browser edits.</p>
+            <p class="mb-1"><strong>Converter.</strong> When transcriptions exist as multiple PAGE-XML files, the converter merges them into a single TEI-XML suitable for the Viewer. This is convenient for teaching and for integrating external OCR/HTR pipelines.</p>
+            <p class="mb-0"><strong>Good practice.</strong> Keep transcriptions and images under clear licenses; cite repositories and shelfmarks; align page breaks (<span class="mono">&lt;pb/&gt;</span>) consistently.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8. Maps -->
+      <div class="accordion-item" id="sec8">
+        <h2 class="accordion-header" id="heading8">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse8" aria-expanded="false" aria-controls="collapse8">
+            8. Maps and Geographical Visualization
+          </button>
+        </h2>
+        <div id="collapse8" class="accordion-collapse collapse" aria-labelledby="heading8" data-bs-parent="#docAccordion">
+          <div class="accordion-body">
+            <p style="text-align: justify;">The Maps module displays the current place of storage (repository) and places of origin using Leaflet. Each marker aggregates manuscripts associated with the location and links back to the Collection for inspection.</p>
+            <ul>
+              <li><strong>Data sources.</strong> Repository and origin fields with optional coordinates; countries and settlements may include authority URIs.</li>
+              <li><strong>Interpretation.</strong> Points reflect discrete events/places; they are not probabilistic reconstructions.</li>
+              <li><strong>Pedagogy.</strong> Supports spatial reasoning about production and transmission.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 9. Architecture -->
+      <div class="accordion-item" id="sec9">
+        <h2 class="accordion-header" id="heading9">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse9" aria-expanded="false" aria-controls="collapse9">
+            9. Technical Architecture & Deployment
+          </button>
+        </h2>
+        <div id="collapse9" class="accordion-collapse collapse" aria-labelledby="heading9" data-bs-parent="#docAccordion">
+          <div class="accordion-body">
+            <p class="mb-1"><strong>Hosting.</strong> Static site on GitHub Pages; no server-side dependencies.</p>
+            <p class="mb-1"><strong>Client stack.</strong> HTML5, Bootstrap 5, vanilla JavaScript; Leaflet for mapping; CodeMirror for XML editing; Font Awesome and Bootstrap Icons for UI.</p>
+            <p class="mb-1"><strong>Data flow.</strong> JSON and TEI-XML are produced in-browser; the Collection fetches JSON from the public repository via the GitHub API and renders it into a table and modals; Maps consume the same records to plot locations.</p>
+            <p class="mb-1"><strong>SEO/Structured data.</strong> Pages include canonical URLs, Open Graph metadata, and JSON‑LD to improve discoverability and scholarly attribution.</p>
+            <p class="mb-0"><strong>Versioning.</strong> Git-based workflows allow transparent revision history and reproducibility; contributors should use descriptive commit messages and PR descriptions.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 10. Governance & License -->
+      <div class="accordion-item" id="sec10">
+        <h2 class="accordion-header" id="heading10">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse10" aria-expanded="false" aria-controls="collapse10">
+            10. Governance, Licensing, and Citation
+          </button>
+        </h2>
+        <div id="collapse10" class="accordion-collapse collapse" aria-labelledby="heading10" data-bs-parent="#docAccordion">
+          <div class="accordion-body">
+            <p class="mb-2"><strong>Governance.</strong> The platform is maintained by the project author; contributions are welcomed through public repositories. Issues and proposals should be filed via GitHub for transparency.</p>
+            <p class="mb-2"><strong>Licensing.</strong> Unless otherwise noted, site content and contributed metadata are released under Creative Commons Attribution–NonCommercial–ShareAlike (CC BY‑NC‑SA 4.0). External resources referenced from institutions remain under their respective licenses.</p>
+            <p class="mb-2"><strong>Attribution.</strong> Cite responsible persons as listed in each record; retain links to authority files and catalogue entries.</p>
+            <p class="mb-0"><strong>Ethics and sensitivity.</strong> Where records concern sensitive materials, contributors should respect institutional guidelines and cultural protocols; include notices if access is restricted.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer bg-body-tertiary text-center py-4">
+    <div class="container">
+      <div class="mb-3">
+        <a class="navbar-brand" href="index.html">
+          <img src="images/MANO.png" alt="MANO project logo" width="50">
+        </a>
+      </div>
+      <div class="mb-3">
+        <a class="footer-link mx-2" href="index.html">Home</a>
+        <a class="footer-link mx-2" href="resources.html">Resources</a>
+        <a class="footer-link mx-2" href="editor.html">Metadata Editor</a>
+        <a class="footer-link mx-2" href="collection.html">Metadata Collection</a>
+        <a class="footer-link mx-2" href="viewer.html">Transcription Viewer</a>
+        <a class="footer-link mx-2" href="about.html">About</a>
+      </div>
+      <div class="text-center mt-2">
+        <span>© 2025 <span class="mano">&lt;MANO&gt;</span></span>
+      </div>
+    </div>
+  </footer>
+  <div class="py-1 text-center">
+    <small>
+      <span class="m-1">
+        <a href="imprint.html" style="color: black!important">Imprint & Privacy</a>
+      </span> |
+      <span class="m-1">
+        <a href="https://github.com/orgs/mano-project/repositories" target="_blank" style="color: black!important"><i class="fa-brands fa-github"></i> GitHub Repositories</a>
+      </span> |
+      <span class="m-1">
+        <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" style="color: black!important">CC BY-NC-SA 4.0</a><img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" alt="Creative Commons" style="max-width: 1em;max-height:1em;margin-left: .2em;"><img src="https://mirrors.creativecommons.org/presskit/icons/by.svg" alt="Attribution" style="max-width: 1em;max-height:1em;margin-left: .2em;"><img src="https://mirrors.creativecommons.org/presskit/icons/nc.svg" alt="Non Commercial" style="max-width: 1em;max-height:1em;margin-left: .2em;"><img src="https://mirrors.creativecommons.org/presskit/icons/sa.svg" alt="Share Alike" style="max-width: 1em;max-height:1em;margin-left: .2em;">
+      </span>
+    </small>
+  </div>
+
+  <script>
+    // Helper to open a specific accordion section from the TOC buttons
+    function toggleSection(id) {
+      const collapse = document.querySelector(`#${id} .accordion-collapse`);
+      if (!collapse) return;
+      const bsCollapse = bootstrap.Collapse.getOrCreateInstance(collapse, { toggle: false });
+      // open target and scroll into view
+      bsCollapse.show();
+      setTimeout(() => { document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 100);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:lang="de">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title type="main">Bamberg_Staatsbibliothek_Can_6</title> 
+          <respStmt ref="0000-0003-1959-2897"> 
+          <resp ref="http://id.loc.gov/vocabulary/relators/edt.html">editor</resp>
+          <persName>
+            <forename>Michela</forename>
+            <surname>Parma</surname>
+            <affiliation ref="http://www.wikidata.org/entity/Q161982">Johannes Gutenberg University Mainz (public university in Mainz, Germany)</affiliation>
+          </persName>
+        </respStmt>
+      </titleStmt>
+      <publicationStmt>
+        <publisher ref="https://mano-project.github.io/">MANO - Manuscripts Online</publisher>
+        <availability>
+          <licence target="https://creativecommons.org/publicdomain/zero/1.0/">
+            <p>CC0</p>
+          </licence>
+        </availability>
+        <date when="2025-11-12"/>
+      </publicationStmt>
+      <sourceDesc>
+        <msDesc>
+          <msIdentifier>
+            <country ref="https://www.wikidata.org/entity/Q183">Germany</country>
+            <settlement ref="https://www.wikidata.org/entity/Q3936">Bamberg</settlement>
+            <geogName><geo>49.891855555556, 10.882333333333</geo></geogName>
+            <repository ref="http://www.wikidata.org/entity/Q324689">Bamberg State Library (library)</repository>
+            <collection> Can. 6 </collection>
+            <idno type="sigle">B</idno>
+            <msName>Bamberg, Staatsbibliothek, Can. 6</msName>
+            <altIdentifier><idno>C44</idno></altIdentifier>
+          </msIdentifier>
+          <msContents>
+            <summary>Am Anfang ein neu eingebundener Quaternio von dünnerem, stark abgeriebenen Pergament, auf dem die Texte auf fol. 1–9 stehen. Der Prolog gehörte somit ursprünglich nicht zum Text, auch die Admonitio Synodalis und das Konzil von Seligenstadt sind nachträglich eingefügt worden. Die Blätter 3–5 dürften mit einem weiteren, verlorenen Blatt ursprünglich am Ende des Codex gestanden haben, hierauf ist die alte Zählweise der Blätter ein Hinweis. Die Admonitio Synodalis erscheint hier außerhalb des Ordos als einzelnes Dokument. Die Synode von Seligenstadt dürfte ursprünglich am Ende des Codex gestanden haben, sie bricht durch Blattverlust nach Can. 19 ab. </summary>
+            
+            <msItem n="1"> 
+            <locusGrp><locus from="1r" to="2v"/>
+<locus from="6r" to="312r"/></locusGrp>
+            <author ref="http://www.wikidata.org/entity/Q62668">Burchard of Worms (Roman Catholic bishop)</author>
+              <title>Decretum</title>
+              <textLang source="http://www.wikidata.org/entity/Q397">Latin (Indo-European language of the Italic branch)</textLang>
+              <incipit>Bvrchardus solo nomine vvormaciinsis episcopvs.</incipit>
+              <explicit>Sed in hęc ignem conflagrationis illius pertimescent inmortales atque in corruptibiles facti sunt uiuorum trium corruptibilia corpora atque mortalia in camino ardenti inlęsa uiuere non potuerunt.</explicit>
+              <note type="textual-family">Wormser Ordnung B</note>
+              <note type="textual-subfamily">Deutsche Handschriftengruppe</note>
+              <note type="text-genre"></note>
+            </msItem>
+
+            <msItem n="2"> 
+            <locusGrp><locus from="3r" to="4v"/></locusGrp>
+            <author ref="https://www.wikidata.org/wiki/Q4233718">Unknown or Anonymous</author>
+              <title>Admonitio synodalis</title>
+              <textLang source="http://www.wikidata.org/entity/Q397">Latin (Indo-European language of the Italic branch)</textLang>
+              <incipit>Sermo synodalis qui in singulis synodis parrochianis synodus presbiteris est enunciandus. Fratres presbiteri et sacerdotes domini cooperatores ordinis nostri estis [...].</incipit>
+              <explicit>[…] praestante domino nostro iesu christo qui cum patre et spiritu sancto uiuit et regnat deus per omnia saecula.</explicit>
+              <note type="textual-family"></note>
+              <note type="textual-subfamily"></note>
+              <note type="text-genre"></note>
+            </msItem>
+
+            <msItem n="3"> 
+            <locusGrp><locus from="4vb" to="5v"/></locusGrp>
+            <author ref="https://www.wikidata.org/wiki/Q4233718">Unknown or Anonymous</author>
+              <title>Synode von Seligenstadt</title>
+              <textLang source="http://www.wikidata.org/entity/Q397">Latin (Indo-European language of the Italic branch)</textLang>
+              <incipit>In dei nomine ego Aribo mogontinę sedis archiepiscopus quamuis indignus cum cęteris confribus nostris atque coepiscopus Burghardo Wormaciense quo Werinhario argentino Brunone augustense Eberhardo babenbergensi […]“</incipit>
+              <explicit>Decretum est in eodem concilio ut omnis penitens dum carrinam ieiunet de loco ad locum non migregt [...]</explicit>
+              <note type="textual-family"></note>
+              <note type="textual-subfamily">Erste Rezension</note>
+              <note type="text-genre"></note>
+            </msItem>
+          </msContents>
+          <physDesc>
+            <objectDesc>
+              <supportDesc material="parchment">
+                <extent>
+                  <dimensions>
+                    <height quantity="33" unit="cm"/>
+                    <width quantity="26" unit="cm"/>
+                  </dimensions>
+                  <measure quantity="312"/>
+                </extent>
+                <condition>Einige Beschädigungen der Seiten an Fol. 1–2, 92, 142, 145, 167, 183, 193, 217, 260, 282, 297, 312 zzgl. weitere kleine Schäden</condition>
+              </supportDesc>
+              <layoutDesc>
+                <layout columns="2" writtenLines="30"/>
+              </layoutDesc>
+            </objectDesc>
+            <handDesc hands="">
+              <p></p>
+            </handDesc>
+            <scriptDesc>
+              <scriptNote source="http://vocab.getty.edu/aat/300195207">
+                <p>Caroline minuscule</p>
+              </scriptNote>
+            </scriptDesc>
+            <musicNotation><p></p></musicNotation>
+            <decoDesc><p></p></decoDesc>
+            <additions><p></p></additions>
+            <bindingDesc><p></p></bindingDesc>
+            <sealDesc>
+            </sealDesc>
+            <accMat><p></p></accMat>
+          </physDesc>
+          <history>
+            <summary>Geschrieben in Worms im ¼ d. 11. Jahrhunderts. Eigentum Dombibliothek Bamberg.</summary>
+            <origin><origPlace ref="http://www.wikidata.org/entity/Q3852">Worms (town in Rhineland-Palatinate, Germany)</origPlace>
+              <geo>49.6302618, 8.3620898</geo>
+              <country ref="https://www.wikidata.org/entity/Q183">Germany</country>
+              <origDate notBefore="1000" notAfter="1025">1000-1025</origDate>
+            </origin> 
+            <provenance>
+              <name type="org">Dombibliothek Bamberg</name>
+              <date  ></date>
+              <geo>49.89162, 10.8821</geo>
+              <settlement ref="https://www.wikidata.org/wiki/Q3936">Bamberg</settlement>
+              <country ref="https://www.wikidata.org/wiki/Q183">Deutschland</country>
+            </provenance>
+          </history>
+          <additional>
+            <surrogates> 
+              <bibl type="digi"> 
+                <title xml:lang="en">Digital copy</title>
+                <ref>https://www.digitale-sammlungen.de/de/view/bsb00140701</ref>
+              </bibl> 
+              <bibl type="iiif-manifest"> 
+                <title xml:lang="en">iiif-Manifest</title>
+                <ref>https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb00140701/manifest</ref>
+              </bibl> 
+              <bibl type="cat"> 
+                <title xml:lang="en">Catalogue entry</title>
+                <ref>https://nbn-resolving.org/urn:nbn:de:bvb:22-dtl-0000025236</ref>
+              </bibl>
+            </surrogates> 
+            <listBibl>
+              <bibl ref="https://openlibrary.org/works/OL16489010W"> 
+                <author>
+                  <surname>Jasper</surname>
+                  <forename>Detlev</forename>
+                </author> 
+                <title>Die Konzilien Deutschlands und Reichsitaliens, 1023-1059</title>
+                <pubPlace>Hannover</pubPlace>
+                <publisher>Hahnsche Buchhandlung</publisher>
+                <series>Monumenta Germaniae historica. Concilia -- tomus 8</series>
+                <idno type="isbn">9783775255028</idno>
+                <date when="2010">2010</date>
+                <citedRange>9-50</citedRange>
+              </bibl>
+
+              <bibl ref="https://openlibrary.org/works/OL35770824W"> 
+                <author>
+                  <surname>Schneider</surname>
+                  <forename>Herbert</forename>
+                </author> 
+                <title>Die Konzilsordines des Fruh- und Hochmittelalters : (Ordines de Celebrando Concilio)</title>
+                <pubPlace></pubPlace>
+                <publisher>Harrassowitz Verlag</publisher>
+                <series></series>
+                <idno type="isbn">9783447173087</idno>
+                <date when="1996">1996</date>
+                <citedRange>483-487</citedRange>
+              </bibl>
+
+              <bibl ref="https://openlibrary.org/works/OL35272715W"> 
+                <author>
+                  <surname>Reinhard</surname>
+                  <forename>Vogel, Cyrille; Elze,</forename>
+                </author> 
+                <title>Le Pontifical Romano-Germanique Du Dixieme Siecle. Le Texte II (NN. XCIX-CCLVIII)</title>
+                <pubPlace></pubPlace>
+                <publisher>Apostolica Vaticana</publisher>
+                <series></series>
+                <idno type="isbn"></idno>
+                <date when="1963">1963</date>
+                <citedRange></citedRange>
+              </bibl>
+
+              <bibl ref="https://openlibrary.org/works/OL3380467W"> 
+                <author>
+                  <surname>Hoffmann</surname>
+                  <forename>Hartmut</forename>
+                </author> 
+                <title>Das Dekret des Bischofs Burchard von Worms</title>
+                <pubPlace>Munchen</pubPlace>
+                <publisher>Monumenta Germaniae Historica</publisher>
+                <series>Monumenta Germaniae Historica -- 12</series>
+                <idno type="isbn">3886120333</idno>
+                <date when="1991">1991</date>
+                <citedRange>61-62</citedRange>
+              </bibl>
+            </listBibl>
+          </additional>
+        </msDesc>
+      </sourceDesc>
+    </fileDesc>
+  </teiHeader>
+  <text><body><p></p></body></text>
+</TEI>

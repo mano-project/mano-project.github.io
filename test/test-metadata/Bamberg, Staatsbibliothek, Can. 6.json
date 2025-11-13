@@ -1,0 +1,263 @@
+[
+  {
+    "msTitle": "Bamberg, Staatsbibliothek, Can. 6",
+    "xmlLang": "de",
+    "publicationStmt": "CC0",
+    "msName": "Bamberg, Staatsbibliothek, Can. 6",
+    "collection": " Can. 6 ",
+    "msSigle": "B",
+    "altIdentifier": "C44",
+    "repository": {
+      "value": "Bamberg State Library (library)",
+      "uri": "http://www.wikidata.org/entity/Q324689"
+    },
+    "geoRepository": "49.891855555556, 10.882333333333",
+    "settlementIdent": {
+      "value": "Bamberg",
+      "uri": "https://www.wikidata.org/entity/Q3936"
+    },
+    "countryIdent": {
+      "value": "Germany",
+      "uri": "https://www.wikidata.org/entity/Q183"
+    },
+    "summaryContents": "Am Anfang ein neu eingebundener Quaternio von dünnerem, stark abgeriebenen Pergament, auf dem die Texte auf fol. 1–9 stehen. Der Prolog gehörte somit ursprünglich nicht zum Text, auch die Admonitio Synodalis und das Konzil von Seligenstadt sind nachträglich eingefügt worden. Die Blätter 3–5 dürften mit einem weiteren, verlorenen Blatt ursprünglich am Ende des Codex gestanden haben, hierauf ist die alte Zählweise der Blätter ein Hinweis. Die Admonitio Synodalis erscheint hier außerhalb des Ordos als einzelnes Dokument. Die Synode von Seligenstadt dürfte ursprünglich am Ende des Codex gestanden haben, sie bricht durch Blattverlust nach Can. 19 ab. ",
+    "condition": "Einige Beschädigungen der Seiten an Fol. 1–2, 92, 142, 145, 167, 183, 193, 217, 260, 282, 297, 312 zzgl. weitere kleine Schäden",
+    "material": "parchment",
+    "height": "33",
+    "width": "26",
+    "leaves": "312",
+    "columns": "2",
+    "lines": "30",
+    "hands": "",
+    "handsDesc": "",
+    "scriptNote-0": "Caroline minuscule",
+    "decoDesc": "",
+    "musicNotation": "",
+    "additions": "",
+    "accMat": "",
+    "bindingDesc": "",
+    "summaryProvenance": "Geschrieben in Worms im ¼ d. 11. Jahrhunderts. Eigentum Dombibliothek Bamberg.",
+    "origPlace": {
+      "value": "Worms (town in Rhineland-Palatinate, Germany)",
+      "uri": "http://www.wikidata.org/entity/Q3852"
+    },
+    "geoOrigin": "49.6302618, 8.3620898",
+    "countryOrigin": {
+      "value": "Germany",
+      "uri": "https://www.wikidata.org/entity/Q183"
+    },
+    "dateOriginText": "1000-1025",
+    "dateOriginNotBefore": "1000",
+    "dateOriginNotAfter": "1025",
+    "digi": "https://www.digitale-sammlungen.de/de/view/bsb00140701",
+    "iiifManifest": "https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb00140701/manifest",
+    "cat": "https://nbn-resolving.org/urn:nbn:de:bvb:22-dtl-0000025236",
+    "script": {
+      "value": "",
+      "uri": ""
+    },
+    "responsiblePersons": [
+      {
+        "name": "Michela",
+        "surname": "Parma",
+        "affiliation": {
+          "value": "Johannes Gutenberg University Mainz (public university in Mainz, Germany)",
+          "uri": "http://www.wikidata.org/entity/Q161982"
+        },
+        "ref": "0000-0003-1959-2897",
+        "resp": "edt"
+      }
+    ],
+    "msItems": [
+      {
+        "author": {
+          "value": "Burchard of Worms (Roman Catholic bishop)",
+          "uri": "http://www.wikidata.org/entity/Q62668"
+        },
+        "title": "Decretum",
+        "textLang": {
+          "value": "Latin (Indo-European language of the Italic branch)",
+          "uri": "http://www.wikidata.org/entity/Q397"
+        },
+        "incipit": "Bvrchardus solo nomine vvormaciinsis episcopvs.",
+        "explicit": "Sed in hęc ignem conflagrationis illius pertimescent inmortales atque in corruptibiles facti sunt uiuorum trium corruptibilia corpora atque mortalia in camino ardenti inlęsa uiuere non potuerunt.",
+        "textFamily": "Wormser Ordnung B",
+        "textSubFamily": "Deutsche Handschriftengruppe",
+        "textGenre": "",
+        "pageRanges": [
+          {
+            "from": "1r",
+            "to": "2v"
+          },
+          {
+            "from": "6r",
+            "to": "312r"
+          }
+        ]
+      },
+      {
+        "author": {
+          "value": "Unknown or Anonymous",
+          "uri": "https://www.wikidata.org/wiki/Q4233718"
+        },
+        "title": "Admonitio synodalis",
+        "textLang": {
+          "value": "Latin (Indo-European language of the Italic branch)",
+          "uri": "http://www.wikidata.org/entity/Q397"
+        },
+        "incipit": "Sermo synodalis qui in singulis synodis parrochianis synodus presbiteris est enunciandus. Fratres presbiteri et sacerdotes domini cooperatores ordinis nostri estis [...].",
+        "explicit": "[…] praestante domino nostro iesu christo qui cum patre et spiritu sancto uiuit et regnat deus per omnia saecula.",
+        "textFamily": "",
+        "textSubFamily": "",
+        "textGenre": "",
+        "pageRanges": [
+          {
+            "from": "3r",
+            "to": "4v"
+          }
+        ]
+      },
+      {
+        "author": {
+          "value": "Unknown or Anonymous",
+          "uri": "https://www.wikidata.org/wiki/Q4233718"
+        },
+        "title": "Synode von Seligenstadt",
+        "textLang": {
+          "value": "Latin (Indo-European language of the Italic branch)",
+          "uri": "http://www.wikidata.org/entity/Q397"
+        },
+        "incipit": "In dei nomine ego Aribo mogontinę sedis archiepiscopus quamuis indignus cum cęteris confribus nostris atque coepiscopus Burghardo Wormaciense quo Werinhario argentino Brunone augustense Eberhardo babenbergensi […]“",
+        "explicit": "Decretum est in eodem concilio ut omnis penitens dum carrinam ieiunet de loco ad locum non migregt [...]",
+        "textFamily": "",
+        "textSubFamily": "Erste Rezension",
+        "textGenre": "",
+        "pageRanges": [
+          {
+            "from": "4vb",
+            "to": "5v"
+          }
+        ]
+      }
+    ],
+    "handDesc": {
+      "hands": "",
+      "desc": ""
+    },
+    "scriptNotes": [
+      {
+        "value": "Caroline minuscule",
+        "uri": "http://vocab.getty.edu/aat/300195207"
+      }
+    ],
+    "seals": [],
+    "provenance": [
+      {
+        "name": {
+          "value": "Dombibliothek Bamberg",
+          "uri": ""
+        },
+        "type": "org",
+        "geo": {
+          "value": "49.89162, 10.8821",
+          "uri": ""
+        },
+        "date": "",
+        "notBefore": "",
+        "notAfter": "",
+        "settlement": {
+          "value": "Bamberg",
+          "uri": "https://www.wikidata.org/wiki/Q3936"
+        },
+        "country": {
+          "value": "Deutschland",
+          "uri": "https://www.wikidata.org/wiki/Q183"
+        }
+      }
+    ],
+    "literature": [
+      {
+        "title": "Die Konzilien Deutschlands und Reichsitaliens, 1023-1059",
+        "date": 2010,
+        "publisher": "Hahnsche Buchhandlung",
+        "pubPlace": "Hannover",
+        "authors": [
+          {
+            "forename": "Detlev",
+            "surname": "Jasper"
+          }
+        ],
+        "isbn": "9783775255028",
+        "ref": "https://openlibrary.org/works/OL16489010W",
+        "source": "openLibrary",
+        "series": "Monumenta Germaniae historica. Concilia -- tomus 8",
+        "language": "lat",
+        "citedRange": "9-50"
+      },
+      {
+        "title": "Die Konzilsordines des Fruh- und Hochmittelalters : (Ordines de Celebrando Concilio)",
+        "date": 1996,
+        "publisher": "Harrassowitz Verlag",
+        "pubPlace": "",
+        "authors": [
+          {
+            "forename": "Herbert",
+            "surname": "Schneider"
+          }
+        ],
+        "isbn": "9783447173087",
+        "ref": "https://openlibrary.org/works/OL35770824W",
+        "source": "openLibrary",
+        "series": "",
+        "language": "lat",
+        "citedRange": "483-487"
+      },
+      {
+        "title": "Le Pontifical Romano-Germanique Du Dixieme Siecle. Le Texte II (NN. XCIX-CCLVIII)",
+        "date": 1963,
+        "publisher": "Apostolica Vaticana",
+        "pubPlace": "",
+        "authors": [
+          {
+            "forename": "Vogel, Cyrille; Elze,",
+            "surname": "Reinhard"
+          }
+        ],
+        "isbn": "",
+        "ref": "https://openlibrary.org/works/OL35272715W",
+        "source": "openLibrary",
+        "series": "",
+        "language": ""
+      },
+      {
+        "title": "Das Dekret des Bischofs Burchard von Worms",
+        "date": 1991,
+        "publisher": "Monumenta Germaniae Historica",
+        "pubPlace": "Munchen",
+        "authors": [
+          {
+            "forename": "Hartmut",
+            "surname": "Hoffmann"
+          }
+        ],
+        "isbn": "3886120333",
+        "ref": "https://openlibrary.org/works/OL3380467W",
+        "source": "openLibrary",
+        "series": "Monumenta Germaniae Historica -- 12",
+        "language": "ger",
+        "citedRange": "61-62"
+      }
+    ],
+    "publicationStructured": {
+      "publisher": {
+        "name": "MANO - Manuscripts Online",
+        "ref": "https://mano-project.github.io/"
+      },
+      "licence": {
+        "name": "CC0",
+        "target": "https://creativecommons.org/publicdomain/zero/1.0/"
+      },
+      "date": "2025-11-12"
+    }
+  }
+]

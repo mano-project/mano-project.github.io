@@ -110,26 +110,58 @@
           
           <h1 class="page-title">Transcription Viewer</h1>
 
-          <div class="row align-items-end my-4">
+          <div class="row align-items-end mt-4">
             <!-- Button column -->
-            <div class="col-md-auto mb-3 mb-md-0">
+            <!--<div class="col-md-auto mb-3 mb-md-0">
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#infoTranscriptionViewer" aria-label="Open About Transcription Viewer">
+                <i class="bi bi-info-circle"></i> About Transcription Viewer
+              </button>
+            </div>-->
+
+            <div class="col-12 col-md-4 d-flex justify-content-start mb-2 mb-md-0">
               <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#infoTranscriptionViewer" aria-label="Open About Transcription Viewer">
                 <i class="bi bi-info-circle"></i> About Transcription Viewer
               </button>
             </div>
 
-            <!-- File input column -->
+            
+
+            <!-- File input column
             <div class="col-md mb-3 mb-md-0">
               <label for="xmlFileInput" class="form-label">Upload TEI-XML</label>
               <input class="form-control" type="file" id="xmlFileInput" accept=".xml">
+            </div>-->
+
+            <div class="col-12 col-md-4 text-start text-md-center mb-2 mb-md-0">
+              <label for="xmlFileInput" class="form-label">Upload TEI-XML transcription</label>
+              <input class="form-control" type="file" id="xmlFileInput" accept=".xml">
             </div>
 
-            <div class="col-md-auto mb-3 mb-md-0">
+            
+
+            <!--<div class="col-md-auto mb-3 mb-md-0">
+              <button type="button" class="btn btn-outline-secondary"
+                onclick="window.location.href='converter.html'" aria-label="Go to Convert PAGE-XML into TEI-XML">
+                Convert PAGE-XML into TEI-XML
+              </button>
+            </div>-->
+
+            <div class="col-12 col-md-4 d-flex justify-content-start justify-content-md-end">
               <button type="button" class="btn btn-outline-secondary"
                 onclick="window.location.href='converter.html'" aria-label="Go to Convert PAGE-XML into TEI-XML">
                 Convert PAGE-XML into TEI-XML
               </button>
             </div>
+
+          </div>
+
+          <div class="mt-3 mb-5  d-flex flex-column flex-md-row justify-content-center gap-2">
+            <button id="loadSampleBtn" class="btn btn-outline-secondary btn-sm" type="button">
+              <i class="bi bi-file-earmark-text"></i> Load sample
+            </button>
+            <button id="clearAllBtn" class="btn btn-outline-danger btn-sm" type="button">
+              <i class="bi bi-x-circle"></i> Clear all
+            </button>
           </div>
 
 
@@ -211,7 +243,6 @@
                 <a class="footer-link mx-2" href="collection.html">Metadata Collection</a>
                 <a class="footer-link mx-2" href="viewer.html">Transcription Viewer</a>
                 <a class="footer-link mx-2" href="about.html">About</a>
-                <a class="footer-link mx-2" href="imprint.html">Imprint & Privacy</a>
             </div>
 
             <!-- Copyright centered -->
@@ -224,7 +255,7 @@
         <div class="py-1 text-center">
             <small>
             <span class="m-1">
-                Idea and Development: <a href="https://github.com/michelaparma" target="_blank" style="color: black!important">Michela Parma</a>
+                <a href="imprint.html" style="color: black!important">Imprint & Privacy</a>
             </span> |
             <span class="m-1">
                 <a href="https://github.com/orgs/mano-project/repositories" target="_blank" style="color: black!important"><i class="fa-brands fa-github"></i> GitHub Repositories</a>
@@ -455,6 +486,55 @@ function downloadXML() {
     currentZoom = Math.max(0.2, Math.min(4, currentZoom + delta)); // Limit zoom range
     img.style.transform = `scale(${currentZoom})`;
   }
+
+
+
+  // --- Load Sample Button (TEI-XML version) ---
+document.getElementById("loadSampleBtn")?.addEventListener("click", async () => {
+  try {
+    const response = await fetch("test/test-transcription/bamberg-sb-c-6-06.xml");
+    if (!response.ok) throw new Error("Failed to load sample XML");
+
+    const xmlText = await response.text();
+
+    // Simulate file upload so existing logic is reused
+    const sampleFile = new File([xmlText], "bamberg-sb-c-6-06.xml", { type: "application/xml" });
+    const fileInput = document.getElementById("xmlFileInput");
+
+    // Clear current editor and page content
+    codeMirrorEditor.setValue("");
+    document.getElementById("styledOutput").innerHTML = "";
+    document.getElementById("pageImage").src = "";
+
+    const dataTransfer = new DataTransfer();
+    dataTransfer.items.add(sampleFile);
+    fileInput.files = dataTransfer.files;
+
+    // Trigger the same file upload logic already defined
+    fileInput.dispatchEvent(new Event("change", { bubbles: true }));
+
+  } catch (error) {
+    alert("Could not load sample XML: " + error.message);
+  }
+});
+
+// --- Clear All Button ---
+document.getElementById("clearAllBtn")?.addEventListener("click", () => {
+  if (confirm("This will clear the loaded transcription. Proceed?")) {
+    // Clear editor content
+    codeMirrorEditor.setValue("");
+
+    // Clear preview panels
+    document.getElementById("styledOutput").innerHTML = "";
+    document.getElementById("pageImage").src = "";
+    document.getElementById("pageSelector").innerHTML = "<option></option>";
+
+    // Reset pages array
+    pages = [];
+    currentPageIndex = 0;
+  }
+});
+
 
 </script>
     </body>
