@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" translate="no" class="notranslate" lang="en">
     <head>
-        <title>MANO - Maps | Visualizing Libraries and Origin Places</title>
-        <meta name="keywords" content="manuscript maps, provenance, origin, digital humanities, data visualization, GIS, MANO">
+        <title>MANO - Maps | Visualizing Current Location and Origin Location</title>
+        <meta name="keywords" content="maps, provenance, origin, digital humanities, data visualization, GIS, MANO">
         <meta name="description" content="Explore interactive maps visualizing the geographic origins and current locations of manuscripts in the MANO Metadata Collection.">
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0 shrink-to-fit=no"/>
@@ -12,7 +12,7 @@
         <link rel="alternate" hreflang="en" href="URL">
         <meta property="og:type" content="website">
         <meta property="og:title" content="MANO – Maps">
-        <meta property="og:description" content="Interactive visualization of manuscript origins and repositories from the MANO Metadata Collection.">
+        <meta property="og:description" content="Interactive maps visualizing the current location and origin place of manuscripts described in the MANO Metadata Collection.">
         <meta property="og:image" content="https://mano-project.github.io/images/MANO.png">
         <meta property="og:url" content="https://mano-project.github.io/maps.html">
 
@@ -22,7 +22,7 @@
             "@type": "WebPage",
             "name": "MANO – Maps",
             "url": "https://mano-project.github.io/maps.html",
-            "description": "Interactive maps visualizing the current storage and origin place of manuscripts described in the MANO Metadata Collection.",
+            "description": "Interactive maps visualizing the current location and origin place of manuscripts described in the MANO Metadata Collection.",
             "isPartOf": {
                 "@type": "Dataset",
                 "name": "MANO Metadata Collection"
@@ -103,13 +103,13 @@
             
         <button onclick="history.back()" class="btn back-btn btn-sm btn-outline-secondary" aria-label="Go back">Back</button>
             
-        <h1 class="page-title">Manuscript Maps</h1>
+        <h1 class="page-title">Maps</h1>
 
         <div class="row my-4 align-items-end">
           <!-- Left column -->
           <div class="col-12 col-md-6 d-flex justify-content-start mb-2 mb-md-0">
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#infoMaps" aria-label="Open About Manuscript Maps">
-              <i class="bi bi-info-circle"></i> About Manuscript Maps
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#infoMaps" aria-label="Open About Maps">
+              <i class="bi bi-info-circle"></i> About Maps
             </button>
           </div>
         </div>
@@ -119,14 +119,14 @@
           <div class="modal-dialog modal-lg">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="infoMapsLabel">About Manuscript Maps</h5>
+                <h5 class="modal-title" id="infoMapsLabel">About Maps</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
                 <p>
-                    The Manuscript Maps visualize the geographical distribution of manuscripts recorded in the MANO database. 
-                    Two maps are displayed side by side: the first shows the current place of storage (the library or institution where the manuscript is preserved today), 
-                    while the second shows the place of origin (the location where the manuscript was produced).
+                    The Maps visualize the geographical distribution of manuscripts recorded in the MANO database. 
+                    Two maps are displayed side by side: the first shows the current location (the library or institution where the manuscript is preserved today), 
+                    while the second shows the origin location (the location where the manuscript was produced).
                     </p>
                     <p>
                     Each marker represents one or more manuscripts. By clicking on a marker, you can view the list of manuscripts connected to that location and access their metadata in the <a href="collection.html" target="_blank">Metadata Collection</a>.
@@ -142,11 +142,11 @@
         <div class="container mb-5">
             <div class="row">
                 <div class="col-12 col-md-6">
-                    <h4 style="color:#eeba2b;" class="text-center">Place of Storage (Current Library)</h4>
+                    <h4 style="color:#eeba2b;" class="text-center">Current Location</h4>
                     <div id="mapCurrent"></div>
                 </div>
                 <div class="col-12 col-md-6">
-                    <h4 style="color:#eeba2b;" class="text-center">Places of Origin</h4>
+                    <h4 style="color:#eeba2b;" class="text-center">Origin Location</h4>
                     <div id="mapOrigin"></div>
                 </div>
             </div>
