@@ -4,7 +4,7 @@
     <fileDesc>
       <titleStmt>
         <title type="main">Bamberg_Staatsbibliothek_Can_6</title> 
-          <respStmt ref="0000-0003-1959-2897"> 
+          <respStmt ref="https://orcid.org/0000-0003-1959-2897"> 
           <resp ref="http://id.loc.gov/vocabulary/relators/edt.html">editor</resp>
           <persName>
             <forename>Michela</forename>
@@ -20,7 +20,7 @@
             <p>CC0</p>
           </licence>
         </availability>
-        <date when="2025-11-12"/>
+        <date when="2025-11-30"/>
       </publicationStmt>
       <sourceDesc>
         <msDesc>

@@ -1,6 +1,6 @@
 [
   {
-    "msTitle": "Bamberg, Staatsbibliothek, Can. 6",
+    "msTitle": "Bamberg_Staatsbibliothek_Can_6",
     "xmlLang": "de",
     "publicationStmt": "CC0",
     "msName": "Bamberg, Staatsbibliothek, Can. 6",
@@ -64,7 +64,7 @@
           "value": "Johannes Gutenberg University Mainz (public university in Mainz, Germany)",
           "uri": "http://www.wikidata.org/entity/Q161982"
         },
-        "ref": "0000-0003-1959-2897",
+        "ref": "https://orcid.org/0000-0003-1959-2897",
         "resp": "edt"
       }
     ],
@@ -177,75 +177,80 @@
     ],
     "literature": [
       {
+        "type": "",
+        "ref": "https://openlibrary.org/works/OL16489010W",
         "title": "Die Konzilien Deutschlands und Reichsitaliens, 1023-1059",
-        "date": 2010,
-        "publisher": "Hahnsche Buchhandlung",
+        "date": "2010",
+        "citedRange": "9-50",
         "pubPlace": "Hannover",
+        "publisher": "Hahnsche Buchhandlung",
+        "series": "Monumenta Germaniae historica. Concilia -- tomus 8",
+        "isbn": "9783775255028",
         "authors": [
           {
             "forename": "Detlev",
             "surname": "Jasper"
           }
         ],
-        "isbn": "9783775255028",
-        "ref": "https://openlibrary.org/works/OL16489010W",
-        "source": "openLibrary",
-        "series": "Monumenta Germaniae historica. Concilia -- tomus 8",
-        "language": "lat",
-        "citedRange": "9-50"
+        "editors": [],
+        "source": "openLibrary"
       },
       {
+        "type": "",
+        "ref": "https://openlibrary.org/works/OL35770824W",
         "title": "Die Konzilsordines des Fruh- und Hochmittelalters : (Ordines de Celebrando Concilio)",
-        "date": 1996,
-        "publisher": "Harrassowitz Verlag",
+        "date": "1996",
+        "citedRange": "483-487",
         "pubPlace": "",
+        "publisher": "Harrassowitz Verlag",
+        "series": "",
+        "isbn": "9783447173087",
         "authors": [
           {
             "forename": "Herbert",
             "surname": "Schneider"
           }
         ],
-        "isbn": "9783447173087",
-        "ref": "https://openlibrary.org/works/OL35770824W",
-        "source": "openLibrary",
-        "series": "",
-        "language": "lat",
-        "citedRange": "483-487"
+        "editors": [],
+        "source": "openLibrary"
       },
       {
+        "type": "",
+        "ref": "https://openlibrary.org/works/OL35272715W",
         "title": "Le Pontifical Romano-Germanique Du Dixieme Siecle. Le Texte II (NN. XCIX-CCLVIII)",
-        "date": 1963,
-        "publisher": "Apostolica Vaticana",
+        "date": "1963",
+        "citedRange": "",
         "pubPlace": "",
+        "publisher": "Apostolica Vaticana",
+        "series": "",
+        "isbn": "",
         "authors": [
           {
             "forename": "Vogel, Cyrille; Elze,",
             "surname": "Reinhard"
           }
         ],
-        "isbn": "",
-        "ref": "https://openlibrary.org/works/OL35272715W",
-        "source": "openLibrary",
-        "series": "",
-        "language": ""
+        "editors": [],
+        "source": "openLibrary"
       },
       {
+        "type": "",
+        "ref": "https://openlibrary.org/works/OL3380467W",
         "title": "Das Dekret des Bischofs Burchard von Worms",
-        "date": 1991,
-        "publisher": "Monumenta Germaniae Historica",
+        "date": "1991",
+        "citedRange": "61-62",
         "pubPlace": "Munchen",
+        "publisher": "Monumenta Germaniae Historica",
+        "series": "Monumenta Germaniae Historica -- 12",
+        "isbn": "3886120333",
         "authors": [
           {
             "forename": "Hartmut",
             "surname": "Hoffmann"
           }
         ],
-        "isbn": "3886120333",
-        "ref": "https://openlibrary.org/works/OL3380467W",
-        "source": "openLibrary",
-        "series": "Monumenta Germaniae Historica -- 12",
-        "language": "ger",
-        "citedRange": "61-62"
+        "editors": [],
+        "source": "openLibrary"
       }
     ],
     "publicationStructured": {
@@ -257,7 +262,7 @@
         "name": "CC0",
         "target": "https://creativecommons.org/publicdomain/zero/1.0/"
       },
-      "date": "2025-11-12"
+      "date": "2025-11-30"
     }
   }
 ]

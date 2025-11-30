@@ -3004,7 +3004,7 @@ function limitYearLength(el) {
 // --- Load Sample Button (XML version) ---
 document.getElementById("loadSampleBtn")?.addEventListener("click", async () => {
   try {
-    const response = await fetch("test/test-metadata/Bamberg, Staatsbibliothek, Can. 6.xml");
+    const response = await fetch("test/test-metadata/Bamberg_Staatsbibliothek_Can_6.xml");
     if (!response.ok) throw new Error("Failed to load XML sample");
 
     const xmlText = await response.text();
