@@ -111,7 +111,7 @@
             <origin><origPlace ref="http://www.wikidata.org/entity/Q3852">Worms (town in Rhineland-Palatinate, Germany)</origPlace>
               <geo>49.6302618, 8.3620898</geo>
               <country ref="https://www.wikidata.org/entity/Q183">Germany</country>
-              <origDate notBefore="1000" notAfter="1025">1000-1025</origDate>
+              <origDate notBefore="1000" notAfter="1025">Erste Viertel 11. Jahrhundert</origDate>
             </origin> 
             <provenance>
               <name type="org">Dombibliothek Bamberg</name>
