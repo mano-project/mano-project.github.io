@@ -132,13 +132,22 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                  <p>The Metadata Editor enables the structured creation and management of manuscript metadata in full compliance with the <a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/MS.html" target="_blank">TEI P5 Manuscript Description guidelines</a>. A single session may include the description of one or multiple manuscripts. Each manuscript can be exported in TEI-XML or JSON formats, while all manuscripts described during the session may also be downloaded collectively in JSON.
+                  <p>The Metadata Editor enables the structured creation and management of manuscript metadata in full compliance with the <a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/MS.html" target="_blank">TEI P5 Manuscript Description guidelines</a>. A single session may include the description of one or multiple manuscripts. Each manuscript can be exported in <strong>TEI-XML or JSON</strong> formats, while all manuscripts described during the session may also be downloaded collectively in JSON.
                   </p>
                   <p>
-                    Existing metadata files, provided in JSON or TEI-XML, may be reloaded into the editor. When the file is compliant with the metadata structre implemented in MANO, the information is automatically restored into the form, allowing previously interrupted work to be resumed seamlessly without the need for manual re-entry.
+                    You may also <strong>upload existing metadata</strong> in JSON or TEI-XML. When the file follows the structure implemented in MANO, all information is automatically restored into the form, allowing you to continue working without re-entering data manually.
+                  </p>
+                  <p>Fields marked with the <strong>icon</strong> <a href="#"><i class="bi bi-box-arrow-up-right"></i></a> connect directly to the corresponding documentation for quick reference.</p>
+                  <p>The editor includes several helper functions:
+                    <ul>
+                      <li><strong>Preview</strong> generates a live TEI-XML representation of the description in a modal window, allowing you to review the XML structure without downloading it.</li>
+                      <li><strong>Validate</strong> performs consistency and completeness checks based on required fields and data-type constraints.</li>
+                      <li><strong>Load sample</strong> imports a complete, real manuscript description to help users explore how TEI elements map to the form.</li>
+                      <li><strong>Clear all</strong> removes all manuscript descriptions from the session.</li>
+                    </ul>
                   </p>
                   <p>
-                    JSON metadata files can be uploaded to the 
+                    Completed JSON files may be contributed to the
                     <a href="https://github.com/mano-project/mano-metadata/tree/main/data" target="_blank">MANO GitHub repository</a>. The 
                     records will be publicly accessible in the
                     <a href="collection.html">MANO Metadata Collection</a>, enriching the shared digital resource for manuscript research.

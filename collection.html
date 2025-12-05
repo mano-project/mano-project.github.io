@@ -148,10 +148,14 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
-                <p>The Metadata Collection provides an overview of all manuscript descriptions that have been contributed by users into the MANO project repository. Each row in the table represents a single manuscript, with metadata such as title, repository, location, material, and links to digital copies. The filtering interface allows the metadata to be refined by country, century, responsible person, or by searching titles and repositories.</p>
-                <p>To contribute new metadata, manuscripts must first be described in the <a href="editor.html">Metadata Editor</a> and downloaded in JSON format. The resulting JSON file can then be uploaded directly to the <a href="https://github.com/mano-project/mano-metadata/tree/main" target="_blank">MANO GitHub repository</a>, or by clicking the "Contribute to the Collection" button on this page. After the submission is reviewed and accepted by the project team, the new records will automatically appear in this collection.
+                <p>The Metadata Collection provides an overview of all <strong>manuscript descriptions contributed by users</strong>. 
+                Each row in the table represents a single manuscript, displaying key metadata such as name, repository, location, and links to digital surrogates. The <strong>filtering interface</strong> allows the data to be refined by responsible person, language of data entry, repositories, authors and other.
                 </p>
-                <p>Contributors must have a GitHub account in order to submit files directly. Alternatively, metadata files may be sent via email to the project team, who will handle the upload process. Every contribution helps expand the shared digital resource, and participation in enriching the Metadata Collection is greatly appreciated.
+                <p>In addition to the tabular view, the collection includes a <strong>map visualisation</strong> that offers a geographical overview of manuscript origins and current locations. This provides an intuitive way to explore spatial patterns in the dataset.</p>
+                
+                <p>To <strong>contribute new metadata</strong>, manuscripts must first be described using the <a href="editor.html">Metadata Editor</a> and exported in JSON format. The resulting file can then be uploaded directly to the <a href="https://github.com/mano-project/mano-metadata/tree/main" target="_blank">MANO GitHub repository</a>, or by clicking the "Contribute to the Collection" button on this page. After submitting the files, new records will automatically appear in the collection.
+                </p>
+                <p>Every contribution helps expand the shared digital resource, and participation in enriching the Metadata Collection is greatly appreciated.
                 </p>
               </div>
               <div class="modal-footer">
@@ -381,13 +385,31 @@
       const modalBody = document.getElementById("recordModalBody");
       modalBody.innerHTML = ""; 
 
-      const addLink = (field) => {
+      /*const addLink = (field) => {
         if (!field) return "";
         if (typeof field === "object" && field.value) {
           return field.uri ? `<a href="${field.uri}" target="_blank">${field.value}</a>` : field.value;
         }
         return field;
+      };*/
+
+      const addLink = (field) => {
+        if (!field) return "";
+
+        // LOD-style object { value, uri }
+        if (typeof field === "object") {
+          const val = field.value || "";
+          if (!val) return ""; // avoid "[object Object]" when empty
+
+          return field.uri
+            ? `<a href="${field.uri}" target="_blank">${val}</a>`
+            : val;
+        }
+
+        // Plain string
+        return field;
       };
+
 
       const section = (title, content) => `
         <div class="mb-4">
@@ -498,10 +520,26 @@
       //HISTORY
       const history = `
         <p><strong>Summary:</strong> ${entry.summaryProvenance || ""}</p>
-        <p><strong>Place of origin:</strong> ${addLink(entry.origPlace)}, ${
-          entry.countryOrigin ? `${addLink(entry.countryOrigin)}` : ""
+        <p><strong>Place of Origin:</strong> ${
+          entry.origPlace && entry.origPlace.value ? addLink(entry.origPlace) : ""
+        }${
+          entry.countryOrigin && entry.countryOrigin.value
+            ? `${entry.origPlace && entry.origPlace.value ? ", " : ""}${addLink(entry.countryOrigin)}`
+            : ""
         }</p>
-        <p><strong>Date of origin:</strong> ${entry.dateOriginText || ""} (${entry.dateOriginNotBefore || ""}-${entry.dateOriginNotAfter || ""})</p>
+        
+        <p><strong>Date of origin:</strong> ${
+          // 1. Free-text date
+          entry.dateOriginText
+            ? entry.dateOriginText
+
+            // 2. Structured range (only if at least one value exists)
+            : (entry.dateOriginNotBefore || entry.dateOriginNotAfter)
+                ? `(${entry.dateOriginNotBefore || ""} – ${entry.dateOriginNotAfter || ""})`
+                : ""
+
+        }</p>
+
        
         ${
           (entry.provenance && entry.provenance.length > 0)

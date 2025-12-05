@@ -113,11 +113,11 @@ function addManuscriptForm(data = {}, shouldScroll = true) {
                                     </div>
                                     <div class="col-md">
                                         <label class="form-label">Settlement<a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-settlement.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></label>
-                                        <input type="text" class="form-control" placeholder="Library settlement" name="settlementIdent" value="${data.settlementIdent || ''}">
+                                        <input type="text" class="form-control lod-autocomplete" data-lod="wikidata-place" placeholder="Library settlement" name="settlementIdent" value="${data.settlementIdent || ''}">
                                     </div>
                                     <div class="col-md">
                                         <label class="form-label">Country<a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-country.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></label>
-                                        <input type="text" class="form-control" placeholder="Library country" name="countryIdent" value="${data.countryIdent || ''}">
+                                        <input type="text" class="form-control lod-autocomplete" data-lod="wikidata-place" placeholder="Library country" name="countryIdent" value="${data.countryIdent || ''}">
                                     </div>
                                 </div>
                             </fieldset>
@@ -278,7 +278,7 @@ function addManuscriptForm(data = {}, shouldScroll = true) {
                                     </div>  
                                     <div class="col-md">
                                         <label class="form-label">Country</label>
-                                        <input type="text" class="form-control" name="countryOrigin" value="${data.countryOrigin || ''}" placeholder="Origin place country">
+                                        <input type="text" class="form-control lod-autocomplete" data-lod="wikidata-place" name="countryOrigin" value="${data.countryOrigin || ''}" placeholder="Origin place country">
                                     </div>
                                     
                                        
@@ -447,7 +447,7 @@ function addRespPerson(button) {
         <input type="text" class="form-control" name="respStmtSurname-${index}" placeholder="Enter surname of responsible person">
       </div>
       <div class="col-md-3">
-        <label class="form-label">Responsibility</label>
+        <label class="form-label">Responsibility<a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-textLang.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="Responsability Documentation"><i class="bi bi-box-arrow-up-right"></i></a></label>
         <select class="form-select" name="respStmtResp-${index}">
           <option value="">Please select</option>
           <option value="com">Compiler</option>
@@ -491,8 +491,18 @@ function addMsItem(button, itemData = {}) {
   block.className = 'border rounded p-3 mb-3 bg-light';
   block.innerHTML = `
     <div class="d-flex justify-content-between align-items-center mb-2">
-      <strong>Content ${index + 1}</strong>
-      <button type="button" class="btn btn-sm btn-danger" onclick="this.closest('.border').remove()" aria-label="Delete">Delete</button>
+      <strong class="msitem-label">Content ${index + 1}</strong>
+      <div class="btn-group btn-group-sm" role="group" aria-label="Content controls">
+        <button type="button" class="btn btn-outline-secondary" onclick="moveMsItem(this, -1)" data-bs-toggle="tooltip" data-bs-placement="top" title="Move content up" >
+          <i class="bi bi-arrow-up"></i>
+        </button>
+        <button type="button" class="btn btn-outline-secondary" onclick="moveMsItem(this, 1)" data-bs-toggle="tooltip" data-bs-placement="top" title="Move content down">
+          <i class="bi bi-arrow-down"></i>
+        </button>
+        <button type="button" class="btn btn-danger" onclick="deleteMsItem(this)">
+          Delete
+        </button>
+      </div>
     </div>
 
     <div class="row mb-2">
@@ -553,6 +563,8 @@ function addMsItem(button, itemData = {}) {
   `;
   
   container.appendChild(block);
+  renumberMsItems(container);
+
 
   block.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(el => {
     new bootstrap.Tooltip(el);
@@ -626,6 +638,48 @@ function addPageRange(button, msItemIndex, preset = []) {
   `;
   container.appendChild(div);
 }
+
+function renumberMsItems(msitemContainer) {
+  if (!msitemContainer) return;
+
+  const blocks = Array.from(msitemContainer.children)
+    .filter(el => el.classList.contains('border'));
+
+  blocks.forEach((block, i) => {
+    const label = block.querySelector('.msitem-label');
+    if (label) {
+      label.textContent = `Content ${i + 1}`;
+    }
+  });
+}
+
+function deleteMsItem(button) {
+  const block = button.closest('.border');
+  if (!block) return;
+
+  const container = block.parentElement;
+  block.remove();
+  renumberMsItems(container);
+}
+
+function moveMsItem(button, direction) {
+  const block = button.closest('.border');
+  if (!block) return;
+
+  const container = block.parentElement;
+  if (!container) return;
+
+  if (direction < 0 && block.previousElementSibling) {
+    // Move up
+    container.insertBefore(block, block.previousElementSibling);
+  } else if (direction > 0 && block.nextElementSibling) {
+    // Move down
+    container.insertBefore(block.nextElementSibling, block);
+  }
+
+  renumberMsItems(container);
+}
+
 
 function addProvenanceItem(button, itemData = {}) {
   const fieldset = button.closest('fieldset');
@@ -1276,23 +1330,28 @@ function buildXML(data, formId) {
           <msContents>
             <summary>${escapeXml(data.summaryContents)}</summary>
             ${(data.msItems || []).map((item, idx) => {
-              const authorField = getFieldValueAndUri(form, `msItemAuthor-${idx}`);
-              const langField = getFieldValueAndUri(form, `msItemLang-${idx}`);
+              const authorField = item.author || { value: '', uri: '' };
+              const langField   = item.textLang || { value: '', uri: '' };
+
               return `
             <msItem n="${idx + 1}"> 
-            <locusGrp>${(item.pageRanges || []).map(pr => `<locus from="${escapeXml(pr.from)}" to="${escapeXml(pr.to)}"/>`).join('\n')}</locusGrp>
-            ${xmlWithRef('author', authorField)}
-              <title>${escapeXml(item.title)}</title>
+              <locusGrp>${(item.pageRanges || []).map(pr =>
+                `<locus from="${escapeXml(pr.from || '')}" to="${escapeXml(pr.to || '')}"/>`
+              ).join('\n')}</locusGrp>
+              ${xmlWithRef('author', authorField)}
+              <title>${escapeXml(item.title || '')}</title>
               ${langField.value
                 ? `<textLang${langField.uri ? ` source="${escapeXml(langField.uri)}"` : ''}>${escapeXml(langField.value)}</textLang>`
                 : ''
               }
-              <incipit>${escapeXml(item.incipit)}</incipit>
-              <explicit>${escapeXml(item.explicit)}</explicit>
-              <note type="textual-family">${escapeXml(item.textFamily)}</note>
-              <note type="textual-subfamily">${escapeXml(item.textSubFamily)}</note>
-              <note type="text-genre">${escapeXml(item.textGenre)}</note>
-            </msItem>`;}).join('\n')}
+              <incipit>${escapeXml(item.incipit || '')}</incipit>
+              <explicit>${escapeXml(item.explicit || '')}</explicit>
+              <note type="textual-family">${escapeXml(item.textFamily || '')}</note>
+              <note type="textual-subfamily">${escapeXml(item.textSubFamily || '')}</note>
+              <note type="textual-genre">${escapeXml(item.textGenre || '')}</note>
+            </msItem>`;
+            }).join('\n')}
+
           </msContents>
           <physDesc>
             <objectDesc>
