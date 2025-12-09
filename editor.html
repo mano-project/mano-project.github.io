@@ -16,6 +16,11 @@
         <meta property="og:image" content="https://mano-project.github.io/images/MANO.png">
         <meta property="og:url" content="https://mano-project.github.io/editor.html">
 
+        <!-- CodeMirror CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/eclipse.min.css">
+
+
         <script type="application/ld+json">
         {
           "@context": "https://schema.org",
@@ -216,7 +221,9 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
-                <pre id="modalXmlContent" class="bg-light p-3 border"></pre>
+                <!--<pre id="modalXmlContent" class="bg-light p-3 border"></pre>-->
+                <textarea id="xmlPreviewEditor" class="bg-light p-3 border"></textarea>
+
               </div>
             </div>
           </div>
@@ -266,6 +273,10 @@
 
         <script src="JS/metadata-new.js"></script>
         <script src="JS/validation.js"></script>
+        <!-- CodeMirror core + XML mode -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/xml/xml.min.js"></script>
+
 
     </body>
 

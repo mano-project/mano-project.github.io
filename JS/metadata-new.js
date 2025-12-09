@@ -1,3 +1,4 @@
+let xmlPreviewCM = null;
 
 let manuscriptCounter = 0;
 const container = document.getElementById('manuscriptFormsContainer');
@@ -46,7 +47,6 @@ function addManuscriptForm(data = {}, shouldScroll = true) {
                                       </select>
                                     </div>
 
-                                    
                                     <div class="col-md-2">
                                         <label class="form-label">License <span class="required-star" data-bs-toggle="tooltip" title="Required field">*</span> <a href="https://creativecommons.org/share-your-work/cclicenses/" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="Visit link"><i class="bi bi-box-arrow-up-right"></i></a></label>
                                         <select class="form-select" name="publicationStmt">
@@ -206,45 +206,43 @@ function addManuscriptForm(data = {}, shouldScroll = true) {
                                         placeholder="Describe hands characteristics">
                                 </div>
                               </div>
-                                
-                                
-                                <div class="mb-3">
-                                  <label class="form-label">Script descriptions<a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-scriptNote.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></label>
-                                  <div class="scriptDesc-container"></div>
-                                  <button type="button" class="btn btn-sm btn-outline-primary mt-2" onclick="addScriptNote(this)" aria-label="Add script">Add script</button>
-                                </div>
+                           
+                              <div class="mb-3">
+                                <label class="form-label">Script descriptions<a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-scriptNote.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></label>
+                                <div class="scriptDesc-container"></div>
+                                <button type="button" class="btn btn-sm btn-outline-primary mt-2" onclick="addScriptNote(this)" aria-label="Add script">Add script</button>
+                              </div>
 
-                                <div class="mb-3">
-                                  <label class="form-label">Decoration<a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-decoDesc.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></label>
-                                  <textarea class="form-control autosize" name="decoDesc" placeholder="Describe decoration">${data.decoDesc || ''}</textarea>
-                                </div>
+                              <div class="mb-3">
+                                <label class="form-label">Decoration<a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-decoDesc.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></label>
+                                <textarea class="form-control autosize" name="decoDesc" placeholder="Describe decoration">${data.decoDesc || ''}</textarea>
+                              </div>
 
-                                <div class="mb-3">
-                                  <label class="form-label">Music notation<a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-musicNotation.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></label>
-                                  <textarea class="form-control autosize" name="musicNotation" placeholder="Describe musical notation">${data.musicNotation || ''}</textarea>
-                                </div>
+                              <div class="mb-3">
+                                <label class="form-label">Music notation<a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-musicNotation.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></label>
+                                <textarea class="form-control autosize" name="musicNotation" placeholder="Describe musical notation">${data.musicNotation || ''}</textarea>
+                              </div>
 
-                                <div class="mb-3">
-                                  <label class="form-label">Additions<a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-additions.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></label>
-                                  <textarea class="form-control autosize" name="additions" placeholder="Describe additions (any significant additions found within a manuscript, such as marginalia or other annotations)">${data.additions || ''}</textarea>
-                                </div>
+                              <div class="mb-3">
+                                <label class="form-label">Additions<a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-additions.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></label>
+                                <textarea class="form-control autosize" name="additions" placeholder="Describe additions (any significant additions found within a manuscript, such as marginalia or other annotations)">${data.additions || ''}</textarea>
+                              </div>
 
-                                <div class="mb-3">
-                                  <label class="form-label">Accompanying material<a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-accMat.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></label>
-                                  <textarea class="form-control autosize" name="accMat" placeholder="Describe accompanying material (any significant additional material which may be closely associated with the manuscript being described, such as non-contemporaneous documents or fragments bound in with it at some earlier historical period)">${data.accMat || ''}</textarea>
-                                </div>
+                              <div class="mb-3">
+                                <label class="form-label">Accompanying material<a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-accMat.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></label>
+                                <textarea class="form-control autosize" name="accMat" placeholder="Describe accompanying material (any significant additional material which may be closely associated with the manuscript being described, such as non-contemporaneous documents or fragments bound in with it at some earlier historical period)">${data.accMat || ''}</textarea>
+                              </div>
 
-                                <div class="mb-3">
-                                  <label class="form-label">Binding<a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-bindingDesc.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></label>
-                                  <textarea class="form-control autosize" name="bindingDesc" placeholder="Describe the binding">${data.bindingDesc || ''}</textarea>
-                                </div>
+                              <div class="mb-3">
+                                <label class="form-label">Binding<a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-bindingDesc.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></label>
+                                <textarea class="form-control autosize" name="bindingDesc" placeholder="Describe the binding">${data.bindingDesc || ''}</textarea>
+                              </div>
 
-                                <div class="mb-3">
-                                  <label class="form-label">Seals<a href="https://www.tei-c.org/release/doc/tei-p5-doc/it/html/ref-sealDesc.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></label>
-                                  <div class="sealDesc-container"></div>
-                                  <button type="button" class="btn btn-sm btn-outline-primary mt-2" onclick="addSeal(this)" aria-label="Add seal">Add seal</button>
-                                </div>
-
+                              <div class="mb-3">
+                                <label class="form-label">Seals<a href="https://www.tei-c.org/release/doc/tei-p5-doc/it/html/ref-sealDesc.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></label>
+                                <div class="sealDesc-container"></div>
+                                <button type="button" class="btn btn-sm btn-outline-primary mt-2" onclick="addSeal(this)" aria-label="Add seal">Add seal</button>
+                              </div>
                             </fieldset>
                         </div>
                     </div>
@@ -279,9 +277,7 @@ function addManuscriptForm(data = {}, shouldScroll = true) {
                                     <div class="col-md">
                                         <label class="form-label">Country</label>
                                         <input type="text" class="form-control lod-autocomplete" data-lod="wikidata-place" name="countryOrigin" value="${data.countryOrigin || ''}" placeholder="Origin place country">
-                                    </div>
-                                    
-                                       
+                                    </div>    
                                 </div>
                                 <div class="row mb-3">   
                                     <div class="col-md-6">
@@ -373,8 +369,6 @@ function addManuscriptForm(data = {}, shouldScroll = true) {
             </form>
         </div>
 
-        
-
         <div class="mt-3 manuscript-footer">
           <div class="d-flex flex-column flex-md-row justify-content-md-between align-items-stretch gap-2">
 
@@ -400,11 +394,6 @@ function addManuscriptForm(data = {}, shouldScroll = true) {
 
           </div>
         </div>
-        
-
-
-
-
     </div>
     `;
   container.appendChild(form);
@@ -1449,14 +1438,26 @@ function buildXML(data, formId) {
 
 function generateXML(formId) {
   const data = getFormData(formId);
-   const xml = buildXML(data, formId); 
-  // Open modal
-  document.getElementById('modalXmlContent').textContent = xml;
-  const modal = new bootstrap.Modal(document.getElementById('xmlModal'));
+  const xml = buildXML(data, formId); 
+
+  const modalEl = document.getElementById('xmlModal');
+
+  if (xmlPreviewCM) {
+    xmlPreviewCM.setValue(xml);
+  } else {
+    // Fallback if CodeMirror is not available or not initialized
+    const fallback = document.getElementById('xmlPreviewEditor');
+    if (fallback) {
+      fallback.textContent = xml;
+    }
+  }
+
+  const modal = new bootstrap.Modal(modalEl);
   modal.show();
 
   return xml;
 }
+
 
 function downloadXML(formId) {
   //if (!validateMandatoryFields(formId)) return; //stop if invalid
@@ -2324,7 +2325,7 @@ document.addEventListener('click', (ev) => {
 
 
 
-// === Enhanced Input Listener with loading state ===
+// Enhanced Input Listener with loading state 
 document.addEventListener('input', async (e) => {
   const field = e.target;
   if (!field.classList.contains('lod-autocomplete')) return;
@@ -2571,11 +2572,6 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
-
-// --- EXIT WARNING ---
-/*window.addEventListener('beforeunload', (event) => {
-  event.preventDefault();
-});*/
 
 // --- EXIT WARNING (only if there is data) ---
 window.addEventListener('beforeunload', (event) => {
@@ -3097,3 +3093,25 @@ document.getElementById("clearAllBtn")?.addEventListener("click", () => {
   }
 });
 
+
+// Preview CodeMirror
+document.addEventListener('DOMContentLoaded', function () {
+  const previewTextarea = document.getElementById('xmlPreviewEditor');
+  if (previewTextarea && window.CodeMirror) {
+    xmlPreviewCM = CodeMirror.fromTextArea(previewTextarea, {
+      mode: 'application/xml',
+      lineNumbers: true,
+      lineWrapping: true,
+      readOnly: true,
+      theme: 'default'
+    });
+
+    // Fix layout when modal is shown (CodeMirror needs a refresh)
+    const previewModal = document.getElementById('xmlModal');
+    if (previewModal) {
+      previewModal.addEventListener('shown.bs.modal', () => {
+        xmlPreviewCM.refresh();
+      });
+    }
+  }
+});

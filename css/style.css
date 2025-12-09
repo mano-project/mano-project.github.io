@@ -249,7 +249,10 @@ section h2 {
   overflow-wrap: break-word;
 }
 
-/*#filtersOffcanvas {
-  width: 450px !important;    default for larger screens 
-  max-width: 90vw;            prevent overflow on small screens 
-}*/
+
+.CodeMirror {
+  height: 500px;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  font-size: 11px;
+}
