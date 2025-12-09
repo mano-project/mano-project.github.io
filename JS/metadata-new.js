@@ -1926,7 +1926,17 @@ document.getElementById('fileUpload').addEventListener('change', function (e) {
 
 
       // Inject into form
-      const formElement = container.children[0];
+      /*const formElement = container.children[0];
+      const form = formElement.querySelector('.msForm');*/
+      // Inject into form: reuse first form if present, otherwise create a new one
+      let formElement;
+
+      if (container.children.length > 0) {
+        formElement = container.children[0];
+      } else {
+        formElement = addManuscriptForm({}, false); // create a new empty manuscript form
+      }
+
       const form = formElement.querySelector('.msForm');
 
       form.reset();
