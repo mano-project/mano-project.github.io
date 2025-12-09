@@ -2607,6 +2607,34 @@ function getLitStore(form) {
   return form.literature;
 }
 
+
+// Check if an item (OpenLibrary or manual) is already in the list
+function isDuplicateOpenLibraryItem(form, candidate, ignoreIndex = null) {
+  const items = getLitStore(form);
+
+  const candRef  = (candidate.ref  || '').trim();
+  const candIsbn = (candidate.isbn || '').trim();
+
+  return items.some((item, idx) => {
+    // When editing an existing entry, skip comparing with itself
+    if (ignoreIndex !== null && idx === ignoreIndex) return false;
+
+    const itemRef  = (item.ref  || '').trim();
+    const itemIsbn = (item.isbn || '').trim();
+
+    // same OpenLibrary URL?
+    if (candRef && itemRef && candRef === itemRef) return true;
+
+    // same ISBN?
+    if (candIsbn && itemIsbn && candIsbn === itemIsbn) return true;
+
+    return false;
+  });
+}
+
+
+
+
 // Render the literature list
 function renderLiteratureList(form) {
   const list = form.querySelector('.literature-list');
@@ -2819,8 +2847,20 @@ function showLiteratureForm(form, lit = {}, index = null) {
     };
 
     const store = getLitStore(form);
-    if (index === null) store.push(entry);
-    else store[index] = entry;
+    if (isDuplicateOpenLibraryItem(form, entry, index)) {
+      alert("This title (same ISBN or reference) is already in your literature list.");
+      return;
+    }
+
+    if (index === null) {
+      store.push(entry);
+    } else {
+      store[index] = entry;
+    }
+
+    container.style.display = "none";
+    renderLiteratureList(form);
+
 
     container.style.display = "none";
     renderLiteratureList(form);
@@ -2960,7 +3000,7 @@ document.addEventListener('input', async (e) => {
     `;
 
 
-      div.onclick = async (ev) => {
+      /*div.onclick = async (ev) => {
         // avoid triggering selection when clicking the link icon
         if (ev.target.closest('a')) return;
 
@@ -2990,7 +3030,50 @@ document.addEventListener('input', async (e) => {
         resultsBox.innerHTML = "";
         renderLiteratureList(form);
         input.value = "";
+      };*/
+      
+      /*NEW version */
+            div.onclick = async (ev) => {
+        // avoid triggering selection when clicking the link icon
+        if (ev.target.closest('a')) return;
+
+        const workKey = r.ref ? r.ref.replace('https://openlibrary.org', '') : '';
+
+        // Enrich with edition metadata
+        if (workKey) {
+          try {
+            const eds = await fetchOpenLibraryWorkEditions(workKey);
+            const best = pickBestEdition(eds, r.date);
+            if (best) {
+              r.publisher = best.publishers?.[0] || r.publisher || '';
+              r.pubPlace = Array.isArray(best.publish_places)
+                ? best.publish_places[0]
+                : best.publish_places || r.pubPlace || '';
+              r.series = safeGetSeries(best) || r.series || '';
+              r.isbn = best.isbn_13?.[0] || best.isbn_10?.[0] || r.isbn || '';
+              r.language = best.languages?.[0]?.key?.split('/').pop() || r.language || '';
+              if (!r.date) r.date = extractYear(best.publish_date) || r.date;
+            }
+          } catch (e) {
+            console.warn('OpenLibrary enrichment failed:', e);
+          }
+        }
+
+        r.source = "openLibrary";
+
+        // 🔁 Duplicate check: same OpenLibrary ref or same ISBN already present?
+        if (isDuplicateOpenLibraryItem(form, r)) {
+          alert("This title is already in your literature list.");
+          return; // do not add again
+        }
+
+        // If not a duplicate, add it as usual
+        getLitStore(form).push(r);
+        resultsBox.innerHTML = "";
+        renderLiteratureList(form);
+        input.value = "";
       };
+
 
       resultsBox.appendChild(div);
     });
