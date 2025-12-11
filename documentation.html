@@ -80,8 +80,8 @@
             <li class="nav-item"><a class="nav-link" href="editor.html">Metadata Editor</a></li>
             <li class="nav-item"><a class="nav-link" href="collection.html">Metadata Collection</a></li>
             <li class="nav-item"><a class="nav-link" href="viewer.html">Transcription Viewer</a></li>
-            <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
             <li class="nav-item"><a class="nav-link active" href="documentation.html">Documentation</a></li>
+            <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
           </ul>
         </div>
       </div>
@@ -97,233 +97,583 @@
     <div class="doc-intro">
       
       <p style="text-align: justify;">
-        <span class="mano">&lt;MANO&gt;</span> is a lightweight, open digital platform for manuscript studies. It combines a structured metadata editor, a public collection interface, a transcription viewer for TEI-XML, a PAGE-XML → TEI-XML converter, geospatial visualizations, and a curated repository of learning materials. This documentation presents the platform’s goals, data model, validation logic, and technical architecture to support reproducible research, teaching, and responsible data reuse.
+        <span class="mano">&lt;MANO&gt;</span> is a platform designed for teaching and learning digital manuscript studies. It provides a lightweight environment where users can explore TEI-XML transcriptions, create manuscript metadata, and share teaching materials, without requiring installations, accounts, or institutional infrastructure. MANO is organized into a set of modular tools that support complementary aspects of manuscript description and transcription work. Each module can be used independently or as part of an integrated teaching workflow.
       </p>
       <div class="callout mb-4">
-        <strong>How to cite&nbsp;&lt;MANO&gt;.</strong> Cite the platform as: <em>MANO – Manuscripts Online</em>, version of this documentation page, URL: <span class="mono">https://mano-project.github.io/documentation.html</span> (accessed on [insert date]).
+        <strong>How to cite&nbsp;&lt;MANO&gt;.</strong> Cite the platform as: <em>MANO – Manuscripts Online</em>, <span class="mono">https://mano-project.github.io</span>.
       </div>
     </div>
 
-    <!-- Table of contents (quick links to open sections) -->
-    <div class="toc row g-2 mb-4">
-      <div class="col-12 col-md-auto"><a class="btn btn-outline-primary btn-sm" href="#sec1" onclick="toggleSection('sec1')">1. Introduction</a></div>
-      <div class="col-12 col-md-auto"><a class="btn btn-outline-primary btn-sm" href="#sec2" onclick="toggleSection('sec2')">2. Getting Started</a></div>
-      <div class="col-12 col-md-auto"><a class="btn btn-outline-primary btn-sm" href="#sec3" onclick="toggleSection('sec3')">3. Data Model</a></div>
-      <div class="col-12 col-md-auto"><a class="btn btn-outline-primary btn-sm" href="#sec4" onclick="toggleSection('sec4')">4. Validation</a></div>
-      <div class="col-12 col-md-auto"><a class="btn btn-outline-primary btn-sm" href="#sec5" onclick="toggleSection('sec5')">5. Metadata Editor</a></div>
-      <div class="col-12 col-md-auto"><a class="btn btn-outline-primary btn-sm" href="#sec6" onclick="toggleSection('sec6')">6. Collection</a></div>
-      <div class="col-12 col-md-auto"><a class="btn btn-outline-primary btn-sm" href="#sec7" onclick="toggleSection('sec7')">7. Transcription & Converter</a></div>
-      <div class="col-12 col-md-auto"><a class="btn btn-outline-primary btn-sm" href="#sec8" onclick="toggleSection('sec8')">8. Maps</a></div>
-      <div class="col-12 col-md-auto"><a class="btn btn-outline-primary btn-sm" href="#sec9" onclick="toggleSection('sec9')">9. Architecture</a></div>
-      <div class="col-12 col-md-auto"><a class="btn btn-outline-primary btn-sm" href="#sec10" onclick="toggleSection('sec10')">10. Governance & License</a></div>
-    </div>
-
+    
     <!-- ACCORDION -->
     <div class="accordion" id="docAccordion">
 
-      <!-- 1. Introduction -->
+      <!-- 1. Overview -->
       <div class="accordion-item" id="sec1">
         <h2 class="accordion-header" id="heading1">
           <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
-            1. Introduction
+            Overview
           </button>
         </h2>
         <div id="collapse1" class="accordion-collapse collapse show" aria-labelledby="heading1" data-bs-parent="#docAccordion">
           <div class="accordion-body">
             <p style="text-align: justify;">
-              <span class="mano">&lt;MANO&gt;</span> is conceived as an academic yet accessible infrastructure for creating and disseminating manuscript descriptions and transcriptions. It adheres to established community standards—most prominently the <a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/MS.html" target="_blank" rel="noopener noreferrer">TEI P5 Manuscript Description</a>—while privileging transparency and reuse. The platform is intentionally lightweight: it runs on GitHub Pages, minimizes server complexity, and exposes human-readable files (JSON, TEI-XML) suitable for long-term preservation and scholarly exchange.
+              <span class="mano">&lt;MANO&gt;</span> – Manuscripts Online is a platform for working with digital manuscript materials directly in the browser. It brings together tools for viewing TEI-XML transcriptions, creating manuscript descriptions, consulting community-contributed metadata, and accessing teaching resources. Because everything runs client-side, users can work with their own files locally, and nothing is stored on a server unless they choose to publish it in a GitHub repository. The platform is intended for both teaching and introductory research contexts. Students can learn TEI, explore manuscript structures, and create descriptions without needing specialised software, while instructors can assemble and share course materials through a simple static repository.
+            </p>
+            <p>
+              MANO was created to address a key challenge in manuscript and TEI pedagogy: many existing tools rely on complex infrastructures, licensed editors, or institutional hosting. These environments are powerful but often inaccessible to students, early-career researchers, or instructors working in low-resource or short-term teaching contexts. MANO lowers these barriers by offering a lightweight, sustainable alternative that runs entirely in the browser.
             </p>
             <p style="text-align: justify;">
-              Core design principles include: (i) <em>openness</em> (data and code repositories are public); (ii) <em>parsimony</em> (limited but robust feature set); (iii) <em>interoperability</em> (structured exports and references to external authorities); and (iv) <em>pedagogical value</em> (clarity of interface and documentation to support teaching).
-            </p>
+              MANO is built around a set of guiding principles that shape both its functionality and its technical design:</p>
+            <ul>
+              <li><strong>Browser-based and installation-free.</strong> All tools run entirely in the browser so that learners can begin working immediately, without setup tasks or user accounts.</li>
+              <li><strong>Serverless and sustainable.</strong> The platform avoids databases, backends, or institutional servers. Static hosting on GitHub ensures long-term accessibility with minimal maintenance.</li>
+              <li><strong>Lightweight and modular.</strong> Each component functions independently, allowing instructors to use only what they need.</li>
+              <li><strong>Pedagogically driven.</strong> The interface and workflows are designed to support teaching scenarios: introducing TEI, exploring manuscript structure, and guiding students through description tasks.</li>
+              <li><strong>Open and reusable.</strong> All materials—code, documentation, and example files—are openly available. Through GitHub, users can fork, adapt, and contribute to shared collections of metadata and transcriptions.</li>
+            </ul>
           </div>
         </div>
       </div>
 
-      <!-- 2. Getting Started -->
+      <!-- 2. MANO at a Glance -->
       <div class="accordion-item" id="sec2">
         <h2 class="accordion-header" id="heading2">
           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
-            2. Getting Started
+            MANO at a Glance
           </button>
         </h2>
         <div id="collapse2" class="accordion-collapse collapse" aria-labelledby="heading2" data-bs-parent="#docAccordion">
           <div class="accordion-body">
-            <ol>
-              <li><strong>Metadata creation</strong> in the <a href="editor.html">Metadata Editor</a>.</li>
-              <li><strong>Validation</strong> using built-in checks; revise until no blocking errors remain.</li>
-              <li><strong>Export</strong> JSON (primary) and TEI-XML (for interchange); retain local copies.</li>
-              <li><strong>Contribution</strong> of JSON records to the public repository (see <a href="collection.html">Metadata Collection</a>).</li>
-              <li><strong>Discovery and reuse</strong> via the Collection interface, Maps, and the Transcription Viewer.</li>
-            </ol>
-            <p class="mb-0"><em>Prerequisites:</em> no server access is required. A GitHub account is recommended for contributing records or resources.</p>
+            <p>MANO is organized into a set of independent, browser-based tools that together support common tasks in digital manuscript work:</p>
+            <ul>
+              <li><a href="resources.html">Resources</a>: Displays teaching materials hosted in a GitHub repository. Instructors upload resources; learners download them directly from the interface.</li>
+              <li><a href="editor.html">Metadata Editor</a>: A form-based environment for creating structured manuscript descriptions. Users can enter cataloging information, generate JSON/TEI outputs, and download their results.</li>
+              <li><a href="collection.html">Metadata Collection</a>: Displays manuscript descriptions contributed to a shared GitHub repository, allowing learners and instructors to browse examples produced within a course or community.</li>
+              <li><a href="viewer.html">Transcription Viewer</a>: A viewer for TEI-XML transcriptions, offering synchronized panels for the XML code, a readable HTML rendering, and—when present—manuscript images linked to the transcription. Supports basic editing and file export.</li>
+            </ul> 
+            <p class="text-center"><img src="images/structure.png" alt="Structure of MANO" width="40%"></p>
+            <p>Each component works autonomously, but together they form a complete workflow for transcription, description, visualization, and sharing.</p>
           </div>
         </div>
       </div>
 
-      <!-- 3. Data Model -->
+      <!-- 3. Resources -->
       <div class="accordion-item" id="sec3">
         <h2 class="accordion-header" id="heading3">
           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
-            3. Data Model (JSON & TEI-XML)
+            Resources
           </button>
         </h2>
         <div id="collapse3" class="accordion-collapse collapse" aria-labelledby="heading3" data-bs-parent="#docAccordion">
           <div class="accordion-body">
-            <p style="text-align: justify;">MANO maintains a pragmatic JSON schema that maps cleanly to TEI-XML for interchange. Records are organized into the following domains:</p>
-            <ul>
-              <li><strong>File Description</strong> — file name, language, license, responsible persons (with optional identifiers and affiliations).</li>
-              <li><strong>Identification</strong> — manuscript name, repository, settlement, country, shelfmark/sigle, identifiers.</li>
-              <li><strong>Content</strong> — items (<span class="mono">msItems</span>) with author, title, foliation/page ranges, incipit/explicit, genre, language, and textual family.</li>
-              <li><strong>Physical Description</strong> — material, dimensions, leaves/columns/lines, number and description of hands, scripts, decoration, bindings, seals.</li>
-              <li><strong>History</strong> — origin (human-readable and machine-readable dates), provenance events with owners, places, and date ranges.</li>
-              <li><strong>Surrogates & Literature</strong> — digital copy, IIIF manifest, catalogue links; bibliography with authors/editors and references.</li>
-            </ul>
-            <p class="mb-2"><strong>Identifiers and external references.</strong> Where possible, fields accept both a display value and a URI (e.g., VIAF, GND, Wikidata, ORCID) to encourage authority control.</p>
-            <p class="mb-2"><strong>TEI export.</strong> The editor generates a TEI P5-compliant manuscript description with conservative encoding of the above domains, facilitating reuse in scholarly pipelines and catalogues.</p>
-            <div class="callout">
-              <strong>Normative reference.</strong> See TEI P5, chapter “Manuscript Description”: <a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/MS.html" target="_blank" rel="noopener noreferrer">https://tei-c.org/.../MS.html</a>
+            <div>
+              <h5>What it is</h5>
+              <p>The <a href="resources.html">Resources</a> section provides access to a shared repository of teaching materials related to digital manuscript studies. These materials are stored in a public GitHub repository. All learners can freely download them from the MANO interface, and instructors can contribute new materials to enrich the shared collection.</p>
+              <p>The Resources repository is open to instructors who wish to share teaching materials with the MANO community. By uploading materials to the GitHub repository, you agree to share them under the Creative Commons Attribution–NonCommercial 4.0 (<a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a>) license. This means:</p>
+                <ul>
+                  <li>materials may be freely reused for educational and non-commercial purposes</li>
+                  <li>the original author must always be acknowledged</li>
+                  <li>commercial reuse is not permitted</li>
+                </ul>
+              <p>MANO automatically displays contributor's name, contributor's identifier (if available), and learning materials with direct download.
+              </p>
+              <p class="text-center"><img src="images/resources.png" alt="Resources" width="80%"></p>
+            </div>
+            
+            <div class="mt-5">
+              <h5>When to use it</h5>
+              <p>Use the Resources section when:</p>
+              <ul>
+                <li>learning TEI and manuscript studies,</li>
+                <li>accessing exercises, guides, or teaching materials contributed by others,</li>
+                <li>providing starter materials for in-class exercises,</li>
+                <li>preparing your own teaching session and wanting reusable examples.</li>
+              </ul>
+            </div>
+
+            <div class="mt-5">
+              <h5>How it works</h5>
+              <p>
+                Each contributor has a personal entry in the Resources table, showing their name,
+                an identifier such as ORCID, VIAF, or GND (when available), and a button labelled
+                <em>Teaching Materials</em>.
+              </p>
+              <p>
+                Clicking <em>Teaching Materials</em> opens a list of all files shared by that contributor.
+                Each file has a direct download link, so learners can obtain PDFs, slides, or other materials
+                without logging into GitHub.
+              </p>
+              <p>
+                For users who only want to access resources, GitHub remains in the background:
+                the MANO interface automatically loads and displays all available materials.
+              </p>
+            </div>
+            
+            <div class="mt-5">
+              <h5>How to upload your teaching materials</h5>
+              <p>A detailed, step-by-step user guide with FAQs and additional instructions for uploading teaching materials is available in the GitHub repository.</p>
+              
+              <h6>1. Log in to GitHub</h6>
+                <p>You need a free GitHub account. If you already have one, simply sign in.</p>
+              
+                <h6>2. Open the Resources repository</h6>
+                <p><a href="https://github.com/mano-project/mano-resources" target="_blank">https://github.com/mano-project/mano-resources</a></p>
+              
+                <h6>3. Create your personal folder</h6>
+              <ol>
+                <li>Click Add file → Create new file</li>
+                <li>In the file name field, type your folder name followed by /README.md:<br/> Surname Name Affiliation ORCID/README.md (or VIAF / GND. Users with no identifier may still contribute; the identifier field is optional but recommended.)</li>
+                <li>In the large text box, enter Placeholder or a brief description of yourself and your teaching area.</li>
+                <li>Click Commit changes.</li>
+              </ol>
+          
+              <h6>4. Upload your teaching materials</h6>          
+              <ol>
+                <li>Open your newly created folder.</li>
+                <li>Click Add file → Upload files.</li>
+                <li>Drag and drop your PDFs or other materials (or use “Choose your files”).</li>
+                <li>Click Commit changes.</li>
+              </ol>
+              <p>Your materials will now appear automatically in the MANO Resources section of the website.</p> 
             </div>
           </div>
         </div>
       </div>
 
-      <!-- 4. Validation -->
+      <!-- 4. Metadata Editor -->
       <div class="accordion-item" id="sec4">
         <h2 class="accordion-header" id="heading4">
           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
-            4. Validation & Quality Assurance
+            Metadata Editor
           </button>
         </h2>
         <div id="collapse4" class="accordion-collapse collapse" aria-labelledby="heading4" data-bs-parent="#docAccordion">
           <div class="accordion-body">
-            <p style="text-align: justify;">Validation combines mandatory checks (blocking) and optional heuristics (advisory). Examples include:</p>
-            <ul>
-              <li><strong>Mandatory</strong> — presence of core fields (file/language/license/responsible persons; manuscript name; repository), consistent page-range entries, and chronological coherence of origin and provenance ranges.</li>
-              <li><strong>Optional</strong> — realistic dimensions; potential conflation of responsible persons with content authors; matching or suspiciously identical dates between origin and ownership; human-readable vs machine-readable date parity.</li>
-            </ul>
-            <p class="mb-2">Validation is reported within the editor; downloads can be blocked until mandatory errors are resolved. Optional notices promote best practice without preventing export.</p>
-            <p class="mb-0"><em>Rationale:</em> clarity for students and contributors; defensible, auditable records for scholarly reuse.</p>
+            <div>
+              <h5>What it is</h5>
+              <p>The <a href="editor.html">Metadata Editor</a> is a structured environment for creating manuscript descriptions following the <strong>TEI P5 <a href="https://www.tei-c.org/release/doc/tei-p5-doc/de/html/MS.html" target="_blank">Manuscript Description</a> module</strong>. It translates the TEI manuscript description model into an intuitive, form-based interface, allowing users to produce TEI-compatible metadata without writing XML directly. The editor supports both traditional cataloging categories and lightweight Linked Open Data (LOD) integration.</p>
+            </div>  
+            
+            <div class="mt-5">
+              <h5>When to use it</h5>
+              <p>Use the Metadata Editor when:</p>
+                <ul>
+                  <li>learning or teaching the structure of TEI manuscript descriptions</li>
+                  <li>producing manuscript metadata for coursework, workshops, or small projects</li>
+                  <li>preparing TEI-conformant descriptions without writing XML</li>
+                  <li>contributing descriptions to the shared MANO Metadata Collection</li>
+                </ul>
+            </div>
+            
+            <div class="mt-5">
+              <h5>How it works</h5>
+              <p>
+                The Metadata Editor is designed to make the TEI Manuscript Description module accessible to users without technical
+                XML knowledge. All fields correspond to TEI elements, and the structure of the form helps ensure that each description
+                is valid, complete, and standardised. Multiple manuscripts can be described in the same session using the
+                <strong>Add Manuscript</strong> button.
+              </p>
+              
+              <p>The form is divided into six sections: file description, identification, content, physical description, history, and surrogates and literature.
+                Each section collects specific types of information and, where available, can be enriched with Linked Open Data.</p>
+              <p>Throughout the form, small <strong>link icons</strong> next to field labels provide direct access to external documentation.
+                Depending on the context, these links may open:</p>
+              <ul>
+                <li>relevant sections of the TEI Guidelines</li>
+                <li>licence explanations (e.g. Creative Commons pages)</li>
+                <li>authority or help pages from external services such as Wikidata or OpenLibrary</li>
+              </ul>
+              <p>
+                This allows users to consult definitions, usage examples, and licence information.
+              </p>
+
+              <p class="text-center"><img src="images/editor.png" alt="Editor interface" width="70%"></p>
+            
+              <h6 class="mt-4">File description</h6>
+              <p>This section records basic information about the description itself rather than the manuscript:</p>
+              <ul>
+                <li>file name,</li>
+                <li>language of data entry,</li>
+                <li>license,</li>
+                <li>person(s) responsible for data entry, including name, surname, external identifier, and affiliation.</li>
+              </ul>
+              <p>It corresponds to the header elements that describe the metadata record itself (modelled on TEI <code>&lt;fileDesc&gt;</code>).</p>
+
+              <h6 class="mt-4">Identification</h6>
+              <p>The identification section gathers core cataloging information that uniquely identifies the manuscript:</p>
+              <ul>
+                <li>manuscript name,</li>
+                <li>collection,</li>
+                <li>sigle,</li>
+                <li>alternative identifier,</li>
+                <li>library (the holding institution), with geographical coordinates, settlement, and country</li>
+              </ul>
+              <p>It corresponds to TEI element <code>&lt;msIdentifier&gt;</code> and related sub-elements.</p>
+              <p>Where available, repository and place fields can be linked to Wikidata entries.
+                Using Wikidata URIs adds stable identifiers to the description and supports LOD practices
+                by connecting the manuscript record to external authority data.</p>
+
+              <h6 class="mt-4">Content</h6>
+              <p>This section describes what the manuscript contains. The user can add one or more textual items and for each item can provide:</p>
+              <ul>
+                <li>author,</li>
+                <li>title,</li>
+                <li>one or more page ranges,</li>
+                <li>incipit,</li>
+                <li>explicit,</li>
+                <li>textual family,</li>
+                <li>textual subfamily,</li>
+                <li>text language,</li>
+                <li>text genre.</li>
+              </ul>
+              <p>It maps onto TEI elements <code>&lt;msContents&gt;</code>, <code>&lt;msItem&gt;</code>, and related components.</p>
+              <p>Author and work information can optionally be aligned with authority data from Wikidata,
+                enabling links between the manuscript description and external information about people, works, or traditions.
+                This strengthens the LOD dimension of the metadata and supports reuse in other environments.</p>
+
+              <h6 class="mt-4">Physical description</h6>
+              <p>The physical description section focuses on the material aspects of the manuscript. It corresponds to TEI element <code>&lt;physDesc&gt;</code> and related elements. Users can provide the following data:</p>
+              <ul>
+                <li>condition description,</li>
+                <li>material,</li>
+                <li>height and width,</li>
+                <li>leaves, columns, and written lines,</li>
+                <li>number of hands and description,</li>
+                <li>script(s) description,</li>
+                <li>decoration description,</li>
+                <li>music notation,</li>
+                <li>additions,</li>
+                <li>accompanying material description,</li>
+                <li>binding description,</li>
+                <li>seal(s) description.</li>
+              </ul>
+              
+              <h6 class="mt-4">History</h6>
+              <p>The history section records information about the origin and provenance of the manuscript:
+                where and when it was produced, and how it may have travelled or changed ownership.
+                It corresponds mainly to <code>&lt;history&gt;</code>, <code>&lt;origin&gt;</code>, and <code>&lt;provenance&gt;</code>. This section includes:</p>
+              <ul>
+                <li>summary,</li>
+                <li>origin, it includes:
+                  <ul>
+                    <li>place of origin, together with geographical coordinates, and country,</li>
+                    <li>date of origin, expressed both as a human-readable text and as machine-readable values.</li>
+                  </ul>
+                </li>
+                <li>one or more provenance block. Each one includes:
+                  <ul>
+                    <li>previous owner, together with geographical coordinates, settlement, and country,</li>
+                    <li>period of ownership, expressed both as a human-readable text and as machine-readable values.</li>
+                  </ul>
+                </li>
+              </ul>
+              <p>Origin places and institutions are linked to Wikidata, so that geographic and institutional information becomes part of a larger LOD network. This makes it easier to connect MANO descriptions with other datasets that reference the same entities.</p>
+
+              <h6 class="mt-4">Surrogates and literature</h6>
+              <p>The final section brings together references to digital surrogates and literature references. It aligns with TEI structures for references and bibliography, such as <code>&lt;surrogates&gt;</code> and <code>&lt;listBibl&gt;</code>.</p>
+              <ul>
+                <li>links to digitised facsimiles, IIIF resources, or catalogue links,</li>
+                <li>bibliographic entries connected to authority data where possible.</li>
+              </ul>
+              <p>Bibliographic items can be enriched using OpenLibrary:
+                searches in OpenLibrary help retrieve consistent book data (titles, authors, identifiers such as ISBN),
+                which are stored together with a stable OpenLibrary identifier. This supports LOD by connecting local references
+                in the description to a wider ecosystem of bibliographic data.</p>
+              <p>If a book is not available in OpenLibrary, users can still add the reference manually by providing the standard bibliographic fields: title, author(s), year of publication, publisher, place of publication, series, and ISBN. These manually entered records are handled exactly like imported ones, ensuring that all references remain complete and usable even when no external authority record exists.</p>
+              
+              <h6 class="mt-4">Upload your description or Load sample</h6>
+              <p>
+                The system let the users to:</p>
+                <ul>
+                  <li><strong>Upload XML or JSON</strong>
+                    <p>Users may also upload an
+                existing manuscript description created earlier in MANO. Previously downloaded XML or JSON files can be
+                re-uploaded into the editor, allowing records to be inspected, modified, or expanded at any time.</p></li>
+                  <li><strong>Load sample</strong>
+                    <p>It loads a complete, ready-made manuscript description that illustrates
+                how the different fields work together.</p></li>
+                </ul>
+              </p>
+
+              <h6 class="mt-4">Preview and validation</h6>
+              <p>Two additional features help ensure accuracy:</p>
+              <ul>
+                <li>
+                  <strong>Preview</strong> 
+                  <p>Generates a live TEI-XML snippet that helps learners see and understand the TEI structure behind the form.</p>
+                  <p class="text-center"><img src="images/preview.png" alt="Preview window in Metadata Editor" width="50%"></p>
+                </li>
+                <li>
+                  <strong>Validation</strong> 
+                  <p>Runs validation checks to ensure required elements are present, values are well-formed,
+                  identifiers are not duplicated, and referenced items are not already in the list. This helps avoid inconsistencies
+                  when contributing metadata to the shared collection. Validation distinguishes between:</p>
+                  <ul>
+                    <li><strong>Mandatory issues</strong>: errors that must be corrected before a download is permitted,</li>
+                    <li><strong>Optional checks</strong>: warnings about potential inconsistencies that do not prevent downloading.</li>
+                  </ul>
+                  <p>The validation ruleset used in the Metadata Editor is accessible <a href="https://github.com/mano-project/mano-project.github.io/blob/main/JS/validation.js" target="_blank">here</a>.</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="mt-5">
+              <h5>Output</h5>
+              <p>The editor enables the user to download:</p>
+              <ul>
+                <li><strong>TEI-XML</strong> file, ready for integration into larger TEI files.</li>
+                <li><strong>JSON</strong> file, suitable for the MANO Metadata Collection.</li>
+              </ul>
+              <p>
+                Users can download their files, reuse them in their own projects, or contribute them to the MANO Metadata Collection
+                through <a href="https://github.com/mano-project/mano-metadata" target="_blank">GitHub</a>.
+              </p>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- 5. Metadata Editor -->
+      <!-- 5. Metadata Collection -->
       <div class="accordion-item" id="sec5">
         <h2 class="accordion-header" id="heading5">
           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
-            5. Metadata Editor
+            Metadata Collection
           </button>
         </h2>
         <div id="collapse5" class="accordion-collapse collapse" aria-labelledby="heading5" data-bs-parent="#docAccordion">
           <div class="accordion-body">
-            <p><strong>Purpose.</strong> Create structured manuscript descriptions with immediate feedback.</p>
-            <p class="mb-1"><strong>Key features.</strong></p>
-            <ul>
-              <li>Multi-manuscript sessions with add/remove; resume work by re-loading JSON/TEI when compatible with the MANO schema.</li>
-              <li>Contextual validation (mandatory/optional), and download of JSON (canonical) and TEI-XML (interchange).</li>
-              <li>Authority-friendly fields (value + URI) and structured literature entries.</li>
-            </ul>
-            <p class="mb-1"><strong>Export recommendations.</strong></p>
-            <ul>
-              <li>Retain both JSON and TEI-XML for provenance and citation; include the license and responsible persons.</li>
-              <li>When contributing to the Collection, ensure that human-readable and machine-readable dates are both present where applicable.</li>
-            </ul>
+            <div>
+              <h5>What it is</h5>
+              <p>
+                The <a href="collection.html">Metadata Collection</a> is the area of the MANO platform where all manuscript descriptions 
+                created with the <strong>Metadata Editor</strong> are gathered and published. 
+                It functions as a shared digital archive that continually grows as users contribute new records.  
+                Each description appears as an entry in the main table, where users can browse, inspect, 
+                and download the records.
+              </p>
+            </div>
+
+            <div class="mt-5">
+              <h5>When to use it</h5>
+              <ul>
+                <li>to explore manuscript descriptions created through the Metadata Editor,</li>
+                <li>to browse manuscripts by origin, material, language, date, or other filters,</li>
+                <li>to view available digitizations of manuscripts (when a link is provided),</li>
+                <li>to consult a detailed record by opening the <em>Full Record</em> view,</li>
+                <li>to download descriptions in XML, JSON, or PDF format.</li>
+              </ul>
+            </div>
+
+            <div class="mt-5">
+              <h5>How it works</h5>
+              <p>
+                The Metadata Collection reads all description files directly from the public GitHub repository 
+                <a href="https://github.com/mano-project/mano-metadata" target="_blank">mano-metadata</a>. 
+                There is no database: the platform loads, interprets, and displays the JSON files directly from GitHub.
+                This design ensures transparency and long-term sustainability, as the metadata remain openly accessible 
+                in the repository.
+              </p>
+              <p>
+                The main table allows users to:
+              </p>
+              <ul>
+                <li>search manuscripts by keyword,</li>
+                <li>filter records by repository, date of origin, material, script, language, provenance, and more,</li>
+                <li>open external digitizations when available,</li>
+                <li>expand a full structured view of the description using the <em>Full Record</em> button,</li>
+                <li>download metadata in <strong>JSON</strong>, <strong>TEI-XML</strong>, or <strong>PDF</strong> format.</li>
+              </ul>
+
+              <p class="text-center"><img src="images/collection.png" alt="Metadata collection interface" width="70%"></p>
+
+              <h6 class="mt-4">Maps: Current Location and Place of Origin</h6>
+              <p>
+                All metadata in the Collection are automatically visualised on two interactive <a href="maps.html">maps</a>:
+              </p>
+              <ul>
+                <li><strong>Current Location Map</strong> showing where manuscripts are presently held,</li>
+                <li><strong>Origin Location Map</strong> showing where manuscripts were produced.</li>
+              </ul>
+              <p>
+                Each marker on the map represents a place connected to one or more manuscripts. 
+                Clicking a marker displays a list of all manuscripts associated with that location, 
+                with direct links back to the corresponding entries in the main table.
+              </p>
+
+              <p class="text-center"><img src="images/maps.png" alt="Maps interface" width="70%"></p>
+            </div>
+
+            <div class="mt-5">
+              <h5>How to contribute your descriptions</h5>
+              <p>
+                After creating a manuscript description in the 
+                Metadata Editor, users download the record in <strong>JSON format</strong> and upload it to the 
+                GitHub repository:
+                <a href="https://github.com/mano-project/mano-metadata" target="_blank">https://github.com/mano-project/mano-metadata</a>.
+              </p>
+              <p>By uploading metadata to this repository, contributors agree to share them under the <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a> license. Materials may be reused for non-commercial educational purposes, provided proper attribution is given.  </p>
+              <p>A detailed, step-by-step user guide with FAQs and additional instructions for uploading teaching materials is available in the <a href="https://github.com/mano-project/mano-metadata" target="_blank">GitHub repository</a>.</p>
+              
+              <ol>
+                <li>Create the manuscript description using the Metadata Editor.</li>
+                <li>Download the resulting JSON file.</li>
+                <li>Log into GitHub with a free account.</li>
+                <li>Navigate to the <a href="https://github.com/mano-project/mano-metadata" target="_blank">mano-metadata</a> repository.</li>
+                <li>Upload the JSON file to the <code>data</code> folder.</li>
+                <li>Commit the changes.</li>
+              </ol>
+              <p>
+                Once the JSON file is stored in the repository, the MANO platform automatically detects it and displays 
+                the new description in the Collection.
+              </p>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- 6. Metadata Collection -->
+      <!-- 6. Transcription Viewer -->
       <div class="accordion-item" id="sec6">
         <h2 class="accordion-header" id="heading6">
           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse6" aria-expanded="false" aria-controls="collapse6">
-            6. Metadata Collection (Public Dataset)
+            Transcription Viewer
           </button>
         </h2>
         <div id="collapse6" class="accordion-collapse collapse" aria-labelledby="heading6" data-bs-parent="#docAccordion">
           <div class="accordion-body">
-            <p style="text-align: justify;">The Collection aggregates contributed JSON records and exposes them for browsing, filtering, and download. Each row represents a manuscript; a modal provides a structured view of the record, including links to digital surrogates and catalogue entries where present.</p>
-            <p class="mb-1"><strong>Contribution workflow.</strong></p>
-            <ol>
-              <li>Export JSON from the Editor.</li>
-              <li>Submit the file to the public repository via pull request or email to the project maintainer.</li>
-              <li>Upon acceptance, the record appears automatically in the Collection.</li>
-            </ol>
-            <p class="mb-0"><strong>Licensing.</strong> Contributors must ensure that records are released under the platform’s stated Creative Commons license and observe rights of referenced resources.</p>
+            <div>
+              <h5>What it is</h5>
+              <p>
+                The <a href="viewer.html">Transcription Viewer</a> is designed to make TEI-XML transcriptions easy to read and explore,
+                even for users without prior TEI experience or without access to specialised XML editors such as Oxygen.
+                The Viewer transforms TEI-XML into a clear, readable interface and allows users to inspect, edit, and
+                download transcription files directly in the browser.
+              </p>
+            </div>
+
+            <div class="mt-5">
+              <h5>When to use it</h5>
+              <ul>
+                <li>to upload and view TEI-XML transcriptions in a structured way,</li>
+                <li>to explore or teach TEI markup using a visual, browser-based tool,</li>
+                <li>to edit the XML code and preview the results immediately,</li>
+                <li>to work with example material using the built-in <em>Load sample</em> function.</li>
+              </ul>
+            </div>
+
+            <div class="mt-5">
+              <h5>How it works</h5>
+              <p>
+                The interface consists of three synchronised panels:
+              </p>
+              <ul>
+                <li><strong>XML</strong>: shows the transcription as editable XML,</li>
+                <li><strong>Transcription</strong>: provide a readable visualisation of the transcription,</li>
+                <li><strong>Digitized Image</strong>: displays images, when the link is available.</li>
+              </ul>
+
+              <p class="text-center"><img src="images/viewer.png" alt="Transcription Viewr interface" width="70%"></p>
+
+              <h6 class="mt-4">Upload your transcription or Load sample</h6>
+              <p>Users can add their own transcription by clicking <strong>Choose file</strong> and selecting a TEI-XML file 
+                from their computer. The file is read directly in the browser, and the three panels update automatically.
+              </p>
+              <p>The <strong>Load sample</strong> button provides an example transcription for users who want to experiment
+                with the tool or understand its functionality.</p>
+
+              <h6 class="mt-4">Page navigation</h6>
+              <p>When a TEI-XML file is uploaded, the system automatically reads the XML structure and converts it into
+                formatted, readable text. If the transcription includes page breaks (<code>&lt;pb&gt;</code>), the platform automatically generates a page navigation system.</p>
+
+              <h6 class="mt-4">Facsimile synchronisation</h6>
+              <p>When the XML includes direct links to digitised images, the corresponding facsimile appears in the
+                right-hand panel. The image viewer supports zoom controls, and clicking through the transcription updates
+                the displayed image accordingly. If no image link is provided in the XML, this panel remains empty.
+              </p>
+
+              <h6 class="mt-4">Editing and updating the transcription</h6>
+              <p>The XML code can be edited directly within the Viewer. After making changes, users can click
+                <strong>Update Preview</strong> to regenerate the rendered text and refresh image synchronisation.
+                The updated transcription can then be downloaded as a new TEI-XML file.
+              </p>
+
+              <h6 class="mt-4">Convert PAGE-XML into TEI-XML</h6>
+              <p>
+                MANO includes a dedicated <a href="converter.html">conversion tool</a> that transforms one or more <strong>PAGE-XML</strong> files into a 
+                unified <strong>TEI-XML</strong> transcription. This tool is intended for situations where HTR/OCR software 
+                exports PAGE-XML instead of TEI. Users can upload multiple PAGE files, 
+                which MANO merges into a single TEI document containing page breaks, region ordering, and reading text. 
+                The resulting TEI file can be downloaded and opened in the Transcription Viewer for further inspection, 
+                editing, and alignment with images.
+              </p>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- 7. Transcription Viewer & Converter -->
+      <!-- 7.  Technical Architecture-->
       <div class="accordion-item" id="sec7">
         <h2 class="accordion-header" id="heading7">
           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse7" aria-expanded="false" aria-controls="collapse7">
-            7. Transcription Viewer and PAGE→TEI Converter
+            Technical Architecture
           </button>
         </h2>
         <div id="collapse7" class="accordion-collapse collapse" aria-labelledby="heading7" data-bs-parent="#docAccordion">
           <div class="accordion-body">
-            <p><strong>Transcription Viewer.</strong> Visualizes TEI-XML transcriptions in parallel: code, rendered text, and—when available—digitized facsimiles. The view is synchronized and can be refreshed after in-browser edits.</p>
-            <p class="mb-1"><strong>Converter.</strong> When transcriptions exist as multiple PAGE-XML files, the converter merges them into a single TEI-XML suitable for the Viewer. This is convenient for teaching and for integrating external OCR/HTR pipelines.</p>
-            <p class="mb-0"><strong>Good practice.</strong> Keep transcriptions and images under clear licenses; cite repositories and shelfmarks; align page breaks (<span class="mono">&lt;pb/&gt;</span>) consistently.</p>
+            <div>
+              <h5>System Overview</h5>
+              <p>
+                MANO is implemented as a <strong>fully client-side web application</strong>. 
+                All logic—XML parsing, TEI rendering, LOD queries, validation, navigation, map visualisation, and file generation—
+                is executed in the user's browser. The platform does not use a backend server, database,
+                authentication layer, or stateful session storage. 
+              </p>
+               <p>
+                This architecture is designed to remove technical barriers in teaching contexts: 
+                no installation, no licenses, and no institutional hosting are required. 
+                Learners can immediately begin working with manuscript descriptions and transcriptions, 
+                while instructors can reuse or contribute materials with minimal technical setup.
+              </p>
+            </div>
+
+            <div class="mt-5">
+              <h5>GitHub-Based Ecosystem</h5>
+              <p>
+                MANO uses GitHub both as a <strong>hosting environment</strong> (via GitHub Pages) 
+                and as a <strong>storage layer</strong> for shared materials. 
+                The platform consists of three standalone repositories:
+              </p>
+              <ul>
+                <li><a href="https://github.com/mano-project/mano-project.github.io" target="_blank">mano-project</a>: application code, documentation, and static assets,</li>
+                <li><a href="https://github.com/mano-project/mano-resources" target="_blank">mano-resources</a>: teaching materials contributed by instructors,</li>
+                <li><a href="https://github.com/mano-project/mano-metadata" target="_blank">mano-metadata</a>: user-contributed manuscript descriptions in JSON.</li>
+              </ul>
+              <p>
+                Data is retrieved at runtime using the <strong>GitHub REST API</strong>. 
+                The application reads repository contents (teaching materials, JSON metadata records) directly in the browser 
+                without any intermediary service. This serverless architecture simplifies deployment and ensures long-term transparency:
+                all data remains visible, versioned, and accessible in the repositories themselves.
+              </p>             
+            </div> 
+
+            <div class="mt-5">
+              <h5>Linked Open Data Integration</h5>
+              <p>
+                MANO integrates authority data through external LOD services. These lookups are performed <strong>on-demand and client-side</strong>:
+              </p>
+              <ul>
+                <li><strong>Wikidata API:</strong> used for persons, institutions, places, and affiliations.</li>
+                <li><strong>OpenLibrary API:</strong> used for data in literature references.</li>
+              </ul>             
+              <p>
+                Selected entities contribute both a human-readable label and a stable URI. 
+                These identifiers are included in the exported JSON and TEI-XML manuscrip description, 
+                improving interoperability and aligning MANO records with broader cultural heritage datasets.
+              </p>
+            </div>
           </div>
         </div>
       </div>
-
-      <!-- 8. Maps -->
-      <div class="accordion-item" id="sec8">
-        <h2 class="accordion-header" id="heading8">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse8" aria-expanded="false" aria-controls="collapse8">
-            8. Maps and Geographical Visualization
-          </button>
-        </h2>
-        <div id="collapse8" class="accordion-collapse collapse" aria-labelledby="heading8" data-bs-parent="#docAccordion">
-          <div class="accordion-body">
-            <p style="text-align: justify;">The Maps module displays the current place of storage (repository) and places of origin using Leaflet. Each marker aggregates manuscripts associated with the location and links back to the Collection for inspection.</p>
-            <ul>
-              <li><strong>Data sources.</strong> Repository and origin fields with optional coordinates; countries and settlements may include authority URIs.</li>
-              <li><strong>Interpretation.</strong> Points reflect discrete events/places; they are not probabilistic reconstructions.</li>
-              <li><strong>Pedagogy.</strong> Supports spatial reasoning about production and transmission.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- 9. Architecture -->
-      <div class="accordion-item" id="sec9">
-        <h2 class="accordion-header" id="heading9">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse9" aria-expanded="false" aria-controls="collapse9">
-            9. Technical Architecture & Deployment
-          </button>
-        </h2>
-        <div id="collapse9" class="accordion-collapse collapse" aria-labelledby="heading9" data-bs-parent="#docAccordion">
-          <div class="accordion-body">
-            <p class="mb-1"><strong>Hosting.</strong> Static site on GitHub Pages; no server-side dependencies.</p>
-            <p class="mb-1"><strong>Client stack.</strong> HTML5, Bootstrap 5, vanilla JavaScript; Leaflet for mapping; CodeMirror for XML editing; Font Awesome and Bootstrap Icons for UI.</p>
-            <p class="mb-1"><strong>Data flow.</strong> JSON and TEI-XML are produced in-browser; the Collection fetches JSON from the public repository via the GitHub API and renders it into a table and modals; Maps consume the same records to plot locations.</p>
-            <p class="mb-1"><strong>SEO/Structured data.</strong> Pages include canonical URLs, Open Graph metadata, and JSON‑LD to improve discoverability and scholarly attribution.</p>
-            <p class="mb-0"><strong>Versioning.</strong> Git-based workflows allow transparent revision history and reproducibility; contributors should use descriptive commit messages and PR descriptions.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- 10. Governance & License -->
-      <div class="accordion-item" id="sec10">
-        <h2 class="accordion-header" id="heading10">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse10" aria-expanded="false" aria-controls="collapse10">
-            10. Governance, Licensing, and Citation
-          </button>
-        </h2>
-        <div id="collapse10" class="accordion-collapse collapse" aria-labelledby="heading10" data-bs-parent="#docAccordion">
-          <div class="accordion-body">
-            <p class="mb-2"><strong>Governance.</strong> The platform is maintained by the project author; contributions are welcomed through public repositories. Issues and proposals should be filed via GitHub for transparency.</p>
-            <p class="mb-2"><strong>Licensing.</strong> Unless otherwise noted, site content and contributed metadata are released under Creative Commons Attribution–NonCommercial–ShareAlike (CC BY‑NC‑SA 4.0). External resources referenced from institutions remain under their respective licenses.</p>
-            <p class="mb-2"><strong>Attribution.</strong> Cite responsible persons as listed in each record; retain links to authority files and catalogue entries.</p>
-            <p class="mb-0"><strong>Ethics and sensitivity.</strong> Where records concern sensitive materials, contributors should respect institutional guidelines and cultural protocols; include notices if access is restricted.</p>
-          </div>
-        </div>
-      </div>
-
     </div>
   </div>
 
@@ -341,6 +691,7 @@
         <a class="footer-link mx-2" href="editor.html">Metadata Editor</a>
         <a class="footer-link mx-2" href="collection.html">Metadata Collection</a>
         <a class="footer-link mx-2" href="viewer.html">Transcription Viewer</a>
+        <a class="footer-link mx-2" href="documentation.html">Documentation</a>
         <a class="footer-link mx-2" href="about.html">About</a>
       </div>
       <div class="text-center mt-2">
@@ -362,16 +713,5 @@
     </small>
   </div>
 
-  <script>
-    // Helper to open a specific accordion section from the TOC buttons
-    function toggleSection(id) {
-      const collapse = document.querySelector(`#${id} .accordion-collapse`);
-      if (!collapse) return;
-      const bsCollapse = bootstrap.Collapse.getOrCreateInstance(collapse, { toggle: false });
-      // open target and scroll into view
-      bsCollapse.show();
-      setTimeout(() => { document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 100);
-    }
-  </script>
 </body>
 </html>

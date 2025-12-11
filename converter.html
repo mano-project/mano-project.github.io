@@ -97,6 +97,7 @@
             <li class="nav-item"><a class="nav-link" href="editor.html">Metadata Editor</a></li>
             <li class="nav-item"><a class="nav-link" href="collection.html">Metadata Collection</a></li>
             <li class="nav-item"><a class="nav-link active" href="viewer.html">Transcription Viewer</a></li>
+            <li class="nav-item"><a class="nav-link" href="documentation.html">Documentation</a></li>
             <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
             </ul>
         </div>
@@ -109,6 +110,31 @@
    
 
     <h1 class="page-title">Convert PAGE-XML into TEI-XML</h1>
+
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#infoConverter" aria-label="Open About Converter">
+      <i class="bi bi-info-circle"></i> About Converter
+    </button>
+    <!-- About Converter -->
+        <div class="modal fade" id="infoConverter" tabindex="-1" aria-labelledby="infoConverterLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="infoConverterLabel">About Converter</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <p>The converter allows users to upload one or more <strong>PAGE-XML</strong> files and merge them into a single <strong>TEI-XML</strong> transcription. This workflow is designed for cases in which a manuscript transcription is divided across multiple XML files, as commonly produced by platforms such as Transkribus.</p>
+                <p>When multiple files are uploaded, the converter processes them in the order shown in the file list. Users may adjust the sequence using the <strong>Move up</strong> and <strong>Move down</strong> buttons to ensure that pages are merged in the correct order.</p>
+                <p>The resulting TEI-XML includes basic structural elements such as <strong><pb></strong> for page breaks and a simplified block of transcription text extracted from the PAGE-XML files. Once generated, the combined TEI-XML file can be downloaded and uploaded in the <strong>Transcription Viewer</strong> for inspection, visualisation, and further editing.</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
     <p class="text-center">Upload one or more PAGE-XML files. The converter will merge them into a single TEI file.</p>
 
     <!-- Upload area -->
@@ -145,6 +171,7 @@
                 <a class="footer-link mx-2" href="editor.html">Metadata Editor</a>
                 <a class="footer-link mx-2" href="collection.html">Metadata Collection</a>
                 <a class="footer-link mx-2" href="viewer.html">Transcription Viewer</a>
+                <a class="footer-link mx-2" href="documentation.html">Documentation</a>
                 <a class="footer-link mx-2" href="about.html">About</a>
             </div>
 
