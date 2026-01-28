@@ -1,3 +1,8 @@
+@font-face {
+  font-family: sourceCodePro-regular;
+  src: url("Source_Code_Pro/static/SourceCodePro-Regular.ttf");
+}
+
 html, body {
   height: 100%;
   /*margin: 0;
@@ -17,7 +22,8 @@ p{
 
 .mano{
   color: #eeba2b;
-  font-family: monospace;
+  /*font-family: monospace;*/
+  font-family: sourceCodePro-regular;
   font-size: 18px;
 }
 
@@ -27,7 +33,8 @@ p{
 
 .typewriter h1 {
   color: #eeba2b;
-  font-family: monospace;
+  /*font-family: monospace;*/
+  font-family: sourceCodePro-regular;
   font-size: 70px;
   overflow: hidden;
   border-right: 0.10em solid #eeba2b;
@@ -55,14 +62,16 @@ p{
 
 .hp-subtitle {
   font-size: 1.9rem;
-  font-family: monospace;
+  /*font-family: monospace;*/
+  font-family: sourceCodePro-regular;
   color: #eeba2b;
   margin-top: 0.25rem;
 }
 
 .offcanvas-title{
   font-size: 3rem;
-  font-family: monospace;
+  /*font-family: monospace;*/
+  font-family: sourceCodePro-regular;
   color: #eeba2b;
 }
 
@@ -101,14 +110,16 @@ a:focus {
   font-size: 50px;
   color: #eeba2b;
   text-align: center;
-  font-family: monospace;
+  /*font-family: monospace;*/
+  font-family: sourceCodePro-regular;
 }
 
 .page-subtitle{
   font-size: 30px;
   color: #eeba2b;
   text-align: center;
-  font-family: monospace;
+  /*font-family: monospace;*/
+  font-family: sourceCodePro-regular;
   margin-bottom: 20px;
 }
 
@@ -116,7 +127,8 @@ a:focus {
   text-align: center;
   margin-top:15px;
   color: #eeba2b;
-  font-family: monospace;
+  /*font-family: monospace;*/
+  font-family: sourceCodePro-regular;
   font-size: 25px;
 }
 
@@ -128,12 +140,14 @@ input.is-invalid {
 section h3 {
   color: #eeba2b;
   text-align: center;
-  font-family: monospace;
+  /*font-family: monospace;*/
+  font-family: sourceCodePro-regular;
 }
 
 section h2 {
   color: #eeba2b;
-  font-family: monospace;
+  /*font-family: monospace;*/
+  font-family: sourceCodePro-regular;
   font-size: 50px;
 }
 
@@ -166,7 +180,8 @@ section h2 {
 }
 .toast-header strong{
   color:#eeba2b;
-  font-family: monospace;
+  /*font-family: monospace;*/
+  font-family: sourceCodePro-regular;
 }
 
 
@@ -178,14 +193,16 @@ section h2 {
 #jsonDownloadSuccessModal .modal-header {
   background-color: #f7f3ec !important;
   border-bottom: none;
-  font-family: monospace;
+  /*font-family: monospace;*/
+  font-family: sourceCodePro-regular;
 }
 
 /* Title text inside header */
 #xmlDownloadSuccessModal .modal-header .modal-title,
 #jsonDownloadSuccessModal .modal-header .modal-title {
   color: #eeba2b;
-  font-family: monospace;
+  /*font-family: monospace;*/
+  font-family: sourceCodePro-regular;
   font-weight: 600;
 }
 
