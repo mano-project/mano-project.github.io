@@ -99,6 +99,11 @@
                     <li class="nav-item"><a class="nav-link active" href="viewer.html">Transcription Viewer</a></li>
                     <li class="nav-item"><a class="nav-link" href="documentation.html">Documentation</a></li>
                     <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <hr class="my-3">
+                    <div class="text-center">
+                        <h6 class="mb-3">Participate in shaping the future of &lt;MANO&gt;</h6>
+                        <a href="https://survey.zdv.uni-mainz.de/index.php/822542?newtest=Y&lang=en" class="btn btn-sm btn-outline-primary" target="_blank" rel="noopener">Take the user survey</a>
+                    </div>
                     </ul>
                 </div>
                 </div>
@@ -115,7 +120,7 @@
 
             <div class="col-12 col-md-4 d-flex justify-content-start mb-2 mb-md-0">
               <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#infoTranscriptionViewer" aria-label="Open About Transcription Viewer">
-                <i class="bi bi-info-circle"></i> About Transcription Viewer
+                <i class="bi bi-info-circle"></i> About
               </button>
             </div>
 
@@ -181,18 +186,18 @@
                   <button class="btn btn-outline-primary btn-sm" onclick="nextPage()" aria-label="Next page">Next page</button>
                 </div>
                 <div class="row mb-4">
-                    <div id="xmlColumn" class="col-md-4">
+                    <div id="xmlColumn" class="col-12 col-lg-4 mb-5 mb-lg-0">
                       <label for="xmlEditor" class="form-label">XML</label>
                       <textarea id="xmlEditor"></textarea>
                       <button class="btn btn-primary btn-sm mt-2" onclick="renderXML()" aria-label="Update preview">Update preview</button>
                       <button class="btn btn-primary btn-sm mt-2" onclick="downloadXML()" aria-label="Download updated XML">Download updated XML</button>
                     </div>
 
-                    <div id="visualColumn" class="col-md-4">
+                    <div id="visualColumn" class="col-12 col-lg-4 mb-5 mb-lg-0">
                       <label class="form-label">Transcription</label>
                       <div id="styledOutput" class="border"></div>
                     </div>
-                    <div id="imageColumn" class="col-md-4">
+                    <div id="imageColumn" class="col-12 col-lg-4 mb-5 mb-lg-0">
                       <label class="form-label">Digitized Image</label>
                       <div id="imageWrapper" class="border" style="height: 500px; overflow: auto; position: relative;">
                         <img id="pageImage" src="" style="transform: scale(1); transform-origin: top left; display: block;">
@@ -325,13 +330,13 @@ function renderXML() {
   if (!containsFacs && allPBs.length === 0) {
     imageCol.style.display = "none";
     nav.style.display = "none";
-    xmlCol.classList.replace("col-md-4", "col-md-6");
-    visualCol.classList.replace("col-md-4", "col-md-6");
+    xmlCol.classList.replace("col-lg-4", "col-lg-6");
+    visualCol.classList.replace("col-lg-4", "col-lg-6");
   } else {
     imageCol.style.display = containsFacs ? "block" : "none";
     nav.style.display = "block";
-    xmlCol.classList.replace("col-md-6", "col-md-4");
-    visualCol.classList.replace("col-md-6", "col-md-4");
+    xmlCol.classList.replace("col-lg-6", "col-lg-4");
+    visualCol.classList.replace("col-lg-6", "col-lg-4");
   }
 
   currentPageIndex = 0;

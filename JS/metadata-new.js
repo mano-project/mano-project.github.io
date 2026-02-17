@@ -30,13 +30,13 @@ function addManuscriptForm(data = {}, shouldScroll = true) {
                             <fieldset class="p-3">
                                 <div class="row mb-3">
                                     
-                                    <div class="col-md">
-                                        <label class="form-label">File name <span class="required-star" data-bs-toggle="tooltip" title="Required field">*</span></label>
+                                    <div class="col-12 col-lg-6">
+                                        <label class="form-label">File name<span class="required-star" data-bs-toggle="tooltip" title="Required field">*</span></label>
                                         <input type="text" class="form-control" name="msTitle" value="${data.msTitle || ''}">
                                     </div>
 
-                                    <div class="col-md-3">
-                                      <label class="form-label">Language of data entry <span class="required-star" data-bs-toggle="tooltip" title="Required field">*</span></label>
+                                    <div class="col-12 col-lg-3">
+                                      <label class="form-label">Language of data entry<span class="required-star" data-bs-toggle="tooltip" title="Required field">*</span></label>
                                       <select class="form-select" name="xmlLang">
                                         <option value="">Please select</option>
                                         <option value="en" ${data.xmlLang === 'en' ? 'selected' : ''}>English</option>
@@ -47,8 +47,8 @@ function addManuscriptForm(data = {}, shouldScroll = true) {
                                       </select>
                                     </div>
 
-                                    <div class="col-md-2">
-                                        <label class="form-label">License <span class="required-star" data-bs-toggle="tooltip" title="Required field">*</span> <a href="https://creativecommons.org/share-your-work/cclicenses/" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="Visit link"><i class="bi bi-box-arrow-up-right"></i></a></label>
+                                    <div class="col-12 col-lg-3">
+                                        <label class="form-label">License<span class="required-star" data-bs-toggle="tooltip" title="Required field">*</span> <a href="https://creativecommons.org/share-your-work/cclicenses/" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="Visit link"><i class="bi bi-box-arrow-up-right"></i></a></label>
                                         <select class="form-select" name="publicationStmt">
                                             <option value="">Please select</option>
                                             ${['CC BY','CC BY-SA','CC BY-ND','CC BY-NC','CC BY-NC-SA','CC BY-NC-ND','CC0']
@@ -63,7 +63,7 @@ function addManuscriptForm(data = {}, shouldScroll = true) {
                                 <div class="row mb-3">
                                     <div class="resp-container"></div>
                                     <div class="d-flex justify-content-start">
-                                        <button type="button" class="btn btn-sm btn-outline-primary" onclick="addRespPerson(this)" aria-label="Add responsible person">Add responsible person</button>
+                                        <button type="button" class="btn btn-sm btn-primary" onclick="addRespPerson(this)" aria-label="Add responsible person" data-bs-toggle="tooltip" title="Add responsible person"><i class="bi bi-plus"></i></button>
                                     </div>
                                 </div>
                             </fieldset>
@@ -80,7 +80,7 @@ function addManuscriptForm(data = {}, shouldScroll = true) {
                             <fieldset class="p-3">
                                 <div class="row mb-3">
                                     <div class="col-md">
-                                        <label class="form-label">Manuscript name <span class="required-star" data-bs-toggle="tooltip" title="Required field">*</span> <a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-msName.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></label>
+                                        <label class="form-label">Manuscript name<span class="required-star" data-bs-toggle="tooltip" title="Required field">*</span> <a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-msName.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></label>
                                         <input type="text" class="form-control" placeholder="Manuscript name" name="msName" value="${data.msName || ''}">
                                     </div>
                                 </div>
@@ -100,7 +100,7 @@ function addManuscriptForm(data = {}, shouldScroll = true) {
                                 </div>            
                                 <div class="row mb-3">
                                     <div class="col-md">
-                                        <label class="form-label">Library <span class="required-star" data-bs-toggle="tooltip" title="Required field">*</span> <a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-repository.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></label>
+                                        <label class="form-label">Library<span class="required-star" data-bs-toggle="tooltip" title="Required field">*</span> <a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-repository.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></label>
                                         <input type="text" class="form-control lod-autocomplete" placeholder="Enter the name of the library in which the manuscript is stored" data-lod="wikidata-place" name="repository" value="${data.repository || ''}">
                                     </div>
                                 </div>
@@ -137,7 +137,7 @@ function addManuscriptForm(data = {}, shouldScroll = true) {
                                     <textarea class="form-control autosize" name="summaryContents" placeholder="Enter a description of the manuscript's content" value="${data.summaryContents || ''}"></textarea>
                                 </div>
                                 <div class="msitem-container"></div>
-                                <button type="button" class="btn btn-sm btn-outline-primary mt-2" onclick="addMsItem(this)" aria-label="Add content">Add content</button>
+                                <button type="button" class="btn btn-sm btn-primary mt-2" onclick="addMsItem(this)" aria-label="Add content"data-bs-toggle="tooltip" title="Add content"><i class="bi bi-plus"></i></button>
                             </fieldset>
                         </div>
                     </div>
@@ -157,7 +157,7 @@ function addManuscriptForm(data = {}, shouldScroll = true) {
                                 </div>
                               </div>
                               <div class="row mb-3">
-                                <div class="col-md-2">
+                                <div class="col-12 col-lg-4">
                                     <label class="form-label">Material<a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-supportDesc.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></label>
                                     <select class="form-select" name="material">
                                       <option value="">Please select</option>
@@ -166,27 +166,27 @@ function addManuscriptForm(data = {}, shouldScroll = true) {
                                       <option value="papyrus" ${data.material === 'papyrus' ? 'selected' : ''}>Papyrus</option>
                                     </select>
                                 </div>
-                                <div class="col-md-2">
+                                <div class="col-12 col-lg-4">
                                     <label class="form-label">Height (cm)</label>
                                     <input type="number" class="form-control" name="height" value="${data.height || ''}" min="1" placeholder="Enter height">
                                 </div>
-                                <div class="col-md-2">
+                                <div class="col-12 col-lg-4">
                                     <label class="form-label">Width (cm)</label>
                                     <input type="number" class="form-control" name="width" value="${data.width || ''}" min="1" placeholder="Enter width">
                                 </div>
                               </div>
 
                               <div class="row mb-3">
-                                <div class="col-md-2">
+                                <div class="col-12 col-lg-4">
                                     <label class="form-label">Leaves</label>
                                     <input type="number" class="form-control" name="leaves" value="${data.leaves || ''}" min="1" step="1" placeholder="N. of leaves">
                                 </div>
-                                <div class="col-md-2">
+                                <div class="col-12 col-lg-4">
                                     <label class="form-label">Columns<a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-layout.html#tei_att.columns" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a>
                                     </label>
                                     <input type="number" class="form-control" name="columns" value="${data.columns || ''}" min="0" max="4" step="1" placeholder="N. of layout columns per page">
                                 </div>
-                                <div class="col-md-2">
+                                <div class="col-12 col-lg-4">
                                     <label class="form-label">Written lines<a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-layout.html#tei_att.writtenLines" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation">
                                       <i class="bi bi-box-arrow-up-right"></i>
                                     </a>
@@ -196,11 +196,11 @@ function addManuscriptForm(data = {}, shouldScroll = true) {
                               </div>
                               
                               <div class="row mb-3">
-                                <div class="col-md-2">
+                                <div class="col-12 col-lg-4">
                                   <label class="form-label">Number of hands</label>
                                   <input type="number" class="form-control" name="hands" value="${data.hands || ''}" min="1" step="1" placeholder="N. of hands">
                                 </div>
-                                <div class="col-md">
+                                <div class="col-12 col-lg-8">
                                   <label class="form-label">Description of hands<a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-handDesc.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></label>
                                   <input type="text" class="form-control" name="handsDesc" value="${data.handsDesc || ''}"
                                         placeholder="Describe hands characteristics">
@@ -210,7 +210,7 @@ function addManuscriptForm(data = {}, shouldScroll = true) {
                               <div class="mb-3">
                                 <label class="form-label">Script descriptions<a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-scriptNote.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></label>
                                 <div class="scriptDesc-container"></div>
-                                <button type="button" class="btn btn-sm btn-outline-primary mt-2" onclick="addScriptNote(this)" aria-label="Add script">Add script</button>
+                                <button type="button" class="btn btn-sm btn-primary mt-2" onclick="addScriptNote(this)" aria-label="Add script"data-bs-toggle="tooltip" title="Add script"><i class="bi bi-plus"></i></button>
                               </div>
 
                               <div class="mb-3">
@@ -241,7 +241,7 @@ function addManuscriptForm(data = {}, shouldScroll = true) {
                               <div class="mb-3">
                                 <label class="form-label">Seals<a href="https://www.tei-c.org/release/doc/tei-p5-doc/it/html/ref-sealDesc.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></label>
                                 <div class="sealDesc-container"></div>
-                                <button type="button" class="btn btn-sm btn-outline-primary mt-2" onclick="addSeal(this)" aria-label="Add seal">Add seal</button>
+                                <button type="button" class="btn btn-sm btn-primary mt-2" onclick="addSeal(this)" aria-label="Add seal"data-bs-toggle="tooltip" title="Add seal"><i class="bi bi-plus"></i></button>
                               </div>
                             </fieldset>
                         </div>
@@ -280,15 +280,15 @@ function addManuscriptForm(data = {}, shouldScroll = true) {
                                     </div>    
                                 </div>
                                 <div class="row mb-3">   
-                                    <div class="col-md-6">
+                                    <div class="col-lg-4">
                                       <label class="form-label">Human-readable date of origin<a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-origDate.html" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></label>
                                       <input type="text" class="form-control" name="dateOriginText" value="${data.dateOriginText || ''}" placeholder="e.g. 11th century">
                                     </div>                                                                  
-                                    <div class="col-md-3">
+                                    <div class="col-lg-4">
                                       <label class="form-label">Earliest possible date of origin<a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-att.datable.w3c.html#tei_att.notBefore" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></label>
                                       <input type="number" class="form-control" name="dateOriginNotBefore" value="${data.dateOriginNotBefore || ''}" placeholder="e.g. 1000" max="9999" step="1" oninput="limitYearLength(this)">
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-lg-4">
                                       <label class="form-label">Latest possible date of origin<a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-att.datable.w3c.html#tei_att.notAfter" target="_blank" class="ms-2 text-decoration-none" data-bs-toggle="tooltip" title="TEI Documentation"><i class="bi bi-box-arrow-up-right"></i></a></label>
                                       <input type="number" class="form-control" name="dateOriginNotAfter" value="${data.dateOriginNotAfter || ''}" placeholder="e.g. 1010" max="9999" step="1" oninput="limitYearLength(this)">
                                     </div>
@@ -300,7 +300,7 @@ function addManuscriptForm(data = {}, shouldScroll = true) {
                             <fieldset class="p-3">
                               <div class="provenance-container"></div>
                               <div class="d-flex justify-content-start">
-                                <button type="button" class="btn btn-sm btn-outline-primary" onclick="addProvenanceItem(this)" aria-label="Add provenance">Add provenance</button>
+                                <button type="button" class="btn btn-sm btn-primary" onclick="addProvenanceItem(this)" aria-label="Add provenance"data-bs-toggle="tooltip" title="Add provenance"><i class="bi bi-plus"></i></button>
                               </div>
                             </fieldset>
                         </div>
@@ -356,7 +356,7 @@ function addManuscriptForm(data = {}, shouldScroll = true) {
 
                               <!-- Manual add button -->
                               <div class="d-flex justify-content-start">
-                                <button type="button" class="btn btn-sm btn-outline-primary lit-add-manual-btn" aria-label="Add literature reference manually">Add literature reference manually</button>
+                                <button type="button" class="btn btn-sm btn-primary lit-add-manual-btn" aria-label="Add literature reference manually">Add literature reference manually</button>
                               </div>
 
                               <!-- Manual form (hidden by default) -->
@@ -373,8 +373,8 @@ function addManuscriptForm(data = {}, shouldScroll = true) {
           <div class="d-flex flex-column flex-md-row justify-content-md-between align-items-stretch gap-2">
 
             <div class="d-flex justify-content-center justify-content-md-start">
-              <button type="button" class="btn btn-danger w-100 w-md-auto" onclick="deleteManuscriptForm(this)" aria-label="Delete">
-                <i class="bi bi-trash3"></i> Delete
+              <button type="button" class="btn btn-danger w-100 w-md-auto" onclick="deleteManuscriptForm(this)" aria-label="Delete manuscript form">
+                <i class="bi bi-trash3"></i> Delete manuscript description
               </button>
             </div>
 
@@ -428,11 +428,11 @@ function addRespPerson(button) {
   row.innerHTML = `
     <div class="row mb-2">
       <div class="col-md">
-        <label class="form-label">Name <span class="required-star" data-bs-toggle="tooltip" title="Required field">*</span></label>
+        <label class="form-label">Name<span class="required-star" data-bs-toggle="tooltip" title="Required field">*</span></label>
         <input type="text" class="form-control" name="respStmtName-${index}" placeholder="Enter name of responsible person">
       </div>
       <div class="col-md">
-        <label class="form-label">Surname <span class="required-star" data-bs-toggle="tooltip" title="Required field">*</span></label>
+        <label class="form-label">Surname<span class="required-star" data-bs-toggle="tooltip" title="Required field">*</span></label>
         <input type="text" class="form-control" name="respStmtSurname-${index}" placeholder="Enter surname of responsible person">
       </div>
       <div class="col-md-3">
@@ -461,14 +461,11 @@ function addRespPerson(button) {
     </div>
 
     <div class="d-flex justify-content-end align-item-end mt-3">
-      <button type="button" class="btn btn-sm btn-danger" onclick="this.closest('.border').remove()" aria-label="Delete">Delete</button>
+      <button type="button" class="btn btn-sm btn-danger" onclick="this.closest('.border').remove()" aria-label="Delete responsible person" data-bs-toggle="tooltip" title="Delete responsible person"><i class="bi bi-trash3"></i></button>
     </div>
     `;
   container.appendChild(row);
-
-  row.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(el => {
-    new bootstrap.Tooltip(el);
-  });
+  initTooltips(row);
 }
 
 
@@ -488,8 +485,7 @@ function addMsItem(button, itemData = {}) {
         <button type="button" class="btn btn-outline-secondary" onclick="moveMsItem(this, 1)" data-bs-toggle="tooltip" data-bs-placement="top" title="Move content down">
           <i class="bi bi-arrow-down"></i>
         </button>
-        <button type="button" class="btn btn-danger" onclick="deleteMsItem(this)">
-          Delete
+        <button type="button" class="btn btn-danger" onclick="deleteMsItem(this)" data-bs-toggle="tooltip" title="Delete manuscript content"><i class="bi bi-trash3"></i>
         </button>
       </div>
     </div>
@@ -514,7 +510,7 @@ function addMsItem(button, itemData = {}) {
     <div class="mb-2">
       <label class="form-label">Page range</label>
       <div class="page-range-container"></div>
-      <button type="button" class="btn btn-sm btn-outline-primary mt-2" onclick="addPageRange(this, ${index})" aria-label="Add page range">Add page range</button>
+      <button type="button" class="btn btn-sm btn-primary mt-2" onclick="addPageRange(this, ${index})" aria-label="Add page range" data-bs-toggle="tooltip" title="Add page range"><i class="bi bi-plus"></i></button>
     </div>
     
     <div class="row mb-2">
@@ -553,11 +549,7 @@ function addMsItem(button, itemData = {}) {
   
   container.appendChild(block);
   renumberMsItems(container);
-
-
-  block.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(el => {
-    new bootstrap.Tooltip(el);
-  });
+  initTooltips(block);
 
   // Add toggle behavior
   const authorInput = block.querySelector(`[name="msItemAuthor-${index}"]`);
@@ -593,10 +585,11 @@ if (itemData.pageRanges && itemData.pageRanges.length > 0) {
         <input type="text" class="form-control" name="msItemPageTo-${index}-${rIndex}" value="${range.to}" placeholder="To">
       </div>
       <div class="col-md-2">
-        <button type="button" class="btn btn-sm btn-outline-danger" onclick="this.closest('.row').remove()" aria-label="Delete page range">Delete page range</button>
+        <button type="button" class="btn btn-sm btn-danger" onclick="this.closest('.row').remove()" aria-label="Delete page range" data-bs-toggle="tooltip" title="Delete page range"><i class="bi bi-trash3"></i></button>
       </div>
     `;
     rangeContainer.appendChild(div);
+    initTooltips(div);
   });
 } else {
   // fallback to one empty input set if none given
@@ -622,10 +615,11 @@ function addPageRange(button, msItemIndex, preset = []) {
       <input type="text" class="form-control" name="msItemPageTo-${msItemIndex}-${currentIndex}" value="${toValue}" placeholder="To">
     </div>
     <div class="col-md-2">
-      <button type="button" class="btn btn-sm btn-outline-danger" onclick="this.closest('.row').remove()" aria-label="Delete page range">Delete page range</button>
+      <button type="button" class="btn btn-sm btn-danger" onclick="this.closest('.row').remove()" aria-label="Delete page range" data-bs-toggle="tooltip" title="Delete page range"><i class="bi bi-trash3"></i></button>
     </div>
   `;
   container.appendChild(div);
+  initTooltips(div);
 }
 
 function renumberMsItems(msitemContainer) {
@@ -680,7 +674,7 @@ function addProvenanceItem(button, itemData = {}) {
   row.innerHTML = `
     <div class="d-flex justify-content-between align-items-center mb-2">
       <strong>Provenance ${index + 1}</strong>
-      <button type="button" class="btn btn-sm btn-danger" onclick="this.closest('.border').remove()" aria-label="Delete">Delete</button>
+      <button type="button" class="btn btn-sm btn-danger" onclick="this.closest('.border').remove()" aria-label="Delete provenance" data-bs-toggle="tooltip" title="Delete provenance"><i class="bi bi-trash3"></i></button>
     </div>
 
     <div class="row mb-2">
@@ -748,10 +742,7 @@ function addProvenanceItem(button, itemData = {}) {
   `;
 
   container.appendChild(row);
-
-  row.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(el => {
-    new bootstrap.Tooltip(el);
-  });
+  initTooltips(row);
 }
 
 
@@ -765,7 +756,7 @@ function addLiteratureItem(button) {
   block.innerHTML = `
     <div class="d-flex justify-content-between align-items-center mb-2">
       <strong>Literature ${index + 1}</strong>
-      <button type="button" class="btn btn-sm btn-danger" onclick="this.closest('.border').remove()" aria-label="Delete">Delete</button>
+      <button type="button" class="btn btn-sm btn-danger" onclick="this.closest('.border').remove()" aria-label="Delete" data-bs-toggle="tooltip" title="Delete"><i class="bi bi-trash3"></i></button>
     </div>
     <div class="row mb-2">
         <div class="col-md-3">
@@ -803,7 +794,7 @@ function addLiteratureItem(button) {
         </div>
     </div>
     <div class="d-flex justify-content-start mb-3">
-        <button type="button" class="btn btn-sm btn-outline-primary" onclick="addBiblAuthor(this, ${index})" aria-label="Add author">Add author</button>
+        <button type="button" class="btn btn-sm btn-primary" onclick="addBiblAuthor(this, ${index})" aria-label="Add author" data-bs-toggle="tooltip" title="Add author"><i class="bi bi-plus"></i></button>
     </div>
     <div class="bibl-editor-container-${index}">
         <div class="row mb-2">
@@ -814,7 +805,7 @@ function addLiteratureItem(button) {
         </div>
     </div>
     <div class="d-flex justify-content-start mb-3">
-        <button type="button" class="btn btn-sm btn-outline-primary" onclick="addBiblEditor(this, ${index})" aria-label="Add editor">Add editor</button>
+        <button type="button" class="btn btn-sm btn-primary" onclick="addBiblEditor(this, ${index})" aria-label="Add editor" data-bs-toggle="tooltip" title="Add editor"><i class="bi bi-plus"></i></button>
     </div>
     <div class="row mb-2">
         <div class="col-md-6">
@@ -834,10 +825,7 @@ function addLiteratureItem(button) {
     </div>
   `;
   container.appendChild(block);
-
-  block.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(el => {
-    new bootstrap.Tooltip(el);
-  });
+  initTooltips(block);
 }
 
 function addBiblAuthor(button, biblIndex) {
@@ -854,10 +842,11 @@ function addBiblAuthor(button, biblIndex) {
         <input type="text" class="form-control" name="biblAuthorSurname-${biblIndex}-${count}" placeholder="Surname">
     </div>
     <div class="col-md-2">
-        <button type="button" class="btn btn-sm btn-outline-danger" onclick="this.closest('.row').remove()" aria-label="Delete">Delete</button>
+        <button type="button" class="btn btn-sm btn-danger" onclick="this.closest('.row').remove()" aria-label="Delete" data-bs-toggle="tooltip" title="Delete author"><i class="bi bi-trash3"></i></button>
     </div>
   `;
   container.appendChild(newRow);
+  initTooltips(newRow);
 }
 
 function addBiblEditor(button, biblIndex) {
@@ -871,7 +860,7 @@ function addBiblEditor(button, biblIndex) {
         <input type="text" class="form-control" name="biblEditor-${biblIndex}-${count}" placeholder="Editor">
     </div>
     <div class="col-md-2">
-        <button type="button" class="btn btn-sm btn-outline-danger" onclick="this.closest('.row').remove()" aria-label="Delete">Delete</button>
+        <button type="button" class="btn btn-sm btn-danger" onclick="this.closest('.row').remove()" aria-label="Delete" data-bs-toggle="tooltip" title="Delete"><i class="bi bi-trash3"></i></button>
     </div>
   `;
   container.appendChild(newRow);
@@ -1228,7 +1217,7 @@ function addScriptNote(button, scriptData = { value: "", uri: "" }) {
   block.innerHTML = `
     <div class="d-flex justify-content-between align-items-center mb-2">
       <strong>Script</strong>
-      <button type="button" class="btn btn-sm btn-outline-danger" aria-label="Delete">Delete</button>
+      <button type="button" class="btn btn-sm btn-danger" aria-label="Delete script" data-bs-toggle="tooltip" title="Delete script"><i class="bi bi-trash3"></i></button>
     </div>
     <input type="text"
            class="form-control lod-autocomplete"
@@ -1241,6 +1230,7 @@ function addScriptNote(button, scriptData = { value: "", uri: "" }) {
 
   block.querySelector('button').onclick = () => block.remove();
   container.appendChild(block);
+  initTooltips(block);
 }
 
 
@@ -1254,12 +1244,13 @@ function addSeal(button, text = "") {
   block.innerHTML = `
     <div class="d-flex justify-content-between align-items-center mb-1">
       <strong>Seal</strong>
-      <button type="button" class="btn btn-sm btn-outline-danger" aria-label="Delete">Delete</button>
+      <button type="button" class="btn btn-sm btn-danger" aria-label="Delete seal" data-bs-toggle="tooltip" title="Delete seal"><i class="bi bi-trash3"></i></button>
     </div>
     <textarea class="form-control autosize" name="seal-${index}" placeholder="Describe seal">${text}</textarea>
   `;
   block.querySelector('button').onclick = () => block.remove();
   container.appendChild(block);
+  initTooltips(block);
 }
 
 
@@ -1636,9 +1627,7 @@ document.getElementById('fileUpload').addEventListener('change', function (e) {
                 }
 
                 // Enable Bootstrap tooltips
-                scriptRow.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(el => {
-                  new bootstrap.Tooltip(el);
-                });
+                initTooltips(scriptRow);
               });
             }
 
@@ -2575,12 +2564,28 @@ document.addEventListener('input', function(e) {
 });
 
 //Tooltip
-document.addEventListener('DOMContentLoaded', function () {
-  const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-  tooltipTriggerList.map(function (tooltipTriggerEl) {
-    return new bootstrap.Tooltip(tooltipTriggerEl);
+function initTooltips(scope = document) {
+  scope.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(el => {
+    new bootstrap.Tooltip(el, {
+      trigger: 'hover',
+      container: 'body'
+    });
   });
+}
+document.addEventListener('DOMContentLoaded', function () {
+  initTooltips();
 });
+
+document.addEventListener('click', (e) => {
+  const trigger = e.target.closest('[data-bs-toggle="tooltip"]');
+  if (!trigger) return;
+
+  const tip = bootstrap.Tooltip.getInstance(trigger);
+  if (tip) tip.hide();
+
+  trigger.blur?.();
+}, true);
+
 
 
 // --- EXIT WARNING (only if there is data) ---
@@ -2593,13 +2598,13 @@ window.addEventListener('beforeunload', (event) => {
 
   // Trigger browser's generic leave warning
   event.preventDefault();
-  event.returnValue = 'You are about to leave the Metadata Editor. Have you downloaded your data? Unsaved changes may be lost.'; // required for some browsers
+  event.returnValue = 'You are about to leave the Metadata Editor. Have you downloaded your data? Unsaved changes may be lost.'; 
 });
 
 
 
 
-// ========== Literature References ==========
+//Literature References
 
 // Internal store per manuscript form
 function getLitStore(form) {
@@ -2678,7 +2683,7 @@ function renderLiteratureList(form) {
           ${lit.source === "manual" ? `
             <button class="btn btn-sm btn-outline-secondary me-2" aria-label="Edit">Edit</button>
           ` : ''}
-          <button class="btn btn-sm btn-outline-danger" aria-label="Delete">Delete</button>
+          <button class="btn btn-sm btn-danger" aria-label="Delete" data-bs-toggle="tooltip" title="Delete"><i class="bi bi-trash3"></i></button>
         </div>
       </div>
 
@@ -2700,7 +2705,7 @@ function renderLiteratureList(form) {
     }
 
     // Handle Delete button
-    const delBtn = div.querySelector('.btn-outline-danger');
+    const delBtn = div.querySelector('.btn-danger');
     delBtn.type = 'button';
     delBtn.onclick = () => {
       items.splice(i, 1);
@@ -2717,8 +2722,7 @@ function renderLiteratureList(form) {
   });
 
   // Enable Bootstrap tooltips
-  const tooltipTriggerList = [].slice.call(list.querySelectorAll('[data-bs-toggle="tooltip"]'));
-  tooltipTriggerList.map(el => new bootstrap.Tooltip(el));
+  initTooltips(list);
 }
 
 
@@ -2732,7 +2736,7 @@ function showLiteratureForm(form, lit = {}, index = null) {
 
     <div class="row mb-2">
       <div class="col-md-9">
-        <label class="form-label">Title <span class="required-star" data-bs-toggle="tooltip" title="Required field">*</span></label>
+        <label class="form-label">Title<span class="required-star" data-bs-toggle="tooltip" title="Required field">*</span></label>
         <input type="text" class="form-control lit-title" value="${lit.title || ''}">
       </div>
       <div class="col-md-3">
@@ -2742,9 +2746,9 @@ function showLiteratureForm(form, lit = {}, index = null) {
     </div>
 
     <div class="mb-2">
-      <label class="form-label">Author(s) <span class="required-star" data-bs-toggle="tooltip" title="Required field">*</span></label>
+      <label class="form-label">Author(s)<span class="required-star" data-bs-toggle="tooltip" title="Required field">*</span></label>
       <div class="lit-authors"></div>
-      <button type="button" class="btn btn-sm btn-outline-primary lit-add-author" aria-label="Add author">Add author</button>
+      <button type="button" class="btn btn-sm btn-primary lit-add-author" aria-label="Add author" data-bs-toggle="tooltip" title="Add author"><i class="bi bi-plus"></i></button>
     </div>
 
     <div class="row mb-2">
@@ -2777,17 +2781,15 @@ function showLiteratureForm(form, lit = {}, index = null) {
     </div>
 
     <div class="d-flex gap-2 mt-2">
-      <button type="button" class="btn btn-success lit-save-btn" aria-label="Add to literature list">
+      <button type="button" class="btn btn-success lit-save-btn btn-sm" aria-label="Add to literature list">
         ${index === null ? "Add to literature list" : "Update literature reference"}
       </button>
-      <button type="button" class="btn btn-outline-secondary lit-cancel-btn" aria-label="Cancel">Cancel</button>
+      <button type="button" class="btn btn-secondary btn-sm lit-cancel-btn" aria-label="Cancel">Cancel</button>
     </div>
   `;
 
   //Re-initialize Bootstrap tooltips inside the form (for required-star tooltips)
-  container.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(el => {
-    new bootstrap.Tooltip(el);
-  });
+  initTooltips(container);
 
   // ---- authors UI ----
   const authorsWrap = container.querySelector('.lit-authors');
@@ -2803,7 +2805,7 @@ function showLiteratureForm(form, lit = {}, index = null) {
         <input type="text" class="form-control lit-author-surname" placeholder="Surname" value="${a.surname || ''}">
       </div>
       <div class="col-md-2">
-        <button type="button" class="btn btn-sm btn-outline-danger lit-author-del" aria-label="Delete">Delete</button>
+        <button type="button" class="btn btn-sm btn-danger lit-author-del" aria-label="Delete" data-bs-toggle="tooltip" title="Delete author"><i class="bi bi-trash3"></i></button>
       </div>
     `;
     row.querySelector('.lit-author-del').onclick = () => row.remove();
@@ -2998,39 +3000,6 @@ document.addEventListener('input', async (e) => {
         <div class="small text-muted">${r.authors.map(a => `${a.forename ? a.forename + ' ' : ''}${a.surname}`).join(', ') || ''}</div>
       </div>
     `;
-
-
-      /*div.onclick = async (ev) => {
-        // avoid triggering selection when clicking the link icon
-        if (ev.target.closest('a')) return;
-
-        const workKey = r.ref ? r.ref.replace('https://openlibrary.org', '') : '';
-
-        // Enrich with edition metadata
-        if (workKey) {
-          try {
-            const eds = await fetchOpenLibraryWorkEditions(workKey);
-            const best = pickBestEdition(eds, r.date);
-            if (best) {
-              r.publisher = best.publishers?.[0] || r.publisher || '';
-              r.pubPlace = Array.isArray(best.publish_places)
-                ? best.publish_places[0]
-                : best.publish_places || r.pubPlace || '';
-              r.series = safeGetSeries(best) || r.series || '';
-              r.isbn = best.isbn_13?.[0] || best.isbn_10?.[0] || r.isbn || '';
-              r.language = best.languages?.[0]?.key?.split('/').pop() || r.language || '';
-              if (!r.date) r.date = extractYear(best.publish_date) || r.date;
-            }
-          } catch (e) {
-            console.warn('OpenLibrary enrichment failed:', e);
-          }
-        }
-        r.source = "openLibrary";
-        getLitStore(form).push(r);
-        resultsBox.innerHTML = "";
-        renderLiteratureList(form);
-        input.value = "";
-      };*/
       
       /*NEW version */
             div.onclick = async (ev) => {
@@ -3079,8 +3048,7 @@ document.addEventListener('input', async (e) => {
     });
 
     // Activate Bootstrap tooltips for the link icons
-    const tooltipTriggerList = [].slice.call(resultsBox.querySelectorAll('[data-bs-toggle="tooltip"]'));
-    tooltipTriggerList.map(el => new bootstrap.Tooltip(el));
+    initTooltips(resultsBox);
 
 
   } catch (err) {
@@ -3149,7 +3117,7 @@ function limitYearLength(el) {
 
 
 
-// --- Load Sample Button (XML version) ---
+// Load Sample Button (XML version)
 document.getElementById("loadSampleBtn")?.addEventListener("click", async () => {
   try {
     const response = await fetch("test/test-metadata/Bamberg_Staatsbibliothek_Can_6.xml");

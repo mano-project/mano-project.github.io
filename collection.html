@@ -108,6 +108,11 @@
                 <li class="nav-item"><a class="nav-link" href="viewer.html">Transcription Viewer</a></li>
                 <li class="nav-item"><a class="nav-link" href="documentation.html">Documentation</a></li>
                 <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                <hr class="my-3">
+                    <div class="text-center">
+                        <h6 class="mb-3">Participate in shaping the future of &lt;MANO&gt;</h6>
+                        <a href="https://survey.zdv.uni-mainz.de/index.php/822542?newtest=Y&lang=en" class="btn btn-sm btn-outline-primary" target="_blank" rel="noopener">Take the user survey</a>
+                    </div>
                 </ul>
             </div>
             </div>
@@ -124,7 +129,7 @@
           <!-- Left column -->
           <div class="col-12 col-md-6 d-flex justify-content-start mb-2 mb-md-0">
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#infoMetadataCollection" aria-label="Open About Metadata Collection">
-              <i class="bi bi-info-circle"></i> About Metadata Collection
+              <i class="bi bi-info-circle"></i> About
             </button>
           </div>
 
@@ -350,17 +355,18 @@
         <td>${location}</td>
         <td>${digiLink}</td>
         <td>
-          <button class="btn btn-sm btn-primary" aria-label="Open full record" onclick='showFullRecord(${JSON.stringify(entry).replace(/'/g, "&apos;")})'>Full record</button>
-          <div class="dropdown d-inline-block me-2">
-            <button class="btn btn-sm btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-label="Open download options">
-              Download
-            </button>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#" onclick='downloadJSON(${JSON.stringify(entry)})'>JSON</a></li>
-              <li><a class="dropdown-item" href="#" onclick='downloadXMLfromRecord(${JSON.stringify(entry)})'>XML</a></li>
-            </ul>
+          <div class="d-flex flex-column flex-lg-row gap-2">
+            <button class="btn btn-sm btn-primary" aria-label="Open full record" onclick='showFullRecord(${JSON.stringify(entry).replace(/'/g, "&apos;")})'>Full record</button>
+            <div class="dropdown d-inline-block">
+              <button class="btn btn-sm btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-label="Open download options">
+                Download
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#" onclick='downloadJSON(${JSON.stringify(entry)})'>JSON</a></li>
+                <li><a class="dropdown-item" href="#" onclick='downloadXMLfromRecord(${JSON.stringify(entry)})'>XML</a></li>
+              </ul>
+            </div>
           </div>
-          
         </td>
       `;
       
