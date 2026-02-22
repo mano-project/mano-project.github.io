@@ -46,6 +46,7 @@
         <link rel="stylesheet" type="text/css" href="css/style.css" media="screen"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
+        
         <style>
           body {
             display: flex;
@@ -112,23 +113,20 @@
 
 
             <div class="row my-4 align-items-end">
-          <!-- Left column -->
-          <div class="col-12 col-md-6 d-flex justify-content-start mb-2 mb-md-0">
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#infoResources" aria-label="Open About Resources">
-              <i class="bi bi-info-circle"></i> About
-            </button>
-          </div>
+              <!-- Left column -->
+              <div class="col-12 col-md-6 d-flex justify-content-start mb-2 mb-md-0">
+                <button type="button" class="btn btn-primary responsive-btn" data-bs-toggle="modal" data-bs-target="#infoResources" aria-label="Open About Resources">
+                  <i class="bi bi-info-circle"></i> About
+                </button>
+              </div>
 
-          <!-- Right column -->
-          <div class="col-12 col-md-6 d-flex justify-content-start justify-content-md-end">
-            <a href="https://github.com/mano-project/mano-resources" 
-              class="btn btn-primary" 
-              target="_blank" 
-              rel="noopener noreferrer">
-              Contribute to the Resources <i class="fab fa-github fa-xl ms-2"></i>
-            </a>
-          </div>
-        </div>
+              <!-- Right column -->
+              <div class="col-12 col-md-6 d-flex justify-content-start justify-content-md-end">
+                <a href="https://github.com/mano-project/mano-resources" class="btn btn-primary responsive-btn" target="_blank" rel="noopener noreferrer">
+                  Contribute to the Resources <i class="fab fa-github fa-xl ms-2"></i>
+                </a>
+              </div>
+            </div>
 
 
         <!-- About Resources -->
@@ -420,5 +418,7 @@
     // Load resources
     loadResources();
   </script>
+
+  <script src="JS/adjustButtonSize.js"></script>
 </body>
 </html>

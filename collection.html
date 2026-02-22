@@ -128,7 +128,7 @@
         <div class="row my-4 align-items-end">
           <!-- Left column -->
           <div class="col-12 col-md-6 d-flex justify-content-start mb-2 mb-md-0">
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#infoMetadataCollection" aria-label="Open About Metadata Collection">
+            <button type="button" class="btn btn-primary responsive-btn" data-bs-toggle="modal" data-bs-target="#infoMetadataCollection" aria-label="Open About Metadata Collection">
               <i class="bi bi-info-circle"></i> About
             </button>
           </div>
@@ -136,7 +136,7 @@
           <!-- Right column -->
           <div class="col-12 col-md-6 d-flex justify-content-start justify-content-md-end">
             <a href="https://github.com/mano-project/mano-metadata/tree/main" 
-              class="btn btn-primary" 
+              class="btn btn-primary responsive-btn" 
               target="_blank" 
               rel="noopener noreferrer">
               Contribute to the Collection <i class="fab fa-github fa-xl ms-2"></i>
@@ -176,15 +176,33 @@
           <div class="col-12 col-md-5">
             <input id="searchInput" class="form-control" type="text" placeholder="Search..." oninput="applyFilters()">
           </div>
-          <div class="col-12 col-md-4 mt-2 mt-md-0 d-flex justify-content-center justify-content-md-start">
-            <a href="maps.html" class="btn btn-outline-success w-100 w-md-auto" aria-label="Go to Maps">
+          <!--<div class="col-12 col-md-4 mt-2 mt-md-0 d-flex justify-content-center justify-content-md-start">
+            <a href="maps.html" class="btn btn-warning w-100 w-md-auto responsive-btn" aria-label="Go to Maps">
               <i class="fas fa-map"></i> Maps
             </a>
           </div>
           <div class="col-12 col-md-3 text-end mt-2 mt-md-0">
-            <button class="btn btn-outline-primary w-100 w-md-auto" data-bs-toggle="offcanvas" data-bs-target="#filtersOffcanvas" aria-label="Open filters">
+            <button class="btn btn-info w-100 w-md-auto responsive-btn" data-bs-toggle="offcanvas" data-bs-target="#filtersOffcanvas" aria-label="Open filters">
               <i class="fas fa-filter"></i> Filters
             </button>
+          </div>-->
+          <div class="col-12 col-md-7 mt-2 mt-md-0">
+            <div class="d-flex gap-2 justify-content-between justify-content-md-end">
+
+              <a href="maps.html"
+                class="btn btn-warning responsive-btn flex-fill"
+                aria-label="Go to Maps">
+                <i class="fas fa-map"></i> Maps
+              </a>
+
+              <button class="btn btn-info responsive-btn flex-fill"
+                      data-bs-toggle="offcanvas"
+                      data-bs-target="#filtersOffcanvas"
+                      aria-label="Open filters">
+                <i class="fas fa-filter"></i> Filters
+              </button>
+
+            </div>
           </div>
         </div>
 
@@ -346,7 +364,7 @@
 
       //const digiLink = entry.digi ? `<a href="${entry.digi}" target="_blank">View</a>` : "";
       const digiLink = entry.digi 
-      ? `<a href="${entry.digi}" target="_blank" class="btn btn-sm btn-outline-primary">View</a>` 
+      ? `<a href="${entry.digi}" target="_blank" class="btn btn-sm btn-light">View</a>` 
       : "";
 
       row.innerHTML = `
@@ -1322,6 +1340,7 @@ function showDownloadToast() {
     </div>
   </div>
 </div>
+<script src="JS/adjustButtonSize.js"></script>
 
 
 </body>

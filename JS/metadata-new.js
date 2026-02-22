@@ -373,21 +373,21 @@ function addManuscriptForm(data = {}, shouldScroll = true) {
           <div class="d-flex flex-column flex-md-row justify-content-md-between align-items-stretch gap-2">
 
             <div class="d-flex justify-content-center justify-content-md-start">
-              <button type="button" class="btn btn-danger w-100 w-md-auto" onclick="deleteManuscriptForm(this)" aria-label="Delete manuscript form">
+              <button type="button" class="btn btn-danger responsive-btn w-100 w-md-auto" onclick="deleteManuscriptForm(this)" aria-label="Delete manuscript form">
                 <i class="bi bi-trash3"></i> Delete manuscript description
               </button>
             </div>
 
             <div class="d-flex flex-column flex-md-row justify-content-center justify-content-md-end gap-2">
-              <button type="button" class="btn btn-primary w-100 w-md-auto" onclick="generateXML('${formId}')" aria-label="Preview">
+              <button type="button" class="btn btn-primary responsive-btn w-100 w-md-auto" onclick="generateXML('${formId}')" aria-label="Preview">
                 <i class="bi bi-file-earmark-code"></i> Preview
               </button>
 
-              <button type="button" class="btn btn-warning w-100 w-md-auto validate-btn" aria-label="Validate">
+              <button type="button" class="btn btn-warning responsive-btn w-100 w-md-auto validate-btn" aria-label="Validate">
                 <i class="bi bi-check2-square"></i> Validate
               </button>
 
-              <button type="button" class="btn btn-success w-100 w-md-auto" onclick="downloadXML('${formId}')" aria-label="Download XML">
+              <button type="button" class="btn btn-success responsive-btn w-100 w-md-auto" onclick="downloadXML('${formId}')" aria-label="Download XML">
                 <i class="bi bi-file-earmark-arrow-down"></i> Download XML
               </button>
             </div>
